@@ -41,10 +41,10 @@ function setMap(){
         .projection(projection);
 
     var q=d3_queue.queue();
-       q.defer(d3.csv, "data/cali_coverage.csv")//csv data
+       q.defer(d3.csv, "data/California Data/cali_coverage.csv")//csv data
       //q.defer(d3.csv, "data/cali_measles.csv") //do I load two diff sets for two diff data
       //representations?
-        q.defer(d3.json, "data/Californ2.topojson")//spatial data
+        q.defer(d3.json, "data/California Data/Californ2.topojson")//spatial data
         q.await(callback);
 
     function callback(error, csvData, california){
