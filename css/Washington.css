@@ -1,1 +1,12 @@
 /* Style Sheet */
+
+.Washington {
+    fill: #FFF;
+    stroke: #CCC;
+    stroke-width: .6px;
+}
+
+.map {
+  background-color: white;
+  border: medium solid #999;
+}
