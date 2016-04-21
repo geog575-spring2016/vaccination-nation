@@ -1,1 +1,10 @@
 /* Style Sheet */
+
+#map {
+    height: 600px;
+    width: 100%;
+    display: inline-block;    
+    border-color: white;
+    border-style: solid; 
+/*    background-color: black;*/
+}

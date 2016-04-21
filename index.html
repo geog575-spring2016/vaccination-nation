@@ -6,11 +6,13 @@
 		<title>Geog 575 Final Project: VacciNation</title>
 
 		<!--put your external stylesheet links here-->
-		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="lib/leaflet/leaflet.css">
+        <link rel="stylesheet" href="css/style.css"/>
 		<link rel="stylesheet" href="css/Arizona.css"/>
 		<link rel="stylesheet" href="css/California.css"/>
 		<link rel="stylesheet" href="css/NewYork.css"/>
 		<link rel="stylesheet" href="css/Washington.css"/>
+        
 		<!--[if IE<9]>
 			<link rel="stylesheet" href="css/style.ie.css">
 		<![endif]-->
@@ -19,10 +21,13 @@
 	<body>
 		<!--put your initial page content here-->
 		<div id="content"></div>
+        <div id = "map"></div>
 		<!--you can also use this space for internal scripts or stylesheets;
 		place these within <script> or <style> tags-->
 
 		<!--put your external script links here-->
+         <script type="text/javascript" src="lib/jquery-2.2.0.min.js"></script>
+        <script type="text/javascript" src="lib/leaflet/leaflet-src.js"></script>
 		<script type="text/javascript" src="lib/d3.min.js"></script>
 		<script type="text/javascript" src="lib/simple_statistics.min.js"></script>
 		<script type="text/javascript" src="lib/d3-queue.v2.min.js"></script>
@@ -33,5 +38,6 @@
 		<script type="text/javascript" src="js/California2.js"></script>
 		<script type="text/javascript" src="js/NewYork.js"></script>
 		<script type="text/javascript" src="js/Washington.js"></script>
+        
 	</body>
 </html>
