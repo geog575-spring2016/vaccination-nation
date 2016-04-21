@@ -2,13 +2,15 @@
 
 
 keyArray=["measles10","measles11","measles12","measles13","measles14","measles15"]
+
 var expressed=keyArray[1];
-var objectColors={
-      coverage1314:['#ca0020','#f4a582','#92c5de','#0571b0'],
-      pbe1314:[ '#ca0020','#f4a582','#92c5de','#0571b0'],
-      coverage1516:[ '#ca0020','#f4a582','#92c5de','#0571b0'],
-      pbe1516:[ '#ca0020','#f4a582','#92c5de','#0571b0']
-}
+
+// var objectColors={
+//       coverage1314:['#ca0020','#f4a582','#92c5de','#0571b0'],
+//       pbe1314:[ '#ca0020','#f4a582','#92c5de','#0571b0'],
+//       coverage1516:[ '#ca0020','#f4a582','#92c5de','#0571b0'],
+//       pbe1516:[ '#ca0020','#f4a582','#92c5de','#0571b0']
+//}
 
 var chartWidth = 420,
     chartHeight = 397.5,
@@ -41,32 +43,34 @@ function setMap(){
         .projection(projection);
 
     var q=d3_queue.queue();
-      //  q.defer(d3.csv, "data/cali_coverage.csv")//csv data
-        q.defer(d3.csv, "data/California Data/cali_measles.csv") //do I load two diff sets for two diff data
-      //representations?
-        q.defer(d3.json, "data/California Data/Californ2.topojson")//spatial data
+        q.defer(d3.csv, "data/CaliforniaData/cali_coverage.csv")//csv data
+        q.defer(d3.csv, "data/CaliforniaData/cali_measles.csv") //do I load two diff sets for two diff data
+        q.defer(d3.json, "data/CaliforniaData/Californ2.topojson")//spatial data
         q.await(callback);
 
-    function callback(error, csvData, california){
+    function callback(error, dataCoverage, dataMeasles, california){
         var caliCounties=topojson.feature(california, california.objects.Californ).features;
-        for (var i=0; i<csvData.length; i++){
-          var csvCounty=csvData[i];
+        //console.log(caliCounties);
+        for (var i=0; i<dataMeasles.length; i++){
+          var csvCounty=dataMeasles[i];
           var csvCountyCode=csvCounty.geo_id;
           var jsonCounties=california.objects.Californ.geometries;
+      //    console.log(california.objects);
           for (var j=0; j<jsonCounties.length;j++){
               if(jsonCounties[j].properties.geo_id==csvCountyCode){
               for(var key in keyArray){
                 var attribute=keyArray[key];
                 var value=parseFloat(csvCounty[attribute]);
                 (jsonCounties[j].properties[attribute])=value;
+
               }
             }
           }
         };
 
-        var colorScale=makeColorScale(csvData);
+        var colorScale=makeColorScale(dataCoverage);
         setEnumerationUnits(caliCounties, california, map, path, colorScale);
-        setChart(csvData, caliCounties, colorScale);
+        setChart(dataCoverage, caliCounties, colorScale);
     };
 };
 
@@ -146,7 +150,12 @@ function choropleth(props, colorScale){
   };
 
 function setEnumerationUnits(caliCounties, california, map, path, colorScale){
-  var centroidCounties=topojson.feature(california, california.objects.Californ).features;
+    var centroidCounties=(topojson.feature(california, california.objects.Californ).features);
+    console.log(path.centroid(caliCounties));
+
+    var radius = d3.scale.sqrt()
+      .domain([0, 1e6])
+      .range([0, 15]);
 
     //add countries to map
     var counties=map.selectAll(".counties")
@@ -169,10 +178,10 @@ function setEnumerationUnits(caliCounties, california, map, path, colorScale){
             .attr("class","bubble")
           .selectAll("circle")
             .data(centroidCounties)
+            .sort(function(a, b) { return b.properties[expressed] - a.properties[expressed]; console.log('hi');})
             .enter().append("circle")
-        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; console.log(path.centroid(d)) ;})
-        .attr("r", 10)
-        console.log(path.centroid(centroidCounties));
+        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+        .attr("r", function(d) { return radius(d.properties[expressed]); });
 
 
 };
@@ -180,7 +189,7 @@ function setEnumerationUnits(caliCounties, california, map, path, colorScale){
 
 
 
-function setChart(csvData, caliCounties, colorScale){
+function setChart(dataMeasles, caliCounties, colorScale){
 
 //add chart element
   var chart = d3.select("body")
@@ -198,13 +207,13 @@ function setChart(csvData, caliCounties, colorScale){
 
   var yScale = d3.scale.linear()
               //change scale values dynamically with max value of each variable
-              .domain([d3.max(csvData,function(d){ return parseFloat(d[expressed])})*1.02, 0])
+              .domain([d3.max(dataMeasles,function(d){ return parseFloat(d[expressed])})*1.02, 0])
               //output this between 0 and chartInnerHeight
               .range([0, chartInnerHeight]);
 
 //bars element added
   var bars=chart.selectAll(".bars")
-      .data(csvData)
+      .data(dataMeasles)
       .enter()
       .append("rect")
       .sort(function(a,b){
@@ -216,11 +225,11 @@ function setChart(csvData, caliCounties, colorScale){
         return "bars " + d.coverage1314;
       })
       //width depending on number of elements, in my case 192-1
-      .attr("width", chartInnerWidth/csvData.length - 1)
+      .attr("width", chartInnerWidth/dataMeasles.length - 1)
       //determine position on x axis by number of elements, incl leftPadding
       .attr("x", function(d,i){
 
-        return i*(chartInnerWidth/csvData.length) + leftPadding;
+        return i*(chartInnerWidth/dataMeasles.length) + leftPadding;
       })
       //height by yscale of each value, within chartInnerHeight
       .attr("height", function(d){
