@@ -1,10 +1,14 @@
 /* Style Sheet */
 
-#map {
+#new-york-map {
     height: 600px;
-    width: 100%;
-    display: inline-block;    
-    border-color: white;
+    width: 750px;
+    display: inline-block;
+    float: right;
+    border-color: #999;
     border-style: solid; 
+    margin-right: 36px;
+/*    margin-left: 155x;*/
+    margin-bottom: 15px;
 /*    background-color: black;*/
 }
