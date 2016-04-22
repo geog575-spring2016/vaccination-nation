@@ -19,16 +19,18 @@ createMap();
 
 function getData(map){
     //load the data
-    $.ajax("data/ny/", {
+    $.ajax("data/ny/new-york-schools.geojson", {
         dataType: "json",
         success: function(response){
-            var attributes = processData(response);
+            var attributes = response;
             
 //            createPropSymbols(response, map, attributes);
 //            createSequenceControls(map, attributes);
 //            createFilterButtons(map, response);
 //            createLegend(map, attributes);
 //            createContextContainer(map, attributes)
+            console.log(attributes);
+
         }
     });
 };
