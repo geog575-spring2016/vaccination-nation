@@ -8,30 +8,33 @@ function createMap(){
     var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	subdomains: 'abcd',
-	maxZoom: 19
+	minZoom: 11,
+    maxZoom: 17,
 }).addTo(map);
 
     getData(map);
 };
 
-createMap();
 
-
+//Import GeoJSON data
 function getData(map){
     //load the data
     $.ajax("data/ny/new-york-schools.geojson", {
         dataType: "json",
         success: function(response){
-            var attributes = response;
+            
+            //create a Leaflet GeoJSON layer and add to map
+            L.geoJson(response).addTo(map);
+//            var attributes = processData(response);
             
 //            createPropSymbols(response, map, attributes);
 //            createSequenceControls(map, attributes);
 //            createFilterButtons(map, response);
 //            createLegend(map, attributes);
 //            createContextContainer(map, attributes)
-            console.log(attributes);
-
         }
     });
 };
+
+$(document).ready(createMap);
 
