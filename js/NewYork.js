@@ -23,8 +23,21 @@ function getData(map){
         dataType: "json",
         success: function(response){
             
+            //create marker options
+            var markerOptions = {
+                radius: 7,
+                fillColor: "rgb(5, 113, 176)",    
+                weight: 0,
+                opacity: 0.6,
+                fillOpacity: 0.6
+            };
+            
             //create a Leaflet GeoJSON layer and add to map
-            L.geoJson(response).addTo(map);
+            L.geoJson(response, {
+                pointToLayer: function (feature, latlng){
+                    return L.circleMarker(latlng, markerOptions);
+                }
+            }).addTo(map);
 //            var attributes = processData(response);
             
 //            createPropSymbols(response, map, attributes);
