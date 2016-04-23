@@ -45,10 +45,13 @@ function setMap(){
     var q=d3_queue.queue();
         q.defer(d3.csv, "data/CaliforniaData/cali_coverage.csv")//csv data
         q.defer(d3.csv, "data/CaliforniaData/cali_measles.csv") //do I load two diff sets for two diff data
-        q.defer(d3.json, "data/CaliforniaData/Californ2.topojson")//spatial data
+        q.defer(d3.json, "data/CaliforniaData/Californ2.topojson")
+        q.defer(d3.json, "data/CaliforniaData/californiapropsymbol.topojson")//spatial data
         q.await(callback);
 
-    function callback(error, dataCoverage, dataMeasles, california){
+    function callback(error, dataCoverage, dataMeasles, california, californiacenters){
+        //var caliCountiesCenters=topojson.feature(california2, california2.objects)
+        console.log(californiacenters);
         var caliCounties=topojson.feature(california, california.objects.Californ).features;
         //console.log(caliCounties);
         for (var i=0; i<dataMeasles.length; i++){
@@ -150,9 +153,8 @@ function choropleth(props, colorScale){
   };
 
 function setEnumerationUnits(caliCounties, california, map, path, colorScale){
-    var centroidCounties=(topojson.feature(california, california.objects.Californ).features);
-    console.log(path.centroid(caliCounties));
-
+    var centroidCounties=(topojson.feature(california, california.objects.Californ));
+    console.log((centroidCounties));
     var radius = d3.scale.sqrt()
       .domain([0, 1e6])
       .range([0, 15]);
@@ -176,13 +178,12 @@ function setEnumerationUnits(caliCounties, california, map, path, colorScale){
         )
         .append("g")
             .attr("class","bubble")
-          .selectAll("circle")
-            .data(centroidCounties)
-            .sort(function(a, b) { return b.properties[expressed] - a.properties[expressed]; console.log('hi');})
+        .selectAll("circle")
+            .data(topojson.feature(california, california.objects.Californ).features)
+            //.sort(function(a, b) { return b.properties[expressed] - a.properties[expressed]})
             .enter().append("circle")
         .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
         .attr("r", function(d) { return radius(d.properties[expressed]); });
-
 
 };
 
@@ -191,92 +192,92 @@ function setEnumerationUnits(caliCounties, california, map, path, colorScale){
 
 function setChart(dataMeasles, caliCounties, colorScale){
 
-//add chart element
-  var chart = d3.select("body")
-      .append("svg")
-      .attr("width",chartWidth)
-      .attr("height",chartHeight)
-      .attr("class","chart");
-
-//add chartBackground
-  var chartBackground = chart.append("rect")
-       .attr("class", "chartBackground")
-       .attr("width", chartInnerWidth)
-       .attr("height", chartInnerHeight)
-       .attr("transform", translate);
-
-  var yScale = d3.scale.linear()
-              //change scale values dynamically with max value of each variable
-              .domain([d3.max(dataMeasles,function(d){ return parseFloat(d[expressed])})*1.02, 0])
-              //output this between 0 and chartInnerHeight
-              .range([0, chartInnerHeight]);
-
-//bars element added
-  var bars=chart.selectAll(".bars")
-      .data(dataMeasles)
-      .enter()
-      .append("rect")
-      .sort(function(a,b){
-        //list largest values first for easier of reading
-        return b[expressed]-a[expressed];
-      })
-      .attr("class", function(d){
-        //give clas name to bars--was switching out values to see how each variable plotted out
-        return "bars " + d.coverage1314;
-      })
-      //width depending on number of elements, in my case 192-1
-      .attr("width", chartInnerWidth/dataMeasles.length - 1)
-      //determine position on x axis by number of elements, incl leftPadding
-      .attr("x", function(d,i){
-
-        return i*(chartInnerWidth/dataMeasles.length) + leftPadding;
-      })
-      //height by yscale of each value, within chartInnerHeight
-      .attr("height", function(d){
-        return chartInnerHeight-yScale(parseFloat(d[expressed]));
-      })
-      //make bars 'grow' from bottom
-      .attr("y", function(d){
-        return yScale(parseFloat(d[expressed]))+topBottomPadding;
-
-      })
-      //color by colorScale
-      .style("fill", function(d){
-        return choropleth(d, colorScale);
-      });
-
-    //   .on("mouseover", highlight)//highlight selected  bars
-    //   .on("mouseout", dehighlight)//de highlight selected bars with mouseout
-    //   .on("mousemove", moveLabel);//follow label with cursor
-    //
-    // //for returing style after an interaction
-    // var desc=bars.append("desc")
-    //     .text('{"stroke":"black", "stroke-width":"0px", "fill-opacity":"1"}');    //add chart title
-
-    //add chart title, change according to variable
-    var chartTitle=chart.append("text")
-        .attr("x", 250)
-        .attr("y", 35)
-        .attr("class","chartTitle")
-        .text([expressed])
-
-    //create vertical axis generator
-    var yAxis = d3.svg.axis()
-        .scale(yScale)
-        .orient("left");
-
-    //place axis
-    var axis = chart.append("g")
-        .attr("class", "axis")
-        .attr("transform", translate)
-        .call(yAxis);//for how actual numbers will be distributed
-
-    //create frame for chart border
-    var chartFrame = chart.append("rect")
-        .attr("class", "chartFrame")
-        .attr("width", chartInnerWidth)
-        .attr("height", chartInnerHeight)
-        .attr("transform", translate);
+// //add chart element
+//   var chart = d3.select("body")
+//       .append("svg")
+//       .attr("width",chartWidth)
+//       .attr("height",chartHeight)
+//       .attr("class","chart");
+//
+// //add chartBackground
+//   var chartBackground = chart.append("rect")
+//        .attr("class", "chartBackground")
+//        .attr("width", chartInnerWidth)
+//        .attr("height", chartInnerHeight)
+//        .attr("transform", translate);
+//
+//   var yScale = d3.scale.linear()
+//               //change scale values dynamically with max value of each variable
+//               .domain([d3.max(dataMeasles,function(d){ return parseFloat(d[expressed])})*1.02, 0])
+//               //output this between 0 and chartInnerHeight
+//               .range([0, chartInnerHeight]);
+//
+// //bars element added
+//   var bars=chart.selectAll(".bars")
+//       .data(dataMeasles)
+//       .enter()
+//       .append("rect")
+//       .sort(function(a,b){
+//         //list largest values first for easier of reading
+//         return b[expressed]-a[expressed];
+//       })
+//       .attr("class", function(d){
+//         //give clas name to bars--was switching out values to see how each variable plotted out
+//         return "bars " + d.coverage1314;
+//       })
+//       //width depending on number of elements, in my case 192-1
+//       .attr("width", chartInnerWidth/dataMeasles.length - 1)
+//       //determine position on x axis by number of elements, incl leftPadding
+//       .attr("x", function(d,i){
+//
+//         return i*(chartInnerWidth/dataMeasles.length) + leftPadding;
+//       })
+//       //height by yscale of each value, within chartInnerHeight
+//       .attr("height", function(d){
+//         return chartInnerHeight-yScale(parseFloat(d[expressed]));
+//       })
+//       //make bars 'grow' from bottom
+//       .attr("y", function(d){
+//         return yScale(parseFloat(d[expressed]))+topBottomPadding;
+//
+//       })
+//       //color by colorScale
+//       .style("fill", function(d){
+//         return choropleth(d, colorScale);
+//       });
+//
+//     //   .on("mouseover", highlight)//highlight selected  bars
+//     //   .on("mouseout", dehighlight)//de highlight selected bars with mouseout
+//     //   .on("mousemove", moveLabel);//follow label with cursor
+//     //
+//     // //for returing style after an interaction
+//     // var desc=bars.append("desc")
+//     //     .text('{"stroke":"black", "stroke-width":"0px", "fill-opacity":"1"}');    //add chart title
+//
+//     //add chart title, change according to variable
+//     var chartTitle=chart.append("text")
+//         .attr("x", 250)
+//         .attr("y", 35)
+//         .attr("class","chartTitle")
+//         .text([expressed])
+//
+//     //create vertical axis generator
+//     var yAxis = d3.svg.axis()
+//         .scale(yScale)
+//         .orient("left");
+//
+//     //place axis
+//     var axis = chart.append("g")
+//         .attr("class", "axis")
+//         .attr("transform", translate)
+//         .call(yAxis);//for how actual numbers will be distributed
+//
+//     //create frame for chart border
+//     var chartFrame = chart.append("rect")
+//         .attr("class", "chartFrame")
+//         .attr("width", chartInnerWidth)
+//         .attr("height", chartInnerHeight)
+//         .attr("transform", translate);
 };
 
 
