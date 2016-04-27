@@ -3654,7 +3654,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Phyl'S Academy Prep School",
+        "name": "Phyl's Academy Prep School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -5350,7 +5350,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Beer Hagolah Institute-Hs",
+        "name": "Beer Hagolah Institute",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -5796,38 +5796,6 @@
     {
       "type": "Feature",
       "properties": {
-        "school_id": "3.32E+11",
-        "year": "2014-2015",
-        "name": "Beer Hagolah Institute - Elementary",
-        "medical-exemptions": 0,
-        "religious-exemptions": 0,
-        "polio": 100,
-        "measles": 100,
-        "mumps": 100,
-        "rubella": 100,
-        "diphtheria": 100,
-        "hepb": 100,
-        "varicella": 100,
-        "completely-immunized": 100,
-        "street": "671 LOUISIANA AVENUE",
-        "city": "BROOKLYN",
-        "county": "KINGS",
-        "state": "NY",
-        "zip": 11239,
-        "address": "671 LOUISIANA AVENUE, BROOKLYN, NY, 11239",
-        "address2": "671 Louisiana Ave, Brooklyn, NY 11239"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -73.8830643,
-          40.6458015
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
         "name": "Allen Christian School",
@@ -5958,7 +5926,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "Abc Preschool & Kind Ctr",
+        "name": "ABC Preschool & Kindergarten Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -9286,7 +9254,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Bronx-Manhattan Sda School",
+        "name": "Bronx-Manhattan SDA School",
         "medical-exemptions": 0.75,
         "religious-exemptions": 0,
         "polio": 98.5,
@@ -12806,7 +12774,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Jewish Ctr For Spec Educ",
+        "name": "Jewish Center For Special Education",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -13190,7 +13158,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Connelly Ctr Education-Holy Child-Ms",
+        "name": "Cornelia Connelly Center",
         "medical-exemptions": 0,
         "religious-exemptions": 1.3,
         "polio": 97.4,
@@ -13766,7 +13734,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Jamaica Sda -Busy Bee Learning Center",
+        "name": "Jamaica SDA Busy Bee Learning Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -14630,7 +14598,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Hebron Sda Bilingual School",
+        "name": "Hebron SDA Bilingual School",
         "medical-exemptions": 0,
         "religious-exemptions": 2,
         "polio": 84,
@@ -15654,7 +15622,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Bethel Christian Learning Ctr",
+        "name": "Bethel Christian Learning Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -18854,7 +18822,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Cooke Ctr School",
+        "name": "Cooke Center Academy",
         "medical-exemptions": 1.85,
         "religious-exemptions": 1.85,
         "polio": 95.2,
@@ -20550,7 +20518,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Msgr Farrell H S",
+        "name": "Monsignor Farrell H S",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.4,
@@ -21510,7 +21478,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Msgr Mcclancy Memorial H S",
+        "name": "Monsignor McClancy Memorial H S",
         "medical-exemptions": 0.16,
         "religious-exemptions": 0,
         "polio": 99.3,
@@ -23046,7 +23014,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Practical Learning Ctr",
+        "name": "Practical Learning Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -24550,7 +24518,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Torah Academy High School Of Bklyn",
+        "name": "Torah Academy High School Of Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,

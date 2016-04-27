@@ -1,8 +1,8 @@
 /* Style Sheet */
 
 #new-york-map {
-    height: 550px;
-    width: 550px;
+    height: 650px;
+    width: 650px;
     display: inline-block;
     float: right;
     border-color: #999;
@@ -11,4 +11,8 @@
 /*    margin-left: 155x;*/
     margin-bottom: 15px;
 /*    background-color: black;*/
+}
+
+.leaflet-popup-content p {
+    margin: 0.2em 0;
 }
