@@ -3,7 +3,7 @@
 function createMap(){
 //initialize the map on the "map" div with a given center aand zoom level
     var map = L.map("new-york-map").setView([40.7, -73.98], 10);
-
+    
 //load and display a tile layer on the map
     var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
@@ -21,7 +21,7 @@ function createMap(){
     [40.99, -73.5]
     ]);
     
-  map.addControl( new L.Control.Search({layer: L.circleMarker}) );
+//  map.addControl( new L.Control.Search({layer: L.circleMarker}) );
     
 };
 
@@ -67,14 +67,43 @@ function pointToLayer (feature, latlng){
 
     //return the circle marker to the L.geoJson pointToLayer option
     return layer;
+    
+    
+//    var searchControl = new L.Control.Search({layer: L.layer , propertyName: 'name', circleLocation:false});
+//searchControl.on('search_locationfound', function(e) {
+//    e.layer.setStyle({fillColor: 'white', color: 'white', fillOpacity: 0.5});
+//    if(e.layer._popup)
+//        e.layer.openPopup();
+//}).on('search_collapsed', function(e) {
+//    layer.eachLayer(function(layer) {
+//       layer.resetStyle(layer);
+//    });
+//});
+//map.addControl( searchControl );
+    
 };
 
 //add circle markers to the map
 function colorCircles(data, map){
     //create a Leaflet GeoJSON layer and add it to the map
+//    var searchCtrl = L.control.fuseSearch()
+//    searchCtrl.addTo(map);
+//    
+//    searchCtrl.indexFeatures(data, ['name']);
+    
+    
     L.geoJson(data, {
         pointToLayer: pointToLayer
         }).addTo(map);
+    
+      map.addControl( new L.Control.Search({sourceData: data, text:'Color...', markerLocation:true}) );
+    
+//    L.geoJson(data, {
+//        onEachFeature: function (feature, layer) {
+//        feature.layer = layer;
+//            console.log(feature.layer.NewClass);
+//        }
+//    });
 };
 
 function getColor(v) {
