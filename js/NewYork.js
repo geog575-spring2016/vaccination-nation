@@ -2,24 +2,26 @@
 
 function createMap(){
 //initialize the map on the "map" div with a given center aand zoom level
- var map = L.map("new-york-map").setView([40.7, -73.98], 10);
+    var map = L.map("new-york-map").setView([40.7, -73.98], 10);
 
 //load and display a tile layer on the map
     var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-	subdomains: 'abcd',
-	minZoom: 10,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    subdomains: 'abcd',
+    minZoom: 10,
     maxZoom: 17,
-}).addTo(map);
+    }).addTo(map);
 
     getData(map);
-    
 
-//restrict map boundaries    
+
+    //restrict map boundaries    
     map.setMaxBounds([
     [40.46, -74.45],
     [40.99, -73.5]
     ]);
+    
+  map.addControl( new L.Control.Search({layer: L.circleMarker}) );
     
 };
 
@@ -38,8 +40,8 @@ function pointToLayer (feature, latlng){
         radius: 7,
         fillColor: getColor(attValue),    
         weight: 0,
-        opacity: 0.6,
-        fillOpacity: 0.6
+        opacity: 0.9,
+        fillOpacity: 0.7
     };
     
     //create circle layer
@@ -76,15 +78,18 @@ function colorCircles(data, map){
 };
 
 function getColor(v) {
-    console.log(v);
-    if (v < 65){
-            return "#830202";
-        } else if ( 65<v<75) {
-            return "#fa7d00";
-        } else if (76<v<94.98) {
-            return "#e7f005";
+//    console.log(v);
+    if (v <= 65){
+            return "#c81719";
+        } else if ((v>65) && (v<=74.9)) {
+//            console.log(v);
+            return "#f57c24";
+        } else if ((v>75) && (v<85)){
+            return "#f6c452";
+        } else if ((v>=85) && (v<=94.9)){
+            return "#fbfb7b";
         } else {
-            return "#00ff00";
+            return "#b8e186";
         }
 }
 
@@ -104,8 +109,7 @@ function getData(map){
 $(document).ready(createMap);
 
 //Pseudocode
-//1. Color scale for vaccine coverage
-//2. Color circles
 //3. Legend
-//4. Search?
+//4. Filter by worst offenders?
+//5. Search?
 
