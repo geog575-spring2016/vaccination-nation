@@ -62,7 +62,7 @@ function setMap(){
                         geojsonProps[attr] = val; //assign attribute and value to geojson properties
                     });
                 };
-                console.log(Washington);
+                //console.log(Washington);
             };
         };
 
