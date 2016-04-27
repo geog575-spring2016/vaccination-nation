@@ -13,33 +13,48 @@ function createMap(){
 }).addTo(map);
 
     getData(map);
+    
 };
+
+function getColor(v) {
+        if (21  < v < 50){
+            return "FD8D3C"
+        } else if (12 < v < 20) {
+            return "#4cfe5a"
+        } else {
+            return "pink"
+    
+        }
+}
 
 
 function colorCircles(data, map){
     //create marker options
     var markerOptions = {
         radius: 7,
-        fillColor: "rgb(5, 113, 176)",    
+        fillColor: getColor(data),    
         weight: 0,
         opacity: 0.6,
         fillOpacity: 0.6
     };
-            
+
+    //determine which attribute to visualize
+    var attribute = "completely-immunized";
+    
         //create a Leaflet GeoJSON layer and add to map
         L.geoJson(data, {
             pointToLayer: function (feature, latlng){
+                //for each feature, determine its value for selected attribute
+                var attValue = Number(feature.properties[attribute]);
+                
+                getColor(attValue);
+                
+                console.log(feature.properties, attValue);
+                
                 return L.circleMarker(latlng, markerOptions);
             }
         }).addTo(map);
             
-//            var attributes = processData(response);
-            
-//            createPropSymbols(response, map, attributes);
-//            createSequenceControls(map, attributes);
-//            createFilterButtons(map, response);
-//            createLegend(map, attributes);
-//            createContextContainer(map, attributes)
 };
 
 
