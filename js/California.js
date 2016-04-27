@@ -1,9 +1,13 @@
 (function(){
 
+keyArray=["coverage1314","pbe1314","coverage1516","pbe1516"]
+var expressed=keyArray[0]
 
-keyArray=["measles10","measles11","measles12","measles13","measles14","measles15"]
 
-var expressed=keyArray[1];
+keyArray2=["measles10","measles11","measles12","measles13","measles14","measles15"]
+var expressed2=keyArray2[3];
+
+
 
 // var objectColors={
 //       coverage1314:['#ca0020','#f4a582','#92c5de','#0571b0'],
@@ -20,6 +24,15 @@ var chartWidth = 420,
     chartInnerWidth=chartWidth - leftPadding - rightPadding,
     chartInnerHeight=chartHeight-(topBottomPadding*2),//make chartInnerHeight contined within padding
     translate="translate(" + leftPadding + "," + topBottomPadding + ")";
+
+var radius = d3.scale.sqrt()
+
+
+
+    .domain([0, 20])
+
+    .range([0,80]);
+
 
 window.onload=setMap();
 
@@ -50,37 +63,31 @@ function setMap(){
         q.await(callback);
 
     function callback(error, dataCoverage, dataMeasles, california, californiacenters){
-        //var caliCountiesCenters=topojson.feature(california2, california2.objects)
-        console.log(californiacenters);
         var caliCounties=topojson.feature(california, california.objects.Californ).features;
-        //console.log(caliCounties);
         for (var i=0; i<dataMeasles.length; i++){
           var csvCounty=dataMeasles[i];
           var csvCountyCode=csvCounty.geo_id;
           var jsonCounties=california.objects.Californ.geometries;
-      //    console.log(california.objects);
           for (var j=0; j<jsonCounties.length;j++){
               if(jsonCounties[j].properties.geo_id==csvCountyCode){
-              for(var key in keyArray){
-                var attribute=keyArray[key];
+              for(var key in keyArray2){
+                var attribute=keyArray2[key];
                 var value=parseFloat(csvCounty[attribute]);
                 (jsonCounties[j].properties[attribute])=value;
-
               }
             }
           }
         };
 
         var colorScale=makeColorScale(dataCoverage);
-        setEnumerationUnits(caliCounties, california, map, path, colorScale);
+        setEnumerationUnits(caliCounties, californiacenters, map, path, colorScale);
         setChart(dataCoverage, caliCounties, colorScale);
     };
 };
 
-
-
-
 function makeColorScale(data){
+
+    //for choropleth maps
 
     //MANUALLY SETTING SCALE, US IF STATEMENTS?
     // var color=d3.scale.threshold()
@@ -152,42 +159,34 @@ function choropleth(props, colorScale){
     }
   };
 
-function setEnumerationUnits(caliCounties, california, map, path, colorScale){
-    var centroidCounties=(topojson.feature(california, california.objects.Californ));
-    console.log((centroidCounties));
-    var radius = d3.scale.sqrt()
-      .domain([0, 1e6])
-      .range([0, 15]);
-
+function setEnumerationUnits(caliCounties, californiacenters, map, path, colorScale){
     //add countries to map
     var counties=map.selectAll(".counties")
         .data(caliCounties)
         .enter()
         .append("path")
         .attr("d",path)
-
-            //assign d with attribute path
         .attr("class", function(d){
-
-          return "counties " + d.properties.measles10;
+            return "counties"+d.properties.geo_id;
         })
-        //color based on colorScale
-        .style("fill", "lightgrey"// function(d){
-          //  return choropleth(d.properties, colorScale);
-      //  })
-        )
-        .append("g")
-            .attr("class","bubble")
-        .selectAll("circle")
-            .data(topojson.feature(california, california.objects.Californ).features)
-            //.sort(function(a, b) { return b.properties[expressed] - a.properties[expressed]})
-            .enter().append("circle")
-        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-        .attr("r", function(d) { return radius(d.properties[expressed]); });
+        .style("fill", "lightgrey");
+        //function(d){return choropleth(d.properties,colorScale);});
 
+    var centroids=map.selectAll(".symbol")
+
+        .data(californiacenters.features.sort(function(a,b){return b.properties[expressed2]-a.properties[expressed];}))
+      .enter().append("path")
+        .attr("class","symbol")
+        .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed2]);}))
+
+        .data(californiacenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
+      .enter().append("path")
+        .attr("class","symbol")
+        .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
+        .style({"fill": "orange",
+                "fill-opacity":0.4,
+                "stroke":"white"});
 };
-
-
 
 
 function setChart(dataMeasles, caliCounties, colorScale){

@@ -4,11 +4,7 @@
   stroke-width: 1px;
 }
 
-.bubble {
-  fill-opacity: .5;
-  stroke: purple;
-  stroke-width: 5px;
-}
+
 .gratLines {
     fill: none;
     stroke: green;
