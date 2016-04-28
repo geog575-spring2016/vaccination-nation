@@ -1,1 +1,24 @@
 /* Style Sheet */
+h1{
+  
+}
+h2{
+    
+}
+h3{
+ 
+}
+h4{
+
+}
+
+.mapMain {
+  background-color: white;
+  border: medium solid #999;
+}
+
+.us {
+    fill: #FFF;
+    stroke: #CCC;
+    stroke-width: .6px;
+}
