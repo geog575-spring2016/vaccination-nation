@@ -7,6 +7,14 @@
 }
 
 
+
+.gratLines {
+    fill: none;
+    stroke: green;
+    stroke-width: 1px;
+}
+
+
 .CAchart {
     background-color: white;
     border: medium solid grey;

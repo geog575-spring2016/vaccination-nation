@@ -4,6 +4,7 @@ keyArray=["coverage1314","pbe1314","coverage1516","pbe1516"]
 var expressed=keyArray[0]
 
 
+<<<<<<< HEAD
 keyArray2=["measles10","measles11","measles12","measles13","measles14"]
 var expressed2=keyArray2[3];
 
@@ -14,6 +15,9 @@ var labelTitles={
     pbe1516:['Personal Belief Exemptions: 2015-2016'],
 }
 
+=======
+var expressed=keyArray[0];
+>>>>>>> master
 
 // var objectColors={
 //       coverage1314:['#ca0020','#f4a582','#92c5de','#0571b0'],
@@ -35,9 +39,12 @@ var radius = d3.scale.sqrt()
     .domain([0, 20])
     .range([0,80]);
 
+<<<<<<< HEAD
 var startYear=2011,
     currenYear=startYear;
 
+=======
+>>>>>>> master
 
 window.onload=setMap();
 
@@ -95,14 +102,16 @@ function setMap(){
                 var attribute=keyArray[key];
                 var value=parseFloat(csvCounty[attribute]);
                 (jsonCounties[j].properties[attribute])=value;
-
               }
             }
           }
         }
         var colorScale=makeColorScale(dataCoverage);
         setEnumerationUnits(caliCounties, californiacenters, map, path, colorScale);
+<<<<<<< HEAD
         //setSliderBar(caliCounties,map,path);
+=======
+>>>>>>> master
         setChart(dataCoverage, caliCounties, colorScale);
     }
 };
@@ -189,6 +198,7 @@ function setEnumerationUnits(caliCounties, californiacenters, map, path, colorSc
         .append("path")
         .attr("d",path)
         .attr("class", function(d){
+<<<<<<< HEAD
             return "counties"+d.properties.adm;
         })
         .style("fill",
@@ -238,6 +248,21 @@ function highlight(props){
       })
 
      setLabel(props);
+=======
+            return "counties"+d.properties.geo_id;
+        })
+        .style("fill", "lightgrey");
+        //function(d){return choropleth(d.properties,colorScale);});
+
+    var centroids=map.selectAll(".symbol")
+        .data(californiacenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
+      .enter().append("path")
+        .attr("class","symbol")
+        .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
+        .style({"fill": "orange",
+                "fill-opacity":0.4,
+                "stroke":"white"});
+>>>>>>> master
 };
 
 function dehighlight(props){
@@ -284,6 +309,7 @@ function setLabel(props){
         .attr("class","labelname")
         .html(props.name);
 
+<<<<<<< HEAD
 };
 
 //to move label
@@ -309,6 +335,8 @@ var x1=d3.event.clientX,
       });
 };
 
+=======
+>>>>>>> master
 function setChart(dataMeasles, caliCounties, colorScale){
 
 // //add chart element
