@@ -102,7 +102,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Of Telshe Alumni",
+        "name": "Yeshiva of Telshe Alumni",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -198,7 +198,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Raymond H S-Boys",
+        "name": "St. Raymond High School for Boys",
         "medical-exemptions": 0,
         "religious-exemptions": 0.15,
         "polio": 99.9,
@@ -230,7 +230,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Khhd Yoel Of Satmar Bp",
+        "name": "Khhd Yoel of Satmar Bp",
         "medical-exemptions": 0,
         "religious-exemptions": 0.1,
         "polio": 99.7,
@@ -343,7 +343,7 @@
         "state": "NY",
         "zip": 11211,
         "address": "76 RUTLEDGE STREET, BROOKLYN, NY 11211",
-        "address2": "76 Rutledge Street, Brooklyn, Ny 11211"
+        "address2": "76 Rutledge Street, Brooklyn, NY 11211"
       },
       "geometry": {
         "type": "Point",
@@ -390,7 +390,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bishop Kearney H S",
+        "name": "Bishop Kearney High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -550,7 +550,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "Christ The King Regional H S",
+        "name": "Christ The King Regional High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.9,
@@ -678,7 +678,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "Martin Luther H S",
+        "name": "Martin Luther High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.44,
         "polio": 98.7,
@@ -806,7 +806,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Rabbinical Seminary Of America",
+        "name": "Rabbinical Seminary of America",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -902,7 +902,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Blessed Sacrament",
+        "name": "Our Lady of Blessed Sacrament",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -1094,7 +1094,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Mercy School",
+        "name": "Our Lady of Mercy School",
         "medical-exemptions": 0,
         "religious-exemptions": 1.4,
         "polio": 98.6,
@@ -1254,7 +1254,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Archbishop Molloy H S",
+        "name": "Archbishop Molloy High School",
         "medical-exemptions": 0.07,
         "religious-exemptions": 0.13,
         "polio": 99.8,
@@ -1286,7 +1286,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Lourdes School",
+        "name": "Our Lady of Lourdes School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -1350,7 +1350,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Stepping Stone Of Southeastern Queen",
+        "name": "Stepping Stone of Southeastern Queen",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -1446,7 +1446,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Joan Of Arc School",
+        "name": "St. Joan of Arc School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.33,
         "polio": 99.7,
@@ -1510,7 +1510,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Fatima School",
+        "name": "Our Lady of Fatima School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -1766,7 +1766,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Bnos Bais Yaakov Of Far Rockaway",
+        "name": "Bnos Bais Yaakov of Far Rockaway",
         "medical-exemptions": 0,
         "religious-exemptions": 0.15,
         "polio": 92.9,
@@ -1798,7 +1798,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Holy Cross H S",
+        "name": "Holy Cross High School",
         "medical-exemptions": 0.12,
         "religious-exemptions": 0,
         "polio": 99.9,
@@ -1830,7 +1830,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "B'Not Rachel Hs For Girls",
+        "name": "B'Not Rachel High School For Girls",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -1990,7 +1990,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Of Flatbush Elem Sch",
+        "name": "Yeshiva of Flatbush Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.55,
         "polio": 99.5,
@@ -2246,7 +2246,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Nysarc, Inc., Nyc Chapter",
+        "name": "Nysarc, Inc., NYC Chapter",
         "medical-exemptions": 2.48,
         "religious-exemptions": 3.47,
         "polio": 94.1,
@@ -2342,7 +2342,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Gateway School Of Ny",
+        "name": "Gateway School of NY",
         "medical-exemptions": 1.79,
         "religious-exemptions": 1.79,
         "polio": 96.4,
@@ -2438,7 +2438,7 @@
       "properties": {
         "school_id": "3.11E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Univ H S",
+        "name": "Yeshiva Univ High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -2502,7 +2502,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Mary Mother Of Jesus School-St. Frances Cabrini",
+        "name": "St. Mary Mother of Jesus School-St. Frances Cabrini",
         "medical-exemptions": 0,
         "religious-exemptions": 0.54,
         "polio": 98.4,
@@ -2758,7 +2758,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Ahaba Ve Ahva Cong. And Yeshiva",
+        "name": "Ahaba Ve Ahva Congregation and Yeshiva",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -2790,7 +2790,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. John Villa Acad H S",
+        "name": "St. John Villa Acad High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -2822,7 +2822,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Horace Mann-Barnard Elem",
+        "name": "Horace Mann-Barnard Elementary",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -2918,7 +2918,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Barnabas H S",
+        "name": "St. Barnabas High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -3206,7 +3206,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "The City And Country School",
+        "name": "The City and Country School",
         "medical-exemptions": 0.73,
         "religious-exemptions": 4.36,
         "polio": 94.9,
@@ -3366,7 +3366,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Barnabas Elem School",
+        "name": "St. Barnabas Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -3494,7 +3494,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Hope School",
+        "name": "Our Lady of Hope School",
         "medical-exemptions": 0.18,
         "religious-exemptions": 0,
         "polio": 99.8,
@@ -3526,7 +3526,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Torah Vodaath H S",
+        "name": "Torah Vodaath High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -3558,7 +3558,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Mt. Carmel",
+        "name": "Our Lady of Mt. Carmel",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -3686,7 +3686,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Ann Elem School",
+        "name": "St. Ann Elementary School",
         "medical-exemptions": 0.56,
         "religious-exemptions": 0,
         "polio": 99.4,
@@ -3718,7 +3718,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Uta",
+        "name": "United Talmudical Academy, Torah Vyirah",
         "medical-exemptions": 0,
         "religious-exemptions": 1.64,
         "polio": 97.6,
@@ -3782,7 +3782,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Montessori School Of Ny",
+        "name": "Montessori School of NY",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -3814,7 +3814,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Joseph Hill Academy-Elem",
+        "name": "St. Joseph Hill Academy-Elementary",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -3846,7 +3846,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Mary Gate Of Heaven School",
+        "name": "St. Mary Gate of Heaven School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -4006,7 +4006,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Raven'S Daycare And Elementary School Inc",
+        "name": "Raven'S Daycare and Elementary School Inc",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 80.6,
@@ -4038,7 +4038,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Francis Of Assisi School",
+        "name": "St. Francis of Assisi School",
         "medical-exemptions": 0,
         "religious-exemptions": 1.38,
         "polio": 98.6,
@@ -4134,7 +4134,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Lubavitcher H S",
+        "name": "Lubavitcher High School",
         "medical-exemptions": 0,
         "religious-exemptions": 2.5,
         "polio": 97.5,
@@ -4198,7 +4198,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bais Brocho Of Karlin Stolin",
+        "name": "Bais Brocho of Karlin Stolin",
         "medical-exemptions": 0,
         "religious-exemptions": 0.31,
         "polio": 99.7,
@@ -4230,7 +4230,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Hychel Hatorah Of Williamsburg",
+        "name": "Hychel Hatorah of Williamsburg",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -4262,7 +4262,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Univ H S For Girls",
+        "name": "Yeshiva Univ High School For Girls",
         "medical-exemptions": 0,
         "religious-exemptions": 1.77,
         "polio": 98.2,
@@ -4326,7 +4326,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Regis H S",
+        "name": "Regis High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.38,
         "polio": 99.6,
@@ -4422,7 +4422,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Mesivta & Yeshiva Gedolah Of Manhattan Beach",
+        "name": "Mesivta & Yeshiva Gedolah of Manhattan Beach",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -4454,7 +4454,7 @@
       "properties": {
         "school_id": "3.11E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Lourdes School",
+        "name": "Our Lady of Lourdes School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -4550,7 +4550,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of The Assumption Sch",
+        "name": "Our Lady of The Assumption School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -4614,7 +4614,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bible Speaks Church Of Christ Academy (The)",
+        "name": "Bible Speaks Church of Christ Academy (The)",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 90.9,
@@ -4774,7 +4774,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Science, Language And Arts International School",
+        "name": "Science, Language and Arts International School",
         "medical-exemptions": 4.88,
         "religious-exemptions": 4.88,
         "polio": 90.2,
@@ -4870,7 +4870,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Guadalupe School",
+        "name": "Our Lady of Guadalupe School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -5030,7 +5030,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "St. Jean Baptiste H S",
+        "name": "St. Jean Baptiste High School",
         "medical-exemptions": 0.28,
         "religious-exemptions": 0,
         "polio": 99.7,
@@ -5094,7 +5094,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Alexander Robertson Sch",
+        "name": "Alexander Robertson School",
         "medical-exemptions": 0,
         "religious-exemptions": 6,
         "polio": 92,
@@ -5126,7 +5126,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yesh Flatbush-J Braverman H S",
+        "name": "Yesh Flatbush-J Braverman High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.8,
@@ -5350,7 +5350,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Beer Hagolah Institute",
+        "name": "Be'er Hagolah Institute",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -5414,7 +5414,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Our Lady Help-Christians Sch",
+        "name": "Our Lady Help-Christians School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.4,
@@ -5510,7 +5510,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Clara Muhammad School Of Masjid Khalifah",
+        "name": "Clara Muhammad School of Masjid Khalifah",
         "medical-exemptions": 0,
         "religious-exemptions": 15.69,
         "polio": 84.3,
@@ -5830,7 +5830,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Mary Queen Of Heaven School",
+        "name": "Mary Queen of Heaven School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -5862,7 +5862,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Church Of God Christian Academy",
+        "name": "Church of God Christian Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 38.16,
         "polio": 60.5,
@@ -6598,7 +6598,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Tiferes Miriam Hs For Girls",
+        "name": "Tiferes Miriam High School For Girls",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -6630,7 +6630,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Mt. Carmel School",
+        "name": "Our Lady of Mt. Carmel School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -7078,7 +7078,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Ucp Of Nyc Inc",
+        "name": "UCP of NYC Inc",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -7430,7 +7430,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Beth Jacob Of Boro Park",
+        "name": "Beth Jacob of Boro Park",
         "medical-exemptions": 0.07,
         "religious-exemptions": 0.07,
         "polio": 99.9,
@@ -7494,7 +7494,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bet Yakov Ateret Torah H.S.",
+        "name": "Bet Yakov Ateret Torah High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.95,
         "polio": 99,
@@ -7526,7 +7526,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Merkaz Bnos Hs",
+        "name": "Merkaz Bnos High School",
         "medical-exemptions": 0,
         "religious-exemptions": 4.55,
         "polio": 95.5,
@@ -7558,7 +7558,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Monsignor Scanlan H S",
+        "name": "Monsignor Scanlan High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -7622,7 +7622,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Shevach H.S.",
+        "name": "Shevach High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -7686,7 +7686,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Cardinal Hayes H S",
+        "name": "Cardinal Hayes High School",
         "medical-exemptions": 1.93,
         "religious-exemptions": 0,
         "polio": 98,
@@ -7814,7 +7814,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Notre Dame Academy H S",
+        "name": "Notre Dame Academy High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -7910,7 +7910,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Nicholas Of Tolentine Es",
+        "name": "St. Nicholas of Tolentine Es",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -8006,7 +8006,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "The Early Learning Center & The Academy Of Art &",
+        "name": "The Early Learning Center & The Academy of Art &",
         "medical-exemptions": 0,
         "religious-exemptions": 18.75,
         "polio": 81.3,
@@ -8294,7 +8294,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Shulamith H.S. For Girls",
+        "name": "Shulamith High School For Girls",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -8326,7 +8326,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Saviour H S",
+        "name": "St. Saviour High School",
         "medical-exemptions": 0,
         "religious-exemptions": 1.4,
         "polio": 98.6,
@@ -8582,7 +8582,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Magen David Yeshivah H.S.",
+        "name": "Magen David Yeshivah High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.3,
         "polio": 99.7,
@@ -8614,7 +8614,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Cong Darkei Tshivo Of Dinov",
+        "name": "Congregation Darkei Tshivo of Dinov",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -8710,7 +8710,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Followers Of Jesus Sch",
+        "name": "Followers of Jesus School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 97.8,
@@ -8998,7 +8998,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Beth Chana School And Hs For Girls",
+        "name": "Beth Chana School and High School For Girls",
         "medical-exemptions": 0,
         "religious-exemptions": 4.03,
         "polio": 96,
@@ -9030,7 +9030,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Bank St. Sch-Children",
+        "name": "Bank St. School for Children",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 98.4,
@@ -9286,7 +9286,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "British International School Of Ny",
+        "name": "British International School of NY",
         "medical-exemptions": 0,
         "religious-exemptions": 0.44,
         "polio": 99.6,
@@ -9318,7 +9318,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Good Counsel Sch",
+        "name": "Our Lady of Good Counsel School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.3,
@@ -9382,7 +9382,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Aquinas H S",
+        "name": "Aquinas High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -9574,7 +9574,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Solomon Schechter School Of Manhattan",
+        "name": "Solomon Schechter School of Manhattan",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -9926,7 +9926,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Cathedral H S",
+        "name": "Cathedral High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 85.5,
@@ -9990,7 +9990,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "School @ Columbia University",
+        "name": "The School at Columbia University",
         "medical-exemptions": 0,
         "religious-exemptions": 0.19,
         "polio": 99.8,
@@ -10118,7 +10118,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Our Lady Star-Sea Sch",
+        "name": "Our Lady Star-Sea School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -10182,7 +10182,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "St. Vincent Ferrer H S",
+        "name": "St. Vincent Ferrer High School",
         "medical-exemptions": 0.2,
         "religious-exemptions": 0,
         "polio": 99.8,
@@ -10214,7 +10214,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Of Kings Bay",
+        "name": "Yeshiva of Kings Bay",
         "medical-exemptions": 0.75,
         "religious-exemptions": 0.75,
         "polio": 98.5,
@@ -10374,7 +10374,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Francis - Assisi Elem Sch",
+        "name": "St. Francis of Assisi Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -10502,7 +10502,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Shaare Torah (Boys Elem & Hs)",
+        "name": "Shaare Torah Boys Elementary & High School",
         "medical-exemptions": 7.55,
         "religious-exemptions": 9.97,
         "polio": 65.9,
@@ -10566,7 +10566,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "St. Joseph H S",
+        "name": "St. Joseph High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 98.5,
@@ -10662,7 +10662,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bnos Zion Of Bobov",
+        "name": "Bnos Zion of Bobov",
         "medical-exemptions": 0,
         "religious-exemptions": 0.64,
         "polio": 99,
@@ -10758,7 +10758,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Queen Of The Rosary",
+        "name": "Queen of The Rosary",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -11078,7 +11078,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Sacred Heart Of Jesus School",
+        "name": "Sacred Heart of Jesus School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -11206,7 +11206,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Grace School",
+        "name": "Our Lady of Grace School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 94.7,
@@ -11654,7 +11654,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Epiphany Lutheran Elem School",
+        "name": "Epiphany Lutheran Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 92.6,
@@ -11718,7 +11718,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "S.D.A. Sch-Jackson Heights",
+        "name": "Jackson Heights Seventh Day Advenitist School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 98.6,
@@ -11750,7 +11750,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Joseph Hill Academy H S",
+        "name": "St. Joseph Hill Academy High School",
         "medical-exemptions": 0.22,
         "religious-exemptions": 0,
         "polio": 99.8,
@@ -11814,7 +11814,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Academy Of St. Dorothy",
+        "name": "Academy of St. Dorothy",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -12262,7 +12262,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "Notre Dame Catholic Academy Of Ridgewood",
+        "name": "Notre Dame Catholic Academy of Ridgewood",
         "medical-exemptions": 0.38,
         "religious-exemptions": 0,
         "polio": 98.9,
@@ -12326,7 +12326,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Queen-Martyrs Sch",
+        "name": "Our Lady Queen-Martyrs School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.34,
         "polio": 99.7,
@@ -12486,7 +12486,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Queens Children'S Psychiatric Center",
+        "name": "Queens Children's Psychiatric Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -12806,7 +12806,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "City Of Faith Christian School",
+        "name": "City of Faith Christian School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -12838,7 +12838,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Queens Of All Saints",
+        "name": "Queens of All Saints",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99,
@@ -13222,7 +13222,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva And Mesifta V'Yoel Moshe",
+        "name": "Yeshiva and Mesifta V'Yoel Moshe",
         "medical-exemptions": 0,
         "religious-exemptions": 0.36,
         "polio": 99.6,
@@ -13382,7 +13382,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Mirrer Yeshiva Elem Sch",
+        "name": "Mirrer Yeshiva Elementary School",
         "medical-exemptions": 0.25,
         "religious-exemptions": 0,
         "polio": 99.5,
@@ -13414,7 +13414,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Bnos Square Of Williamsburg",
+        "name": "Bnos Square of Williamsburg",
         "medical-exemptions": 0,
         "religious-exemptions": 2.87,
         "polio": 97.1,
@@ -13606,7 +13606,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Mirrer Yeshiva H S",
+        "name": "Mirrer Yeshiva High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -13702,7 +13702,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Tomer D Vora H S For Girls",
+        "name": "Tomer D Vora High School For Girls",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -13894,7 +13894,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Zvi Dov Roth Academy Of Yeshiva Rambam",
+        "name": "Zvi Dov Roth Academy of Yeshiva Rambam",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -14118,7 +14118,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Beth Jacob Elem School",
+        "name": "Beth Jacob Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 1.17,
         "polio": 98.8,
@@ -14374,7 +14374,7 @@
       "properties": {
         "school_id": "3.11E+11",
         "year": "2014-2015",
-        "name": "St. Rose Of Lima School",
+        "name": "St. Rose of Lima School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -14406,7 +14406,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Of Central Queens",
+        "name": "Yeshiva of Central Queens",
         "medical-exemptions": 0.12,
         "religious-exemptions": 0.58,
         "polio": 99.2,
@@ -14438,7 +14438,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Francis Of Assisi School",
+        "name": "St. Francis of Assisi School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.2,
@@ -14470,7 +14470,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Great Oak Elem Sch",
+        "name": "Great Oak Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 1.08,
         "polio": 98.9,
@@ -14886,7 +14886,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Be'Er Miriam",
+        "name": "Be'er Miriam",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 92,
@@ -14918,7 +14918,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Beth Hillel Of Krasna",
+        "name": "Yeshiva Beth Hillel of Krasna",
         "medical-exemptions": 0,
         "religious-exemptions": 0.27,
         "polio": 95.2,
@@ -14950,7 +14950,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva And Mesivta Wiznitz Of Usa",
+        "name": "Yeshiva and Mesivta Wiznitz of Usa",
         "medical-exemptions": 0,
         "religious-exemptions": 0.89,
         "polio": 98.2,
@@ -14982,7 +14982,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Brooklyn S D A Elem School",
+        "name": "Brooklyn Seventh Day Adventist Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.99,
         "polio": 99,
@@ -15014,7 +15014,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Of Brooklyn",
+        "name": "Yeshiva of Brooklyn",
         "medical-exemptions": 0.21,
         "religious-exemptions": 1.36,
         "polio": 95.2,
@@ -15334,7 +15334,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Marymount School Of New York",
+        "name": "Marymount School of New York",
         "medical-exemptions": 0,
         "religious-exemptions": 0.44,
         "polio": 99.1,
@@ -15462,7 +15462,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Pompeii School",
+        "name": "Our Lady of Pompeii School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.54,
         "polio": 98.9,
@@ -15878,7 +15878,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Joseph S Gruss Yeshivah H S",
+        "name": "Joseph S Gruss Yeshivah High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -16198,7 +16198,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Xavier H S",
+        "name": "Xavier High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.37,
         "polio": 99.6,
@@ -16230,7 +16230,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of The Snows School",
+        "name": "Our Lady of The Snows School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -16326,7 +16326,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Ketana Of Manhattan",
+        "name": "Yeshiva Ketana of Manhattan",
         "medical-exemptions": 0,
         "religious-exemptions": 2.38,
         "polio": 97.6,
@@ -16422,7 +16422,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Perpetual Help Sch",
+        "name": "Our Lady of Perpetual Help School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -16454,7 +16454,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Xaverian H S",
+        "name": "Xaverian High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.56,
         "polio": 99.4,
@@ -16582,7 +16582,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "The League School And Day Treatment Center",
+        "name": "The League School and Day Treatment Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0.93,
         "polio": 99.1,
@@ -16646,7 +16646,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Bethel Elem School",
+        "name": "Bethel Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 2.33,
         "polio": 86,
@@ -16838,7 +16838,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "St. Stephen Of Hungary School",
+        "name": "St. Stephen of Hungary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -16966,7 +16966,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "F R E E (Friends Of Eastern Europe)/Mazel Day Sch",
+        "name": "F R E E (Friends of Eastern Europe)/Mazel Day School",
         "medical-exemptions": 0,
         "religious-exemptions": 2.22,
         "polio": 97,
@@ -17094,7 +17094,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Elisabeth Irwin H S",
+        "name": "Elisabeth Irwin High School",
         "medical-exemptions": 0.39,
         "religious-exemptions": 3.14,
         "polio": 96.5,
@@ -17126,7 +17126,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Hannah Senesh Comm Sch.",
+        "name": "Hannah Senesh Community School",
         "medical-exemptions": 0,
         "religious-exemptions": 1,
         "polio": 99,
@@ -17222,7 +17222,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Shaar Hatorah H S",
+        "name": "Shaar Hatorah High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 93.3,
@@ -17286,7 +17286,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of The Angelus School",
+        "name": "Our Lady of The Angelus School",
         "medical-exemptions": 0.58,
         "religious-exemptions": 0.58,
         "polio": 98.8,
@@ -17318,7 +17318,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Beth Jacob H S",
+        "name": "Beth Jacob High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.55,
         "polio": 99.3,
@@ -17702,7 +17702,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Edmund Elem School",
+        "name": "St. Edmund Elementary School",
         "medical-exemptions": 2.08,
         "religious-exemptions": 0,
         "polio": 97.9,
@@ -17958,7 +17958,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Convent-Sacred Heart Sch",
+        "name": "Convent-Sacred Heart School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.6,
@@ -17990,7 +17990,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Refuge School",
+        "name": "Our Lady of Refuge School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -18022,7 +18022,7 @@
       "properties": {
         "school_id": "3.11E+11",
         "year": "2014-2015",
-        "name": "Our Lady Queen-Martyrs Sch",
+        "name": "Our Lady Queen-Martyrs School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 96.7,
@@ -18374,7 +18374,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Rose Of Lima School",
+        "name": "St. Rose of Lima School",
         "medical-exemptions": 0.28,
         "religious-exemptions": 0,
         "polio": 99.7,
@@ -18406,7 +18406,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. John Villa Academy Elem",
+        "name": "St. John Villa Academy Elementary",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -18470,7 +18470,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Villa Maria Academy-Elem",
+        "name": "Villa Maria Academy-Elementary",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -18534,7 +18534,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Of Far Rockaway",
+        "name": "Yeshiva of Far Rockaway",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 98.6,
@@ -18630,7 +18630,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Moore Catholic H S",
+        "name": "Moore Catholic High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -18662,7 +18662,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Oholei Torah Elem",
+        "name": "Oholei Torah Elementary",
         "medical-exemptions": 0.4,
         "religious-exemptions": 2.32,
         "polio": 92.6,
@@ -18758,7 +18758,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Agnes Academic H S",
+        "name": "St. Agnes Academic High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -19014,7 +19014,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "The William T. Dillon Child Study Center @",
+        "name": "The William T. Dillon Child Study Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -19078,7 +19078,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Preston H S",
+        "name": "Preston High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -19270,7 +19270,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Cambria School Of Excellence",
+        "name": "Cambria School of Excellence",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 83.3,
@@ -19462,7 +19462,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Nativity-Our Blessed Lady Sch",
+        "name": "Nativity-Our Blessed Lady School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -19526,7 +19526,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Mercaz Hatorah Of Belle Harbor",
+        "name": "Mercaz Hatorah of Belle Harbor",
         "medical-exemptions": 0,
         "religious-exemptions": 1.16,
         "polio": 98.8,
@@ -19558,7 +19558,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Lutheran School Of Flushing & Bayside",
+        "name": "Lutheran School of Flushing & Bayside",
         "medical-exemptions": 0,
         "religious-exemptions": 4.08,
         "polio": 95.9,
@@ -19686,7 +19686,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Mercaz Gan Of Flatbush/Yeshiva Ohel",
+        "name": "Mercaz Gan of Flatbush/Yeshiva Ohel",
         "medical-exemptions": 0,
         "religious-exemptions": 2.25,
         "polio": 96.6,
@@ -19750,7 +19750,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Geneva School Of Manhattan",
+        "name": "Geneva School of Manhattan",
         "medical-exemptions": 0,
         "religious-exemptions": 2.99,
         "polio": 97,
@@ -19878,7 +19878,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Ketana Of Bensonhurst",
+        "name": "Yeshiva Ketana of Bensonhurst",
         "medical-exemptions": 0,
         "religious-exemptions": 0.89,
         "polio": 99.1,
@@ -19942,7 +19942,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Columbia Grammar & Prep Sch",
+        "name": "Columbia Grammar & Prep School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.16,
         "polio": 99.6,
@@ -20198,7 +20198,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Cardinal Spellman H S",
+        "name": "Cardinal Spellman High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -20294,7 +20294,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Midrash L' Man Achai - Administrative Office",
+        "name": "Midrash L' Man Achai - Administrative office",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -20518,7 +20518,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Monsignor Farrell H S",
+        "name": "Monsignor Farrell High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.4,
@@ -20646,7 +20646,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Bishop Loughlin Memorial H S",
+        "name": "Bishop Loughlin Memorial High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.4,
         "polio": 99.6,
@@ -20742,7 +20742,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bais Yaakov Of Gur High School",
+        "name": "Bais Yaakov of Gur High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.89,
         "polio": 99.1,
@@ -20870,7 +20870,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Nazareth Regional H S",
+        "name": "Nazareth Regional High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.31,
         "polio": 99.4,
@@ -20966,7 +20966,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Our Lady Queen Of Angels School",
+        "name": "Our Lady Queen of Angels School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 98.8,
@@ -21030,7 +21030,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Talmud Torah Of Kasho",
+        "name": "Talmud Torah of Kasho",
         "medical-exemptions": 0,
         "religious-exemptions": 7.27,
         "polio": 92.7,
@@ -21094,7 +21094,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Peters H S-Boys",
+        "name": "St. Peters High School for Boys",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 94.4,
@@ -21478,7 +21478,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Monsignor McClancy Memorial H S",
+        "name": "Monsignor McClancy Memorial High School",
         "medical-exemptions": 0.16,
         "religious-exemptions": 0,
         "polio": 99.3,
@@ -21510,7 +21510,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Great Tomorrows Usa Sch.",
+        "name": "Great Tomorrows Usa School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -21542,7 +21542,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "R T Hudson Elem School",
+        "name": "R T Hudson Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 69.6,
@@ -21670,7 +21670,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Joseph By The Sea H S",
+        "name": "St. Joseph By The Sea High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.08,
         "polio": 99.9,
@@ -21702,7 +21702,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Simon Stock Elem School",
+        "name": "St. Simon Stock Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -21766,7 +21766,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Full Gospel Christian Sch",
+        "name": "Full Gospel Christian School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -21862,7 +21862,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Perpetual Help Elem",
+        "name": "Our Lady of Perpetual Help Elementary",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -21926,7 +21926,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "International School Of Brooklyn",
+        "name": "International School of Brooklyn",
         "medical-exemptions": 0.4,
         "religious-exemptions": 1.59,
         "polio": 98,
@@ -21958,7 +21958,7 @@
       "properties": {
         "school_id": "3.11E+11",
         "year": "2014-2015",
-        "name": "Kings Academy Of The True Church Of God, Inc.",
+        "name": "Kings Academy of The True Church of God, Inc.",
         "medical-exemptions": 0,
         "religious-exemptions": 2.94,
         "polio": 97.1,
@@ -22438,7 +22438,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Luria Academy Of Brooklyn",
+        "name": "Luria Academy of Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 98.9,
@@ -22534,7 +22534,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Peters Elem School",
+        "name": "St. Peters Elementary School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 96.6,
@@ -22662,7 +22662,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Trust Catholic Academy",
+        "name": "Our Lady of Trust Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -22918,7 +22918,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Of Belle Harbor",
+        "name": "Yeshiva of Belle Harbor",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -22982,7 +22982,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Sorrows School",
+        "name": "Our Lady of Sorrows School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -23078,7 +23078,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Luth Elem Sch-Bay Ridge",
+        "name": "Luth Elementary Sch-Bay Ridge",
         "medical-exemptions": 1.3,
         "religious-exemptions": 3.9,
         "polio": 91.6,
@@ -23142,7 +23142,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "United Tal Acad Tor V Yirah-Boro",
+        "name": "United Talmudical Acadedmy Torah Vyirah-Boro Park",
         "medical-exemptions": 0,
         "religious-exemptions": 1.18,
         "polio": 98.8,
@@ -23270,7 +23270,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Prospect Park Bnos Leah H.S.",
+        "name": "Prospect Park Bnos Leah High School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -23302,7 +23302,7 @@
       "properties": {
         "school_id": "3.11E+11",
         "year": "2014-2015",
-        "name": "Fellowship Of Learning School",
+        "name": "Fellowship of Learning School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -23366,7 +23366,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Our Lady Of Grace School",
+        "name": "Our Lady of Grace School",
         "medical-exemptions": 0,
         "religious-exemptions": 0.48,
         "polio": 98.6,
@@ -23718,7 +23718,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Our Lady Queen Of Peace School",
+        "name": "Our Lady Queen of Peace School",
         "medical-exemptions": 0.2,
         "religious-exemptions": 0,
         "polio": 99.8,
@@ -23750,7 +23750,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Flatbush S D A School",
+        "name": "Flatbush Seventh Day Adventist School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -24038,7 +24038,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bais Yakov Of 18th Avenue",
+        "name": "Bais Yakov of 18th Avenue",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.6,
@@ -24070,7 +24070,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Notre Dame Academy-Elem",
+        "name": "Notre Dame Academy-Elementary",
         "medical-exemptions": 0.54,
         "religious-exemptions": 0.54,
         "polio": 98.9,
@@ -24134,7 +24134,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Chabad Lubavitch Of Staten Island",
+        "name": "Chabad Lubavitch of Staten Island",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -24198,7 +24198,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Edmund H S",
+        "name": "St. Edmund High School",
         "medical-exemptions": 0.14,
         "religious-exemptions": 0,
         "polio": 99.6,
@@ -24230,7 +24230,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Academy Of St. Joseph",
+        "name": "Academy of St. Joseph",
         "medical-exemptions": 0,
         "religious-exemptions": 1.02,
         "polio": 99,
@@ -24262,7 +24262,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "The Carol And Frank Biondi Education Center",
+        "name": "The Carol and Frank Biondi Education Center",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 98.4,
@@ -24294,7 +24294,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Margaret Of Cortona School",
+        "name": "St. Margaret of Cortona School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -24326,7 +24326,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "The Ideal School Of Manhattan",
+        "name": "The Ideal School of Manhattan",
         "medical-exemptions": 0,
         "religious-exemptions": 0.68,
         "polio": 99.3,
@@ -24358,7 +24358,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Jewish Institute Of Queens",
+        "name": "Jewish Institute of Queens",
         "medical-exemptions": 0,
         "religious-exemptions": 0.59,
         "polio": 99.4,
@@ -24518,7 +24518,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Torah Academy High School Of Brooklyn",
+        "name": "Torah Academy High School of Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
