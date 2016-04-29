@@ -64,7 +64,7 @@ window.onload=setMap();
 
 function setMap(){
 
-    var width= 650,
+    var width= 520,
         height=600;
 
     var map=d3.select("body")
@@ -74,8 +74,8 @@ function setMap(){
         .attr("height",height);
 
     var  projection = d3.geo.mercator()
-			.scale(1000 * 2)
-			.center([-120, 36])
+			.scale(1150 * 2)
+			.center([-119, 37])
 			.translate([width/2, height/2]);
 
     var path=d3.geo.path()
@@ -241,7 +241,7 @@ function setEnumerationUnits(caliCounties, californiacenters, map, path, colorSc
       });
 
     var desc=counties.append("desc")
-             .text('{"stroke":"black", "stroke-width":"1px"}');
+             .text('{"stroke":"#4f4f4f", "stroke-width":"1px"}');
 
 
     var centroids=map.selectAll(".symbol")
