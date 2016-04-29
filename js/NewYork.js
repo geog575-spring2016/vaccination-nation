@@ -192,9 +192,9 @@ function filterButtons(map){
                 } else if (vaxAttribute > 65 && immunizationClass == "Under 65%") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-//                } else if (vaxAttribute = 100   && immunizationClass == "65% to 74.99%") {
-//                    filterHolder.addLayer(layer);
-//                    map.removeLayer(layer);
+                } else if ( (vaxAttribute>74.99) && (vaxAttribute<65) && immunizationClass == "65% to 74.99%") {
+                    filterHolder.addLayer(layer);
+                    map.removeLayer(layer);
 //                } else if (vaxAttribute = 95   && immunizationClass == "75% to 85%") {
 //                    filterHolder.addLayer(layer);
 //                    map.removeLayer(layer);
@@ -204,7 +204,7 @@ function filterButtons(map){
                 } else if ((vaxAttribute < 95) && immunizationClass == "95% and over") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-                }
+                } 
             }
 //            (v>65) && (v<=74.9)
 //            (v>75) && (v<85)
