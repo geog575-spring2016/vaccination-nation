@@ -70,7 +70,7 @@ function pointToLayer (feature, latlng){
     
 };
 
-//add circle markers to the map
+//add circle markers to the map and add a search operator
 function colorCircles(data, map){
     //create a Leaflet GeoJSON layer and add it to the map    
     var layer = L.geoJson(data, {
@@ -192,30 +192,20 @@ function filterButtons(map){
                 } else if (vaxAttribute > 65 && immunizationClass == "Under 65%") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-                } else if ( (vaxAttribute>74.99) && (vaxAttribute<65) && immunizationClass == "65% to 74.99%") {
+                } else if ( ((vaxAttribute>74.9) || (vaxAttribute<=65)) && immunizationClass == "65% to 74.99%") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-//                } else if (vaxAttribute = 95   && immunizationClass == "75% to 85%") {
-//                    filterHolder.addLayer(layer);
-//                    map.removeLayer(layer);
-//                } else if (vaxAttribute = 1  && immunizationClass == "85% to 94.99%") {
-//                    filterHolder.addLayer(layer);
-//                    map.removeLayer(layer);
+                } else if ( ((vaxAttribute>=85) || (vaxAttribute<=75)) && immunizationClass == "75% to 85%") {
+                    filterHolder.addLayer(layer);
+                    map.removeLayer(layer);
+                } else if ( ((vaxAttribute>94.9) || (vaxAttribute<85)) && immunizationClass == "85% to 94.99%") {
+                    filterHolder.addLayer(layer);
+                    map.removeLayer(layer);
                 } else if ((vaxAttribute < 95) && immunizationClass == "95% and over") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
                 } 
             }
-//            (v>65) && (v<=74.9)
-//            (v>75) && (v<85)
-//            (v>=85) && (v<=94.9)
-         ////////////////////       *******         ////////////////////////////
-//                //otherwise, if specific disease button is clicked, remove all *other* layers and add them to the removed layer layergroup
-//                } else if (outbreak != disease){
-//                    filterHolder.addLayer(layer);
-//                    map.removeLayer(layer);
-//                }               
-//            }
         });
     
     });
