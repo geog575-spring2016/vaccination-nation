@@ -229,6 +229,7 @@ function getData(map){
 $(document).ready(createMap);
 
 //Pseudocode
-//3. Legend
-//4. Filter by worst offenders?
+//1. Legend
+//2. Change color scale
+//3. Check boundary cases for filter
 
