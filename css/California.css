@@ -1,8 +1,20 @@
 /* 575 boilerplate style.css */
-.map{
-  stroke: white;
-  stroke-width: 1px;
+#radio{width:900px;
+      height:20px;
+      position:relative;
+      font-size:13px;
+      color:green;
 }
+
+.CAmap{
+  background-color: white;
+  border: medium solid #999;
+  stroke-width: 1px;
+  stroke: black;
+}
+
+
+
 
 
 .gratLines {
@@ -11,14 +23,42 @@
     stroke-width: 1px;
 }
 
-.chart {
+
+.CAchart {
     background-color: white;
     border: medium solid grey;
     float: center;
     margin: 80px 5px 0px 10px;
 }
 
+.infoLabel {
+    font-family: sans-serif;
+    border: 2px solid grey;
+    background-color:white;
+    font-size: 6px;
+    position: absolute;
+    height: 60px;
+    width: 230px;
+    padding-left: 5px;
+    top: -75px;
+}
 
+.labelname {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+
+#caliSlider{
+  position: absolute;
+  left: 50%;
+  margin-left: -300px;
+  bottom: 20px;
+  width: 600px;
+  height: 50px;
+};
 
 .chartBackground{
   fill: silver
