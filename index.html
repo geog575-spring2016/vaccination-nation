@@ -40,15 +40,21 @@
 		<script type="text/javascript" src="lib/topojson.v1.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<!--<script type="text/javascript" src="js/Arizona.js"></script>-->
-		<div>
-				<input type="Radio" name="map" id='none' class ='radio' value="none"  checked="checked" />  None
-				 <div><input type="Radio" name="map" id='vc13'  class ='radio' value="vc13" />Vaccination Coverage Rates: 2013-2014</div>
-				 <div><input type="Radio" name="map" id='pb13'  class ='radio' value="pb13" />Personal Belief Exemptions: 2013-2014</div>
-				 <div><input type="Radio" name="map" id='vc15'  class ='radio' value="vc15" />Vaccination Coverage Rates: 2015-2016</div>
-				 <div><input type="Radio" name="map" id='pb15'  class ='radio' value="pb15" />Personal Belief Exemptions: 2015-2016</div>
-				 <script type="text/javascript" src="js/California.js"></script>
+		<div id="california">
+		<div id="CAheader">California</div>
+    <div id="CAtext">explanations and text</div>
+
+				<div><input type="Radio" name="map" id='none' class ='radio' value="none"  checked="checked" />None</div>
+				<div><input type="Radio" name="map" id='vc13'  class ='radio' value="vc13" />Vaccination Coverage Rates: 2013-2014
+				<input type="Radio" name="map" id='pb13'  class ='radio' value="pb13" />Personal Belief Exemptions: 2013-2014</div>
+				<div><input type="Radio" name="map" id='vc15'  class ='radio' value="vc15" />Vaccination Coverage Rates: 2015-2016
+				<input type="Radio" name="map" id='pb15'  class ='radio' value="pb15" />Personal Belief Exemptions: 2015-2016</div>
+				<div id="california-map">
+					<script type="text/javascript" src="js/California.js"></script>
+				</div>
 		</div>
-		
+
+
 		<script type="text/javascript" src="js/NewYork.js"></script>
 		<script type="text/javascript" src="js/Washington.js"></script>
 
