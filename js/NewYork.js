@@ -123,7 +123,7 @@ function getColor(v) {
         }
 }
 
-//Create filter control
+//create filter control
 function createFilterControl(map){
     
     //create a new SequenceControl Leaflet class
@@ -158,6 +158,69 @@ function createFilterControl(map){
     
 };
 
+//create filter function
+function filterButtons(map){    
+    
+    //create a layergroup container for layers we're going to remove.
+    var filterHolder = L.layerGroup();
+            
+    //listen for button clicks
+    $('.btn').click(function(layer){
+        //set an immunization class variable to equal whatever button is clicked
+        var immunizationClass = $(this).html();        
+    
+        //add each layer from the removed layers layergroup to the map
+        filterHolder.eachLayer(function(layer){
+           map.addLayer(layer); 
+        });
+        
+        //run through each layer to check immunization coverage
+        map.eachLayer(function(layer){
+            
+            //set a variable to hold the vaccine coverage rate
+            if (layer.feature && layer.feature.properties){
+            console.log(layer.feature.properties[attribute]);
+            var vaxAttribute = layer.feature.properties[attribute];
+            
+                //if the "all" button is clicked, add ALL layers to the layer group
+                if (immunizationClass === "All") {
+                    filterHolder.eachLayer(function(layer){
+                        map.addLayer(layer);
+                    });
+                  
+                    //otherwise, if a specific immunization class button is clicked, remove all *other* layers and add them to the removed layer layergroup.
+                } else if (vaxAttribute > 65 && immunizationClass == "Under 65%") {
+                    filterHolder.addLayer(layer);
+                    map.removeLayer(layer);
+//                } else if (vaxAttribute = 100   && immunizationClass == "65% to 74.99%") {
+//                    filterHolder.addLayer(layer);
+//                    map.removeLayer(layer);
+//                } else if (vaxAttribute = 95   && immunizationClass == "75% to 85%") {
+//                    filterHolder.addLayer(layer);
+//                    map.removeLayer(layer);
+//                } else if (vaxAttribute = 1  && immunizationClass == "85% to 94.99%") {
+//                    filterHolder.addLayer(layer);
+//                    map.removeLayer(layer);
+                } else if ((vaxAttribute < 95) && immunizationClass == "95% and over") {
+                    filterHolder.addLayer(layer);
+                    map.removeLayer(layer);
+                }
+            }
+//            (v>65) && (v<=74.9)
+//            (v>75) && (v<85)
+//            (v>=85) && (v<=94.9)
+         ////////////////////       *******         ////////////////////////////
+//                //otherwise, if specific disease button is clicked, remove all *other* layers and add them to the removed layer layergroup
+//                } else if (outbreak != disease){
+//                    filterHolder.addLayer(layer);
+//                    map.removeLayer(layer);
+//                }               
+//            }
+        });
+    
+    });
+};
+
 
 //Import GeoJSON data
 function getData(map){
@@ -168,6 +231,7 @@ function getData(map){
             //call function to color circles
             colorCircles(response, map);
             createFilterControl(map);
+            filterButtons(map);
         }
     });
 };
