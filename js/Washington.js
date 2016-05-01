@@ -37,18 +37,25 @@ function setMap(){
     //use queue.js to parallelize asynchronous data loading
     d3_queue.queue()
         .defer(d3.csv, "data/Washington/Washington_Complete_Immunizations.csv") //load attributes from csv
-        .defer(d3.csv, "data/Washington/Washington_Any_Exemption.csv") //load attributes from csv
-        .defer(d3.csv, "data/Washington/Washington_Out_Of_Compliance.csv") //load attributes from csv
+        // .defer(d3.csv, "data/Washington/Washington_Any_Exemption.csv") //load attributes from csv
+        // .defer(d3.csv, "data/Washington/Washington_Out_Of_Compliance.csv") //load attributes from csv
         .defer(d3.json, "data/Washington/Washington.topojson") //load choropleth spatial data
         .await(callback);
 
-    function callback(error, Washington_Complete_Immunizations, Washington_Any_Exemption, Washington_Out_Of_Compliance, WashingtonCounties){
+    function callback(error, Washington_Complete_Immunizations, Washington){
 
-        var Washington = topojson.feature(WashingtonCounties, WashingtonCounties.objects.Washington);
+        var Washington = topojson.feature(Washington, Washington.objects.Washington);
         Washington = Washington.features;
 
+        console.log(Washington);
+
         //add Washington Counties to map
-        var WashintonCounties = map.selectAll(".WashingtonCounties")
+        var WashingtonCounties = map.append("path")
+            .datum(Washington)
+            .attr("class", "WashingtonCounties")
+            .attr("d", path);
+
+        var counties = map.selectAll(".counties")
             .data(Washington)
             .enter()
             .append("path")
@@ -57,18 +64,22 @@ function setMap(){
             })
             .attr("d", path);
 
+            console.log(counties);
+
         //join csv data to GeoJson enumeration units
-        Washington = joinData(Washington, map, path);
+        Washington = joinData(Washington, Washington_Complete_Immunizations);
 
         //create the color scale
-        var colorScale = makeColorScale(Washington_Complete_Immunizations, Washington_Any_Exemption, Washington_Out_Of_Compliance);
+        var colorScale = makeColorScale(Washington_Complete_Immunizations);
 
-        //Example 1.3 line 24...add enumeration units to the map
+        //add enumeration units to the map
         setEnumerationUnits(Washington, map, path, colorScale);
+
+        createDropdown(Washington_Complete_Immunizations);
     };
 };
-
-function joinData(Washington, Washington_Complete_Immunizations, Washington_Any_Exemption, Washington_Out_Of_Compliance){
+//
+function joinData(Washington, Washington_Complete_Immunizations){
     //variables for data join
     var DataArray = ["2004-2005",	"2005-2006", "2006-2007",	"2007-2008",	"2008-2009",	"2009-2010",	"2010-2011",	"2011-2012",	"2012-2013",	"2013-2014",	"2014-2015", "2015-2016"];
 
@@ -98,7 +109,7 @@ function joinData(Washington, Washington_Complete_Immunizations, Washington_Any_
 
 function setEnumerationUnits(Washington, map, path, colorScale){
   //add Washington Counties to map
-  var WashintonCounties = map.selectAll(".WashingtonCounties")
+  var WashingtonCounties = map.selectAll(".WashingtonCounties")
       .data(Washington)
       .enter()
       .append("path")
@@ -111,7 +122,7 @@ function setEnumerationUnits(Washington, map, path, colorScale){
       });
 };
 
-//Example 1.4 line 11...function to create color scale generator
+//function to create color scale generator
 function makeColorScale(data){
     var colorClasses = [
         "#D4B9DA",
@@ -125,15 +136,57 @@ function makeColorScale(data){
     var colorScale = d3.scale.quantile()
         .range(colorClasses);
 
-    //build two-value array of minimum and maximum expressed attribute values
-    var minmax = [
-        d3.min(data, function(d) { return parseFloat(d[expressed]); }),
-        d3.max(data, function(d) { return parseFloat(d[expressed]); })
-    ];
-    //assign two-value array as scale domain
-    colorScale.domain(minmax);
+    //build array of all values of the expressed attribute
+    var domainArray = [];
+    for (var i=0; i<data.length; i++){
+        var val = parseFloat(data[i][expressed]);
+        domainArray.push(val);
+    };
+
+    //assign array of expressed values as scale domain
+    colorScale.domain(domainArray);
 
     return colorScale;
+};
+
+//function to create a dropdown menu for attribute selection
+function createDropdown(Washington_Complete_Immunizations){
+    //add select element
+    var dropdown = d3.select("body")
+        .append("select")
+        .attr("class", "dropdown")
+        .on("change", function(){
+            changeAttribute(this.value, Washington_Complete_Immunizations)
+        });
+
+    //add initial option
+    var titleOption = dropdown.append("option")
+        .attr("class", "titleOption")
+        .attr("disabled", "true")
+        .text("Select Attribute");
+
+    //add attribute name options
+    var attrOptions = dropdown.selectAll("attrOptions")
+        .data(DataArray)
+        .enter()
+        .append("option")
+        .attr("value", function(d){ return d })
+        .text(function(d){ return d });
+};
+
+//dropdown change listener handler
+function changeAttribute(attribute, Washington_Complete_Immunizations){
+    //change the expressed attribute
+    expressed = attribute;
+
+    //recreate the color scale
+    var colorScale = makeColorScale(Washington_Complete_Immunizations);
+
+    //recolor enumeration units
+    var counties = d3.selectAll(".counties")
+        .style("fill", function(d){
+            return choropleth(d.properties, colorScale)
+        });
 };
 
 })();
