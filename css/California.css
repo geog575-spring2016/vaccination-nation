@@ -9,7 +9,7 @@
 }
 
 #CAheader{
-  position: center;
+
   font-size: 20px;
   font-family: sans-serif;
   color: blue;
@@ -35,7 +35,7 @@
   background-color: #cdd2d4;
   border: medium solid #999;
   stroke-width: 1px;
-  stroke: #4f4f4f;
+  stroke: white;
 }
 
 .gratLines {
