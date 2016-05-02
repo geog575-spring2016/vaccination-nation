@@ -22,3 +22,9 @@ h4{
     stroke: #CCC;
     stroke-width: .6px;
 }
+
+.states{
+	fill: black;
+	stroke: #fff;
+	stroke-width: .6px;
+}
