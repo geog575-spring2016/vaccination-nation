@@ -1,14 +1,10 @@
 /* Style Sheet */
 
-.counties {
-    fill: #FFF;
-    stroke: #CCC;
-    stroke-width: .6px;
-}
-
 .map {
-  background-color: white;
+  background-color: #cdd2d4;
   border: medium solid #999;
+  stroke: white;
+  stroke-width: 1px;
 }
 
 .dropdown {

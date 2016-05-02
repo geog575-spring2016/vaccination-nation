@@ -1,20 +1,28 @@
 /* Style Sheet */
 h1{
-  
+
 }
 h2{
-    
+
 }
 h3{
- 
+
 }
 h4{
 
 }
 
+#header{
+  height: 100px;
+  background-color: gray;
+  padding-top: 30px;
+}
+
 .mapMain {
   background-color: white;
   border: medium solid #999;
+  position: static;
+  width: 100;
 }
 
 .us {
