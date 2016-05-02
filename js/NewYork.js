@@ -7,7 +7,7 @@ var displayAttribute = "Completely Immunized";
 
 function createMap(){
 //initialize the map on the "map" div with a given center aand zoom level
-    var map = L.map("new-york-map").setView([40.7, -73.98], 10);
+    var map = L.map("new-york-map").setView([40.7, -74.03], 10);
     
 //load and display a tile layer on the map
     var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
@@ -22,7 +22,7 @@ function createMap(){
 
     //restrict map boundaries    
     map.setMaxBounds([
-    [40.46, -74.45],
+    [40.46, -75.08],
     [40.99, -73.5]
     ]);
     
@@ -91,7 +91,7 @@ function colorCircles(data, map){
 
 	searchControl.on('search_locationfound', function(e) {
 		
-		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+//		e.layer.setStyle({color: '#060706', weight: 3});
 		if(e.layer._popup)
 			e.layer.openPopup();
 
@@ -123,6 +123,7 @@ function getColor(v) {
         }
 }
 
+
 //create filter control
 function createFilterControl(map){
     
@@ -137,12 +138,12 @@ function createFilterControl(map){
             var container = L.DomUtil.create("div", "sequence-control-container");
             
             //create button elements
-            $(container).append('<button type="button" class="btn all">All</button>');
-            $(container).append('<button type="button" class="btn whooping">Under 65%</button>');
-            $(container).append('<button type="button" class="btn measles">65% to 74.99%</button>');
-            $(container).append('<button type="button" class="btn mumps">75% to 85%</button>');
-            $(container).append('<button type="button" class="btn pox">85% to 94.99%</button>');
-            $(container).append('<button type="button" class="btn pox">95% and over</button>');
+            $(container).append('<button type="button" class="btn under65">Under 65%<br>(14 Schools)</button>');
+            $(container).append('<button type="button" class="btn b65-75">65% to 74.99%<br>(10 Schools)</button>');
+            $(container).append('<button type="button" class="btn b75-85">75% to 85%<br>(46 Schools)</button>');
+            $(container).append('<button type="button" class="btn b85-95">85% to 94.99%<br>(151 Schools)</button>');
+            $(container).append('<button type="button" class="btn over95">95% and over<br>(550 Schools)</button>');
+            $(container).append('<button type="button" class="btn all">All<br>(771 Schools)</button>');
            
             //kill any mouse event listeners on the map
             $(container).on('mousedown dblclick', function(e){
@@ -183,25 +184,25 @@ function filterButtons(map){
             var vaxAttribute = layer.feature.properties[attribute];
             
                 //if the "all" button is clicked, add ALL layers to the layer group
-                if (immunizationClass === "All") {
+                if (immunizationClass === "All<br>(771 Schools)") {
                     filterHolder.eachLayer(function(layer){
                         map.addLayer(layer);
                     });
                   
                     //otherwise, if a specific immunization class button is clicked, remove all *other* layers and add them to the removed layer layergroup.
-                } else if (vaxAttribute > 65 && immunizationClass == "Under 65%") {
+                } else if (vaxAttribute > 65 && immunizationClass == "Under 65%<br>(14 Schools)") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-                } else if ( ((vaxAttribute>74.9) || (vaxAttribute<=65)) && immunizationClass == "65% to 74.99%") {
+                } else if ( ((vaxAttribute>74.9) || (vaxAttribute<=65)) && immunizationClass == "65% to 74.99%<br>(10 Schools)") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-                } else if ( ((vaxAttribute>=85) || (vaxAttribute<=75)) && immunizationClass == "75% to 85%") {
+                } else if ( ((vaxAttribute>=85) || (vaxAttribute<=75)) && immunizationClass == "75% to 85%<br>(46 Schools)") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-                } else if ( ((vaxAttribute>94.9) || (vaxAttribute<85)) && immunizationClass == "85% to 94.99%") {
+                } else if ( ((vaxAttribute>94.9) || (vaxAttribute<85)) && immunizationClass == "85% to 94.99%<br>(151 Schools)") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-                } else if ((vaxAttribute < 95) && immunizationClass == "95% and over") {
+                } else if ((vaxAttribute < 95) && immunizationClass == "95% and over<br>(550 Schools)") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
                 } 

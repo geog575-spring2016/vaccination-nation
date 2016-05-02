@@ -156,7 +156,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.905715,
+          -73.905815,
           40.889137
         ]
       }
@@ -870,7 +870,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Holy Family School",
+        "name": "Holy Family Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0.46,
         "polio": 97.3,
@@ -998,7 +998,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Elizabeth School",
+        "name": "St. Elizabeth Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0.39,
         "polio": 99.6,
@@ -1158,7 +1158,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Clare School",
+        "name": "St. Clare School, Queens",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -1190,7 +1190,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Immaculate Conception School",
+        "name": "Immaculate Conception Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.8,
@@ -1286,7 +1286,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady of Lourdes School",
+        "name": "Our Lady of Lourdes Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -1414,7 +1414,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Immaculate Conception School",
+        "name": "Immaculate Conception School, Astoria",
         "medical-exemptions": 0.49,
         "religious-exemptions": 0,
         "polio": 98.5,
@@ -1734,7 +1734,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Bet Yaakov Ateret Torah",
+        "name": "Bet Yakov Ateret Torah",
         "medical-exemptions": 0,
         "religious-exemptions": 0.83,
         "polio": 99.2,
@@ -1756,7 +1756,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9620819,
+          -73.9621819,
           40.6034775
         ]
       }
@@ -2364,7 +2364,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9875394,
+          -73.9876394,
           40.7720661
         ]
       }
@@ -2598,7 +2598,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Sacred Heart School",
+        "name": "Sacred Heart Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -2854,7 +2854,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Joseph School",
+        "name": "St. Joseph School, Long Island City",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.7,
@@ -3110,7 +3110,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Francis Xavier School",
+        "name": "St. Francis Xavier School, Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -3238,7 +3238,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Gregory The Great School",
+        "name": "St. Gregory The Great School, Bellerose",
         "medical-exemptions": 0,
         "religious-exemptions": 0.36,
         "polio": 99.6,
@@ -4038,7 +4038,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Francis of Assisi School",
+        "name": "St. Francis of Assisi School, Long Island City",
         "medical-exemptions": 0,
         "religious-exemptions": 1.38,
         "polio": 98.6,
@@ -4156,7 +4156,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9708594,
+          -73.9707594,
           40.6279852
         ]
       }
@@ -4742,7 +4742,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Clare School",
+        "name": "St. Clare School, Bronx",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.7,
@@ -5660,7 +5660,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -74.1504288,
+          -74.1505288,
           40.6144981
         ]
       }
@@ -5766,7 +5766,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Aaron School",
+        "name": "Aaron School (High School)",
         "medical-exemptions": 0,
         "religious-exemptions": 2.13,
         "polio": 97.9,
@@ -6566,7 +6566,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "A New Dawn Elementary &Pre-School",
+        "name": "A New Dawn Elementary & Pre-School",
         "medical-exemptions": 0,
         "religious-exemptions": 25,
         "polio": 62.5,
@@ -6662,7 +6662,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Ann School",
+        "name": "St. Ann School, Staten Island",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -6758,7 +6758,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Mt. Pleasant Christian Academy",
+        "name": "Mt. Pleasant Christian Academy, Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -7270,7 +7270,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Montessorri Family School-Manhtn",
+        "name": "Montessori Family School-Manhtn",
         "medical-exemptions": 0,
         "religious-exemptions": 2.17,
         "polio": 97.8,
@@ -7590,7 +7590,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Joseph School",
+        "name": "St. Joseph School, Bronx",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -7869,7 +7869,7 @@
         "type": "Point",
         "coordinates": [
           -73.9899802,
-          40.7280651
+          40.7281651
         ]
       }
     },
@@ -8038,7 +8038,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Good Shepherd School",
+        "name": "Good Shepherd Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -8316,7 +8316,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9609996,
+          -73.9610996,
           40.6185083
         ]
       }
@@ -8636,7 +8636,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.958435,
+          -73.958535,
           40.699691
         ]
       }
@@ -9020,7 +9020,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9574356,
+          -73.9575356,
           40.6995125
         ]
       }
@@ -9542,7 +9542,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Immaculate Conception School",
+        "name": "Immaculate Conception School (1950)",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -9660,7 +9660,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.96595,
+          -73.96605,
           40.626926
         ]
       }
@@ -10694,7 +10694,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Mc Carton School (The)",
+        "name": "McCarton School (The)",
         "medical-exemptions": 7.5,
         "religious-exemptions": 5,
         "polio": 82.5,
@@ -11068,7 +11068,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9757357,
+          -73.9758357,
           40.6271102
         ]
       }
@@ -11206,7 +11206,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Our Lady of Grace School",
+        "name": "Our Lady of Grace School, Bronx",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 94.7,
@@ -11260,7 +11260,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9899802,
+          -73.9898802,
           40.7280651
         ]
       }
@@ -12326,7 +12326,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Our Lady Queen-Martyrs School",
+        "name": "Our Lady Queen of Martyrs Catholic Academy",
         "medical-exemptions": 0,
         "religious-exemptions": 0.34,
         "polio": 99.7,
@@ -13254,7 +13254,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Athanasius School",
+        "name": "St. Athanasius School, Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0.41,
         "polio": 98.4,
@@ -13404,7 +13404,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9664982,
+          -73.9665982,
           40.6050336
         ]
       }
@@ -13990,7 +13990,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Holy Rosary School",
+        "name": "Holy Rosary School, Staten Island",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -14044,7 +14044,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9596024,
+          -73.9595024,
           40.704998
         ]
       }
@@ -14086,7 +14086,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "St. Ann'S School",
+        "name": "St. Ann's School",
         "medical-exemptions": 0.1,
         "religious-exemptions": 0.19,
         "polio": 99.7,
@@ -15494,7 +15494,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "Immaculate Conception School",
+        "name": "Immaculate Conception School (1854)",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -15900,7 +15900,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.955436,
+          -73.955536,
           40.615772
         ]
       }
@@ -15910,7 +15910,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Adalbert School",
+        "name": "St. Adalbert School, Staten Island",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99,
@@ -16028,7 +16028,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9692688,
+          -73.9693688,
           40.6377373
         ]
       }
@@ -16134,7 +16134,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "St. Stanislaus Kostka School",
+        "name": "St. Stanislaus Kostka School, Maspeth",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 99.5,
@@ -16294,7 +16294,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Blessed Sacrament School",
+        "name": "Blessed Sacrament School, Staten Island",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -16486,7 +16486,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Cathedral School",
+        "name": "Cathedral School of Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 94.4,
@@ -16678,7 +16678,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Kehilath Yakov",
+        "name": "Yeshiva Kehilath Yakov, 10th Ave.",
         "medical-exemptions": 0,
         "religious-exemptions": 1.07,
         "polio": 98.9,
@@ -16934,7 +16934,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Cambria Center For Gifted Child",
+        "name": "Cambria Center For Gifted Children",
         "medical-exemptions": 0,
         "religious-exemptions": 0.48,
         "polio": 94.8,
@@ -16956,7 +16956,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.7288665,
+          -73.7289665,
           40.690993
         ]
       }
@@ -17564,7 +17564,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.8653748,
+          -73.8654748,
           40.7576057
         ]
       }
@@ -17734,7 +17734,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Francis De Sales Sch-Deaf",
+        "name": "St. Francis De Sales School for the Deaf",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -17894,7 +17894,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Anselm School",
+        "name": "St. Anselm School, Bronx",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -18022,7 +18022,7 @@
       "properties": {
         "school_id": "3.11E+11",
         "year": "2014-2015",
-        "name": "Our Lady Queen-Martyrs School",
+        "name": "Our Lady Queen of Martyrs School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 96.7,
@@ -18076,7 +18076,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.8196398,
+          -73.8197398,
           40.7297107
         ]
       }
@@ -18374,7 +18374,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Rose of Lima School",
+        "name": "St. Rose of Lima School, Rockaway Beach",
         "medical-exemptions": 0.28,
         "religious-exemptions": 0,
         "polio": 99.7,
@@ -18694,7 +18694,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Aaron School",
+        "name": "Aaron School (Kindergaten-7th Grade)",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -18790,7 +18790,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Solomon Schechter Sch-Queens",
+        "name": "Solomon Schechter School, Queens",
         "medical-exemptions": 0,
         "religious-exemptions": 0.6,
         "polio": 94.3,
@@ -18886,7 +18886,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "St. Lukes School",
+        "name": "St. Lukes School, Whitestone",
         "medical-exemptions": 0,
         "religious-exemptions": 0.71,
         "polio": 99.3,
@@ -18972,7 +18972,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -74.1576309,
+          -74.1577409,
           40.5464516
         ]
       }
@@ -19174,7 +19174,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Blessed Sacrament School",
+        "name": "Blessed Sacrament School, Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -19910,7 +19910,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Cathedral School",
+        "name": "Cathedral School of St. John the Divine",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -20166,7 +20166,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "St. Anselm School",
+        "name": "St. Anselm School, Brooklyn",
         "medical-exemptions": 0.41,
         "religious-exemptions": 0,
         "polio": 99.2,
@@ -20454,7 +20454,7 @@
       "properties": {
         "school_id": "3.10E+11",
         "year": "2014-2015",
-        "name": "Blessed Sacrament School",
+        "name": "School of the Blessed Sacrament",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 94.3,
@@ -20902,7 +20902,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "St. Clare School",
+        "name": "St. Clare School, Staten Island",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -20956,7 +20956,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -74.1649058,
+          -74.1649958,
           40.6101928
         ]
       }
@@ -21446,7 +21446,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Yeshiva Kehilath Yakov",
+        "name": "Yeshiva Kehilath Yakov, Wilson St.",
         "medical-exemptions": 0,
         "religious-exemptions": 1.93,
         "polio": 97.6,
@@ -21574,7 +21574,7 @@
       "properties": {
         "school_id": "3.42E+11",
         "year": "2014-2015",
-        "name": "Sacred Heart School",
+        "name": "Sacred Heart School, Glendale",
         "medical-exemptions": 0,
         "religious-exemptions": 0.45,
         "polio": 99.1,
@@ -22076,7 +22076,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9422309,
+          -73.9423309,
           40.6184996
         ]
       }
@@ -22150,7 +22150,7 @@
       "properties": {
         "school_id": "3.53E+11",
         "year": "2014-2015",
-        "name": "Sacred Heart School",
+        "name": "Sacred Heart School, Staten Island",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -22246,7 +22246,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Athanasius School",
+        "name": "St. Athanasius School, Bronx",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 97.3,
@@ -22470,7 +22470,7 @@
       "properties": {
         "school_id": "3.21E+11",
         "year": "2014-2015",
-        "name": "St. Francis Xavier School",
+        "name": "St. Francis Xavier School, Bronx",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -22726,7 +22726,7 @@
       "properties": {
         "school_id": "3.43E+11",
         "year": "2014-2015",
-        "name": "Incarnation School",
+        "name": "Incarnation Catholic School",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 100,
@@ -23046,7 +23046,7 @@
       "properties": {
         "school_id": "3.31E+11",
         "year": "2014-2015",
-        "name": "Grace Church School",
+        "name": "Grace Church School, Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0,
         "polio": 92.3,
@@ -23078,7 +23078,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Luth Elementary Sch-Bay Ridge",
+        "name": "Lutheran Elementary School, Bay Ridge",
         "medical-exemptions": 1.3,
         "religious-exemptions": 3.9,
         "polio": 91.6,
@@ -23366,7 +23366,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Our Lady of Grace School",
+        "name": "Our Lady of Grace School, Brooklyn",
         "medical-exemptions": 0,
         "religious-exemptions": 0.48,
         "polio": 98.6,
@@ -24390,7 +24390,7 @@
       "properties": {
         "school_id": "3.32E+11",
         "year": "2014-2015",
-        "name": "Beth Rachel Sch-Boro Park",
+        "name": "Beth Rachel School, Boro Park",
         "medical-exemptions": 0,
         "religious-exemptions": 0.66,
         "polio": 99.3,
@@ -24412,7 +24412,7 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -73.9921722,
+          -73.9922722,
           40.6309547
         ]
       }
