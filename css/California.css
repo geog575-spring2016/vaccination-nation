@@ -17,6 +17,16 @@
 
 }
 
+#propToolTips{
+  color: green;
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  background-color: blue;
+  padding: 5px
+  border: thin solid #999;
+}
+
 #CAtext{
   float: right;
   border: medium solid #999;
@@ -52,17 +62,7 @@
     margin: 80px 5px 0px 10px;
 }
 
-.infoLabel {
-    font-family: sans-serif;
-    border: 2px solid grey;
-    background-color:white;
-    font-size: 6px;
-    position: absolute;
-    height: 60px;
-    width: 230px;
-    padding-left: 5px;
-    top: -75px;
-}
+
 
 .labelname {
   font-family: sans-serif;
