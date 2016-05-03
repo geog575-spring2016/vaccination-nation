@@ -12,8 +12,8 @@
   function setMap(){
 
   	//map frame size. Adjusted so Map is responsive
-    var width = window.innerWidth * 0.6,
-      height = 400;
+    var width = 960;
+        height = 500;
 
     //creates new svg container for the Main US Map
     var mapMain = d3.select("body")
@@ -31,78 +31,83 @@
     var path = d3.geo.path()
       .projection(projection);
 
-    d3_queue.queue()
-      .defer(d3.csv, "data/main-outbreaks/main-outbreaks-data-noNYC.csv") //loads attributes from csv
-      .defer(d3.json, "data/main-outbreaks/usStates.topojson") //loads choropleth spatial data
+    var q = d3_queue.queue();
+      q.defer(d3.csv, "data/main-outbreaks/main-outbreaks-data-noNYC.csv") //loads attributes from csv
+      q.defer(d3.json, "data/main-outbreaks/usStates.topojson") //loads choropleth spatial data
       .await(callback);
 
 
-    function callback(error, csvData, us){
-      console.log("reach callback?");
-      var usStates = topojson.feature(us, us.objects.usStates).features;
+  function callback(error, csvData, us){
+    var usStates = topojson.feature(us, us.objects.usStates).features;
+    for (var i=0; i<csvData.length; i++){
+        var csvRegion = csvData[i];
+        var csvKey = csvRegion.postal;
+        var jsonStates=us.objects.usStates.geometries;
+          for (var a=0; a<jsonStates.length; a++){
+            if(jsonStates[a].properties.postal==csvKey){
+              for(key in DataArray){
+                var attribute=DataArray[key];
+                var value=parseFloat(csvRegion[attribute]);
+                (jsonStates[a].properties[attribute])=value;
+              }
+            }
+          }
+        }
 
-      var states = mapMain.append("path")
-          .datum(usStates)
-          .attr("class", "states")
-          .attr("d", path);
-        console.log(csvData);
+        setEnumerationUnits(usStates, mapMain, path)
 
-      usStates= joinData(usStates, csvData);
-        
+    }
+};
 
-    };
-  };
 
   //writes a function to join the data from the csv and geojson
-  function joinData (usStates, csvData){
-    console.log("reaching joinData?");
-    for (var i=0; i<csvData.length; i++){
-      var csvRegion = csvData[i];
-      var csvKey = csvRegion.postal;
-        for (var a=0; a<usStates.length; a++){
-          var geojsonProps = usStates[a].properties;
-          var geojsonKey = geojsonProps.postal;
-            if (geojsonKey == csvKey){
-              attrArray.forEach(function(attr){
-                var val = parseFloat(csvRegion[attr]);
-                geojsonProps[attr] = val;
-              });
-            };
-        };
-    };
-    console.log("going through for statement?");
-    return usStates;
-  };
 
-  function setEnumerationUnits(usStates, map, path, colorScale){ 
+  //         var geojsonProps = usStates[a].properties;
+  //         var geojsonKey = geojsonProps.postal;
+  //           if (geojsonKey == csvKey){
+  //             DataArray.forEach(function(attr){
+  //               var val = parseFloat(csvRegion[attr]);
+  //               geojsonProps[attr] = val;
+  //             });
+  //           };
+  //       };
+  //   };
+  //   //return usStates;
+  // };
+
+  function setEnumerationUnits(usStates, mapMain, path){
     var states = mapMain.selectAll(".states")
       .data(usStates)
       .enter()
       .append("path")
+      .attr("d",path)
       .attr("class", function(d){
         return "states " + d.properties.postal;
       })
-      .attr("d",path)
-      .style("fill", function(d){
-        return choropleth(d.properties, colorScale);
-      });
+      .style("fill","blue")
 
-      var desc=states.append("desc")
-             .text('{"stroke":"white", "stroke-width":"1px"}');
+        //function(d){
+        //return choropleth(d.properties, colorScale);
+      //});
 
-
-      var centroids=map.selectAll(".symbol")
-          .data(usCenters.features.sort(function(a,b){return b.properties[expressed2]-a.properties[expressed2];}))
-        .enter().append("path")
-          .attr("d",path)
-          .attr("class",function(d){
-              return "circle"+d.properties.postal;
-          })
-          .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed2]);}))
-          .style({"fill": "orange",
-                  "fill-opacity":0.5,
-                  "stroke":"black"})
-        .remove();
+      // console.log(states);
+      //
+      // var desc=states.append("desc")
+      //        .text('{"stroke":"white", "stroke-width":"1px"}');
+      //
+      //
+      // var centroids=map.selectAll(".symbol")
+      //     .data(usCenters.features.sort(function(a,b){return b.properties[expressed2]-a.properties[expressed2];}))
+      //   .enter().append("path")
+      //     .attr("d",path)
+      //     .attr("class",function(d){
+      //         return "circle"+d.properties.postal;
+      //     })
+      //     .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed2]);}))
+      //     .style({"fill": "orange",
+      //             "fill-opacity":0.5,
+      //             "stroke":"black"})
+      //   .remove();
   };
 
 
