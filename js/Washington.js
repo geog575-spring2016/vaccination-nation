@@ -6,9 +6,6 @@
 //create a special breaks for all of the data
 //make sure to add in each parameter in order
 
-
-
-
 //wraps everything in a self-executing anonymous function to move to local scope
 (function(){
 
@@ -57,11 +54,11 @@ function setMap(){
         var Washington = topojson.feature(Washington, Washington.objects.Washington);
         Washington = Washington.features;
 
-        //add Washington Counties to map
-        var WashingtonCounties = map.append("path")
-            .datum(Washington)
-            .attr("class", "WashingtonCounties")
-            .attr("d", path);
+        // //add Washington Counties to map
+        // var WashingtonCounties = map.append("path")
+        //     .datum(Washington)
+        //     .attr("class", "WashingtonCounties")
+        //     .attr("d", path);
 
         var counties = map.selectAll(".counties")
             .data(Washington)
@@ -82,6 +79,8 @@ function setMap(){
         setEnumerationUnits(Washington, map, path, colorScale);
 
         createDropdown(Washington_Complete_Immunizations);
+
+        updateTimeline();
     };
 };
 //
@@ -115,7 +114,7 @@ function joinData(Washington, Washington_Complete_Immunizations){
 
 function setEnumerationUnits(Washington, map, path, colorScale){
   //add Washington Counties to map
-  var WashingtonCounties = map.selectAll(".WashingtonCounties")
+  var counties = map.selectAll(".counties")
       .data(Washington)
       .enter()
       .append("path")
@@ -123,9 +122,20 @@ function setEnumerationUnits(Washington, map, path, colorScale){
           return "Washington " + d.properties.Name;
       })
       .attr("d", path)
-      .style("fill", function(d){
-          return colorScale(d.properties[expressed]);
-      });
+      .style("fill", function(d) {
+          return choropleth(d.properties, colorScale);
+      })
+      .on("mouseover", function(d){
+            highlight(d.properties);
+      })
+      .on("mouseout", function(d){
+            dehighlight(d.properties);
+      })
+      .on("mousemove", moveLabel);
+
+
+      var desc = counties.append("desc")
+       .text('{"stroke": "#000", "stroke-width": "0.5px"}');
 };
 
 //function to create color scale generator
@@ -139,44 +149,174 @@ function makeColorScale(data){
     return colorScale;
 };
 
-// //function to create a dropdown menu for attribute selection
-// function createDropdown(Washington_Complete_Immunizations){
-//     //add select element
-//     var dropdown = d3.select("body")
-//         .append("select")
-//         .attr("class", "dropdown")
-//         .on("change", function(){
-//             changeAttribute(this.value, Washington_Complete_Immunizations)
-//         });
+//function to create a dropdown menu for attribute selection
+function createDropdown(Washington_Complete_Immunizations){
+    //add select element
+    var dropdown = d3.select("body")
+        .append("select")
+        .attr("class", "dropdown")
+        .on("change", function(){
+            changeAttribute(this.value, Washington_Complete_Immunizations)
+        });
+
+    //add initial option
+    var titleOption = dropdown.append("option")
+        .attr("class", "titleOption")
+        .attr("disabled", "true")
+        .text("Select Attribute");
+
+    //add attribute name options
+    var attrOptions = dropdown.selectAll("attrOptions")
+        .data(DataArray)
+        .enter()
+        .append("option")
+        .attr("value", function(d){ return d })
+        .text(function(d){ return d });
+};
+
+//dropdown change listener handler
+function changeAttribute(attribute, Washington_Complete_Immunizations){
+    //change the expressed attribute
+    expressed = attribute;
+
+    //recreate the color scale
+    var colorScale = makeColorScale(Washington_Complete_Immunizations);
+
+    //recolor enumeration units
+    var counties = d3.selectAll(".counties")
+        .style("fill", function(d){
+            return choropleth(d.properties, colorScale)
+        });
+};
+
+//function to test for data value and return color
+function choropleth(props, colorScale){
+    //make sure attribute value is a number
+    var val = parseFloat(props[expressed]);
+    //if attribute value exists, assign a color; otherwise assign gray
+    if (val && val != NaN){
+        return colorScale(val);
+    } else {
+        return "#CCC";
+    };
+};
+
+//function to highlight enumeration units and bars
+function highlight(props){
+    //change stroke
+    var selected = d3.selectAll("#counties_" + props.Name)
+        .style({
+            "stroke": "black",
+            "stroke-width": "2"
+        });
+    setLabel(props);
+};
+
+//function to reset the element style on mouseout
+function dehighlight(props){
+    var selected = d3.selectAll("#counties_" + props.Name)
+        .style({
+            "stroke": function(){
+                return getStyle(this, "stroke")
+            },
+            "stroke-width": function(){
+                return getStyle(this, "stroke-width")
+            }
+        });
+
+    function getStyle(element, styleName){
+        var styleText = d3.select(element)
+            .select("desc")
+            .text();
+
+        var styleObject = JSON.parse(styleText);
+
+        return styleObject[styleName];
+    };
+    d3.select(".infolabel")
+        .remove();
+};
+
+//function to create dynamic label
+function setLabel(props){
+    //label content
+    var labelAttribute = "<h1>" + props[expressed] +
+        "</h1><b>" + expressed + "</b>";
+
+    //create info label div
+    var infolabel = d3.select("body")
+        .append("div")
+        .attr({
+            "class": "infolabel",
+            "id": props.Name + "_label"
+        })
+        .html(labelAttribute);
+
+    var countyName = infolabel.append("div")
+        .attr("class", "labelname")
+        .html(props.Name);
+};
+
+//function to move info label with mouse
+function moveLabel(){
+    //get width of label
+    var labelWidth = d3.select(".infolabel")
+        .node()
+        .getBoundingClientRect()
+        .width;
+
+    //use coordinates of mousemove event to set label coordinates
+    var x1 = d3.event.clientX + 10,
+        y1 = d3.event.clientY + 5,
+        x2 = d3.event.clientX - labelWidth - 10,
+        y2 = d3.event.clientY - 5;
+
+    //horizontal label coordinate, testing for overflow
+    var x = d3.event.clientX > window.innerWidth - labelWidth - 5 ? x2 : x1;
+    //vertical label coordinate, testing for overflow
+    var y = d3.event.clientY < 5 ? y2 : y1;
+
+    d3.select(".infolabel")
+        .style({
+            "left": x + "px",
+            "top": y + "px"
+        });
+};
 //
-//     //add initial option
-//     var titleOption = dropdown.append("option")
-//         .attr("class", "titleOption")
-//         .attr("disabled", "true")
-//         .text("Select Attribute");
+// //called from temporal filter function
+// function updateTimeline(min, max){
 //
-//     //add attribute name options
-//     var attrOptions = dropdown.selectAll("attrOptions")
-//         .data(DataArray)
-//         .enter()
-//         .append("option")
-//         .attr("value", function(d){ return d })
-//         .text(function(d){ return d });
-// };
+// 	$("#timeline").empty();
 //
-// //dropdown change listener handler
-// function changeAttribute(attribute, Washington_Complete_Immunizations){
-//     //change the expressed attribute
-//     expressed = attribute;
+// 	var height = $("#timeline").height();
+// 	var width = $("#timeline").width();
 //
-//     //recreate the color scale
-//     var colorScale = makeColorScale(Washington_Complete_Immunizations);
+//     //create a second svg element to hold the bar chart
+//     var timescale = d3.select("#timeline")
+//         .append("svg")
+//         .attr("width", width)
+//         .attr("height", height)
+//         .attr("class", "timescale");
 //
-//     //recolor enumeration units
-//     var counties = d3.selectAll(".counties")
-//         .style("fill", function(d){
-//             return choropleth(d.properties, colorScale)
-//         });
+// 	// define the x scale (horizontal)
+//    	var x = 0,
+//        	y = 100
+//
+//     var xScale = d3.time.scale()
+//         .domain([x, y])   // date values
+// 		.range([0, width]);   // map these the the chart width = total width minus padding at both sides
+//
+//     // define the y axis
+//     var xAxis = d3.svg.axis()
+//         .orient("bottom")
+//         .scale(xScale);
+//
+//     // draw x axis with labels and move to the bottom of the chart area
+//     timescale.append("g")
+//         .attr("class", "xaxis")   // give it a class so it can be used to select only xaxis labels  below
+//         .attr("transform", "translate(0," + (height/2) + ")")
+//         .call(xAxis);
+//
 // };
 
 })();
