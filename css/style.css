@@ -1,51 +1,25 @@
-.jumbotron {
-	background-color: #cdd2d4;
-	background-size: cover;
-	height: 100px;
-  padding-top: 5px;
-  text-align: center;
-}
+/* Style Sheet */
+h1{
 
-.description{
-  background-color: white;
-  text-align: center;
-	padding-bottom: 10px;
 }
+h2{
 
-#legend{
+}
+h3{
+
+}
+h4{
 
 }
 
-.Vaccine-PreventableDiseaseOutbreaks{
-	background-color: #cdd2d4;;
-	float: left;
-	width:125px;
-	height:100px;
-}
-
-.ChildhoodVaccinationLawsbyState{
-	background-color: #cdd2d4;;
-	float: left;
-	width:125px;
-	height:100px;
-}
-
-.ChildhoodVaccinationExemptionsbyState{
-	background-color: #cdd2d4;;
-	float: left;
-	width:125px;
-	height:100px;
-}
-
-.nymap{
-	float:left;
-	font-size: 12pt;
-	position: relative;
-
+#header{
+  height: 80px;
+  padding-top: 2px;
+  background-color: #cdd2d4;
 }
 
 
-/*.mapMain {
+.mapMain {
   background-color: white;
   border: medium solid #999;
   position: static;
@@ -56,4 +30,4 @@
     fill: #FFF;
     stroke: #CCC;
     stroke-width: .6px;
-}*/
+}
