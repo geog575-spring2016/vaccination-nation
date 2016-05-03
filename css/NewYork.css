@@ -19,7 +19,7 @@
 }
 
 .sequence-control-container {
-    width: 95px;
+    width: 100px;
     float: left;
     display: block;
 }
@@ -27,7 +27,7 @@
 /*button styles*/
 .btn {
     font-family: Lato, sans-serif;
-    width: 90px;
+    width: 95px;
     display: block;
     float: left;
     margin: 2px 1px;
