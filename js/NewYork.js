@@ -230,7 +230,9 @@ function getData(map){
 $(document).ready(createMap);
 
 //Pseudocode
-//1. Legend
+//1. Button clicked visual affordance
 //2. Change color scale
-//3. Check boundary cases for filter
+//3. Metadata
+//4. Z-index
+
 
