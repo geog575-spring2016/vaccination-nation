@@ -16,6 +16,8 @@
 		<link rel="stylesheet" href="css/NewYork.css"/>
 		<link rel="stylesheet" href="css/Washington.css"/>
 		<link rel="stylesheet" href="css/vaccine_coverage.css"/>
+		<link rel="stylesheet" href="CSS/bootstrap.min.css">
+		<link rel="stylesheet" href="CSS/bootstrap-theme.min.css">
 
 		<!--[if IE<9]>
 			<link rel="stylesheet" href="css/style.ie.css">
@@ -23,9 +25,39 @@
 	</head>
 
 	<body>
-		<!--put your initial page content here-->
-		<div id="header">
+
+		<div class="jumbotron">
 			<h1><center>Vacination Nation</center></h1>
+		</div>
+
+		<div class="description">
+      <p>The volatility of the debate over childhood vaccination has made the public curious, frustrated, and even anxious about the actual impact of vaccination policy on public health.</p>
+		</div>
+
+		<div id = "mapContainer" class="col-md-8"></div>
+
+		<div class="container">
+			<div id= "legend" class="col-md-2">
+				<div class="legend-menu">
+		            <div class="Vaccine-PreventableDiseaseOutbreaks">
+		                    Vaccine-Preventable Disease Outbreaks
+		            </div>
+		            <div class="ChildhoodVaccinationLawsbyState">
+		                    Childhood Vaccination Laws by State
+		            </div>
+		            <div class="ChildhoodVaccinationExemptionsbyState">
+		                    Childhood Vaccination Exemptions by State
+		            </div>
+        		</div>
+				</div>
+		</div>
+
+		<div class="nymap">
+			<left>Lacking a general overview of childhood vaccination policy and exemptions in the United States, concerned citizens have trouble gauging whether the
+cries of government overreach from anti-vaccination advocates have merit. Similarly, without a trustworthy visualization of the patterns of vaccine-preventable
+childhood illness outbreaks in the United States over time, members of the public are unable to assess the claims of public health experts warning about the risks of
+declining vaccine coverage. Indeed, without an easily navigable representation of vaccine coverage rates, our readers are unable to determine whether vaccination
+rates have actually even declined or whether there might be any discernible pattern to such a decline.</left>
 		</div>
 
 		<div id="content"></div>
@@ -44,6 +76,7 @@
 		<script type="text/javascript" src="lib/d3-queue.v2.min.js"></script>
 		<script type="text/javascript" src="lib/topojson.v1.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="lib/bootstrap.min.js"></script>
 		<!--<script type="text/javascript" src="js/Arizona.js"></script>-->
 		<div id="california">
 		<div id="CAheader">California</div>
@@ -61,9 +94,6 @@
 				</div>
 		</div>
 
-		<script type="text/javascript" src="js/vaccine_coverage.js"></script>
-		<script type="text/javascript" src="js/NewYork.js"></script>
-
 		<div id="washington-text">
 			<h4>"Washington Map Information"
 			</h4>
@@ -71,6 +101,10 @@
 		<div id="washington-map">
 			<script type="text/javascript" src="js/Washington.js"></script>
 		</div>
+
+		<script type="text/javascript" src="js/vaccine_coverage.js"></script>
+
+		<script type="text/javascript" src="js/NewYork.js"></script>
 
 	</body>
 </html>
