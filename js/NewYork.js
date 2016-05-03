@@ -22,7 +22,7 @@ function createMap(){
 
     //restrict map boundaries    
     map.setMaxBounds([
-    [40.46, -75.08],
+    [40.46, -74.46],
     [40.99, -73.5]
     ]);
     
