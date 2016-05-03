@@ -13,10 +13,11 @@ h4{
 }
 
 #header{
-  height: 100px;
-  background-color: gray;
-  padding-top: 30px;
+  height: 80px;
+  padding-top: 2px;
+  background-color: #cdd2d4;
 }
+
 
 .mapMain {
   background-color: white;
