@@ -20,14 +20,14 @@ h4{
 
 
 .mapMain {
-  background-color: white;
+  background-color: #cdd2d4;
   border: medium solid #999;
   position: static;
   width: 100;
 }
 
-.us {
-    fill: #FFF;
-    stroke: #CCC;
+.states {
+    fill: #000;
+    stroke: #fff;
     stroke-width: .6px;
 }
