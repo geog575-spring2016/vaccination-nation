@@ -1,10 +1,10 @@
 /* 575 boilerplate style.css */
 #california-map{
-  position: absolute;
+/*  position: absolute;*/
 }
 
 #california{
-  position: static;
+/*  position: static;*/
   margin: 180px 0 0 0;
 }
 

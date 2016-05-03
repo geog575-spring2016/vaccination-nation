@@ -68,7 +68,7 @@ function setMap(){
     var width= 520,
         height=570;
 
-    var map=d3.select("body")
+    var map=d3.select("#california")
         .append("svg")
         .attr("class","CAmap")
         .attr("width", width)

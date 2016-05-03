@@ -3,16 +3,18 @@
 
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300);
 
+/*
 #new-york-map {
-    height: 650px;
-    width: 650px;
+    height: 550px;
+    width: 600px;
     display: inline-block;
     float: right;
     border-color: #999;
     border-style: solid; 
-    margin-right: 36px;
+    margin-right: 0px;
     margin-bottom: 15px;
 }
+*/
 
 .leaflet-popup-content p {
     margin: 0.2em 0;

@@ -7,7 +7,7 @@ var displayAttribute = "Completely Immunized";
 
 function createMap(){
 //initialize the map on the "map" div with a given center aand zoom level
-    var map = L.map("new-york-map").setView([40.7, -74.03], 10);
+    var map = L.map("new-york-map").setView([40.93, -74.03], 10);
     
 //load and display a tile layer on the map
     var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {

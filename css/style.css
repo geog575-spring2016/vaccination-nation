@@ -13,17 +13,48 @@ h4{
 }
 
 #header{
-  height: 80px;
-  padding-top: 2px;
-  background-color: #cdd2d4;
+    height: 80px;
+    padding-top: 2px;
+    background-color: #cdd2d4;
+    width: 100%;
 }
 
 
-.mapMain {
-  background-color: #cdd2d4;
-  border: medium solid #999;
-  position: static;
-  width: 100;
+#mainMap {
+    background-color: #cdd2d4;
+    border: medium solid #999;
+/*    position: relative;*/
+    display: inline-block;
+    width: 100%;
+}
+
+#new-york-map {
+    height: 550px;
+    width: 600px;
+    display: inline-block;
+    float: right;
+    border-color: #999;
+    border-style: solid; 
+    margin-right: 0px;
+    margin-bottom: 15px;
+}
+
+#california {
+    display: inline-block;
+    float: left;
+    border-color: #999;
+    border-style: solid; 
+    margin-right: 0px;
+    margin-bottom: 15px;
+}
+
+#washington-text {
+    display: inline-block;
+    float: right;
+    border-color: #999;
+    border-style: solid; 
+    margin-right: 0px;
+    margin-bottom: 15px;
 }
 
 .states {
