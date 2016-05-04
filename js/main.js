@@ -1,3 +1,4 @@
+//$('#mainMap').insertBefore('#new-york-map');
 
 (function(){
 
@@ -22,7 +23,7 @@
         height = 500;
 
     //creates new svg container for the Main US Map
-    var mapMain = d3.select("body")
+    var mapMain = d3.select("#mainMap")
       .append("svg")
       .attr("class", "mapMain")
       .attr("width", width)
