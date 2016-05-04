@@ -8,6 +8,10 @@
 
   var expressed =DataArray[0];
 
+  var mainTitle =["Pertussis Cases","Mumps Cases","Measles Cases"];
+
+
+
   var radius = d3.scale.sqrt()
       .domain([0, 7195])
       .range([0,150]);
