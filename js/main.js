@@ -4,7 +4,13 @@
   var DataArray = ["cases1993","cases1994","cases1995","cases1996","cases1997","cases1998","cases1999","cases2000","cases2001",
     "cases2002","cases2003","cases2004","cases2005","cases2006","cases2007","cases2008","cases2009","cases2010","cases2011",
     "cases2012","cases2013"];
+
   var expressed =DataArray[0];
+
+  var radius = d3.scale.sqrt()
+      .domain([0, 7195])
+      .range([0,150]);
+
 
   //begins script when window loads
   window.onload = setMap();
@@ -33,11 +39,13 @@
 
     var q = d3_queue.queue();
       q.defer(d3.csv, "data/main-outbreaks/main-outbreaks-data-noNYC.csv") //loads attributes from csv
-      q.defer(d3.json, "data/main-outbreaks/usStates.topojson") //loads choropleth spatial data
+      q.defer(d3.json, "data/main-outbreaks/usStates.topojson")
+      q.defer(d3.json, "data/main-outbreaks/outbreaks-us.topojson")
+       //loads choropleth spatial data
       .await(callback);
 
 
-  function callback(error, csvData, us){
+  function callback(error, csvData, us, usCenters){
     var usStates = topojson.feature(us, us.objects.usStates).features;
     for (var i=0; i<csvData.length; i++){
         var csvRegion = csvData[i];
@@ -54,7 +62,7 @@
           }
         }
 
-        setEnumerationUnits(usStates, mapMain, path)
+        setEnumerationUnits(usStates, usCenters, mapMain, path)
 
     }
 };
@@ -75,7 +83,7 @@
   //   //return usStates;
   // };
 
-  function setEnumerationUnits(usStates, mapMain, path){
+  function setEnumerationUnits(usStates, usCenters, mapMain, path){
     var states = mapMain.selectAll(".states")
       .data(usStates)
       .enter()
@@ -84,7 +92,53 @@
       .attr("class", function(d){
         return "states " + d.properties.postal;
       })
-      .style("fill","blue")
+      .style("fill","white")
+      .style("stroke","grey")
+
+      var centroids=mapMain.selectAll(".symbol")
+          .data(usCenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
+        .enter().append("path")
+          .attr("d",path)
+          .attr("class",function(d){
+
+              return "circle "+d.properties.disease;
+          })
+          .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
+          .style({'fill':'orange',
+                  'stroke':'black',
+                  'fill-opacity':.4})
+
+        //TRYING TO FIGURE OUT HOW TO CHANGE BASED ON PATH, ONLY COLORS CIRCLES BLUE RIGH NOW
+
+          //function(d){return assignColor(d.properties)})
+
+        // function assignColor(centroids,mapMain){
+        //     var centroids=mapMain.selectAll(".symbol")
+        //         .data(usCenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
+        //         .enter().append("path")
+        //           .attr("d",path)
+        //           .attr("class",function(d){
+        //             return "circle "+d.properties.disease;
+        //           })
+        //
+        //     if("class","circle Mumps"){
+        //         centroids.style('fill','blue')
+        //
+        //     }
+        //     else if("class","cirlce Pertussis"){
+        //         centroids.style('fill','yellow')
+        //     }
+        //     else if("class","circle Measles"){
+        //         centroids.style('fill','orange')
+        //
+        //     }
+        //
+        //   }
+
+            //
+            // .style({"fill": "orange",
+            //       "fill-opacity":0.5,
+            //       "stroke":"black"})
 
         //function(d){
         //return choropleth(d.properties, colorScale);
@@ -96,18 +150,8 @@
       //        .text('{"stroke":"white", "stroke-width":"1px"}');
       //
       //
-      // var centroids=map.selectAll(".symbol")
-      //     .data(usCenters.features.sort(function(a,b){return b.properties[expressed2]-a.properties[expressed2];}))
-      //   .enter().append("path")
-      //     .attr("d",path)
-      //     .attr("class",function(d){
-      //         return "circle"+d.properties.postal;
-      //     })
-      //     .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed2]);}))
-      //     .style({"fill": "orange",
-      //             "fill-opacity":0.5,
-      //             "stroke":"black"})
-      //   .remove();
+
+
   };
 
 
