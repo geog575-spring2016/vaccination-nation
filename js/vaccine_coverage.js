@@ -20,10 +20,7 @@
             .attr("height", height);
 
         //create projection for Washington State
-        var projection = d3.geo.albers()
-            .rotate([96, 0])
-            .center([-.6, 38.7])
-            .parallels([29.5, 45.5])
+        var projection = d3.geo.albersUsa()
             .scale(700)
             .translate([width / 2, height / 2])
 
@@ -39,20 +36,15 @@
   //function that calls our data
       function callback(error, csvData, us){
 
-          //translate the Counties topojson
-          var unitedStates = topojson.feature(us, us.objects.UnitedStates).features;
+        //translate the Counties topojson
+        var unitedStates = topojson.feature(us, us.objects.UnitedStates).features;
 
-          //add our usStates to the map
-          var states = map.selectAll(".states")
-            .data(unitedStates)
-            .enter()
-            .append("path")
-            .attr("class", function(d){
-                return "states " + d.properties.State;
-            })
+        var states = map.append("path")
+            .datum(unitedStates)
+            .attr("class", "state_")
             .attr("d", path);
 
-          //join csv food data to GeoJson enumeration units
+          //join csv food data to GeoJso3n enumeration units
           unitedStates = joinData(unitedStates, csvData);
 
           //creates the color scale
@@ -97,7 +89,7 @@ function setEnumerationUnits(unitedStates, map, path, colorScale){
             .enter()
             .append("path")
             .attr("class", function(d){
-                return "states" + d.properties.State;
+                return "states " + d.properties.State;
             })
             .attr("d", path)
             .style("fill", function(d){
@@ -105,26 +97,23 @@ function setEnumerationUnits(unitedStates, map, path, colorScale){
             })
             .on("mouseover", function(d){
                 highlight(d.properties);
-            });
+            })
+            .on("mouseout", function(d){
+            dehighlight(d.properties)
+            })
+            .on("mousemove", moveLabel);
 
-            // .on("mouseout", function(d){
-            // dehighlight(d.properties)
-            // })
-            // .on("mousemove", moveLabel);
-            //
-            // var desc = states.append("desc")
-            // .text('{"stroke": "#000", "stroke-width": "0.5px"}');
+            var desc = states.append("desc")
+            .text('{"stroke": "#000", "stroke-width": "0.5px"}');
 };
-
 
 //function to create color scale generator
 function makeColorScale(data){
     var colorClasses = [
-        "#D4B9DA",
-        "#C994C7",
-        "#DF65B0",
-        "#DD1C77",
-        "#980043"
+        "#d7191c",
+        "#fdae61",
+        "#abd9e9",
+        "#2c7bb6",
     ];
 
     //create color scale generator
@@ -150,7 +139,7 @@ function choropleth(props, colorScale){
     //make sure attribute value is a number
     var val = parseFloat(props[expressed]);
     //if attribute value exists, assign a color; otherwise assign gray
-    if (val && val != NaN){
+    if (val && val != 999){
         return colorScale(val);
     } else {
         return "#CCC";
@@ -162,9 +151,38 @@ function highlight(props){
     //change stroke
     var selected = d3.selectAll("." + props.State)
         .style({
-            "stroke": "blue",
+            "stroke": "black",
             "stroke-width": "2"
         });
+
+    setLabel(props);
+};
+
+//function to reset the element style on mouseout
+function dehighlight(props){
+    var selected = d3.selectAll("." + props.State)
+        .style({
+            "stroke": function(){
+                return getStyle(this, "stroke")
+            },
+            "stroke-width": function(){
+                return getStyle(this, "stroke-width")
+            }
+        });
+
+    function getStyle(element, styleName){
+        var styleText = d3.select(element)
+            .select("desc")
+            .text();
+
+        var styleObject = JSON.parse(styleText);
+
+        return styleObject[styleName];
+    };
+
+    //remove info label
+  	d3.select(".infolabel")
+  		.remove();
 };
 
 //function to create dynamic label
@@ -187,6 +205,30 @@ function setLabel(props){
 		.html(props.State);
 };
 
+//Example 2.8 line 1...function to move info label with mouse
+function moveLabel(){
+    //get width of label
+    var labelWidth = d3.select(".infolabel")
+        .node()
+        .getBoundingClientRect()
+        .width;
 
+    //use coordinates of mousemove event to set label coordinates
+    var x1 = d3.event.clientX + 10,
+        y1 = d3.event.clientY + 2000,
+        x2 = d3.event.clientX - labelWidth - 10,
+        y2 = d3.event.clientY + 25;
+
+    //horizontal label coordinate, testing for overflow
+    var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
+    //vertical label coordinate, testing for overflow
+    var y = d3.event.clientY < 75 ? y2 : y1;
+
+    d3.select(".infolabel")
+        .style({
+            "left": x + "px",
+            "top": y + "px"
+        });
+};
 
 })();
