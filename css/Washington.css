@@ -1,32 +1,9 @@
 /* Style Sheet */
 
-#washington-text{
-  height: 200px;
-	width: 50%;
-	border-width: 1px;
-	border: medium solid #999;
-	text-align: center;
-	padding-top: 0px;
-	padding-bottom: 10px;
-/*	position: absolute;*/
-	transform: translate(0px, 420px);
-	font-size: 14px;
-  background-color: white;
-}
-
-#washington-map{
-  
-}
-
-.map {
-  background-color: #cdd2d4;
-  border: medium solid #999;
-  stroke: white;
-  stroke-width: 1px;
-}
-
 .dropdown {
-    position: absolute;
+/*    position: absolute;*/
+    float: left;
+    display: block;
     top: 30px;
     left: 40px;
     z-index: 10;
@@ -36,6 +13,13 @@
     padding: 2px;
     border: 1px solid #999;
     box-shadow: 2px 2px 4px #999;
+}
+
+.map {
+  background-color: #dfe5e7;
+/*  border: medium solid #999;*/
+  stroke: white;
+  stroke-width: 1px;
 }
 
 option {
