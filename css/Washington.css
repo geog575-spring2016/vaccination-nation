@@ -46,9 +46,19 @@ option {
     line-height: 1em;
 }
 
-/*.range-slider {
+#panel {
+    width: 22%;
+    padding: 0px;
+    margin: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.range-slider {
     width: 68%;
-    color: white;
+    color: black;
 }
 
 #forward {
@@ -59,4 +69,25 @@ option {
 #reverse {
     float: left;
     transform: scale(.8);
-}*/
+}
+
+.sequence-control-container, .legend-control-container {
+	background-color: gray;
+  opacity: .6;
+	padding: 10px;
+	text-align: center;
+	border: solid gray 1px;
+	font-size: 1.5em;
+  font-family: 'Avenir', sans-serif;
+  border-radius: 5px;
+}
+
+#temporal-legend{
+  font-family: 'Avenir', sans-serif;
+}
+
+.button {
+    padding-right: 15%;
+    display: inline-flex;
+    float: right;
+}
