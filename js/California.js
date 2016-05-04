@@ -55,7 +55,8 @@ var radius = d3.scale.sqrt()
 // var startYear=2011,
 //     currenYear=startYear;
 
-var tooltip = d3.select("body").append("div")
+var tooltip = d3.select("#california-map").append("div")
+    .attr("class", "CAtoolTip")
 	.style({"position": "absolute",
           "margin":"5px",
 	      //   "z-index":"10",

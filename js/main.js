@@ -23,7 +23,7 @@
   function setMap(){
 
   	//map frame size. Adjusted so Map is responsive
-    var width = 960;
+    var width = 800;
         height = 500;
 
     //creates new svg container for the Main US Map
