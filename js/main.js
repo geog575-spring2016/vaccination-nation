@@ -174,6 +174,16 @@
       "stroke": "black",
       "stroke-width": "2"
     });
+
+     //   var infolabel = d3.selectAll("body"),append("div")
+  //     .attr("class", "infolabel")
+  //     .attr("id", properties.postal+properties.disease + "label")
+  //     .html(labelAttribute)
+  //     .append("div")
+  //     .attr("class", "labelname")
+  //     .html(labelName);
+  // };
+
   };
 
   function dehighlight(properties){
