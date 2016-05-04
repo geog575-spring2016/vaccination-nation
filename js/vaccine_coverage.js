@@ -52,8 +52,6 @@
 
           //add enumeration units to the map
           setEnumerationUnits(unitedStates, map, path, colorScale);
-
-          console.log(states)
       };
   };
 
@@ -99,17 +97,14 @@ function setEnumerationUnits(unitedStates, map, path, colorScale){
             })
             .on("mouseover", function(d){
                 highlight(d.properties);
-            });
+            })
+            .on("mouseout", function(d){
+            dehighlight(d.properties)
+            })
+            .on("mousemove", moveLabel);
 
-            // .on("mouseout", function(d){
-            // dehighlight(d.properties)
-            // })
-            // .on("mousemove", moveLabel);
-            //
-            // var desc = states.append("desc")
-            // .text('{"stroke": "#000", "stroke-width": "0.5px"}');
-
-            console.log(states)
+            var desc = states.append("desc")
+            .text('{"stroke": "#000", "stroke-width": "0.5px"}');
 };
 
 //function to create color scale generator
@@ -144,7 +139,7 @@ function choropleth(props, colorScale){
     //make sure attribute value is a number
     var val = parseFloat(props[expressed]);
     //if attribute value exists, assign a color; otherwise assign gray
-    if (val && val != NaN){
+    if (val && val != 999){
         return colorScale(val);
     } else {
         return "#CCC";
@@ -159,6 +154,35 @@ function highlight(props){
             "stroke": "black",
             "stroke-width": "2"
         });
+
+    setLabel(props);
+};
+
+//function to reset the element style on mouseout
+function dehighlight(props){
+    var selected = d3.selectAll("." + props.State)
+        .style({
+            "stroke": function(){
+                return getStyle(this, "stroke")
+            },
+            "stroke-width": function(){
+                return getStyle(this, "stroke-width")
+            }
+        });
+
+    function getStyle(element, styleName){
+        var styleText = d3.select(element)
+            .select("desc")
+            .text();
+
+        var styleObject = JSON.parse(styleText);
+
+        return styleObject[styleName];
+    };
+
+    //remove info label
+  	d3.select(".infolabel")
+  		.remove();
 };
 
 //function to create dynamic label
@@ -181,6 +205,30 @@ function setLabel(props){
 		.html(props.State);
 };
 
+//Example 2.8 line 1...function to move info label with mouse
+function moveLabel(){
+    //get width of label
+    var labelWidth = d3.select(".infolabel")
+        .node()
+        .getBoundingClientRect()
+        .width;
 
+    //use coordinates of mousemove event to set label coordinates
+    var x1 = d3.event.clientX + 10,
+        y1 = d3.event.clientY + 2000,
+        x2 = d3.event.clientX - labelWidth - 10,
+        y2 = d3.event.clientY + 25;
+
+    //horizontal label coordinate, testing for overflow
+    var x = d3.event.clientX > window.innerWidth - labelWidth - 20 ? x2 : x1;
+    //vertical label coordinate, testing for overflow
+    var y = d3.event.clientY < 75 ? y2 : y1;
+
+    d3.select(".infolabel")
+        .style({
+            "left": x + "px",
+            "top": y + "px"
+        });
+};
 
 })();
