@@ -170,20 +170,11 @@
   //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
   function highlight(properties){
     var selected = d3.selectAll("." + properties.postal+properties.disease)
-    .style({
-      "stroke": "black",
-      "stroke-width": "2"
+      .style({
+        "stroke": "black",
+        "stroke-width": "2"
     });
-
-     //   var infolabel = d3.selectAll("body"),append("div")
-  //     .attr("class", "infolabel")
-  //     .attr("id", properties.postal+properties.disease + "label")
-  //     .html(labelAttribute)
-  //     .append("div")
-  //     .attr("class", "labelname")
-  //     .html(labelName);
-  // };
-
+    setLabel(properties);
   };
 
   function dehighlight(properties){
@@ -194,5 +185,25 @@
       });
   };
 
+  function setLabel(properties){
+    var labelAttribute = "<h1>"+ properties[expressed]+ "<h1>"+ expressed;
+    var infolabel = d3.select("body")
+    .append("div")
+    .attr({
+      "class": "infolabel",
+      "id": properties.postal+properties.disease+ "_label"
+    })
+    .html(labelAttribute);
+  };
+
 
 })();
+
+
+
+
+
+
+
+
+
