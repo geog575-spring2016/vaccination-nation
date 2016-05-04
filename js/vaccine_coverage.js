@@ -13,7 +13,7 @@
             height = 400;
 
         //create new svg container for the map
-        var map = d3.select("body")
+        var map = d3.select("#mainMap2")
             .append("svg")
             .attr("class", "map")
             .attr("width", width)
@@ -192,7 +192,7 @@ function setLabel(props){
 		"</h1><b>" + expressed + "</b>";
 
 	//create info label div
-	var infolabel = d3.select("body")
+	var infolabel = d3.select("#mainMap2")
 		.append("div")
 		.attr({
 			"class": "infolabel",
@@ -215,7 +215,7 @@ function moveLabel(){
 
     //use coordinates of mousemove event to set label coordinates
     var x1 = d3.event.clientX + 10,
-        y1 = d3.event.clientY + 2000,
+        y1 = d3.event.clientY + 400,
         x2 = d3.event.clientX - labelWidth - 10,
         y2 = d3.event.clientY + 25;
 
