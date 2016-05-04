@@ -31,6 +31,10 @@
   border: thin solid #999;
 }
 
+.CAtoolTip {
+    font-size: 0.8em;
+}
+
 /*
 #CAtext{
   float: right;
