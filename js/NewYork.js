@@ -135,7 +135,7 @@ function createFilterControl(map){
         
         onAdd: function(map){
             //create the control container with my control class name
-            var container = L.DomUtil.create("div", "sequence-control-container");
+            var container = L.DomUtil.create("div", "sequence-control-container-ny");
             
             //create button elements
             $(container).append('<button type="button" class="btn under65">Under 65%<br>(14 Schools)</button>');

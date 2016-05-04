@@ -22,10 +22,17 @@
     margin: 0.2em 0;
 }
 
-.sequence-control-container {
+.sequence-control-container-ny {
     width: 100px;
     float: left;
     display: block;
+    background-color: rgba(128, 128, 128, 0.6);
+	padding: 10px;
+	text-align: center;
+	border: solid gray 1px;
+	font-size: 1.5em;
+  font-family: 'Avenir', sans-serif;
+  border-radius: 5px;
 }
 
 /*button styles*/
