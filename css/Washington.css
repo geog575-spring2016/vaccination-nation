@@ -1,21 +1,7 @@
 /* Style Sheet */
 
-#washington-text{
-  height: 200px;
-	width: 50%;
-	border-width: 1px;
-	border: medium solid #999;
-	text-align: center;
-	padding-top: 0px;
-	padding-bottom: 10px;
-	position: absolute;
-	transform: translate(0px, 420px);
-	font-size: 14px;
-  background-color: white;
-}
-
 #washington-map{
-  
+
 }
 
 .map {
@@ -59,3 +45,18 @@ option {
     display: inline-block;
     line-height: 1em;
 }
+
+/*.range-slider {
+    width: 68%;
+    color: white;
+}
+
+#forward {
+    transform: scale(.8);
+    float: right;
+}
+
+#reverse {
+    float: left;
+    transform: scale(.8);
+}*/

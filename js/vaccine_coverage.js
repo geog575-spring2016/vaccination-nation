@@ -20,10 +20,7 @@
             .attr("height", height);
 
         //create projection for Washington State
-        var projection = d3.geo.albers()
-            .rotate([96, 0])
-            .center([-.6, 38.7])
-            .parallels([29.5, 45.5])
+        var projection = d3.geo.albersUsa()
             .scale(700)
             .translate([width / 2, height / 2])
 
@@ -39,20 +36,15 @@
   //function that calls our data
       function callback(error, csvData, us){
 
-          //translate the Counties topojson
-          var unitedStates = topojson.feature(us, us.objects.UnitedStates).features;
+        //translate the Counties topojson
+        var unitedStates = topojson.feature(us, us.objects.UnitedStates).features;
 
-          //add our usStates to the map
-          var states = map.selectAll(".states")
-            .data(unitedStates)
-            .enter()
-            .append("path")
-            .attr("class", function(d){
-                return "states " + d.properties.State;
-            })
+        var states = map.append("path")
+            .datum(unitedStates)
+            .attr("class", "state_")
             .attr("d", path);
 
-          //join csv food data to GeoJson enumeration units
+          //join csv food data to GeoJso3n enumeration units
           unitedStates = joinData(unitedStates, csvData);
 
           //creates the color scale
@@ -60,6 +52,8 @@
 
           //add enumeration units to the map
           setEnumerationUnits(unitedStates, map, path, colorScale);
+
+          console.log(states)
       };
   };
 
@@ -97,7 +91,7 @@ function setEnumerationUnits(unitedStates, map, path, colorScale){
             .enter()
             .append("path")
             .attr("class", function(d){
-                return "states" + d.properties.State;
+                return "states " + d.properties.State;
             })
             .attr("d", path)
             .style("fill", function(d){
@@ -114,17 +108,17 @@ function setEnumerationUnits(unitedStates, map, path, colorScale){
             //
             // var desc = states.append("desc")
             // .text('{"stroke": "#000", "stroke-width": "0.5px"}');
-};
 
+            console.log(states)
+};
 
 //function to create color scale generator
 function makeColorScale(data){
     var colorClasses = [
-        "#D4B9DA",
-        "#C994C7",
-        "#DF65B0",
-        "#DD1C77",
-        "#980043"
+        "#d7191c",
+        "#fdae61",
+        "#abd9e9",
+        "#2c7bb6",
     ];
 
     //create color scale generator
@@ -162,7 +156,7 @@ function highlight(props){
     //change stroke
     var selected = d3.selectAll("." + props.State)
         .style({
-            "stroke": "blue",
+            "stroke": "black",
             "stroke-width": "2"
         });
 };

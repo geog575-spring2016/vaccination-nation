@@ -79,6 +79,10 @@ function setMap(){
         setEnumerationUnits(Washington, map, path, colorScale);
 
         createDropdown(Washington_Complete_Immunizations);
+
+        createSequenceControls(map, DataArray)
+
+        //createTimeline();
     };
 };
 //
@@ -142,7 +146,7 @@ function makeColorScale(data){
     //create color scale generator
     var colorScale = d3.scale.threshold()
         .domain([.75,.85,.95])
-        .range(['#d7191c','#fdae61','#a6d96a','#1a9641']);
+        .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
 
     return colorScale;
 };
@@ -280,5 +284,144 @@ function moveLabel(){
             "top": y + "px"
         });
 };
+
+// function createTimeline(){
+//     var w= 285;
+//     var h= 130;
+//     var svg= d3.select("body")
+//               .append("svg")
+//               .attr("width",w)
+//               .attr("height",h)
+//
+//     var year= svg.append("text")
+//         .attr("id","yearToggle")
+//         .attr("x",120)
+//         .attr("y",90)
+//         .attr("fill","black")
+//         .attr("font-size",24)
+//         .text("[Year]")
+//
+//     //container for all buttons
+//     var forwardButton= svg.append("g")
+//       .attr("id","allButtons")
+//
+//     //fontawesome button labels
+//     var forwardLabel= ['<', '>'];
+//
+//     var defaultColor= "#7777BB"
+//     var hoverColor= "#0000ff"
+//     var pressedColor= "#000077"
+//
+//     //groups for each button (which will hold a rect and text)
+//     var buttonGroups= forwardButton.selectAll("g.button")
+//       .data(forwardLabel)
+//       .enter()
+//       .append("g")
+//       .attr("class","button")
+//       .style("cursor","pointer")
+//       .on("click",function(d,i) {
+//           updateButtonColors(d3.select(this), d3.select(this.parentNode))
+//           d3.select("#yearToggle").text(expressed+1)
+//        })
+//        .on("mouseover", function() {
+//           if (d3.select(this).select("rect").attr("fill") != pressedColor) {
+//               d3.select(this)
+//                   .select("rect")
+//                   .attr("fill",hoverColor);
+//           }
+//        })
+//        .on("mouseout", function() {
+//           if (d3.select(this).select("rect").attr("fill") != pressedColor) {
+//               d3.select(this)
+//                   .select("rect")
+//                   .attr("fill",defaultColor);
+//             }
+//         })
+//
+//
+//       //button width and height
+//       var bWidth= 30; //button width
+//       var bHeight= 25; //button height
+//       var bSpace= 10; //space between buttons
+//       var x0= 10; //x offset
+//       var y0= 10; //y offset
+//
+//
+//       //adding a rect to each button group
+//       //sidenote: rx and ry give the rects rounded corners
+//       buttonGroups.append("rect")
+//                   .attr("class","buttonRect")
+//                   .attr("width",bWidth)
+//                   .attr("height",bHeight)
+//                   .attr("x",function(d,i) {
+//                       return x0+(bWidth+bSpace)*i;
+//                   })
+//                   .attr("y",y0)
+//                   .attr("rx",5)
+//                   .attr("ry",5)
+//                   .attr("fill", defaultColor)
+//
+//       //adding text to each button group, centered within the button rect
+//       buttonGroups.append("text")
+//                   .attr("class","buttonText")
+//                   .attr("font-family","FontAwesome")
+//                   .attr("x",function(d,i) {
+//                       return x0 + (bWidth+bSpace)*i + bWidth/2;
+//                   })
+//                   .attr("y",y0+bHeight/2)
+//                   .attr("text-anchor","middle")
+//                   .attr("dominant-baseline","central")
+//                   .attr("fill","white")
+//                   .text(function(d) {return d;})
+//
+//     function updateButtonColors(button, parent) {
+//       parent.selectAll("rect")
+//               .attr("fill", defaultColor)
+//
+//       button.select("rect")
+//               .attr("fill", pressedColor)
+//     };
+//
+//     // function updateButtonYear(button, parent){
+//     //   button.select("text")
+//     //       .attr("")
+//     //
+//     // }
+// };
+
+
+//this creates a sequence control to go through each year of our homicide data
+function createSequenceControls(map, DataArray){
+
+    //add in our skip and reverse buttons and the icons of the buttons
+    $('#panel').append('<button class="skip" id="reverse">Reverse</button>');
+    $('#panel').append('<button class="skip" id="forward">Skip</button>');
+    $('#reverse').html('<img src="img/reverse.png">');
+    $('#forward').html('<img src="img/forward.png">');
+
+    //click listener for buttons
+    $('.skip').click(function(){
+
+
+      //year increments or decrements depending on button clicked on if clicking skip or reverse
+      if ($(this).attr('id') == 'forward'){
+           expressed++;
+           //If we click past 2014(last attribute), it wraps around to first attribute
+           expressed = expressed > 6 ? 0 : expressed;
+      } else if ($(this).attr('id') == 'reverse'){
+           expressed--;
+           //If past the first attribute, wrap around to last attribute
+           expressed = expressed < 0 ? 6 : expressed;
+         };
+      //updates slider
+      $('.range-slider').val(expressed);
+
+    });
+};
+
+
+
+
+
 
 })();
