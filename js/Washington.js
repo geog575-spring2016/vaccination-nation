@@ -24,7 +24,7 @@ function setMap(){
         height = 350;
 
     //create new svg container for the map
-    var map = d3.select("body")
+    var map = d3.select("#washington-map")
         .append("svg")
         .attr("class", "map")
         .attr("width", width)
@@ -152,7 +152,7 @@ function makeColorScale(data){
 //function to create a dropdown menu for attribute selection
 function createDropdown(Washington_Complete_Immunizations){
     //add select element
-    var dropdown = d3.select("body")
+    var dropdown = d3.select("#washington-map")
         .append("select")
         .attr("class", "dropdown")
         .on("change", function(){

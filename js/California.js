@@ -66,9 +66,9 @@ window.onload=setMap();
 function setMap(){
 
     var width= 520,
-        height=570;
+        height=500;
 
-    var map=d3.select("body")
+    var map=d3.select("#california-map")
         .append("svg")
         .attr("class","CAmap")
         .attr("width", width)
@@ -76,7 +76,7 @@ function setMap(){
 
     var  projection = d3.geo.mercator()
 			.scale(1120 * 2)
-			.center([-119, 37.9])
+			.center([-119, 37.4])
 			.translate([width/2, height/2]);
 
     var path=d3.geo.path()

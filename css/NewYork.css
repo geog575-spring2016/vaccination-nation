@@ -1,18 +1,22 @@
 /* NYC Private School Vaccination Style Sheet */
-/*Code by Adam Mandelman*/
+/* by Adam Mandelman                          */
+/*      (                      )    */
+/*      |\    _,--------._    / |   */
+/*      | `.,'            `. /  |   */
+/*      `  '              ,-'   '   */
+/*       \/_         _   (     /    */
+/*      (,-.`.    ,',-.`. `__,'     */
+/*       |/#\ ),-','#\`= ,'.` |     */
+/*       `._/)  -'.\_,'   ) ))|     */
+/*       /  (_.)\     .   -'//      */
+/*      (  /\____/\    ) )`'\       */
+/*       \ |V----V||  ' ,    \      */
+/*        |`- -- -'   ,'   \  \     */
+/*  __    |         .'    \ \  `._, */
+/*    `.__,`---^---'       \ ` -'   */
+/*       -.______  \ . /  ______,-  */
+/*               `.     ,'          */
 
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
-
-#new-york-map {
-    height: 650px;
-    width: 650px;
-    display: inline-block;
-    float: right;
-    border-color: #999;
-    border-style: solid; 
-    margin-right: 36px;
-    margin-bottom: 15px;
-}
 
 .leaflet-popup-content p {
     margin: 0.2em 0;

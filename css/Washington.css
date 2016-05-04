@@ -1,8 +1,5 @@
 /* Style Sheet */
 
-#washington-map{
-
-}
 
 .map {
   background-color: #cdd2d4;
@@ -12,7 +9,9 @@
 }
 
 .dropdown {
-    position: absolute;
+/*    position: absolute;*/
+    float: left;
+    display: block;
     top: 30px;
     left: 40px;
     z-index: 10;
@@ -22,6 +21,13 @@
     padding: 2px;
     border: 1px solid #999;
     box-shadow: 2px 2px 4px #999;
+}
+
+.map {
+  background-color: #dfe5e7;
+/*  border: medium solid #999;*/
+  stroke: white;
+  stroke-width: 1px;
 }
 
 option {

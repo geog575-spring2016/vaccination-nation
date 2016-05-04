@@ -1,8 +1,11 @@
 /* 575 boilerplate style.css */
+/*
 #california-map{
   position: absolute;
 }
+*/
 
+/*
 #california{
   position: static;
   margin: 180px 0 0 0;
@@ -16,6 +19,7 @@
   border: medium solid #999;
 
 }
+*/
 
 #propToolTips{
   color: green;
@@ -27,12 +31,15 @@
   border: thin solid #999;
 }
 
+/*
 #CAtext{
   float: right;
   border: medium solid #999;
   margin-top: 10px;
 }
+*/
 
+/*
 
 #radio{
   width:900px;
@@ -40,12 +47,14 @@
   position:relative;
   font-size:13px;
 }
+*/
 
-.CAmap{
-  background-color: #cdd2d4;
-  border: medium solid #999;
-  stroke-width: 1px;
-  stroke: white;
+.CAmap {
+    display: block;
+    background-color: #dfe5e7;
+    border: none;
+    stroke-width: 1px;
+    stroke: white;
 }
 
 .gratLines {
@@ -53,7 +62,6 @@
     stroke: green;
     stroke-width: 1px;
 }
-
 
 .CAchart {
     background-color: white;
