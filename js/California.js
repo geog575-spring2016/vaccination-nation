@@ -274,13 +274,24 @@ function highlight(props){
 };
 
 function highlightCircles(properties){
-  var selected=d3.selectAll("."+properties.geo_id+properties.geo_id)
+  var selected=d3.selectAll("."+properties.county+properties.geo_id)
       .style({
           "stroke":"#3e3e3e",
           "stroke-width":"3"
       })
       console.log(selected);
 };
+
+function dehighlightCircles(properties){
+  var selected=d3.selectAll("."+properties.county+properties.geo_id)
+      .style({
+        "stroke":"black",
+        "stroke-width":"1"
+      });
+
+}
+
+
 
 function dehighlight(props){
    var selected=d3.selectAll("."+props.adm)
@@ -407,7 +418,8 @@ function selectLayer(caliCounties, californiacenters, map, path){
           .enter().append("path")
             .attr("class","symbol")
             .attr("class", function(d){
-                  return "circle "+d.properties.geo_id +d.properties.geo_id;
+
+                  return "circle "+d.properties.county +d.properties.geo_id;
             })
             .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed2]);}))
             .style({"fill": "orange",
@@ -418,7 +430,10 @@ function selectLayer(caliCounties, californiacenters, map, path){
                   highlightCircles(d.properties)
           })
         	//.on("mousemove", function(){return tooltip.style("top", (event.pageY-50)+"px").style("left",(event.pageX+50)+"px");})
-        	.on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+        	.on("mouseout", function(d){
+                tooltip.style("visibility", "hidden");
+                dehighlightCircles(d.properties)
+            });
 
       }
   });
