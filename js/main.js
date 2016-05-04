@@ -67,7 +67,8 @@
           }
         }
 
-        setEnumerationUnits(usStates, usCenters, mapMain, path)
+        setEnumerationUnits(usStates, usCenters, mapMain, path);
+        setPropSymbols(usStates, usCenters, mapMain, path);
 
     }
 };
@@ -98,20 +99,30 @@
         return "states " + d.properties.postal;
       })
       .style("fill","white")
-      .style("stroke","grey")
+      .style("stroke","grey");
+   };
 
-      var centroids=mapMain.selectAll(".symbol")
-          .data(usCenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
-        .enter().append("path")
-          .attr("d",path)
-          .attr("class",function(d){
+  function setPropSymbols(usStates, usCenters, mapMain, path){
 
-              return "circle "+d.properties.disease;
-          })
-          .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
-          .style({'fill':'orange',
-                  'stroke':'black',
-                  'fill-opacity':.4})
+    var centroids=mapMain.selectAll(".symbol")
+      .data(usCenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
+      .enter().append("path")
+      .attr("d",path)
+      .attr("class",function(d){
+          return "circle "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
+      })
+      .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
+      .style({'fill':'orange',
+              'stroke':'black',
+              'fill-opacity':.4})
+      .on("mouseover", function(d){
+      highlight(d.properties);
+      })
+      .on("mouseout", function(d){
+      dehighlight(d.properties);
+      });
+  };
+          
 
         //TRYING TO FIGURE OUT HOW TO CHANGE BASED ON PATH, ONLY COLORS CIRCLES BLUE RIGH NOW
 
@@ -156,7 +167,21 @@
       //
       //
 
+  //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
+  function highlight(properties){
+    var selected = d3.selectAll("." + properties.postal+properties.disease)
+    .style({
+      "stroke": "black",
+      "stroke-width": "2"
+    });
+  };
 
+  function dehighlight(properties){
+    var selected = d3.selectAll("." + properties.postal+properties.disease)
+      .style({
+       "stroke": "black",
+       "stroke-width": "1"
+      });
   };
 
 
