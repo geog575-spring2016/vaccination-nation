@@ -158,18 +158,18 @@ function setEnumerationUnits(caliCounties, californiacenters, map, path){
              .text('{"stroke":"#aab4b5", "stroke-width":"1px"}');
 
 
-    var centroids=map.selectAll(".symbol")
-        .data(californiacenters.features.sort(function(a,b){return b.properties[expressed2]-a.properties[expressed2];}))
-      .enter().append("path")
-        .attr("d",path)
-        .attr("class",function(d){
-            return "circle"+d.properties.adm;
-        })
-        .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed2]);}))
-        .style({"fill": "orange",
-                "fill-opacity":0.5,
-                "stroke":"black"})
-      .remove();
+    // var centroids=map.selectAll(".symbol")
+    //     .data(californiacenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
+    //   .enter().append("path")
+    //     .attr("d",path)
+    //     .attr("class",function(d){
+    //         return "circle"+d.properties.postal;
+    //     })
+    //     .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
+    //     .style({"fill": "orange",
+    //             "fill-opacity":0.5,
+    //             "stroke":"black"})
+    //   .remove();
 };
 
 

@@ -1,5 +1,13 @@
 /* Style Sheet */
 
+
+.map {
+  background-color: #cdd2d4;
+  border: medium solid #999;
+  stroke: white;
+  stroke-width: 1px;
+}
+
 .dropdown {
 /*    position: absolute;*/
     float: left;
@@ -43,3 +51,18 @@ option {
     display: inline-block;
     line-height: 1em;
 }
+
+/*.range-slider {
+    width: 68%;
+    color: white;
+}
+
+#forward {
+    transform: scale(.8);
+    float: right;
+}
+
+#reverse {
+    float: left;
+    transform: scale(.8);
+}*/
