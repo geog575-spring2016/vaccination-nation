@@ -11,7 +11,7 @@
 */
 
 .dropdown {
-/*    position: absolute;*/
+    position: absolute;
     float: left;
     display: block;
     top: 30px;

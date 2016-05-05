@@ -23,22 +23,23 @@
 }
 
 .sequence-control-container-ny {
-    width: 100px;
+    width: 120px;
     float: left;
     display: block;
     background-color: rgba(128, 128, 128, 0.6);
 	padding: 10px;
 	text-align: center;
 	border: solid gray 1px;
-	font-size: 1.5em;
-  font-family: 'Avenir', sans-serif;
+/*	font-size: 1.2em;*/
+/*  font-family: 'Avenir', sans-serif;*/
   border-radius: 5px;
 }
 
 /*button styles*/
 .btn {
     font-family: Lato, sans-serif;
-    width: 95px;
+    font-size: 0.8em;
+    width: 120px;
     display: block;
     float: left;
     margin: 2px 1px;

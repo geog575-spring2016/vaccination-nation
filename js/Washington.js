@@ -75,7 +75,7 @@ function setMap(){
         //add enumeration units to the map
         setEnumerationUnits(Washington, map, path, colorScale);
 
-        createDropdown(Washington_Complete_Immunizations);
+//        createDropdown(Washington_Complete_Immunizations);
 
         createSequenceControls()
     };
