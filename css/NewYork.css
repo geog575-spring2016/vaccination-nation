@@ -23,7 +23,7 @@
 }
 
 .sequence-control-container-ny {
-    width: 120px;
+    width: 100px;
     float: left;
     display: block;
     background-color: rgba(128, 128, 128, 0.6);
@@ -38,8 +38,8 @@
 /*button styles*/
 .btn {
     font-family: Lato, sans-serif;
-    font-size: 0.8em;
-    width: 120px;
+    font-size: 1em;
+    width: 100px;
     display: block;
     float: left;
     margin: 2px 1px;

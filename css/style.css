@@ -89,6 +89,36 @@ h4{
     margin-bottom: 10px;
 }
 
+.sequence-buttons {
+    float: right;
+    width: 250px;
+/*    margin-top: -5px;*/
+}
+
+#stepForward {
+    background:url(/img/forward.png) no-repeat;
+    cursor:pointer;
+    width: 45px;
+    height: 30px;
+    border: none;
+}
+
+#stepBackward {
+    background:url(/img/reverse.png) no-repeat;
+    cursor:pointer;
+    width: 45px;
+    height: 30px;
+    border: none;
+}
+
+#yearLabel {
+    font-family: Lato, sans-serif;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 5px;
+}
+
 /*
 #washington-text{
   height: 200px;
@@ -127,7 +157,7 @@ h4{
 
 #california-map {
     width: 45%;
-    height: 630px;
+    height: 650px;
     background-color: #dfe5e7;
     display: inline-block;
     float: left;
