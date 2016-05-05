@@ -186,14 +186,18 @@
   };
 
   function setLabel(properties){
-    var labelAttribute = "<h1>"+ properties[expressed]+ "<h1>"+ expressed;
-    var infolabel = d3.select("body")
-    .append("div")
-    .attr({
-      "class": "infolabel",
-      "id": properties.postal+properties.disease+ "_label"
-    })
-    .html(labelAttribute);
+    var labelAttributeMain = "<h1>"+ properties.state+ "<h1>"+ expressed;
+    var infolabelMain = d3.select("body")
+      .append("div")
+      .attr({
+        "class": "infolabelMain",
+        "id": properties.state+ "_label"
+      })
+      .html(labelAttributeMain);
+    var propNameMain = infolabelMain.append("div")
+      .attr("class", "labelnameMain")
+      .html(properties.state);
+    console.log(infolabelMain);
   };
 
 

@@ -19,7 +19,15 @@ h3{
 h4{
 
 }
-
+.infolabelMain {
+    position: absolute;
+    height: 50px;
+    min-width: 100px;
+    color: #fff;
+    background-color: black;
+    border: solid thin #fff;
+    padding: 5px 10px;
+}
 #header{
     height: 80px;
     padding-top: 2px;
