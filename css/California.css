@@ -32,7 +32,15 @@
 }
 
 .CAtoolTip {
-    font-size: 0.8em;
+  color: black;
+  position: absolute;
+  height: 50px;
+  min-width: 100px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #fff;
+  padding: 5px 10px;
+  top: -75px;
 }
 
 /*

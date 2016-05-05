@@ -7,10 +7,10 @@ keyArray2=["measles10","measles11","measles12","measles13","measles14"]
 var expressed2=keyArray2[0];
 
 var labelTitles={
-    coverage1314:['Vaccination Coverage Rates 2013-2014'],
-    pbe1314:['Personal Belief Exemption Rates 2013-2014'],
-    coverage1516:['Vaccination Coverage Rates 2015-2016'],
-    pbe1516:['Personal Belief Exemption Rates 2015-2016'],
+    coverage1314:['Vaccination Coverage Rate 2013-2014'],
+    pbe1314:['Personal Belief Exemption Rate 2013-2014'],
+    coverage1516:['Vaccination Coverage Rate 2015-2016'],
+    pbe1516:['Personal Belief Exemption Rate 2015-2016'],
 }
 
 var labelTitles2={
@@ -23,15 +23,15 @@ var labelTitles2={
 
 var colorScaleVC=d3.scale.threshold()
     .domain([80,90,95])
-    .range(['#d7191c','#fdae61','#a6d96a','#1a9641']);
+    .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
 
 var colorScalepb13=d3.scale.threshold()
     .domain([2.82, 5.63, 13.45])
-    .range(['#1a9641','#a6d96a','#fdae61','#d7191c']);
+    .range(['#2c7bb6','#abd9e9','#fdae61','#d7191c']);
 
 var colorScalepb14=d3.scale.threshold()
     .domain([2.22,4.44,11.92])
-    .range(['#1a9641','#a6d96a','#fdae61','#d7191c']);
+    .range(['#2c7bb6','#abd9e9','#fdae61','#d7191c']);
 
 var width = 1200,
   height = 500,
@@ -56,13 +56,13 @@ var radius = d3.scale.sqrt()
 //     currenYear=startYear;
 
 var tooltip = d3.select("#california-map").append("div")
-    .attr("class", "CAtoolTip")
-	.style({"position": "absolute",
-          "margin":"5px",
-	      //   "z-index":"10",
-          "visibility":"hidden",
-          "background-color":"lightgrey",
-          "padding":"5px"})
+    .attr("class", "CAtoolTip");
+	// .style({"position": "absolute",
+  //         "color":"white",
+  //         "margin":"5px",
+  //         "visibility":"hidden",
+  //         "background-color":"black",
+  //         "padding":"5px"})
 
 window.onload=setMap();
 
@@ -127,7 +127,7 @@ function setMap(){
         setEnumerationUnits(caliCounties, californiacenters, map, path);
         selectLayer(caliCounties, californiacenters, map, path);
         //setSliderBar(caliCounties,map,path);
-        addLegend(path);
+        //addLegend(path);
 
         //setChart(dataCoverage, caliCounties, colorScale);
     }
@@ -322,7 +322,7 @@ function selectLayer(caliCounties, californiacenters, map, path){
 
        if (document.getElementById('none').checked) {
 
-              map.selectAll('.symbol').remove();
+              map.selectAll('.circle').remove();
               d3.selectAll('.counties').transition().duration(200)
                     .style({'fill':'#f2f2f1',
                             'stroke':'#aab4b5',
@@ -333,7 +333,7 @@ function selectLayer(caliCounties, californiacenters, map, path){
 
       }
        else if (document.getElementById('vc13').checked) {
-                map.selectAll('.symbol').remove();
+                map.selectAll('.circle').remove();
 
                 var counites=d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScaleVC(d.properties.coverage1314)})
@@ -341,10 +341,10 @@ function selectLayer(caliCounties, californiacenters, map, path){
 
                 var singleCounties=map.selectAll(".counties").data(caliCounties)
                     .on('mouseover', function(d){
-                      tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1314+":   "+"<b>"+d.properties.coverage1314+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>")
+                      tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1314+":   "+"<b>"+d.properties.coverage1314+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>")
                       highlight(d.properties)
                     })
-                  	//.on('mousemove', function(){tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+                  	.on('mousemove', function(){tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
                   	.on('mouseout', function(d){
                         tooltip.style("visibility", "hidden");
                         dehighlight(d.properties)
@@ -355,13 +355,13 @@ function selectLayer(caliCounties, californiacenters, map, path){
 
        else if (document.getElementById('pb13').checked) {
 
-                  map.selectAll('.symbol').remove();
+                  map.selectAll('.circle').remove();
                   d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScalepb13(d.properties.pbe1314)})
                     .style('stroke','white')
                   var singleCounties=map.selectAll(".counties").data(caliCounties)
                             .on('mouseover', function(d){
-                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1314+":   "+"<b>"+d.properties.pbe1314+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
+                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1314+":   "+"<b>"+d.properties.pbe1314+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
                                 highlight(d.properties)
                             })
                           	.on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
@@ -372,16 +372,16 @@ function selectLayer(caliCounties, californiacenters, map, path){
       }
 
        else if (document.getElementById('vc15').checked) {
-                  map.selectAll('.symbol').remove();
+                  map.selectAll('.circle').remove();
                   d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScaleVC(d.properties.coverage1516)})
                     .style('stroke','white');
                   var singleCounties=map.selectAll(".counties").data(caliCounties)
                             .on('mouseover', function(d){
-                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1516+":   "+"<b>"+d.properties.coverage1516+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
+                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1516+":   "+"<b>"+d.properties.coverage1516+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
                                 highlight(d.properties)
                             })
-                            //.on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+                            .on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
                             .on('mouseout', function(d){
                                 tooltip.style("visibility", "hidden");
                                 dehighlight(d.properties)
@@ -389,16 +389,16 @@ function selectLayer(caliCounties, californiacenters, map, path){
       }
 
        else if (document.getElementById('pb15').checked) {
-                  map.selectAll('.symbol').remove();
+                  map.selectAll('.circle').remove();
                   d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScalepb14(d.properties.pbe1516)})
                     .style('stroke','white');
                   var singleCounties=map.selectAll(".counties").data(caliCounties)
                             .on('mouseover', function(d){
-                               tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1516+":   "+"<b>"+d.properties.pbe1516+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
+                               tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1516+":   "+"<b>"+d.properties.pbe1516+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
                                highlight(d.properties)
                             })
-                            //.on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+                            .on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
                             .on('mouseout', function(d){
                                 tooltip.style("visibility", "hidden");
                                 dehighlight(d.properties)
@@ -417,7 +417,6 @@ function selectLayer(caliCounties, californiacenters, map, path){
         var centroids=map.selectAll(".symbol")
             .data(californiacenters.features.sort(function(a,b){return b.properties[expressed2]-a.properties[expressed2];}))
           .enter().append("path")
-            .attr("class","symbol")
             .attr("class", function(d){
 
                   return "circle "+d.properties.county +d.properties.geo_id;
@@ -427,10 +426,10 @@ function selectLayer(caliCounties, californiacenters, map, path){
                     "fill-opacity":0.5,
                     "stroke":"black"})
           .on("mouseover", function(d){
-                  tooltip.style("visibility", "visible").html("<l1>"+labelTitles2[expressed2]+":   "+"<b>"+d.properties[expressed2]+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
+                  tooltip.style("visibility", "visible").html("<l1>"+labelTitles2[expressed2]+":   "+"<b>"+d.properties[expressed2]+" cases"+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
                   highlightCircles(d.properties)
           })
-        	//.on("mousemove", function(){return tooltip.style("top", (event.pageY-50)+"px").style("left",(event.pageX+50)+"px");})
+        	.on("mousemove", function(){return tooltip.style("top", (event.pageY-50)+"px").style("left",(event.pageX+50)+"px");})
         	.on("mouseout", function(d){
                 tooltip.style("visibility", "hidden");
                 dehighlightCircles(d.properties)
