@@ -12,10 +12,12 @@
 //pseudo-global variables
 //variables for data join
 var DataArray = ["2004-2005",	"2005-2006", "2006-2007",	"2007-2008",	"2008-2009",	"2009-2010",	"2010-2011",	"2011-2012",	"2012-2013",	"2013-2014",	"2014-2015", "2015-2016"];
-var expressed =DataArray[0];
+var expressed = DataArray[0];
+var attributeIndex = 0
 
 //begin script when window loads
 window.onload = setMap();
+var Washington_Complete_Immunizations;
 
 //set up choropleth map
 function setMap(){
@@ -53,12 +55,7 @@ function setMap(){
 
         var Washington = topojson.feature(Washington, Washington.objects.Washington);
         Washington = Washington.features;
-
-        // //add Washington Counties to map
-        // var WashingtonCounties = map.append("path")
-        //     .datum(Washington)
-        //     .attr("class", "WashingtonCounties")
-        //     .attr("d", path);
+ 
 
         var counties = map.selectAll(".counties")
             .data(Washington)
@@ -80,7 +77,7 @@ function setMap(){
 
         createDropdown(Washington_Complete_Immunizations);
 
-        createSequenceControls(map, DataArray)
+        createSequenceControls()
     };
 };
 
@@ -175,15 +172,14 @@ function createDropdown(Washington_Complete_Immunizations){
 };
 
 //dropdown change listener handler
-function changeAttribute(attribute, Washington_Complete_Immunizations){
-    //change the expressed attribute
-    expressed = attribute;
+function changeAttribute(expressed, Washington_Complete_Immunizations){
 
+  console.log("changeAttribute")
     //recreate the color scale
     var colorScale = makeColorScale(Washington_Complete_Immunizations);
 
     //recolor enumeration units
-    var counties = d3.selectAll(".counties")
+    var counties = d3.selectAll(".Washington")
         .style("fill", function(d){
             return choropleth(d.properties, colorScale)
         });
@@ -192,9 +188,12 @@ function changeAttribute(attribute, Washington_Complete_Immunizations){
 //function to test for data value and return color
 function choropleth(props, colorScale){
     //make sure attribute value is a number
+    console.log(props)
     var val = parseFloat(props[expressed]);
+
+    console.log(val)
     //if attribute value exists, assign a color; otherwise assign gray
-    if (val && val != 999){
+    if ((val) && (val != 999)){
         return colorScale(val);
     } else {
         return "#CCC";
@@ -283,174 +282,41 @@ function moveLabel(){
         });
 };
 
-//this creates a sequence control to go through each year of our homicide data
-function createSequenceControls(map, attributes){
-    //create a range slider
-    $('#panel').append('<input class="range-slider" type="range">');
 
-    //set slider attributes (length, steps, etc.)
-    $('.range-slider').attr({
-      max: 6,
-      min: 0,
-      value: 0,
-      step: 1,
-    });
+function createSequenceControls(){
 
-    //add in our skip and reverse buttons and the icons of the buttons
-    $('#panel').append('<button class="skip" id="reverse">Reverse</button>');
-    $('#panel').append('<button class="skip" id="forward">Skip</button>');
-    $('#reverse').html('<img src="img/reverse.png">');
-    $('#forward').html('<img src="img/forward.png">');
+      var yearLabel = d3.select("#yearLabel")
+        .text(expressed)
 
-    //click listener for buttons
-    $('.skip').click(function(){
+        $("#stepForward").on("click", function(){
+            attributeIndex +=1
+              if(attributeIndex > DataArray.length){
+                attributeIndex = 0
+              }
 
-      //get the old index value
-      var index = $('.range-slider').val();
+            expressed = DataArray[attributeIndex]
 
-      //year increments or decrements depending on button clicked on if clicking skip or reverse
-      if ($(this).attr('id') == 'forward'){
-           index++;
-           //If we click past 2014(last attribute), it wraps around to first attribute
-           index = index > 6 ? 0 : index;
-      } else if ($(this).attr('id') == 'reverse'){
-           index--;
-           //If past the first attribute, wrap around to last attribute
-           index = index < 0 ? 6 : index;
-         };
-      //updates slider
-      $('.range-slider').val(index);
+            d3.select("#yearLabel")
+              .text(expressed)
 
-      //pass new attribute to update symbols
-      updatePropSymbols(map, attributes[index]);
-      updateLegend(map, attributes[index]);
-    });
+            changeAttribute(expressed, Washington_Complete_Immunizations)
+        })
 
-    //input listener for slider
-    $('.range-slider').on('input', function(){
-        //Step 6: get the new index value
-        var index = $(this).val();
+        $("#stepBackward").on("click", function(){
+            attributeIndex -=1
 
-        updatePropSymbols(map, attributes[index]);
-        updateLegend(map, attributes[0]);
-    });
-};
+            console.log(attributeIndex)
+              if(attributeIndex < 0){
+                attributeIndex = DataArray.length-1
+              }
 
+              expressed = DataArray[attributeIndex]
 
+              d3.select("#yearLabel")
+                .text(expressed)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// function createTimeline(){
-//     var w= 285;
-//     var h= 130;
-//     var svg= d3.select("body")
-//               .append("svg")
-//               .attr("width",w)
-//               .attr("height",h)
-//
-//     var year= svg.append("text")
-//         .attr("id","yearToggle")
-//         .attr("x",120)
-//         .attr("y",90)
-//         .attr("fill","black")
-//         .attr("font-size",24)
-//         .text("[Year]")
-//
-//     //container for all buttons
-//     var allButtons= svg.append("g")
-//         .attr("id","allButtons")
-//
-//     //fontawesome button labels
-//     var labels= ['<', '>'];
-//
-//     var defaultColor= "#7777BB"
-//     var hoverColor= "#0000ff"
-//     var pressedColor= "#000077"
-//
-//     //groups for each button (which will hold a rect and text)
-//     var buttonGroups= allButtons.selectAll("g.button")
-//       .data(labels)
-//       .enter()
-//       .append("g")
-//       .attr("class","button")
-//       .style("cursor","pointer")
-//       .on("click",function(d,i) {
-//           updateButtonColors(d3.select(this), d3.select(this.parentNode))
-//           d3.select("#yearToggle").text(expressed+1)
-//        })
-//        .on("mouseover", function() {
-//           if (d3.select(this).select("rect").attr("fill") != pressedColor) {
-//               d3.select(this)
-//                   .select("rect")
-//                   .attr("fill",hoverColor);
-//           }
-//        })
-//        .on("mouseout", function() {
-//           if (d3.select(this).select("rect").attr("fill") != pressedColor) {
-//               d3.select(this)
-//                   .select("rect")
-//                   .attr("fill",defaultColor);
-//             }
-//         })
-//
-//       //button width and height
-//       var bWidth= 30; //button width
-//       var bHeight= 25; //button height
-//       var bSpace= 10; //space between buttons
-//       var x0= 10; //x offset
-//       var y0= 10; //y offset
-//
-//
-//       //adding a rect to each button group
-//       //sidenote: rx and ry give the rects rounded corners
-//       buttonGroups.append("rect")
-//                   .attr("class","buttonRect")
-//                   .attr("width",bWidth)
-//                   .attr("height",bHeight)
-//                   .attr("x",function(d,i) {
-//                       return x0+(bWidth+bSpace)*i;
-//                   })
-//                   .attr("y",y0)
-//                   .attr("rx",5)
-//                   .attr("ry",5)
-//                   .attr("fill", defaultColor)
-//
-//       //adding text to each button group, centered within the button rect
-//       buttonGroups.append("text")
-//                   .attr("class","buttonText")
-//                   .attr("font-family","FontAwesome")
-//                   .attr("x",function(d,i) {
-//                       return x0 + (bWidth+bSpace)*i + bWidth/2;
-//                   })
-//                   .attr("y",y0+bHeight/2)
-//                   .attr("text-anchor","middle")
-//                   .attr("dominant-baseline","central")
-//                   .attr("fill","white")
-//                   .text(function(d) {return d;})
-//
-//     function updateButtonColors(button, parent) {
-//       parent.selectAll("rect")
-//               .attr("fill", defaultColor)
-//
-//       button.select("rect")
-//               .attr("fill", pressedColor)
-//     };
-
-
-
+              changeAttribute(expressed, Washington_Complete_Immunizations)
+        })
+}
 
 })();
