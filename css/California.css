@@ -43,6 +43,13 @@
   top: -75px;
 }
 
+.CAyearLabel{
+  padding-right: 15%;
+  display: inline-flex;
+  float: right;
+  height: 30px;
+  width: 50px;
+}
 /*
 #CAtext{
   float: right;
