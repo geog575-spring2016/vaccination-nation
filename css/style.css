@@ -92,6 +92,7 @@ h4{
 .sequence-buttons {
     float: right;
     width: 250px;
+    height: 40px;
 /*    margin-top: -5px;*/
 }
 
