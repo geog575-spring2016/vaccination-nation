@@ -36,7 +36,7 @@ h4{
     height: 80px;
     padding-top: 2px;
     border-color: #999;
-    border-style: solid; 
+    border-style: solid;
     background-color: #d1d6d8;
     width: 100%;
 }
@@ -51,6 +51,16 @@ h4{
     margin-top: -3px;
     margin-bottom: 10px;
 }
+
+#mainMap2 {
+    background-color: #dfe5e7;
+    border: medium solid #999;
+    display: inline-block;
+    width: 100%;
+    margin-top: -3px;
+    margin-bottom: 10px;
+}
+
 
 #mainMap-text{
     width: 100%;
@@ -68,6 +78,7 @@ h4{
     padding-left: 15px;
     margin-bottom: 10px;
 }
+
 
 #washington-text {
     height: 450px;
@@ -99,7 +110,7 @@ h4{
     display: inline-block;
     float: right;
     border-color: #999;
-    border-style: solid; 
+    border-style: solid;
     margin-right: 0px;
 /*    margin-bottom: 15px;*/
     margin-bottom: 10px
@@ -120,7 +131,7 @@ h4{
     display: inline-block;
     float: left;
     border-color: #999;
-    border-style: solid; 
+    border-style: solid;
 }
 
 #california-text {
@@ -130,7 +141,7 @@ h4{
     float: left;
 /*
     border-color: #999;
-    border-style: solid; 
+    border-style: solid;
 */
 }
 

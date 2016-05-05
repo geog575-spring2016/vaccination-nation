@@ -1,12 +1,14 @@
 /* Style Sheet */
 
 
+/*
 .map {
   background-color: #cdd2d4;
   border: medium solid #999;
   stroke: white;
   stroke-width: 1px;
 }
+*/
 
 .dropdown {
 /*    position: absolute;*/
@@ -62,38 +64,16 @@ option {
     vertical-align: top;
 }
 
-.range-slider {
-    width: 68%;
-    color: black;
-}
-
-#forward {
-    transform: scale(.8);
-    float: right;
-}
-
-#reverse {
-    float: left;
-    transform: scale(.8);
-}
-
-.sequence-control-container, .legend-control-container {
-	background-color: gray;
-  opacity: .6;
-	padding: 10px;
-	text-align: center;
-	border: solid gray 1px;
-	font-size: 1.5em;
-  font-family: 'Avenir', sans-serif;
-  border-radius: 5px;
-}
-
-#temporal-legend{
-  font-family: 'Avenir', sans-serif;
-}
 
 .button {
     padding-right: 15%;
     display: inline-flex;
     float: right;
+}
+.yearLabel {
+    padding-right: 15%;
+    display: inline-flex;
+    float: right;
+    height: 30px;
+    width: 50px;
 }

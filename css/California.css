@@ -31,6 +31,18 @@
   border: thin solid #999;
 }
 
+.CAtoolTip {
+  color: black;
+  position: absolute;
+  height: 50px;
+  min-width: 100px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #fff;
+  padding: 5px 10px;
+  top: -75px;
+}
+
 /*
 #CAtext{
   float: right;
@@ -48,6 +60,19 @@
   font-size:13px;
 }
 */
+
+#legend {
+    padding: 1.5em 0 0 1.5em;
+}
+
+li.key {
+    border-top-width: 15px;
+    border-top-style: solid;
+    font-size: .75em;
+    width: 10%;
+    padding-left: 0;
+    padding-right: 0;
+}
 
 .CAmap {
     display: block;

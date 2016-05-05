@@ -4,10 +4,12 @@
   background-color: #cdd2d4;
 }*/
 
+/*
 .map {
     background-color: white;
     border: medium solid #999;
 }
+*/
 
 .states {
   fill: black;
@@ -25,7 +27,7 @@
 
 .infolabel {
     position: absolute;
-    height: 100px;
+    height: 50px;
     min-width: 100px;
     color: #fff;
     background-color: #000;
