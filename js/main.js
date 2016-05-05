@@ -120,7 +120,11 @@
       })
       .on("mouseout", function(d){
       dehighlight(d.properties);
-      });
+      })
+      .on("mousemove", moveLabel);
+
+    var desc = centroids.append("desc")
+      .text('{"stroke": "#000", "stroke-width": "0.5px"}');
   };
           
 
@@ -170,10 +174,11 @@
   //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
   function highlight(properties){
     var selected = d3.selectAll("." + properties.postal+properties.disease)
-    .style({
-      "stroke": "black",
-      "stroke-width": "2"
+      .style({
+        "stroke": "black",
+        "stroke-width": "2"
     });
+    setLabel(properties);
   };
 
   function dehighlight(properties){
@@ -182,7 +187,52 @@
        "stroke": "black",
        "stroke-width": "1"
       });
+    d3.select(".infolabelMain")
+      .remove();
+  };
+
+  function setLabel(properties){
+    var labelAttributeMain = "<h4><b>"+ properties.state+ "</b>" +"</h4>"+ expressed;
+    var infolabelMain = d3.select("body")
+      .append("div")
+      .attr({
+        "class": "infolabelMain",
+        "id": properties.disease+ "_label"
+      })
+      .html(labelAttributeMain);
+    var propNameMain = infolabelMain.append("div")
+      .attr("class", "labelnameMain")
+      .html(properties.state);
+  };
+
+  function moveLabel(){
+    var labelWidthMain = d3.select(".infolabelMain")
+      .node()
+      .getBoundingClientRect()
+      .width;
+    var x1 = d3.event.clientX + 10,
+      y1 = d3.event.clientY -2000,
+      x2 = d3.event.clientX - labelWidthMain - 10,
+      y2 = d3.event.clientY -100;
+
+    var x = d3.event.clientX > window.innerWidth - labelWidthMain - 5 ? x2 : x1;
+    var y = d3.event.clientY < 5 ? y2 : y1;
+
+    d3.select(".infolabelMain")
+      .style({
+          "left": x + "px",
+          "top": y + "px"
+      });
   };
 
 
 })();
+
+
+
+
+
+
+
+
+
