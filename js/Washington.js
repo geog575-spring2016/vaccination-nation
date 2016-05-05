@@ -17,6 +17,7 @@ var attributeIndex = 0
 
 //begin script when window loads
 window.onload = setMap();
+var Washington_Complete_Immunizations;
 
 //set up choropleth map
 function setMap(){
@@ -54,12 +55,7 @@ function setMap(){
 
         var Washington = topojson.feature(Washington, Washington.objects.Washington);
         Washington = Washington.features;
-
-        // //add Washington Counties to map
-        // var WashingtonCounties = map.append("path")
-        //     .datum(Washington)
-        //     .attr("class", "WashingtonCounties")
-        //     .attr("d", path);
+ 
 
         var counties = map.selectAll(".counties")
             .data(Washington)
@@ -176,15 +172,14 @@ function createDropdown(Washington_Complete_Immunizations){
 };
 
 //dropdown change listener handler
-function changeAttribute(attribute, Washington_Complete_Immunizations){
-    //change the expressed attribute
-    expressed = attribute;
+function changeAttribute(expressed, Washington_Complete_Immunizations){
 
+  console.log("changeAttribute")
     //recreate the color scale
     var colorScale = makeColorScale(Washington_Complete_Immunizations);
 
     //recolor enumeration units
-    var counties = d3.selectAll(".counties")
+    var counties = d3.selectAll(".Washington")
         .style("fill", function(d){
             return choropleth(d.properties, colorScale)
         });
@@ -193,9 +188,12 @@ function changeAttribute(attribute, Washington_Complete_Immunizations){
 //function to test for data value and return color
 function choropleth(props, colorScale){
     //make sure attribute value is a number
+    console.log(props)
     var val = parseFloat(props[expressed]);
+
+    console.log(val)
     //if attribute value exists, assign a color; otherwise assign gray
-    if (val && val != 999){
+    if ((val) && (val != 999)){
         return colorScale(val);
     } else {
         return "#CCC";
@@ -300,6 +298,8 @@ function createSequenceControls(){
 
             d3.select("#yearLabel")
               .text(expressed)
+
+            changeAttribute(expressed, Washington_Complete_Immunizations)
         })
 
         $("#stepBackward").on("click", function(){
@@ -314,6 +314,8 @@ function createSequenceControls(){
 
               d3.select("#yearLabel")
                 .text(expressed)
+
+              changeAttribute(expressed, Washington_Complete_Immunizations)
         })
 }
 
