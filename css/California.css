@@ -31,6 +31,12 @@
   border: thin solid #999;
 }
 
+.radio {
+    padding-right: 15%;
+    display: inline-flex;
+    margin-left: 7px;
+}
+
 .CAtoolTip {
   color: black;
   position: absolute;
@@ -105,14 +111,6 @@ li.key {
 }
 
 
-#caliSlider{
-  position: absolute;
-  left: 50%;
-  margin-left: -300px;
-  bottom: 20px;
-  width: 600px;
-  height: 50px;
-};
 
 .chartBackground{
   fill: silver
