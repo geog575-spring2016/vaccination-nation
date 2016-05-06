@@ -55,7 +55,7 @@ function setMap(){
 
         var Washington = topojson.feature(Washington, Washington.objects.Washington);
         Washington = Washington.features;
- 
+
 
         var counties = map.selectAll(".counties")
             .data(Washington)
@@ -188,10 +188,10 @@ function changeAttribute(expressed, Washington_Complete_Immunizations){
 //function to test for data value and return color
 function choropleth(props, colorScale){
     //make sure attribute value is a number
-    console.log(props)
+    //console.log(props)
     var val = parseFloat(props[expressed]);
 
-    console.log(val)
+    //console.log(val)
     //if attribute value exists, assign a color; otherwise assign gray
     if ((val) && (val != 999)){
         return colorScale(val);
@@ -305,7 +305,7 @@ function createSequenceControls(){
         $("#stepBackward").on("click", function(){
             attributeIndex -=1
 
-            console.log(attributeIndex)
+            //console.log(attributeIndex)
               if(attributeIndex < 0){
                 attributeIndex = DataArray.length-1
               }
