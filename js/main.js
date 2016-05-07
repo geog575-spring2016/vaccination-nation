@@ -73,22 +73,6 @@
     }
 };
 
-
-  //writes a function to join the data from the csv and geojson
-
-  //         var geojsonProps = usStates[a].properties;
-  //         var geojsonKey = geojsonProps.postal;
-  //           if (geojsonKey == csvKey){
-  //             DataArray.forEach(function(attr){
-  //               var val = parseFloat(csvRegion[attr]);
-  //               geojsonProps[attr] = val;
-  //             });
-  //           };
-  //       };
-  //   };
-  //   //return usStates;
-  // };
-
   function setEnumerationUnits(usStates, usCenters, mapMain, path){
     var states = mapMain.selectAll(".states")
       .data(usStates)
@@ -192,8 +176,8 @@
   };
 
   function setLabel(properties){
-    var labelAttributeMain = "<h4><b>"+ properties.state+ "</b>" +"</h4>"+ expressed;
-    var infolabelMain = d3.select("body")
+    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.states;
+    var infolabelMain = d3.select("body") 
       .append("div")
       .attr({
         "class": "infolabelMain",
@@ -202,7 +186,7 @@
       .html(labelAttributeMain);
     var propNameMain = infolabelMain.append("div")
       .attr("class", "labelnameMain")
-      .html(properties.state);
+      .html(properties.disease);
   };
 
   function moveLabel(){
@@ -211,9 +195,9 @@
       .getBoundingClientRect()
       .width;
     var x1 = d3.event.clientX + 10,
-      y1 = d3.event.clientY -2000,
-      x2 = d3.event.clientX - labelWidthMain - 10,
-      y2 = d3.event.clientY -100;
+        y1 = d3.event.clientY + 10,
+        x2 = d3.event.clientX - labelWidthMain - 10,
+        y2 = d3.event.clientY +25;
 
     var x = d3.event.clientX > window.innerWidth - labelWidthMain - 5 ? x2 : x1;
     var y = d3.event.clientY < 5 ? y2 : y1;
