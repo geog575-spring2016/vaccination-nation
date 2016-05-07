@@ -73,22 +73,6 @@
     }
 };
 
-
-  //writes a function to join the data from the csv and geojson
-
-  //         var geojsonProps = usStates[a].properties;
-  //         var geojsonKey = geojsonProps.postal;
-  //           if (geojsonKey == csvKey){
-  //             DataArray.forEach(function(attr){
-  //               var val = parseFloat(csvRegion[attr]);
-  //               geojsonProps[attr] = val;
-  //             });
-  //           };
-  //       };
-  //   };
-  //   //return usStates;
-  // };
-
   function setEnumerationUnits(usStates, usCenters, mapMain, path){
     var states = mapMain.selectAll(".states")
       .data(usStates)
