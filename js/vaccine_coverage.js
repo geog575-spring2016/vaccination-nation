@@ -30,7 +30,7 @@
         //use queue.js to parallelize asynchronous data loading
         d3_queue.queue()
             .defer(d3.csv, "data/vaccine_coverage/vaccine_coverage.csv")
-            .defer(d3.json, "data/vaccine_coverage/UnitedStates2.topojson") //load choropleth spatial data
+            .defer(d3.json, "data/main-outbreaks/usStates.topojson") //load choropleth spatial data
             .await(callback);
 
   //function that calls our data
