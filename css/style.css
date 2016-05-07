@@ -14,7 +14,6 @@ h2{
 }
 h3{
     text-align: center;
-
 }
 h4{
 
@@ -172,6 +171,8 @@ h4{
     height: 630px;
     display: inline-block;
     float: left;
+    margin-left: 10px;
+    text-align: justify;
 /*
     border-color: #999;
     border-style: solid;
