@@ -3,9 +3,9 @@
 var DataArray = ["code"];
 var expressed =DataArray[0];
 
-window.onload = setMap();
+window.onload = setMapExempt();
 
-	function setMap(){
+	function setMapExempt(){
 		var width = 800;
         height = 500;
 
@@ -28,7 +28,7 @@ window.onload = setMap();
 	      .await(callback);
 
 	    function callback(error, csvData, us){
-		    var usStates = topojson.feature(us, us.objects.usStates).features;
+		    var usaStates = topojson.feature(us, us.objects.usStates).features;
 		    for (var i=0; i<csvData.length; i++){
 		        var csvRegion = csvData[i];
 		        var csvKey = csvRegion.postal;
@@ -43,7 +43,16 @@ window.onload = setMap();
 			            }
 		            }
 		    }
+		    setEnumerationUnits(usaStates, mapMainExempt, path, colorClasses);
     	}
+	};//end of setMapExempt
+
+	function setEnumerationUnits(usaStates, mapMainExempt, path, colorClasses){
+
+	};
+
+	function makeColorScale(data){
+
 	};
 
 
