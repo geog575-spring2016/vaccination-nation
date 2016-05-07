@@ -1,15 +1,5 @@
 /* Style Sheet */
 
-
-/*
-.map {
-  background-color: #cdd2d4;
-  border: medium solid #999;
-  stroke: white;
-  stroke-width: 1px;
-}
-*/
-
 .dropdown {
     position: absolute;
     float: left;
@@ -26,10 +16,10 @@
 }
 
 .map {
-  background-color: #dfe5e7;
-/*  border: medium solid #999;*/
   stroke: white;
   stroke-width: 1px;
+  margin-left: 20%;
+  margin-right: 25%;
 }
 
 option {

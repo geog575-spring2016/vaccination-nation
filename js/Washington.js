@@ -55,9 +55,9 @@ function setMap(){
 
         var Washington = topojson.feature(Washington, Washington.objects.Washington);
         Washington = Washington.features;
- 
 
-        var counties = map.selectAll(".counties")
+
+        var Washingtoncounties = map.selectAll(".Washingtoncounties")
             .data(Washington)
             .enter()
             .append("path")
@@ -111,7 +111,7 @@ function joinData(Washington, Washington_Complete_Immunizations){
 
 function setEnumerationUnits(Washington, map, path, colorScale){
   //add Washington Counties to map
-  var counties = map.selectAll(".counties")
+  var Washingtoncounties = map.selectAll(".Washingtoncounties")
       .data(Washington)
       .enter()
       .append("path")
@@ -131,7 +131,7 @@ function setEnumerationUnits(Washington, map, path, colorScale){
       .on("mousemove", moveLabel);
 
 
-      var desc = counties.append("desc")
+      var desc = Washingtoncounties.append("desc")
        .text('{"stroke": "#000", "stroke-width": "0.5px"}');
 };
 
@@ -179,7 +179,7 @@ function changeAttribute(expressed, Washington_Complete_Immunizations){
     var colorScale = makeColorScale(Washington_Complete_Immunizations);
 
     //recolor enumeration units
-    var counties = d3.selectAll(".Washington")
+    var Washingtoncounties = d3.selectAll(".Washington")
         .style("fill", function(d){
             return choropleth(d.properties, colorScale)
         });
@@ -188,10 +188,8 @@ function changeAttribute(expressed, Washington_Complete_Immunizations){
 //function to test for data value and return color
 function choropleth(props, colorScale){
     //make sure attribute value is a number
-    console.log(props)
     var val = parseFloat(props[expressed]);
 
-    console.log(val)
     //if attribute value exists, assign a color; otherwise assign gray
     if ((val) && (val != 999)){
         return colorScale(val);
@@ -203,7 +201,7 @@ function choropleth(props, colorScale){
 //function to highlight enumeration units and bars
 function highlight(props){
     //change stroke
-    var selected = d3.selectAll("#counties_" + props.Name)
+    var selected = d3.selectAll("#Washingtoncounties_" + props.Name)
         .style({
             "stroke": "black",
             "stroke-width": "2"
@@ -213,7 +211,7 @@ function highlight(props){
 
 //function to reset the element style on mouseout
 function dehighlight(props){
-    var selected = d3.selectAll("#counties_" + props.Name)
+    var selected = d3.selectAll("#Washingtoncounties_" + props.Name)
         .style({
             "stroke": function(){
                 return getStyle(this, "stroke")
