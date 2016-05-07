@@ -1,25 +1,6 @@
 /* 575 boilerplate style.css */
-/*
-#california-map{
-  position: absolute;
-}
-*/
 
-/*
-#california{
-  position: static;
-  margin: 180px 0 0 0;
-}
 
-#CAheader{
-
-  font-size: 20px;
-  font-family: sans-serif;
-  color: blue;
-  border: medium solid #999;
-
-}
-*/
 
 #propToolTips{
   color: green;
@@ -67,9 +48,13 @@
 }
 */
 
+
+
 #legend {
     padding: 1.5em 0 0 1.5em;
 }
+
+
 
 li.key {
     border-top-width: 15px;
