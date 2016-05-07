@@ -24,7 +24,7 @@ window.onload = setMap();
 
       	var q = d3_queue.queue();
 	      q.defer(d3.csv, "data/exemption/exemptions.csv") //loads attributes from csv
-	      q.defer(d3.json, "data/main-outbreaks/usStates.topojson")
+	      q.defer(d3.json, "data/exemption/usState.topojson")
 	      .await(callback);
 
 	    function callback(error, csvData, us){
@@ -43,11 +43,7 @@ window.onload = setMap();
 			            }
 		            }
 		    }
-
-
     	}
-	 		
-
 	};
 
 
