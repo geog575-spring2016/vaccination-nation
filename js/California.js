@@ -31,16 +31,20 @@ var sequencerTitles={
     measles14:['2014']
 }
 
+var legendLables={
+
+}
+
 var colorScaleVC=d3.scale.threshold()
     .domain([80,90,95])
     .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
 
-var colorScalepb13=d3.scale.threshold()
-    .domain([2.82, 5.63, 13.45])
+var colorScalepb13=d3.scale.quantile()
+    .domain([0,21.26])
     .range(['#2c7bb6','#abd9e9','#fdae61','#d7191c']);
 
-var colorScalepb14=d3.scale.threshold()
-    .domain([2.22,4.44,11.92])
+var colorScalepb14=d3.scale.quantile()
+    .domain([0,21.26])
     .range(['#2c7bb6','#abd9e9','#fdae61','#d7191c']);
 
 var width = 1200,
@@ -62,8 +66,23 @@ var radius = d3.scale.sqrt()
     .range([0,80]);
 
 
-// var startYear=2011,
-//     currenYear=startYear;
+  // var linearSize = d3.scale.linear().domain([0,10]).range([10, 30]);
+  //
+  // var svg = d3.select("svg");
+  //
+  // svg.append("e")
+  //   .attr("class", "legendSize")
+  //   .attr("transform", "translate(20, 40)");
+  //
+  // var legendSize = d3.legend.size()
+  //   .scale(linearSize)
+  //   .shape('circle')
+  //   .shapePadding(15)
+  //   .labelOffset(20)
+  //   .orient('horizontal');
+  //
+  // svg.select(".legendSize")
+  //   .call(legendSize);
 
 var tooltip = d3.select("#california-map").append("div")
     .attr("class", "CAtoolTip");
@@ -134,6 +153,8 @@ function setmap(){
             }
           }
         }
+       addVCLegend();
+      addPBELegend();
         //var colorScale=makeColorScale(dataCoverage);
         setEnumerationUnits(caliCounties, californiacenters, CAmap, path);
         selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path);
@@ -142,10 +163,10 @@ function setmap(){
         //CAcreateSequenceControls(caliCounties, californiacenters, properties, dataMeasles, CAmap, path)
         //CAcreateSequenceControls(properties)
         //setSliderBar(caliCounties,CAmap,path);
-        //addLegend(path);
 
         //setChart(dataCoverage, caliCounties, colorScale);
     }
+
 };
 
 function setEnumerationUnits(caliCounties, californiacenters, CAmap, path){
@@ -191,57 +212,193 @@ function setEnumerationUnits(caliCounties, californiacenters, CAmap, path){
     //   .remove();
 };
 
-function addLegend(path){
+function addVCLegend(){
 
-// var svg = d3.select("svg");
-//
-// svg.append("g")
-//   .attr("class", "legendLinear")
-//   .attr("transform", "translate(20,20)");
-//
-// var legendLinear = d3.legend.color()
-//   .shapeWidth(30)
-//   .orient('horizontal')
-//   .scale(colorScaleVC);
-//
-// svg.select(".legendLinear")
-//   .call(legendLinear);
-  var x=d3.scale.linear()
-        .domain([0,1])
-        .range([0, 1]);
+  //var width = 960,
+    //  height = 500,
+  var boxmargin = 4,
+      lineheight = 30,
+      keyheight = 20,
+      keywidth = 40,
+      boxwidth = 3.5 * keywidth,
+      formatPercent = d3.format(".0%");
 
-  var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .tickSize(20)
-    .tickValues(colorScaleVC.domain())
-    .tickFormat(function(d) { return d === .5 ? formatPercent(d) : formatNumber(100 * d); });
+  var margin = { "left": 160, "top": 80 };
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+  var legendcolors = ['#2c7bb6','#abd9e9','#fdae61','#d7191c'];
 
-var g = svg.append("g")
-    .attr("class", "key")
-    .attr("transform", "translate(" + (width - 240) / 2 + "," + height / 2 + ")");
+  var title = ['Coverage Rates'],
+      titleheight = title.length*lineheight + boxmargin;
 
-g.selectAll("rect")
-    .data(colorScaleVC.range().CAmap(function(color) {
-      var d = colorScaleVC.invertExtent(color);
+  var x = d3.scale.quantile()
+        .domain([0,1]);
+
+    var threshold = d3.scale.threshold()
+        .domain([80,90,95,100])
+        .range(legendcolors);
+    var ranges = threshold.range().length;
+
+    // return quantize thresholds for the key
+    var qrange = function(max, num) {
+        var a = [];
+        for (var i=0; i<num; i++) {
+            a.push(i*max/num);
+        }
+        return a;
+    }
+
+    var svg = d3.select("#california-legend-vc").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        //.remove();
+
+    // make legend
+    var legend = svg.append("g")
+        .attr("transform", "translate ("+margin.left+","+margin.top+")")
+        .attr("class", "legend");
+
+    legend.selectAll("text")
+        .data(title)
+        .enter().append("text")
+        .attr("class", "CAlegend-title")
+        .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+        .text(function(d) { return d; })
+
+    // make legend box
+    var lb = legend.append("rect")
+        .attr("transform", "translate (0,"+titleheight+")")
+        .attr("class", "CAlegend-box")
+        .attr("width", boxwidth)
+        .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
+
+    // make quantized key legend items
+    var li = legend.append("g")
+        .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+        .attr("class", "CAlegend-items");
+
+    li.selectAll("rect")
+        .data(threshold.range().map(function(legendcolors) {
+          var d = threshold.invertExtent(legendcolors);
+          if (d[0] == null) d[0] = x.domain()[0];
+          //console.log(d);
+          //console.log(d[0]+" - "+d[1]+"%");
+          //if (d[1] == null) d[1] = x.domain()[1];
+          return d;
+        }))
+        .enter().append("rect")
+        .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
+        .attr("width", keywidth)
+        .attr("height", keyheight)
+        .style("fill", function(d) { return threshold(d[0]); });
+
+    li.selectAll("text")
+    .data(threshold.range().map(function(legendcolors) {
+      var d = threshold.invertExtent(legendcolors);
       if (d[0] == null) d[0] = x.domain()[0];
       if (d[1] == null) d[1] = x.domain()[1];
       return d;
-    }))
-  .enter().append("rect")
-    .attr("height", 8)
-    .attr("x", function(d) { return x(d[0]); })
-    .attr("width", function(d) { return x(d[1]) - x(d[0]); })
-    .style("fill", function(d) { return colorScaleVC(d[0]); });
+      }))
+        //.data(qrange(threshold.domain()[1], ranges))
+        .enter().append("text")
+        .attr("x", 48)
+        .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+        .text(function(d) { return (d[1]+" - "+d[0]+"%")})
 
-g.call(xAxis).append("text")
-    .attr("class", "caption")
-    .attr("y", -6)
-    .text("Legend");
+
+};
+
+function addPBELegend(){
+
+  //var width = 960,
+    //  height = 500,
+  var boxmargin = 4,
+      lineheight = 30,
+      keyheight = 20,
+      keywidth = 40,
+      boxwidth = 4.5 * keywidth,
+      formatPercent = d3.format(".0%");
+
+  var margin = { "left": 160, "top": 80 };
+
+  var legendcolors = ['#2c7bb6','#abd9e9','#fdae61','#d7191c'];
+
+  var title = ['Personal Belief Exemptions'],
+      titleheight = title.length*lineheight + boxmargin;
+
+  var x = d3.scale.quantile()
+        .domain([0,1]);
+
+    var quantile = d3.scale.quantile()
+        .domain([0,21.26])
+        .range(legendcolors);
+    var ranges = quantile.range().length;
+
+    // return quantize thresholds for the key
+    var qrange = function(max, num) {
+        var a = [];
+        for (var i=0; i<num; i++) {
+            a.push(i*max/num);
+        }
+        return a;
+    }
+
+    var svg = d3.select("#california-legend-pbe").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        //.remove();
+
+    // make legend
+    var legend = svg.append("g")
+        .attr("transform", "translate ("+margin.left+","+margin.top+")")
+        .attr("class", "legend");
+
+    legend.selectAll("text")
+        .data(title)
+        .enter().append("text")
+        .attr("class", "CAlegend-title")
+        .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+        .text(function(d) { return d; })
+
+    // make legend box
+    var lb = legend.append("rect")
+        .attr("transform", "translate (0,"+titleheight+")")
+        .attr("class", "CAlegend-box")
+        .attr("width", boxwidth)
+        .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
+
+    // make quantized key legend items
+    var li = legend.append("g")
+        .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+        .attr("class", "CAlegend-items");
+
+    li.selectAll("rect")
+        .data(quantile.range().map(function(legendcolors) {
+          var d = quantile.invertExtent(legendcolors);
+          if (d[0] == null) d[0] = x.domain()[0];
+          //console.log(d);
+          //console.log(d[0]+" - "+d[1]+"%");
+          //if (d[1] == null) d[1] = x.domain()[1];
+          return d;
+        }))
+        .enter().append("rect")
+        .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
+        .attr("width", keywidth)
+        .attr("height", keyheight)
+        .style("fill", function(d) { return quantile(d[0]); });
+
+    li.selectAll("text")
+    .data(quantile.range().map(function(legendcolors) {
+      var d = quantile.invertExtent(legendcolors);
+      if (d[0] == null) d[0] = x.domain()[0];
+      if (d[1] == null) d[1] = x.domain()[1];
+      return d;
+      }))
+        //.data(qrange(threshold.domain()[1], ranges))
+        .enter().append("text")
+        .attr("x", 48)
+        .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+        .text(function(d) { return d[0]+" - "+d[1]+"%"})
+
 
 };
 
@@ -400,6 +557,9 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
        if (document.getElementById('none').checked) {
 
               CAmap.selectAll('.circle').remove();
+              d3.select("#california-legend-vc").remove();
+              d3.select("#california-legend-pbe").remove();
+
               d3.selectAll('.counties').transition().duration(200)
                     .style({'fill':'#f2f2f1',
                             'stroke':'#aab4b5',
@@ -411,8 +571,9 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
 
       }
        else if (document.getElementById('vc13').checked) {
+                addVCLegend();
+                d3.select("california-legend-pbe").remove()
                 CAmap.selectAll('.circle').remove();
-
                 var counites=d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScaleVC(d.properties.coverage1314)})
                     .style('stroke','white')
@@ -433,7 +594,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
 
 
        else if (document.getElementById('pb13').checked) {
-
+                  addPBELegend();
+                  d3.select("#california-legend-vc").remove();
                   CAmap.selectAll('.circle').remove();
                   d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScalepb13(d.properties.pbe1314)})
@@ -452,6 +614,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
       }
 
        else if (document.getElementById('vc15').checked) {
+                  d3.select("california-legend-pbe").remove()
+                  addVCLegend();
                   CAmap.selectAll('.circle').remove();
                   d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScaleVC(d.properties.coverage1516)})
@@ -470,6 +634,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
       }
 
        else if (document.getElementById('pb15').checked) {
+                  addPBELegend();
+                  d3.select("#california-legend-vc").remove();
                   CAmap.selectAll('.circle').remove();
                   d3.selectAll('.counties').transition().duration(200)
                     .style('fill', function(d){return colorScalepb14(d.properties.pbe1516)})
@@ -489,7 +655,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
       }
 
       else if(document.getElementById('propsymbs').checked) {
-
+        d3.select("#california-legend-vc").remove();
+        d3.select("#california-legend-pbe").remove();
         d3.selectAll('.counties').transition().duration(200)
           .style({'fill': "#f2f2f1","stroke":"#aab4b5","stroke-width":1})
 
