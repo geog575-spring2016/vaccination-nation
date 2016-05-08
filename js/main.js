@@ -16,6 +16,7 @@
       .domain([0, 7195])
       .range([0,150]);
 
+  var stateName = ["Alaska","Alabama"];
 
   //begins script when window loads
   window.onload = setMap();
@@ -114,46 +115,46 @@
 
         //TRYING TO FIGURE OUT HOW TO CHANGE BASED ON PATH, ONLY COLORS CIRCLES BLUE RIGH NOW
 
-          //function(d){return assignColor(d.properties)})
+          // function(d){return assignColor(d.properties)})
 
         // function assignColor(centroids,mapMain){
         //     var centroids=mapMain.selectAll(".symbol")
-        //         .data(usCenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
+        //         .data(usCenters.features.sort(function(a,b){return properties[expressed]-properties[expressed];}))
         //         .enter().append("path")
         //           .attr("d",path)
         //           .attr("class",function(d){
-        //             return "circle "+d.properties.disease;
+        //             return "circle "+properties.disease;
         //           })
-        //
-        //     if("class","circle Mumps"){
+        
+        //     if("class","Mumps"){
         //         centroids.style('fill','blue')
-        //
+        
         //     }
-        //     else if("class","cirlce Pertussis"){
+        //     else if("class","Pertussis"){
         //         centroids.style('fill','yellow')
         //     }
-        //     else if("class","circle Measles"){
+        //     else if("class","Measles"){
         //         centroids.style('fill','orange')
-        //
+        
         //     }
-        //
-        //   }
+        
+        //   };
 
-            //
+            
             // .style({"fill": "orange",
             //       "fill-opacity":0.5,
             //       "stroke":"black"})
 
-        //function(d){
-        //return choropleth(d.properties, colorScale);
-      //});
+      //   function(d){
+      //   return choropleth(d.properties, colorScale);
+      // });
 
       // console.log(states);
-      //
+      
       // var desc=states.append("desc")
       //        .text('{"stroke":"white", "stroke-width":"1px"}');
-      //
-      //
+      
+      
 
   //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
   function highlight(properties){
@@ -176,7 +177,7 @@
   };
 
   function setLabel(properties){
-    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.states;
+    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.postal;
     var infolabelMain = d3.select("body") 
       .append("div")
       .attr({
