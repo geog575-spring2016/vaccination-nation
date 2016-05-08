@@ -75,15 +75,13 @@ h4{
 
 
 #washington-map{
-    display:inline-block;
     background-color: #dfe5e7;
     height: 400px;
     border: medium solid #999;
     margin-bottom: 10px;
     margin-left: 25%;
     margin-right: 25%
-
-}
+  }
 
 #washington-text {
     height: 450px;
