@@ -36,12 +36,12 @@ window.onload = setMapExempt();
 
 	    	//console.log("reach callback?");
 	    	var usStates = topojson.feature(us, us.objects.usaStates).features;
-	    	
+
 	    	var states = mapMainExempt.append("path")
 	    		.datum(usStates)
 	    		.attr("class","states")
 	    		.attr("d", path)
-
+				console.log(states);
 	    	usStates = joinData(usStates, csvData)
 		    setEnumerationUnitsExempt(usStates, mapMainExempt, path);
 		    var colorScale = makeColorScale(csvData);
@@ -56,10 +56,11 @@ window.onload = setMapExempt();
         for (var a=0; a<usStates.length; a++){
           var geojsonProps = usStates[a].properties;
           var geojsonKey = geojsonProps.postal;
-          
+
             if (geojsonKey == csvKey){
               attrArray.forEach(function(attr){
-                var val = parseFloat(csvRegion[attr]); 
+                var val = parseFloat(csvRegion[attr]);
+								console.log(val);
               });
             };
         };
@@ -71,16 +72,18 @@ window.onload = setMapExempt();
 	function setEnumerationUnitsExempt(usStates, mapMainExempt, path, colorScale){
 
 		var states = mapMainExempt.selectAll(".states")
-			.data(usaStates)
+			.data(usStates)
 			.enter()
 			.append("path")
 			.attr("d", path)
 			.attr("class", function(d){
 				return "states " + d.properties.postal;
 			})
-			.style("fill", function(d){
-				return choropleth(d.properties, colorScale)
+			.style("fill",
+			function(d){	return choropleth(d.properties);
+
 			});
+
 	};
 
 	function makeColorScale(csvData){
@@ -90,8 +93,8 @@ window.onload = setMapExempt();
 	};
 
 	function choropleth(props, colorScale){
+		console.log(props);
 		var value = (props[expressed]);
-		console.log(props.codes)
 
 		if (value == 1.00){
 			return "blue";
@@ -102,7 +105,7 @@ window.onload = setMapExempt();
 		};
 
 	}
-	
+
 
 
 
@@ -110,10 +113,3 @@ window.onload = setMapExempt();
 
 
 })();
-
-
-
-
-
-
-
