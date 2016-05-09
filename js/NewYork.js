@@ -1,4 +1,22 @@
 /* Vaccination in New York City Private Schools */
+/* by Adam Mandelman                          */
+/*      (                      )    */
+/*      |\    _,--------._    / |   */
+/*      | `.,'            `. /  |   */
+/*      `  '              ,-'   '   */
+/*       \/_         _   (     /    */
+/*      (,-.`.    ,',-.`. `__,'     */
+/*       |/#\ ),-','#\`= ,'.` |     */
+/*       `._/)  -'.\_,'   ) ))|     */
+/*       /  (_.)\     .   -'//      */
+/*      (  /\____/\    ) )`'\       */
+/*       \ |V----V||  ' ,    \      */
+/*        |`- -- -'   ,'   \  \     */
+/*  __    |         .'    \ \  `._, */
+/*    `.__,`---^---'       \ ` -'   */
+/*       -.______  \ . /  ______,-  */
+/*               `.     ,'          */
+
 
 //determine which attribute to visualize
 var attribute = "completely-immunized";
@@ -8,7 +26,7 @@ var displayAttribute = "Completely Immunized";
 function createMap(){
 //initialize the map on the "map" div with a given center aand zoom level
     var map = L.map("new-york-map", {
-        center: [40.93, -74.03], 
+        center: [40, -74.03], 
         zoom: 10,
         zoomControl: false
     });
