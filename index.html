@@ -34,7 +34,20 @@
 <!--        HEADER		-->
         <div id="header">
 			<h1><center>VacciNation</center></h1>
-		</div>
+			</div>
+
+<!--          MAIN MAP LEGEND -->
+
+      <div class="main-legend">
+				<div class="menu-inset" style="width:100px;height:218px;">
+		    <div class="menu-options">
+		        <div class="Preventable_Outbreaks" style="width:125px;height:53px;">
+		            Disease Preventable Outbreaks</div>
+		        <div class="Vaccination_Coverage" style="width:125px;height:53px;">
+		            Vaccination Coverage </div>
+		    </div>
+				<div class="menu-info">	</div>
+			</div>
 
 <!--        MAIN MAP-->
         <div id="mainMap"></div>
@@ -42,10 +55,10 @@
             <h3>Overview & Main Map Narrative</h3>
         </div>
 
-
 <!--        WASHINGTON-->
         <div id="washington-map">
 				<h3>Washington Map Info/Legend/Controls</h3>
+				<div class="WashingtonMap"></div>
 				<!--       	SEQUENCE BUTTONS-->
 							<div class="sequence-buttons">
 							<div class="button">
@@ -58,10 +71,12 @@
 									</button>
 							</div>
 							</div>
+							<div id="washington-legend"></div>
 				</div>
-        <div id="washington-text">
-            <h3>Washington Case Narrative</h3>
-        </div>
+				<div id="washington-text">
+						<br>Washington has one of the worst immunization histories in the United States. It accepts medical, religious, and personal/philosophical exemptions and has consistently been one of the top 10 states to report the most vaccine exemptions for children enrolled in kindergarten. Due to the culture, more parents are choosing to opt out of state immunization requirements. From 2015-2016, only 85% of children entering kindergarten in Washington were completely immunized. This is up from 2008-2009 where only 78.5% of children entering kindergarten were immunized, but it is still lower than 89.45% in 2003-2004.  </br>
+ 						<br>While the percent of children completely vaccinated might be lower than it was in the past, it certainly has improved since its low point from 2008-2009. This is because lawmakers have pushed for more funding and stricter bills that makes opting out of vaccinations more difficult. In 2010, Washington formed the Washington Vaccine Association. This nonprofit organization was formed by the state legislature and helps purchase vaccines and distribute them to providers for no charge. In 2011, Washington adopted a law that requires parents to obtain a licensed healthcare provider’s signature if they wish to exempt their children. Within the first year the legislation had already decreased exemption rates from 6.0% to 4.5%. </br>
+						<br> 	While these are methods are helping improve vaccinations in Washington, the counties are still well below the average of recommend vaccinations. In May of 2015, Washington reintroduced a Bill that would eliminate personal belief and philosophical exemptions. However, this Bill is currently pending and is waiting for a vote. </br>
 
 <!--        NEW YORK-->
         <div id="new-york-map"></div>
@@ -74,27 +89,40 @@
 
 					<h3>California and the State of Improvements</h3>
 
+									<!--	<svg id="california-legend-vc" height="180px" width="138px" ></svg>
+
+										<svg id="california-legend-pbe" height="180px" width="138px"></svg> -->
+
+										<l id="options">
+										<label>Measles Outbreaks
+												<br><input type="Radio" name="map" id='propsymbs13' class ='radio' value="msls" />
+												2013
+												<br><input type="Radio" name="map" id='propsymbs14' class ='radio' value="msls" />
+												2014
+										</label>
+										<br>
+										<label>Personal Belief Exemptions
+												<br><input type="Radio" name="map" id='pb13'  class ='radio' value="pb13" />
+												2013-2014
+												<br><input type="Radio" name="map" id='pb15'  class ='radio' value="pb15" />
+												2015-2016
+
+										</label>
+										<br>
                     <label>Vaccine Coverage Rates
                         <br><input type="Radio" name="map" id='vc13'  class ='radio' value="vc13" />
                         2013-2014
 												<br><input type="Radio" name="map" id='vc15'  class ='radio' value="vc15" />
 												2015-2016
                     </label>
+										<label>
+												<br>None
+												<br><input type="Radio" name="map" id='none' class ='radio' value="none"  checked="checked" />
+										</label>
+									</l>
 
-                    <br>
-                    <label>Personal Belief Exemptions
-                        <br><input type="Radio" name="map" id='pb13'  class ='radio' value="pb13" />
-                        2013-2014
-                        <br><input type="Radio" name="map" id='pb15'  class ='radio' value="pb15" />
-                        2015-2016
-
-                    </label>
-
-                    <br>
-                    <label>Measles Outbreaks
-                        <br><input type="Radio" name="map" id='propsymbs' class ='radio' value="msls" />
-
-												<div class="sequence-buttons">
+													<!--
+														<div class="sequence-buttons">
 
 										<div class="button">
 												<button type="button" id="CAstepBackward">
@@ -106,17 +134,14 @@
 												</button>
 										</div>
 
+
 										</div>
-                    </label>
-
-										<label>
-												<br>None
-												<br><input type="Radio" name="map" id='none' class ='radio' value="none"  checked="checked" />
+											-->
 
 
-										</label>
+
+
         </div>
-
         <div id="california-text">
             <h3>what should this say?</h3>
 
@@ -154,11 +179,11 @@
 		<script type="text/javascript" src="lib/simple_statistics.min.js"></script>
 		<script type="text/javascript" src="lib/d3-queue.v2.min.js"></script>
 		<script type="text/javascript" src="lib/topojson.v1.min.js"></script>
-		<script type="tex/javascript" src="lib/d3-legend.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/Washington.js"></script>
         <script type="text/javascript" src="js/NewYork.js"></script>
         <script type="text/javascript" src="js/California.js"></script>
+
 		<script type="text/javascript" src="js/vaccine_coverage.js"></script>
 		<script type="text/javascript" src="js/exemptions.js"></script>
         <script type="text/javascript" src="lib/Leaflet.Sleep.js"></script>

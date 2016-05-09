@@ -1,57 +1,32 @@
 /* Style Sheet */
 
 
-/*
-.map {
-  background-color: #cdd2d4;
-  border: medium solid #999;
-  stroke: white;
-  stroke-width: 1px;
-}
-*/
-
-.dropdown {
-    position: absolute;
-    float: left;
-    display: block;
-    top: 30px;
-    left: 40px;
-    z-index: 10;
-    font-family: sans-serif;
-    font-size: 1em;
-    font-weight: bold;
-    padding: 2px;
-    border: 1px solid #999;
-    box-shadow: 2px 2px 4px #999;
-}
-
-.map {
-  background-color: #dfe5e7;
-/*  border: medium solid #999;*/
-  stroke: white;
-  stroke-width: 1px;
-}
-
 option {
     font-weight: normal;
 }
 
 .infolabel {
-    position: absolute;
+    /*position: absolute;
     height: 50px;
     min-width: 100px;
     color: #fff;
     background-color: #000;
     border: solid thin #fff;
-    padding: 5px 10px;
-
-}
-
-.infolabel h1 {
-    margin: 0 20px 0 0;
-    padding: 0;
-    display: inline-block;
-    line-height: 1em;
+    padding: 5px 10px;*/
+    font-family: Lato, sans-serif;
+    position:absolute;
+    height:40px;
+    width: 300px;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #000;
+    padding: 10px 10px;
+    border-radius: 15px;
+    text-align: left;
+    vertical-align: middle;
+    pointer-events:none;
+    top: -75px;
+    /*font-size: 13px;*/
 }
 
 #panel {
@@ -70,10 +45,24 @@ option {
     display: inline-flex;
     float: right;
 }
-.yearLabel {
-    padding-right: 15%;
-    display: inline-flex;
-    float: right;
-    height: 30px;
-    width: 50px;
+
+/*
+#washington-legend {
+    fill: white;
+}*/
+
+.WashingtonMap {
+  stroke: white;
+  stroke-width: 1px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#washington-legend {
+    fill: none;
+    stroke: #888;
+    font-size: 12px;
+    float: left;
+    height: 10px
+    width: 200px;
 }

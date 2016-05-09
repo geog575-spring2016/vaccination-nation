@@ -1,6 +1,31 @@
 /* 575 boilerplate style.css */
+.key path {
+  display: none;
+}
 
+.key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+  z-index: 10;
+}
 
+.CAlegend-title {
+    font-weight: bold;
+    z-index: 10;
+    float: right;
+}
+
+.CAlegend-box {
+    fill: none;
+    stroke: #888;
+    font-size: 10px;
+    z-index: 10;
+    float: right;
+}
+
+.CAmap{
+  z-index: 11;
+}
 
 #propToolTips{
   color: green;
@@ -19,6 +44,7 @@
 }
 
 .CAtoolTip {
+  /*
   color: black;
   position: absolute;
   height: 50px;
@@ -28,7 +54,28 @@
   border: solid thin #fff;
   padding: 5px 10px;
   top: -75px;
+  */
+  font-family: Lato, sans-serif;
+  position:absolute;
+  height:55px;
+  width: 350px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #000;
+  padding: 10px 10px;
+  border-radius: 15px;
+  text-align: left;
+  vertical-align: middle;
+  pointer-events:none;
+  top: -55px;
 }
+
+#options{
+  float:left;
+  text-align: left;
+  margin-left: 10px;
+}
+
 
 /*
 #CAtext{
@@ -46,12 +93,13 @@
   position:relative;
   font-size:13px;
 }
-*/
 
 
 
-#legend {
+
+.legendCA {
     padding: 1.5em 0 0 1.5em;
+    z-index: 5;
 }
 
 

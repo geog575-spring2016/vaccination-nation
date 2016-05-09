@@ -6,10 +6,12 @@
     "cases2002","cases2003","cases2004","cases2005","cases2006","cases2007","cases2008","cases2009","cases2010","cases2011",
     "cases2012","cases2013"];
 
+  var attrArray = ["2009-2010", "2011-2012", "2012-2013", "2013-2014", "2014-2015"];
+
   var expressed =DataArray[0];
+  var expressed2 = attrArray[0];
 
   var mainTitle =["Pertussis Cases","Mumps Cases","Measles Cases"];
-
 
 
   var radius = d3.scale.sqrt()
@@ -44,15 +46,19 @@
       .projection(projection);
 
     var q = d3_queue.queue();
-      q.defer(d3.csv, "data/main-outbreaks/main-outbreaks-data-noNYC.csv") //loads attributes from csv
+      q.defer(d3.csv, "data/vaccine_coverage/vaccine_coverage.csv")
       q.defer(d3.json, "data/main-outbreaks/usStates.topojson")
+      q.defer(d3.csv, "data/main-outbreaks/main-outbreaks-data-noNYC.csv") //loads attributes from csv
       q.defer(d3.json, "data/main-outbreaks/outbreaks-us.topojson")
        //loads choropleth spatial data
       .await(callback);
 
+  function callback(error, csvData2, us, csvData, usCenters){
 
-  function callback(error, csvData, us, usCenters){
+
     var usStates = topojson.feature(us, us.objects.usStates).features;
+
+
     for (var i=0; i<csvData.length; i++){
         var csvRegion = csvData[i];
         var csvKey = csvRegion.postal;
@@ -68,11 +74,47 @@
           }
         }
 
+    var states = mapMain.append("path")
+        .datum(usStates)
+        .attr("class", "state_")
+        .attr("d", path);
+
+        usStates = joinData(usStates, csvData2);
+
+        var colorScale = makeColorScale(csvData2);
+
+        setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale);
+
         setEnumerationUnits(usStates, usCenters, mapMain, path);
         setPropSymbols(usStates, usCenters, mapMain, path);
-
     }
 };
+
+
+ function joinData(usStates, csvData2){
+   for (var i=0; i<csvData2.length; i++){
+       var csvState = csvData2[i]; //the current region
+       var csvKey = csvState.State; //the CSV primary key
+
+       //loop through geojson regions to find correct region
+       for (var a=0; a<usStates.length; a++){
+
+           var geojsonProps = usStates[a].properties; //the current region geojson properties
+           var geojsonKey = geojsonProps.name_1; //the geojson primary key
+
+           //where primary keys match, transfer csv data to geojson properties object
+           if (geojsonKey == csvKey){
+
+               //assign all attributes and values
+               attrArray.forEach(function(attr){
+                   var val = parseFloat(csvState[attr]); //get csv attribute value
+                   geojsonProps[attr] = val; //assign attribute and value to geojson properties
+               });
+           };
+       };
+     };
+     return usStates;
+ }
 
   function setEnumerationUnits(usStates, usCenters, mapMain, path){
     var states = mapMain.selectAll(".states")
@@ -83,9 +125,62 @@
       .attr("class", function(d){
         return "states " + d.properties.postal;
       })
-      .style("fill","white")
-      .style("stroke","grey");
    };
+
+   function setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale){
+     var states = mapMain.selectAll(".states")
+       .data(usStates)
+       .enter()
+       .append("path")
+       .attr("d",path)
+       .attr("class", function(d){
+         return "states " + d.properties.name_1;
+       })
+       .attr("d", path)
+       .style("fill", function(d){
+           return choropleth(d.properties, colorScale);
+       })
+    };
+
+    //function to create color scale generator
+    function makeColorScale(data){
+        var colorClasses = [
+            "#d7191c",
+            "#fdae61",
+            "#abd9e9",
+            "#2c7bb6",
+        ];
+
+        //create color scale generator
+        var colorScale = d3.scale.quantile()
+            .range(colorClasses);
+
+        //build array of all values of the expressed attribute
+        var domainArray = [];
+        for (var i=0; i<data.length; i++){
+            var val = parseFloat(data[i][expressed2]);
+            domainArray.push(val);
+        };
+
+        //assign array of expressed values as scale domain
+        colorScale.domain(domainArray);
+
+        return colorScale;
+
+    };
+
+    //function to test for data value and return color
+    function choropleth(props, colorScale){
+        //make sure attribute value is a number
+        var val = parseFloat(props[expressed2]);
+        //if attribute value exists, assign a color; otherwise assign gray
+        if (val && val != 999){
+            return colorScale(val);
+        } else {
+            return "#CCC";
+        };
+    };
+
 
   function setPropSymbols(usStates, usCenters, mapMain, path){
 
@@ -111,7 +206,7 @@
     var desc = centroids.append("desc")
       .text('{"stroke": "#000", "stroke-width": "0.5px"}');
   };
-          
+
 
         //TRYING TO FIGURE OUT HOW TO CHANGE BASED ON PATH, ONLY COLORS CIRCLES BLUE RIGH NOW
 
@@ -163,7 +258,7 @@
         "stroke": "black",
         "stroke-width": "2"
     });
-    setLabel(properties);
+    setLabelMain(properties);
   };
 
   function dehighlight(properties){
@@ -176,9 +271,11 @@
       .remove();
   };
 
-  function setLabel(properties){
-    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.postal;
-    var infolabelMain = d3.select("body") 
+
+  function setLabelMain(properties){
+    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.state;
+      console.log(properties);
+    var infolabelMain = d3.select("body")
       .append("div")
       .attr({
         "class": "infolabelMain",
@@ -211,13 +308,75 @@
   };
 
 
+function createMenu(arrayX, arrayY, title, infotext, infolink){
+    var yArray = [40, 85, 130, 175, 220, 265];
+    var oldItems = d3.selectAll(".menuBox").remove();
+    var oldItems2 = d3.selectAll(".menuInfoBox").remove();
+
+    //creates menuBoxes
+    menuBox = d3.select(".menu-inset")
+            .append("svg")
+            .attr("width", menuWidth)
+            .attr("height", menuHeight)
+            .attr("class", "menuBox");
+
+            //creates Menu Title
+    var menuTitle = menuBox.append("text")
+        .attr("x", 10)
+        .attr("y", 30)
+        .attr("class","title")
+        .text(title)
+        .style("font-size", '16px');
+
+        //draws and shades boxes for menu
+        for (b = 0; b < arrayX.length; b++){
+           var menuItems = menuBox.selectAll(".items")
+                .data(arrayX)
+                .enter()
+                .append("rect")
+                .attr("class", "items")
+                .attr("width", 35)
+                .attr("height", 35)
+                .attr("x", 15);
+
+            menuItems.data(yArray)
+                .attr("y", function(d, i){
+                    return d;
+                });
+
+            menuItems.data(arrayY)
+                .attr("fill", function(d, i){
+                    return arrayY[i];
+                });
+        };
+        //creates menulabels
+        var menuLabels = menuBox.selectAll(".menuLabels")
+            .data(arrayX)
+            .enter()
+            .append("text")
+            .attr("class", "menuLabels")
+            .attr("x", 60)
+            .text(function(d, i){
+                for (var c = 0; c < arrayX.length; c++){
+                    return arrayX[i]
+                }
+            })
+            .style({'font-size': '14px', 'font-family': 'Open Sans, sans-serif'});
+
+            menuLabels.data(yArray)
+                .attr("y", function(d, i){
+                    return d + 30;
+                });
+
+         //creates menuBoxes
+        menuInfoBox = d3.select(".menu-info")
+            .append("div")
+            .attr("width", menuInfoWidth)
+            .attr("height", menuInfoHeight)
+            .attr("class", "menuInfoBox textBox")
+            .html(infotext + infolink);
+};
+
+
+
 })();
-
-
-
-
-
-
-
-
-
