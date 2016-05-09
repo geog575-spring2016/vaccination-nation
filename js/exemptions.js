@@ -30,58 +30,50 @@ window.onload = setMapExempt();
       	var q = d3_queue.queue();
 	      q.defer(d3.csv, "data/exemption/exemptions.csv") //loads attributes from csv
 	      q.defer(d3.json, "data/exemption/usState.topojson")
-	      .await(callback);
+	      q.await(callback);
 
 	    function callback(error, csvData, us){
 
 	    	//console.log("reach callback?");
 	    	var usStates = topojson.feature(us, us.objects.usaStates).features;
-	    	
-	    	var states = mapMainExempt.append("path")
-	    		.datum(usStates)
-	    		.attr("class","states")
-	    		.attr("d", path)
+				for (var i=0; i<csvData.length; i++){
+		      var csvRegion = csvData[i];
+		      var csvKey = csvRegion.postal;
+					var jsonStates=us.objects.usaStates.geometries;
+		        for (var a=0; a<usStates.length; a++){
+								if(jsonStates[a].properties.postal==csvKey){
+									for (var key in attrArray){
+										var attribute=attrArray[key];
+										var value=parseFloat(csvRegion[attribute]);
+										(jsonStates[a].properties[attribute])=value
+									}
+								}
+							}
+						}
+						setEnumerationUnitsExempt(usStates,mapMainExempt,path )
 
-	    	usStates = joinData(usStates, csvData)
-		    setEnumerationUnitsExempt(usStates, mapMainExempt, path);
-		    var colorScale = makeColorScale(csvData);
-    	}
-	};//end of setMapExempt
+					}
 
-	function joinData (usStates, csvData){
-  	//console.log("reach joinData");
-    for (var i=0; i<csvData.length; i++){
-      var csvRegion = csvData[i];
-      var csvKey = csvRegion.postal;
-        for (var a=0; a<usStates.length; a++){
-          var geojsonProps = usStates[a].properties;
-          var geojsonKey = geojsonProps.postal;
-          
-            if (geojsonKey == csvKey){
-              attrArray.forEach(function(attr){
-                var val = parseFloat(csvRegion[attr]); 
-              });
-            };
-        };
-    };
+}
 
-    return usStates;
-  };
+function setEnumerationUnitsExempt(usStates, mapMainExempt, path){
 
-	function setEnumerationUnitsExempt(usStates, mapMainExempt, path, colorScale){
+	var states = mapMainExempt.selectAll(".states")
+		.data(usStates)
+		.enter()
+		.append("path")
+		.attr("d", path)
+		.attr("class", function(d){
+			return "states " + d.properties.postal;
+		})
+		.style("fill",
+		function(d){	return choropleth(d.properties);
 
-		var states = mapMainExempt.selectAll(".states")
-			.data(usaStates)
-			.enter()
-			.append("path")
-			.attr("d", path)
-			.attr("class", function(d){
-				return "states " + d.properties.postal;
-			})
-			.style("fill", function(d){
-				return choropleth(d.properties, colorScale)
-			});
-	};
+		})
+	.style("stroke", "white")
+
+}
+
 
 	function makeColorScale(csvData){
 		var colorScale=d3.scale.threshold()
@@ -91,7 +83,6 @@ window.onload = setMapExempt();
 
 	function choropleth(props, colorScale){
 		var value = (props[expressed]);
-		console.log(props.codes)
 
 		if (value == 1.00){
 			return "blue";
@@ -102,7 +93,7 @@ window.onload = setMapExempt();
 		};
 
 	}
-	
+
 
 
 
@@ -110,10 +101,3 @@ window.onload = setMapExempt();
 
 
 })();
-
-
-
-
-
-
-
