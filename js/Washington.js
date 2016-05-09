@@ -75,7 +75,7 @@ function setMap(){
 
         createSequenceControls()
 
-        //addWashingtonLegend()
+        addWashingtonLegend()
     };
 };
 
@@ -114,7 +114,7 @@ function setEnumerationUnits(Washington, map, path, colorScale){
       .enter()
       .append("path")
       .attr("class", function(d){
-          return "Washingtoncounties " + d.properties.Name;
+          return "Washington " + d.properties.Name;
       })
       .attr("d", path)
       .style("fill", function(d) {
@@ -127,6 +127,7 @@ function setEnumerationUnits(Washington, map, path, colorScale){
             Washingtondehighlight(d.properties);
       })
       .on("mousemove", moveLabel);
+
 
       var desc = Washingtoncounties.append("desc")
        .text('{"stroke": "#000", "stroke-width": "0.5px"}');
@@ -143,30 +144,30 @@ function makeColorScale(data){
     return colorScale;
 };
 
-// //function to create a dropdown menu for attribute selection
-// function createDropdown(Washington_Complete_Immunizations){
-//     //add select element
-//     var dropdown = d3.select("#washington-map")
-//         .append("select")
-//         .attr("class", "dropdown")
-//         .on("change", function(){
-//             changeAttribute(this.value, Washington_Complete_Immunizations)
-//         });
-//
-//     //add initial option
-//     var titleOption = dropdown.append("option")
-//         .attr("class", "titleOption")
-//         .attr("disabled", "true")
-//         .text("Select Attribute");
-//
-//     //add attribute name options
-//     var attrOptions = dropdown.selectAll("attrOptions")
-//         .data(DataArray)
-//         .enter()
-//         .append("option")
-//         .attr("value", function(d){ return d })
-//         .text(function(d){ return d });
-// };
+//function to create a dropdown menu for attribute selection
+function createDropdown(Washington_Complete_Immunizations){
+    //add select element
+    var dropdown = d3.select("#washington-map")
+        .append("select")
+        .attr("class", "dropdown")
+        .on("change", function(){
+            changeAttribute(this.value, Washington_Complete_Immunizations)
+        });
+
+    //add initial option
+    var titleOption = dropdown.append("option")
+        .attr("class", "titleOption")
+        .attr("disabled", "true")
+        .text("Select Attribute");
+
+    //add attribute name options
+    var attrOptions = dropdown.selectAll("attrOptions")
+        .data(DataArray)
+        .enter()
+        .append("option")
+        .attr("value", function(d){ return d })
+        .text(function(d){ return d });
+};
 
 //dropdown change listener handler
 function changeAttribute(expressed, Washington_Complete_Immunizations){
@@ -175,7 +176,7 @@ function changeAttribute(expressed, Washington_Complete_Immunizations){
     var colorScale = makeColorScale(Washington_Complete_Immunizations);
 
     //recolor enumeration units
-    var Washingtoncounties = d3.selectAll(".Washingtoncounties")
+    var Washingtoncounties = d3.selectAll(".Washington")
         .style("fill", function(d){
             return choropleth(d.properties, colorScale)
         });
@@ -197,9 +198,9 @@ function choropleth(props, colorScale){
 //function to highlight enumeration units and bars
 function Washingtonhighlight(props){
     //change stroke
-    var selected = d3.selectAll("." + props.Name)
+    var selected = d3.selectAll("#Washingtoncounties_" + props.Name)
         .style({
-            "stroke": "black",
+            "stroke": "blue",
             "stroke-width": "2"
         });
     setLabel(props);
@@ -207,7 +208,7 @@ function Washingtonhighlight(props){
 
 //function to reset the element style on mouseout
 function Washingtondehighlight(props){
-    var selected = d3.selectAll(".Washingtoncounties" + props.Name)
+    var selected = d3.selectAll("#Washingtoncounties_" + props.Name)
         .style({
             "stroke": function(){
                 return getStyle(this, "stroke")
@@ -235,12 +236,12 @@ function setLabel(props){
     //label content
     var labelAttribute =  "Percent Completely Immunized: " + props[expressed] + "%";
 
-      if(props[expressed]===999){
-        labelAttribute = "Percent Completely Immunized: " + "No Data"
-      }
-      else{
-        labelAttribute =  "Percent Completely Immunized: " + props[expressed] + "%"
-      }
+      // if(props[expressed]=999){
+      //   labelAttribute = "Percent Completely Immunized: " + "No Data"
+      // }
+      // else{
+      //   labelAttribute =  "Percent Completely Immunized: " + props[expressed] + "%"
+      // }
 
     //create info label div
     var infolabel = d3.select("#washington-map")

@@ -1,18 +1,18 @@
 /* Style Sheet */
 
-/*
+
 option {
     font-weight: normal;
 }
 
 .infolabel {
-    position: absolute;
+    /*position: absolute;
     height: 50px;
     min-width: 100px;
     color: #fff;
     background-color: #000;
     border: solid thin #fff;
-    padding: 5px 10px;
+    padding: 5px 10px;*/
     font-family: Lato, sans-serif;
     position:absolute;
     height:40px;
@@ -26,7 +26,7 @@ option {
     vertical-align: middle;
     pointer-events:none;
     top: -75px;
-    font-size: 13px;
+    /*font-size: 13px;*/
 }
 
 #panel {
@@ -46,10 +46,10 @@ option {
     float: right;
 }
 
-
+/*
 #washington-legend {
     fill: white;
-}
+}*/
 
 .WashingtonMap {
   stroke: white;
@@ -65,4 +65,4 @@ option {
     float: left;
     height: 10px
     width: 200px;
-}*/
+}
