@@ -13,17 +13,27 @@
 
   var mainTitle =["Pertussis Cases","Mumps Cases","Measles Cases"];
 
-
   var radius = d3.scale.sqrt()
       .domain([0, 7195])
       .range([0,150]);
 
   var stateName = ["Alaska","Alabama"];
 
+  var arrayCoverage = [ "0-75",
+                        "75-85",
+                          "85-95",
+                         "95-100"];
+
+  var colorArrayCoverage = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+
+  function initialize(){
+    createMenu(arrayCoverage, colorArrayCoverage);
+  };
+
   //begins script when window loads
   window.onload = setMap();
 
-  function setMap(){
+function setMap(){
 
   	//map frame size. Adjusted so Map is responsive
     var width = 800;
@@ -90,42 +100,41 @@
     }
 };
 
+function joinData(usStates, csvData2){
+ for (var i=0; i<csvData2.length; i++){
+     var csvState = csvData2[i]; //the current region
+     var csvKey = csvState.State; //the CSV primary key
 
- function joinData(usStates, csvData2){
-   for (var i=0; i<csvData2.length; i++){
-       var csvState = csvData2[i]; //the current region
-       var csvKey = csvState.State; //the CSV primary key
+     //loop through geojson regions to find correct region
+     for (var a=0; a<usStates.length; a++){
 
-       //loop through geojson regions to find correct region
-       for (var a=0; a<usStates.length; a++){
+         var geojsonProps = usStates[a].properties; //the current region geojson properties
+         var geojsonKey = geojsonProps.name_1; //the geojson primary key
 
-           var geojsonProps = usStates[a].properties; //the current region geojson properties
-           var geojsonKey = geojsonProps.name_1; //the geojson primary key
+         //where primary keys match, transfer csv data to geojson properties object
+         if (geojsonKey == csvKey){
 
-           //where primary keys match, transfer csv data to geojson properties object
-           if (geojsonKey == csvKey){
-
-               //assign all attributes and values
-               attrArray.forEach(function(attr){
-                   var val = parseFloat(csvState[attr]); //get csv attribute value
-                   geojsonProps[attr] = val; //assign attribute and value to geojson properties
-               });
-           };
-       };
+             //assign all attributes and values
+             attrArray.forEach(function(attr){
+                 var val = parseFloat(csvState[attr]); //get csv attribute value
+                 geojsonProps[attr] = val; //assign attribute and value to geojson properties
+             });
+         };
      };
-     return usStates;
- }
-
-  function setEnumerationUnits(usStates, usCenters, mapMain, path){
-    var states = mapMain.selectAll(".states")
-      .data(usStates)
-      .enter()
-      .append("path")
-      .attr("d",path)
-      .attr("class", function(d){
-        return "states " + d.properties.postal;
-      })
    };
+   return usStates;
+}
+
+function setEnumerationUnits(usStates, usCenters, mapMain, path){
+  var states = mapMain.selectAll(".states")
+    .data(usStates)
+    .enter()
+    .append("path")
+    .attr("d",path)
+    .attr("class", function(d){
+      return "states " + d.properties.postal;
+    })
+ };
 
    function setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale){
      var states = mapMain.selectAll(".states")
@@ -220,22 +229,22 @@
         //           .attr("class",function(d){
         //             return "circle "+properties.disease;
         //           })
-        
+
         //     if("class","Mumps"){
         //         centroids.style('fill','blue')
-        
+
         //     }
         //     else if("class","Pertussis"){
         //         centroids.style('fill','yellow')
         //     }
         //     else if("class","Measles"){
         //         centroids.style('fill','orange')
-        
+
         //     }
-        
+
         //   };
 
-            
+
             // .style({"fill": "orange",
             //       "fill-opacity":0.5,
             //       "stroke":"black"})
@@ -245,11 +254,11 @@
       // });
 
       // console.log(states);
-      
+
       // var desc=states.append("desc")
       //        .text('{"stroke":"white", "stroke-width":"1px"}');
-      
-      
+
+
 
   //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
   function highlight(properties){
@@ -306,7 +315,6 @@
       });
   };
 
-
 function createMenu(arrayX, arrayY, title, infotext, infolink){
     var yArray = [40, 85, 130, 175, 220, 265];
     var oldItems = d3.selectAll(".menuBox").remove();
@@ -325,7 +333,7 @@ function createMenu(arrayX, arrayY, title, infotext, infolink){
         .attr("y", 30)
         .attr("class","title")
         .text(title)
-        .style("font-size", '16px');
+        .style("font-size", '14px');
 
         //draws and shades boxes for menu
         for (b = 0; b < arrayX.length; b++){
@@ -375,6 +383,16 @@ function createMenu(arrayX, arrayY, title, infotext, infolink){
             .attr("class", "menuInfoBox textBox")
             .html(infotext + infolink);
 };
+
+function colorScale(data){
+  if (expressed ==="vaccine_coverage") {
+    colorClasses = colorArrayCoverage;
+                    arrayCoverage;
+
+
+
+  }
+}
 
 
 
