@@ -273,18 +273,17 @@
 
 
   function setLabelMain(properties){
-    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.state;
-      console.log(properties);
+    var labelAttributeMain = "<b>"+ "Cases: "+ properties[expressed]+ "<br>" + properties.state;
     var infolabelMain = d3.select("body")
       .append("div")
       .attr({
         "class": "infolabelMain",
-        "id": properties.disease+ "_label"
+        "id":  properties.disease+ "_label"
       })
       .html(labelAttributeMain);
     var propNameMain = infolabelMain.append("div")
       .attr("class", "labelnameMain")
-      .html(properties.disease);
+      .html("Virus: " + properties.disease);
   };
 
   function moveLabel(){
