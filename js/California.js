@@ -1,3 +1,4 @@
+
 (function(){
 
 keyArray=["coverage1314","pbe1314","coverage1516","pbe1516"]
@@ -58,8 +59,8 @@ window.onload=setmap();
 
 function setmap(){
 
-    var width= 750,
-        height=900;
+    var width= 500,
+        height = 550;
 
     var CAmap=d3.select("#california-map")
         .append("svg")
@@ -69,7 +70,7 @@ function setmap(){
 
     var  projection = d3.geo.mercator()
 			.scale(1120 * 2)
-			.center([-121, 30.4])
+			.center([-119.5, 37])
 			.translate([width/2, height/2]);
 
     var path=d3.geo.path()
@@ -182,9 +183,9 @@ function addVCLegend(){
       boxwidth = 3.5 * keywidth,
       formatPercent = d3.format(".0%");
 
-  var margin = { "left": 160, "top": 80 };
+//  var margin = { "left": 160, "top": 80 };
 
-  var legendcolors = ['#2c7bb6','#abd9e9','#fdae61','#d7191c'];
+  var legendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
 
   var title = ['Coverage Rates'],
       titleheight = title.length*lineheight + boxmargin;
@@ -207,14 +208,24 @@ function addVCLegend(){
     }
 
     var svg = d3.select("#california-legend-vc").append("svg")
+        .attr("class", "VClegendContainer");
         //.attr("width", width)
       //  .attr("height", height)
         //.remove();
 
     // make legend
     var legend = svg.append("g")
-        .attr("transform", "translate ("+margin.left+","+margin.top+")")
+//        .attr("transform", "translate ("+margin.left+","+margin.top+")")
         .attr("class", "legend");
+    
+    
+    //     var legendContainer = d3.select("#california-legend-vc")
+//        .append("svg")
+//        .attr("class", "legendContainer");
+//
+//    var legend = svg.append("g")
+//        .attr("transform", "translate ("+margin.left+","+margin.top+")")
+//        .attr("class", "legend");
 
     legend.selectAll("text")
         .data(title)
@@ -261,7 +272,7 @@ function addVCLegend(){
         .enter().append("text")
         .attr("x", 48)
         .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-        .text(function(d) { return (d[1]+" - "+d[0]+"%")})
+        .text(function(d) { return (d[0]+" - "+d[1]+"%")})
 
 
 };
@@ -276,7 +287,7 @@ function addPBELegend(){
       boxwidth = 4.5 * keywidth,
       formatPercent = d3.format(".0%");
 
-  var margin = { "left": 160, "top": 80 };
+//  var margin = { "left": 160, "top": 80 };
 
   var legendcolors = ['#2c7bb6','#abd9e9','#fdae61','#d7191c'];
 
@@ -300,14 +311,18 @@ function addPBELegend(){
         return a;
     }
 
-    var svg = d3.select("#california-legend-pbe").append("svg")
+    var svg = d3.select("#california-legend-vc")
+        .append("svg")
+        .attr("class", "PBElegendContainer");
+    
+        
         //.attr("width", 138)
         //.attr("height", 140)
         //.remove();
 
     // make legend
     var legend = svg.append("g")
-        .attr("transform", "translate ("+margin.left+","+margin.top+")")
+//        .attr("transform", "translate ("+margin.left+","+margin.top+")")
         .attr("class", "legend");
 
     legend.selectAll("text")
@@ -423,8 +438,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
 
               CAmap.selectAll('.circle13').remove();
               CAmap.selectAll('.circle14').remove();
-              d3.select("#california-legend-vc").remove();
-              d3.select("#california-legend-pbe").remove();
+//              d3.select("#california-legend-vc").remove();
+//              d3.select("#california-legend-pbe").remove();
 
               d3.selectAll('.counties').transition().duration(200)
                     .style({'fill':'#f2f2f1',
@@ -436,8 +451,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
 
       }
        else if (document.getElementById('vc13').checked) {
-                addVCLegend();
-                d3.select("california-legend-pbe").remove()
+               // addVCLegend();
+//                d3.select("california-legend-pbe").remove()
                 CAmap.selectAll('.circle13').remove();
                 CAmap.selectAll('.circle14').remove();
                 var counites=d3.selectAll('.counties').transition().duration(200)
@@ -459,8 +474,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
 
 
        else if (document.getElementById('pb13').checked) {
-                  addPBELegend();
-                  d3.select("#california-legend-vc").remove();
+                 // addPBELegend();
+                //  d3.select("#california-legend-vc").remove();
                   CAmap.selectAll('.circle13').remove();
                   CAmap.selectAll('.circle14').remove();
                   d3.selectAll('.counties').transition().duration(200)
@@ -479,8 +494,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
       }
 
        else if (document.getElementById('vc15').checked) {
-                  d3.select("california-legend-pbe").remove()
-                  addVCLegend();
+//                  d3.select("california-legend-pbe").remove()
+                //  addVCLegend();
                   CAmap.selectAll('.circle13').remove();
                   CAmap.selectAll('.circle14').remove();
                   d3.selectAll('.counties').transition().duration(200)
@@ -500,8 +515,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
       }
 
        else if (document.getElementById('pb15').checked) {
-                  addPBELegend();
-                  d3.select("#california-legend-vc").remove();
+                 // addPBELegend();
+//                  d3.select("#california-legend-vc").remove();
                   CAmap.selectAll('.circle13').remove();
                   CAmap.selectAll('.circle14').remove();
                   d3.selectAll('.counties').transition().duration(200)
@@ -522,8 +537,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
       }
 
       else if(document.getElementById('propsymbs13').checked) {
-        d3.select("#california-legend-vc").remove();
-        d3.select("#california-legend-pbe").remove();
+//        d3.select("#california-legend-vc").remove();
+//        d3.select("#california-legend-pbe").remove();
         CAmap.selectAll('.circle14').remove();
         d3.selectAll('.counties').transition().duration(200)
           .style({'fill': "#f2f2f1","stroke":"#aab4b5","stroke-width":1})
@@ -557,8 +572,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
         }
 
         else if(document.getElementById('propsymbs14').checked) {
-          d3.select("#california-legend-vc").remove();
-          d3.select("#california-legend-pbe").remove();
+//          d3.select("#california-legend-vc").remove();
+//          d3.select("#california-legend-pbe").remove();
           CAmap.selectAll('.circle13').remove();
           d3.selectAll('.counties').transition().duration(200)
             .style({'fill': "#f2f2f1","stroke":"#aab4b5","stroke-width":1})

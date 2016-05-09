@@ -19,13 +19,6 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="lib/leaflet.zoomhome.css"/>
 
-		<!-- Latest Bootstrap that automatically downloads -->
-<!--
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
--->
-
-
 		<!--[if IE<9]>
 			<link rel="stylesheet" href="css/style.ie.css">
 		<![endif]-->
@@ -50,6 +43,7 @@
 		    </div>
 				<div class="menu-info">	</div>
 			</div>
+        </div>
 
 <!--        MAIN MAP-->
         <div id="mainMap"></div>
@@ -79,6 +73,7 @@
 						<br>Washington has one of the worst immunization histories in the United States. It accepts medical, religious, and personal/philosophical exemptions and has consistently been one of the top 10 states to report the most vaccine exemptions for children enrolled in kindergarten. Due to the culture, more parents are choosing to opt out of state immunization requirements. From 2015-2016, only 85% of children entering kindergarten in Washington were completely immunized. This is up from 2008-2009 where only 78.5% of children entering kindergarten were immunized, but it is still lower than 89.45% in 2003-2004.  </br>
  						<br>While the percent of children completely vaccinated might be lower than it was in the past, it certainly has improved since its low point from 2008-2009. This is because lawmakers have pushed for more funding and stricter bills that makes opting out of vaccinations more difficult. In 2010, Washington formed the Washington Vaccine Association. This nonprofit organization was formed by the state legislature and helps purchase vaccines and distribute them to providers for no charge. In 2011, Washington adopted a law that requires parents to obtain a licensed healthcare provider’s signature if they wish to exempt their children. Within the first year the legislation had already decreased exemption rates from 6.0% to 4.5%. </br>
 						<br> 	While these are methods are helping improve vaccinations in Washington, the counties are still well below the average of recommend vaccinations. In May of 2015, Washington reintroduced a Bill that would eliminate personal belief and philosophical exemptions. However, this Bill is currently pending and is waiting for a vote. </br>
+                </div>
 
 <!--        NEW YORK-->
         <div id="new-york-map"></div>
@@ -87,63 +82,42 @@
         </div>
 
 <!--        CALIFORNIA-->
-        <div id="california-map">
+        <div id="california-wrapper">
+            <div id="california-map">
+                <h3>California and the State of Improvements</h3>
+            </div>
+            <div id = "californiaLegendControls">
+                <div id = "californiaButtons">
+                    <label>Measles Outbreaks
+                            <br><input type="Radio" name="map" id='propsymbs13' class ='radio' value="msls" />
+                            2013
+                            <br><input type="Radio" name="map" id='propsymbs14' class ='radio' value="msls" />
+                            2014
+                    </label>
+                    <br>
+                    <label>Personal Belief Exemptions
+                            <br><input type="Radio" name="map" id='pb13'  class ='radio' value="pb13" />
+                            2013-2014
+                            <br><input type="Radio" name="map" id='pb15'  class ='radio' value="pb15" />
+                            2015-2016
 
-					<h3>California and the State of Improvements</h3>
-
-									<!--	<svg id="california-legend-vc" height="180px" width="138px" ></svg>
-
-										<svg id="california-legend-pbe" height="180px" width="138px"></svg> -->
-
-										<l id="options">
-										<label>Measles Outbreaks
-												<br><input type="Radio" name="map" id='propsymbs13' class ='radio' value="msls" />
-												2013
-												<br><input type="Radio" name="map" id='propsymbs14' class ='radio' value="msls" />
-												2014
-										</label>
-										<br>
-										<label>Personal Belief Exemptions
-												<br><input type="Radio" name="map" id='pb13'  class ='radio' value="pb13" />
-												2013-2014
-												<br><input type="Radio" name="map" id='pb15'  class ='radio' value="pb15" />
-												2015-2016
-
-										</label>
-										<br>
+                    </label>
+                    <br>
                     <label>Vaccine Coverage Rates
                         <br><input type="Radio" name="map" id='vc13'  class ='radio' value="vc13" />
-                        2013-2014
-												<br><input type="Radio" name="map" id='vc15'  class ='radio' value="vc15" />
-												2015-2016
+                            2013-2014
+                        <br><input type="Radio" name="map" id='vc15'  class ='radio' value="vc15" />
+                            2015-2016
                     </label>
-										<label>
-												<br>None
-												<br><input type="Radio" name="map" id='none' class ='radio' value="none"  checked="checked" />
-										</label>
-									</l>
-
-													<!--
-														<div class="sequence-buttons">
-
-										<div class="button">
-												<button type="button" id="CAstepBackward">
-														<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-												</button>
-												<div id="CAyearLabel"></div>
-												<button type="button" id="CAstepForward">
-														<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-												</button>
-										</div>
-
-
-										</div>
-											-->
-
-
-
-
+                    <br>
+                    <label><input type="Radio" name="map" id='none' class ='radio' value="none"  checked="checked" />
+                    </label>None
+                </div>
+                <div id="california-legend-vc"></div>
+            </div>
         </div>
+       
+<!--        <div id="california-legend-pbe"></div> -->
         <div id="california-text">
             <h3>what should this say?</h3>
 
@@ -190,8 +164,6 @@
 		<script type="text/javascript" src="js/exemptions.js"></script>
         <script type="text/javascript" src="lib/Leaflet.Sleep.js"></script>
         <script type="text/javascript" src="lib/leaflet.zoomhome.js"></script>
-		<!-- Latest compiled and minified JavaScript from Bootstrap -->
-<!--		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
 
 	</body>
 </html>
