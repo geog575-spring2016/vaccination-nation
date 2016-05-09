@@ -8,6 +8,9 @@ var colorClasses = [
 			"#ffffb2",
 		];
 
+var Exemtooltip = d3.select("#mapMainExempt").append("div")
+		    .attr("class", "Exemtooltip");
+
 
 window.onload = setMapExempt();
 
@@ -72,6 +75,24 @@ function setEnumerationUnitsExempt(usStates, mapMainExempt, path){
 		})
 	.style("stroke", "white")
 
+	.on('mouseover', function(d){
+		 Exemptooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1516+":   "+"<b>"+d.properties.pbe1516+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
+		 highlight(d.properties)
+	})
+	.on('mousemove', function(){return Exemptooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+	.on('mouseout', function(d){
+			Exemptooltip.style("visibility", "hidden");
+			dehighlight(d.properties)
+	});
+
+	// .on("mouseover",function(d){
+	// 			 highlight(d.properties);
+	// 	 })
+	// 	 //on mouseout, implement dehighlight
+	// 	 .on("mouseout", function(d){
+	// 			 dehighlight(d.properties);
+	// 	 })
+
 }
 
 
@@ -85,14 +106,46 @@ function setEnumerationUnitsExempt(usStates, mapMainExempt, path){
 		var value = (props[expressed]);
 
 		if (value == 1.00){
-			return "blue";
+			return '#d7191c';
 			}else if (value == 2.00){
-				return "green";
+				return "#abd9e9";
 			}else if (value == 3.00){
-				return "red"
+				return "#2c7bb6"
 		};
 
 	}
+
+	function highlight(props){
+	  var selected=d3.selectAll("."+props.postal)
+	      .style({
+	          "stroke":"#3e3e3e",
+	          "stroke-width":"3"
+	      })
+	  // var selectedCircles=d3.selectAll(".".props.geo_id)
+	  //     .style({"stroke":"#3e3e3e",
+	  //     "stroke-width":"3"})
+	    // setLabel(props);
+	};
+
+	function dehighlight(props){
+	   var selected=d3.selectAll("."+props.postal)
+	       .style({
+	         "stroke":"white",
+					 "stroke-width":"1"
+
+	      });
+	  //used to determine previous style so when you mouseoff and dehighlight, it returns to that previous style
+	  function getStyle(element, styleName){
+	    var styleText=d3.select(element)
+	        .select("desc")
+	        .text();
+
+	    var styleObject=JSON.parse(styleText);
+	    return styleObject[styleName];
+	  };
+	};
+
+
 
 
 
