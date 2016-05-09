@@ -389,6 +389,7 @@ function colorScale(data){
     colorClasses = colorArrayCoverage;
                     arrayCoverage;
 
+Test
 
 
   }
