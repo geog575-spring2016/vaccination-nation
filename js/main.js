@@ -257,7 +257,7 @@
         "stroke": "black",
         "stroke-width": "2"
     });
-    setLabel(properties);
+    setLabelMain(properties);
   };
 
   function dehighlight(properties){
@@ -270,8 +270,9 @@
       .remove();
   };
 
-  function setLabel(properties){
-    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.states;
+  function setLabelMain(properties){
+    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.state;
+      console.log(properties);
     var infolabelMain = d3.select("body")
       .append("div")
       .attr({
