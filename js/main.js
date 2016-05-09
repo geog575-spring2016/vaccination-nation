@@ -220,22 +220,22 @@
         //           .attr("class",function(d){
         //             return "circle "+properties.disease;
         //           })
-        
+
         //     if("class","Mumps"){
         //         centroids.style('fill','blue')
-        
+
         //     }
         //     else if("class","Pertussis"){
         //         centroids.style('fill','yellow')
         //     }
         //     else if("class","Measles"){
         //         centroids.style('fill','orange')
-        
+
         //     }
-        
+
         //   };
 
-            
+
             // .style({"fill": "orange",
             //       "fill-opacity":0.5,
             //       "stroke":"black"})
@@ -245,11 +245,11 @@
       // });
 
       // console.log(states);
-      
+
       // var desc=states.append("desc")
       //        .text('{"stroke":"white", "stroke-width":"1px"}');
-      
-      
+
+
 
   //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
   function highlight(properties){
@@ -273,18 +273,17 @@
 
 
   function setLabelMain(properties){
-    var labelAttributeMain = "<b>"+ properties[expressed]+ "<br>" + properties.state;
-      console.log(properties);
+    var labelAttributeMain = "<b>"+ "Cases: "+ properties[expressed]+ "<br>" + properties.state;
     var infolabelMain = d3.select("body")
       .append("div")
       .attr({
         "class": "infolabelMain",
-        "id": properties.disease+ "_label"
+        "id":  properties.disease+ "_label"
       })
       .html(labelAttributeMain);
     var propNameMain = infolabelMain.append("div")
       .attr("class", "labelnameMain")
-      .html(properties.disease);
+      .html("Virus: " + properties.disease);
   };
 
   function moveLabel(){
