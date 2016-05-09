@@ -13,12 +13,22 @@
 
   var mainTitle =["Pertussis Cases","Mumps Cases","Measles Cases"];
 
-
   var radius = d3.scale.sqrt()
       .domain([0, 7195])
       .range([0,150]);
 
   var stateName = ["Alaska","Alabama"];
+
+  var arrayCoverage = [ "0-75",
+                      "75-85",
+                        "85-95",
+                       "95-100"];
+
+  var colorArrayCoverage = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+
+  function initialize(){
+    createMenu(arrayCoverage, colorArrayCoverage);
+  };
 
   //begins script when window loads
   window.onload = setMap();
@@ -305,77 +315,85 @@
           "top": y + "px"
       });
   };
+  function createMenu(arrayX, arrayY, title, infotext, infolink){
+      var yArray = [40, 85, 130, 175, 220, 265];
+      var oldItems = d3.selectAll(".menuBox").remove();
+      var oldItems2 = d3.selectAll(".menuInfoBox").remove();
+
+      //creates menuBoxes
+      menuBox = d3.select(".menu-inset")
+              .append("svg")
+              .attr("width", menuWidth)
+              .attr("height", menuHeight)
+              .attr("class", "menuBox");
+
+              //creates Menu Title
+      var menuTitle = menuBox.append("text")
+          .attr("x", 10)
+          .attr("y", 30)
+          .attr("class","title")
+          .text(title)
+          .style("font-size", '14px');
+
+          //draws and shades boxes for menu
+          for (b = 0; b < arrayX.length; b++){
+             var menuItems = menuBox.selectAll(".items")
+                  .data(arrayX)
+                  .enter()
+                  .append("rect")
+                  .attr("class", "items")
+                  .attr("width", 35)
+                  .attr("height", 35)
+                  .attr("x", 15);
+
+              menuItems.data(yArray)
+                  .attr("y", function(d, i){
+                      return d;
+                  });
+
+              menuItems.data(arrayY)
+                  .attr("fill", function(d, i){
+                      return arrayY[i];
+                  });
+          };
+          //creates menulabels
+          var menuLabels = menuBox.selectAll(".menuLabels")
+              .data(arrayX)
+              .enter()
+              .append("text")
+              .attr("class", "menuLabels")
+              .attr("x", 60)
+              .text(function(d, i){
+                  for (var c = 0; c < arrayX.length; c++){
+                      return arrayX[i]
+                  }
+              })
+              .style({'font-size': '14px', 'font-family': 'Open Sans, sans-serif'});
+
+              menuLabels.data(yArray)
+                  .attr("y", function(d, i){
+                      return d + 30;
+                  });
+
+           //creates menuBoxes
+          menuInfoBox = d3.select(".menu-info")
+              .append("div")
+              .attr("width", menuInfoWidth)
+              .attr("height", menuInfoHeight)
+              .attr("class", "menuInfoBox textBox")
+              .html(infotext + infolink);
+  };
+
+  function colorScale(data){
+    if (expressed ==="vaccine_coverage") {
+      colorClasses = colorArrayCoverage;
+                      arrayCoverage;
 
 
-function createMenu(arrayX, arrayY, title, infotext, infolink){
-    var yArray = [40, 85, 130, 175, 220, 265];
-    var oldItems = d3.selectAll(".menuBox").remove();
-    var oldItems2 = d3.selectAll(".menuInfoBox").remove();
 
-    //creates menuBoxes
-    menuBox = d3.select(".menu-inset")
-            .append("svg")
-            .attr("width", menuWidth)
-            .attr("height", menuHeight)
-            .attr("class", "menuBox");
-
-            //creates Menu Title
-    var menuTitle = menuBox.append("text")
-        .attr("x", 10)
-        .attr("y", 30)
-        .attr("class","title")
-        .text(title)
-        .style("font-size", '16px');
-
-        //draws and shades boxes for menu
-        for (b = 0; b < arrayX.length; b++){
-           var menuItems = menuBox.selectAll(".items")
-                .data(arrayX)
-                .enter()
-                .append("rect")
-                .attr("class", "items")
-                .attr("width", 35)
-                .attr("height", 35)
-                .attr("x", 15);
-
-            menuItems.data(yArray)
-                .attr("y", function(d, i){
-                    return d;
-                });
-
-            menuItems.data(arrayY)
-                .attr("fill", function(d, i){
-                    return arrayY[i];
-                });
-        };
-        //creates menulabels
-        var menuLabels = menuBox.selectAll(".menuLabels")
-            .data(arrayX)
-            .enter()
-            .append("text")
-            .attr("class", "menuLabels")
-            .attr("x", 60)
-            .text(function(d, i){
-                for (var c = 0; c < arrayX.length; c++){
-                    return arrayX[i]
-                }
-            })
-            .style({'font-size': '14px', 'font-family': 'Open Sans, sans-serif'});
-
-            menuLabels.data(yArray)
-                .attr("y", function(d, i){
-                    return d + 30;
-                });
-
-         //creates menuBoxes
-        menuInfoBox = d3.select(".menu-info")
-            .append("div")
-            .attr("width", menuInfoWidth)
-            .attr("height", menuInfoHeight)
-            .attr("class", "menuInfoBox textBox")
-            .html(infotext + infolink);
-};
+    }
+  }
 
 
 
-})();
+  })();
