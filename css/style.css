@@ -18,13 +18,12 @@ h3{
 h4{
 
 
-
 }
 .infolabelMain {
     font-family: Lato, sans-serif;
     position:absolute;
     height:60px;
-    width: 100px;
+    width: 120px;
     color: #fff;
     background-color: #000;
     border: solid thin #000;
@@ -83,8 +82,6 @@ h4{
 }
 
 
-
-
 #header{
     height: 80px;
     padding-top: 2px;
@@ -125,6 +122,7 @@ h4{
 
 }
 
+/*WASHINGTON CSS*/
 
 #washington-map{
     background-color: #dfe5e7;
@@ -142,7 +140,6 @@ h4{
     margin-bottom: 10px;
     text-align: center;
 }
-
 
 .sequence-buttons {
     float: right;
@@ -191,6 +188,78 @@ h4{
 }
 */
 
+/* Style Sheet */
+
+
+option {
+    font-weight: normal;
+}
+
+.infolabel {
+    /*position: absolute;
+    height: 50px;
+    min-width: 100px;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #fff;
+    padding: 5px 10px;*/
+    font-family: Lato, sans-serif;
+    position:absolute;
+    height:40px;
+    width: 300px;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #000;
+    padding: 10px 10px;
+    border-radius: 15px;
+    text-align: left;
+    vertical-align: middle;
+    pointer-events:none;
+    top: -75px;
+    /*font-size: 13px;*/
+}
+
+#panel {
+    width: 22%;
+    padding: 0px;
+    margin: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.button {
+    padding-right: 15%;
+    display: inline-flex;
+    float: right;
+}
+
+/*
+#washington-legend {
+    fill: white;
+}*/
+
+.WashingtonMap {
+  stroke: white;
+  stroke-width: 1px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#washington-legend {
+    fill: none;
+    stroke: #888;
+    font-size: 12px;
+    float: left;
+    height: 10px
+    width: 200px;
+}
+
+
+/*NEW YORK CSS*/
+
 #new-york-map {
     height: 550px;
     width: 650px;
@@ -210,6 +279,62 @@ h4{
     float: right;
     margin-bottom: 10px;
 }
+
+.leaflet-popup-content p {
+    margin: 0.2em 0;
+}
+
+.sequence-control-container-ny {
+    width: 100px;
+    float: left;
+    display: block;
+    background-color: rgba(128, 128, 128, 0.6);
+	padding: 10px;
+	text-align: center;
+	border: solid gray 1px;
+/*	font-size: 1.2em;*/
+/*  font-family: 'Avenir', sans-serif;*/
+  border-radius: 5px;
+}
+
+/*NYbutton styles*/
+.btn {
+    font-family: Lato, sans-serif;
+    font-size: 1em;
+    width: 100px;
+    display: block;
+    float: left;
+    margin: 2px 1px;
+    border-radius: 4px;
+    border-color: rgba(128, 128, 128, 0.7);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.under65 {
+    background-color: #c81719;
+}
+
+.b65-75 {
+    background-color: #f57c24;
+}
+
+.b75-85 {
+    background-color: #f6c452;
+}
+
+.b85-95 {
+    background-color: #fbfb7b;
+}
+
+.over95 {
+    background-color: #01dd80;
+}
+
+.all {
+    background-color: rgb(185, 185, 185);
+}
+
+/*CALIFORNIA CSS*/
 
 #california-map {
     /*width: 45%;
@@ -254,4 +379,119 @@ h4{
     /*fill: #000;*/
     stroke: #fff;
     stroke-width: .6px;
+}
+
+/* 575 boilerplate style.css */
+.key path {
+  display: none;
+}
+
+.key line {
+  stroke: #000;
+  shape-rendering: crispEdges;
+  z-index: 10;
+}
+
+.CAlegend-title {
+    font-weight: bold;
+    z-index: 10;
+    float: right;
+}
+
+.CAlegend-box {
+    fill: none;
+    stroke: #888;
+    font-size: 10px;
+    z-index: 10;
+    float: right;
+}
+
+.CAmap{
+  z-index: 11;
+}
+
+#propToolTips{
+  color: green;
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  background-color: blue;
+  padding: 5px
+  border: thin solid #999;
+}
+
+.radio {
+    padding-right: 15%;
+    display: inline-flex;
+    margin-left: 7px;
+}
+
+.CAtoolTip {
+  /*
+  color: black;
+  position: absolute;
+  height: 50px;
+  min-width: 100px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #fff;
+  padding: 5px 10px;
+  top: -75px;
+  */
+  font-family: Lato, sans-serif;
+  position:absolute;
+  height:55px;
+  width: 350px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #000;
+  padding: 10px 10px;
+  border-radius: 15px;
+  text-align: left;
+  vertical-align: middle;
+  pointer-events:none;
+  top: -55px;
+}
+
+#options{
+  float:left;
+  text-align: left;
+  margin-left: 10px;
+}
+
+
+
+/*  font-family: Lato, sans-serif;*/
+.labelname {
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+
+
+.chartBackground{
+  fill: silver
+}
+
+.chartFrame {
+    fill: none;
+    stroke: #999;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #999;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+/*    font-family: monospace;*/
+    font-weight: bold;
+    font-size: .7em;
+    fill: black;
 }
