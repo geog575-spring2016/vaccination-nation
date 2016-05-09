@@ -23,13 +23,7 @@ var labelTitles2={
     measles14:['Number of Measles Outbreaks in 2014']
 }
 
-var sequencerTitles={
-    measles10:['2010'],
-    measles11:['2011'],
-    measles12:['2012'],
-    measles13:['2013'],
-    measles14:['2014']
-}
+
 
 var legendLables={
 
@@ -52,53 +46,20 @@ var width = 1200,
     formatPercent = d3.format(".0%"),
     formatNumber = d3.format(".0f");
 
-// var chartWidth = 420,
-//     chartHeight = 397.5,
-//     leftPadding=29,//more room for scale
-//     rightPadding=20,
-//     topBottomPadding=20,
-//     chartInnerWidth=chartWidth - leftPadding - rightPadding,
-//     chartInnerHeight=chartHeight-(topBottomPadding*2),//make chartInnerHeight contined within padding
-//     translate="translate(" + leftPadding + "," + topBottomPadding + ")";
-
 var radius = d3.scale.sqrt()
     .domain([0, 20])
     .range([0,80]);
 
 
-  // var linearSize = d3.scale.linear().domain([0,10]).range([10, 30]);
-  //
-  // var svg = d3.select("svg");
-  //
-  // svg.append("e")
-  //   .attr("class", "legendSize")
-  //   .attr("transform", "translate(20, 40)");
-  //
-  // var legendSize = d3.legend.size()
-  //   .scale(linearSize)
-  //   .shape('circle')
-  //   .shapePadding(15)
-  //   .labelOffset(20)
-  //   .orient('horizontal');
-  //
-  // svg.select(".legendSize")
-  //   .call(legendSize);
-
 var tooltip = d3.select("#california-map").append("div")
     .attr("class", "CAtoolTip");
-	// .style({"position": "absolute",
-  //         "color":"white",
-  //         "margin":"5px",
-  //         "visibility":"hidden",
-  //         "background-color":"black",
-  //         "padding":"5px"})
 
 window.onload=setmap();
 
 function setmap(){
 
-    var width= 520,
-        height=500;
+    var width= 750,
+        height=900;
 
     var CAmap=d3.select("#california-map")
         .append("svg")
@@ -108,7 +69,7 @@ function setmap(){
 
     var  projection = d3.geo.mercator()
 			.scale(1120 * 2)
-			.center([-119, 37.4])
+			.center([-121, 30.4])
 			.translate([width/2, height/2]);
 
     var path=d3.geo.path()
@@ -153,8 +114,8 @@ function setmap(){
             }
           }
         }
-       addVCLegend();
-      addPBELegend();
+        addVCLegend();
+        addPBELegend();
         //var colorScale=makeColorScale(dataCoverage);
         setEnumerationUnits(caliCounties, californiacenters, CAmap, path);
         selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path);
@@ -214,8 +175,6 @@ function setEnumerationUnits(caliCounties, californiacenters, CAmap, path){
 
 function addVCLegend(){
 
-  //var width = 960,
-    //  height = 500,
   var boxmargin = 4,
       lineheight = 30,
       keyheight = 20,
@@ -248,8 +207,8 @@ function addVCLegend(){
     }
 
     var svg = d3.select("#california-legend-vc").append("svg")
-        .attr("width", width)
-        .attr("height", height)
+        //.attr("width", width)
+      //  .attr("height", height)
         //.remove();
 
     // make legend
@@ -309,8 +268,7 @@ function addVCLegend(){
 
 function addPBELegend(){
 
-  //var width = 960,
-    //  height = 500,
+
   var boxmargin = 4,
       lineheight = 30,
       keyheight = 20,
@@ -343,8 +301,8 @@ function addPBELegend(){
     }
 
     var svg = d3.select("#california-legend-pbe").append("svg")
-        .attr("width", width)
-        .attr("height", height)
+        //.attr("width", 138)
+        //.attr("height", 140)
         //.remove();
 
     // make legend
@@ -402,20 +360,256 @@ function addPBELegend(){
 
 };
 
-  // var legend = d3.select('#legend')
-  //   .append('ul')
-  //     .attr('class', 'list-inline');
-  //
-  // var keys = legend.selectAll('li.key')
-  //     .data(colorScaleVC.range());
-  //
-  // keys.enter().append('li')
-  //     .attr('class', 'key')
-  //     .style('border-top-color', String)
-  //     .text(function(d) {
-  //         var r = colorScaleVC.invertExtent(d);
-  //         return formats.percent(r[0]);
-  //     });
+
+function highlight(props){
+  var selected=d3.selectAll("."+props.adm)
+      .style({
+          "stroke":"#3e3e3e",
+          "stroke-width":"3"
+      })
+  // var selectedCircles=d3.selectAll(".".props.geo_id)
+  //     .style({"stroke":"#3e3e3e",
+  //     "stroke-width":"3"})
+    // setLabel(props);
+};
+
+function highlightCircles(properties){
+  var selected=d3.selectAll("."+properties.county+ properties.geo_id)
+      .style({
+          "stroke":"#3e3e3e",
+          "stroke-width":"3"
+      })
+};
+
+function dehighlightCircles(properties){
+  var selected=d3.selectAll("."+properties.county+ properties.geo_id)
+      .style({
+        "stroke":"black",
+        "stroke-width":"1"
+      });
+
+}
+
+
+
+function dehighlight(props){
+   var selected=d3.selectAll("."+props.adm)
+       .style({
+         "stroke":"white",
+        //  function(){
+        //       return getStyle(this, "stroke")
+        // },
+         "stroke-width":function(){
+              return getStyle(this, "stroke-width")
+         }
+      });
+  //used to determine previous style so when you mouseoff and dehighlight, it returns to that previous style
+  function getStyle(element, styleName){
+    var styleText=d3.select(element)
+        .select("desc")
+        .text();
+
+    var styleObject=JSON.parse(styleText);
+    return styleObject[styleName];
+  };
+};
+
+
+function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
+
+  d3.selectAll('.radio').on('change', function(){
+
+       if (document.getElementById('none').checked) {
+
+              CAmap.selectAll('.circle13').remove();
+              CAmap.selectAll('.circle14').remove();
+              d3.select("#california-legend-vc").remove();
+              d3.select("#california-legend-pbe").remove();
+
+              d3.selectAll('.counties').transition().duration(200)
+                    .style({'fill':'#f2f2f1',
+                            'stroke':'#aab4b5',
+                            'stroke-width': "1px"});
+              var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
+                        .on('mouseover', function(){ tooltip.style("visibility", "hidden")})
+                        .on('mouseout', function(){return tooltip.style("visibility", "hidden");})
+
+      }
+       else if (document.getElementById('vc13').checked) {
+                addVCLegend();
+                d3.select("california-legend-pbe").remove()
+                CAmap.selectAll('.circle13').remove();
+                CAmap.selectAll('.circle14').remove();
+                var counites=d3.selectAll('.counties').transition().duration(200)
+                    .style('fill', function(d){return colorScaleVC(d.properties.coverage1314)})
+                    .style('stroke','white')
+
+                var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
+                    .on('mouseover', function(d){
+                      tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1314+":   "+"<b>"+d.properties.coverage1314+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>")
+                      highlight(d.properties)
+                    })
+                  	.on('mousemove', function(){tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+                  	.on('mouseout', function(d){
+                        tooltip.style("visibility", "hidden");
+                        dehighlight(d.properties)
+                    })
+
+      }
+
+
+       else if (document.getElementById('pb13').checked) {
+                  addPBELegend();
+                  d3.select("#california-legend-vc").remove();
+                  CAmap.selectAll('.circle13').remove();
+                  CAmap.selectAll('.circle14').remove();
+                  d3.selectAll('.counties').transition().duration(200)
+                    .style('fill', function(d){return colorScalepb13(d.properties.pbe1314)})
+                    .style('stroke','white')
+                  var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
+                            .on('mouseover', function(d){
+                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1314+":   "+"<b>"+d.properties.pbe1314+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
+                                highlight(d.properties)
+                            })
+                          	.on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+                          	.on('mouseout', function(d){
+                                tooltip.style("visibility", "hidden");
+                                dehighlight(d.properties)
+                            });
+      }
+
+       else if (document.getElementById('vc15').checked) {
+                  d3.select("california-legend-pbe").remove()
+                  addVCLegend();
+                  CAmap.selectAll('.circle13').remove();
+                  CAmap.selectAll('.circle14').remove();
+                  d3.selectAll('.counties').transition().duration(200)
+                    .style('fill', function(d){return colorScaleVC(d.properties.coverage1516)})
+                    .style('stroke','white');
+                  var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
+                            .on('mouseover', function(d){
+                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1516+":   "+"<b>"+d.properties.coverage1516+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
+                                highlight(d.properties)
+                            })
+                            .on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+                            .on('mouseout', function(d){
+                                tooltip.style("visibility", "hidden");
+                                dehighlight(d.properties)
+                            });
+            //      CAcreateSequenceControls()
+      }
+
+       else if (document.getElementById('pb15').checked) {
+                  addPBELegend();
+                  d3.select("#california-legend-vc").remove();
+                  CAmap.selectAll('.circle13').remove();
+                  CAmap.selectAll('.circle14').remove();
+                  d3.selectAll('.counties').transition().duration(200)
+                    .style('fill', function(d){return colorScalepb14(d.properties.pbe1516)})
+                    .style('stroke','white');
+                  var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
+                            .on('mouseover', function(d){
+                               tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1516+":   "+"<b>"+d.properties.pbe1516+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
+                               highlight(d.properties)
+                            })
+                            .on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
+                            .on('mouseout', function(d){
+                                tooltip.style("visibility", "hidden");
+                                dehighlight(d.properties)
+                            });
+                //  CAcreateSequenceControls()
+
+      }
+
+      else if(document.getElementById('propsymbs13').checked) {
+        d3.select("#california-legend-vc").remove();
+        d3.select("#california-legend-pbe").remove();
+        CAmap.selectAll('.circle14').remove();
+        d3.selectAll('.counties').transition().duration(200)
+          .style({'fill': "#f2f2f1","stroke":"#aab4b5","stroke-width":1})
+
+        var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
+                  .on('mouseover', function(d){return tooltip.style("visibility", "hidden")})
+                  .on('mouseout', function(){return tooltip.style("visibility", "hidden");});
+
+
+        var centroids=CAmap.selectAll(".symbol13")
+            .data(californiacenters.features.sort(function(a,b){return b.properties.measles13-a.properties.measles13;}))
+            .enter().append("path")
+            .attr("class", function(d){
+
+                  return "circle13 "+d.properties.county+ d.properties.geo_id;
+            })
+            .attr("d",path.pointRadius(function(d){return radius(d.properties.measles13);}))
+            .style({"fill": "orange",
+                    "fill-opacity":0.5,
+                    "stroke":"black"})
+          .on("mouseover", function(d){
+                  tooltip.style("visibility", "visible").html("<l1>"+labelTitles2.measles13+":   "+"<b>"+d.properties.measles13+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
+                  highlightCircles(d.properties)
+          })
+        	.on("mousemove", function(){return tooltip.style("top", (event.pageY-50)+"px").style("left",(event.pageX+50)+"px");})
+        	.on("mouseout", function(d){
+                tooltip.style("visibility", "hidden");
+                dehighlightCircles(d.properties)
+
+              });
+        }
+
+        else if(document.getElementById('propsymbs14').checked) {
+          d3.select("#california-legend-vc").remove();
+          d3.select("#california-legend-pbe").remove();
+          CAmap.selectAll('.circle13').remove();
+          d3.selectAll('.counties').transition().duration(200)
+            .style({'fill': "#f2f2f1","stroke":"#aab4b5","stroke-width":1})
+
+          var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
+                    .on('mouseover', function(d){return tooltip.style("visibility", "hidden")})
+                    .on('mouseout', function(){return tooltip.style("visibility", "hidden");});
+
+
+          var centroids=CAmap.selectAll(".symbol14")
+              .data(californiacenters.features.sort(function(a,b){return b.properties.measles14-a.properties.measles14;}))
+            .enter().append("path")
+              .attr("class", function(d){
+
+                    return "circle14 "+d.properties.county+ d.properties.geo_id;
+              })
+
+              .attr("d",path.pointRadius(function(d){return radius(d.properties.measles14);}))
+              .style({"fill": "orange",
+                      "fill-opacity":0.5,
+                      "stroke":"black"})
+            .on("mouseover", function(d){
+                    tooltip.style("visibility", "visible").html("<l1>"+labelTitles2.measles14+":   "+"<b>"+d.properties.measles14+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
+                    highlightCircles(d.properties)
+            })
+            .on("mousemove", function(){return tooltip.style("top", (event.pageY-50)+"px").style("left",(event.pageX+50)+"px");})
+            .on("mouseout", function(d){
+                  tooltip.style("visibility", "hidden");
+                  dehighlightCircles(d.properties)
+
+                });
+            }
+        })
+      };
+
+})();
+
+// var legend = d3.select('#legend')
+//   .append('ul')
+//     .attr('class', 'list-inline');
+//
+// var keys = legend.selectAll('li.key')
+//     .data(colorScaleVC.range());
+//
+// keys.enter().append('li')
+//     .attr('class', 'key')
+//     .style('border-top-color', String)
+//     .text(function(d) {
+//         var r = colorScaleVC.invertExtent(d);
+//         return formats.percent(r[0]);
+//     });
 //}
 
 
@@ -459,241 +653,43 @@ function addPBELegend(){
 //         // });
 // };
 
-function CAcreateSequenceControls(caliCounties, californiacenters, properties, dataMeasles, CAmap, path){
+// function CAcreateSequenceControls(caliCounties, californiacenters, properties, dataMeasles, CAmap, path){
+//
+//       var yearLabel = d3.select("#CAyearLabel")
+//         .text(sequencerTitles[expressed2])
+//
+//         $("#CAstepForward").on("click", function(){
+//             attributeIndex +=1
+//               if(attributeIndex > keyArray2.length){
+//                 attributeIndex = 0
+//               }
+//
+//             expressed2 = keyArray2[attributeIndex]
+//
+//             d3.select("#CAyearLabel")
+//               .text(sequencerTitles[expressed2])
+//
+//
+//
+//             //CAchangeAttribute(expressed2, CAmap, path)
+//         })
+//
+//         $("#CAstepBackward").on("click", function(){
+//             attributeIndex -=1
+//
+//               if(attributeIndex < 0){
+//                 attributeIndex = keyArray2.length-1
+//               }
+//
+//               expressed2 = keyArray2[attributeIndex]
+//
+//               d3.select("#CAyearLabel")
+//                 .text(sequencerTitles[expressed2])
+//
+//           //  CAchangeAttribute(expressed2, CAmap, path)
+//         })
+// }
 
-      var yearLabel = d3.select("#CAyearLabel")
-        .text(sequencerTitles[expressed2])
-
-        $("#CAstepForward").on("click", function(){
-            attributeIndex +=1
-              if(attributeIndex > keyArray2.length){
-                attributeIndex = 0
-              }
-
-            expressed2 = keyArray2[attributeIndex]
-
-            d3.select("#CAyearLabel")
-              .text(sequencerTitles[expressed2])
-
-
-
-            //CAchangeAttribute(expressed2, CAmap, path)
-        })
-
-        $("#CAstepBackward").on("click", function(){
-            attributeIndex -=1
-
-              if(attributeIndex < 0){
-                attributeIndex = keyArray2.length-1
-              }
-
-              expressed2 = keyArray2[attributeIndex]
-
-              d3.select("#CAyearLabel")
-                .text(sequencerTitles[expressed2])
-
-          //  CAchangeAttribute(expressed2, CAmap, path)
-        })
-}
-
-function highlight(props){
-  var selected=d3.selectAll("."+props.adm)
-      .style({
-          "stroke":"#3e3e3e",
-          "stroke-width":"3"
-      })
-  // var selectedCircles=d3.selectAll(".".props.geo_id)
-  //     .style({"stroke":"#3e3e3e",
-  //     "stroke-width":"3"})
-    // setLabel(props);
-};
-
-function highlightCircles(properties){
-  var selected=d3.selectAll("."+properties.county+properties.geo_id)
-      .style({
-          "stroke":"#3e3e3e",
-          "stroke-width":"3"
-      })
-};
-
-function dehighlightCircles(properties){
-  var selected=d3.selectAll("."+properties.county+properties.geo_id)
-      .style({
-        "stroke":"black",
-        "stroke-width":"1"
-      });
-
-}
-
-
-
-function dehighlight(props){
-   var selected=d3.selectAll("."+props.adm)
-       .style({
-         "stroke":"white",
-        //  function(){
-        //       return getStyle(this, "stroke")
-        // },
-         "stroke-width":function(){
-              return getStyle(this, "stroke-width")
-         }
-      });
-  //used to determine previous style so when you mouseoff and dehighlight, it returns to that previous style
-  function getStyle(element, styleName){
-    var styleText=d3.select(element)
-        .select("desc")
-        .text();
-
-    var styleObject=JSON.parse(styleText);
-    return styleObject[styleName];
-  };
-};
-
-
-function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
-
-  d3.selectAll('.radio').on('change', function(){
-
-       if (document.getElementById('none').checked) {
-
-              CAmap.selectAll('.circle').remove();
-              d3.select("#california-legend-vc").remove();
-              d3.select("#california-legend-pbe").remove();
-
-              d3.selectAll('.counties').transition().duration(200)
-                    .style({'fill':'#f2f2f1',
-                            'stroke':'#aab4b5',
-                            'stroke-width': "1px"});
-              var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
-                        .on('mouseover', function(){ tooltip.style("visibility", "hidden")})
-                        .on('mouseout', function(){return tooltip.style("visibility", "hidden");})
-          //    CAcreateSequenceControls()
-
-      }
-       else if (document.getElementById('vc13').checked) {
-                addVCLegend();
-                d3.select("california-legend-pbe").remove()
-                CAmap.selectAll('.circle').remove();
-                var counites=d3.selectAll('.counties').transition().duration(200)
-                    .style('fill', function(d){return colorScaleVC(d.properties.coverage1314)})
-                    .style('stroke','white')
-
-                var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
-                    .on('mouseover', function(d){
-                      tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1314+":   "+"<b>"+d.properties.coverage1314+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>")
-                      highlight(d.properties)
-                    })
-                  	.on('mousemove', function(){tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
-                  	.on('mouseout', function(d){
-                        tooltip.style("visibility", "hidden");
-                        dehighlight(d.properties)
-                    })
-          //    CAcreateSequenceControls()
-
-      }
-
-
-       else if (document.getElementById('pb13').checked) {
-                  addPBELegend();
-                  d3.select("#california-legend-vc").remove();
-                  CAmap.selectAll('.circle').remove();
-                  d3.selectAll('.counties').transition().duration(200)
-                    .style('fill', function(d){return colorScalepb13(d.properties.pbe1314)})
-                    .style('stroke','white')
-                  var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
-                            .on('mouseover', function(d){
-                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1314+":   "+"<b>"+d.properties.pbe1314+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
-                                highlight(d.properties)
-                            })
-                          	.on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
-                          	.on('mouseout', function(d){
-                                tooltip.style("visibility", "hidden");
-                                dehighlight(d.properties)
-                            });
-                //  CAcreateSequenceControls()
-      }
-
-       else if (document.getElementById('vc15').checked) {
-                  d3.select("california-legend-pbe").remove()
-                  addVCLegend();
-                  CAmap.selectAll('.circle').remove();
-                  d3.selectAll('.counties').transition().duration(200)
-                    .style('fill', function(d){return colorScaleVC(d.properties.coverage1516)})
-                    .style('stroke','white');
-                  var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
-                            .on('mouseover', function(d){
-                                tooltip.style("visibility", "visible").html("<l1>"+labelTitles.coverage1516+":   "+"<b>"+d.properties.coverage1516+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
-                                highlight(d.properties)
-                            })
-                            .on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
-                            .on('mouseout', function(d){
-                                tooltip.style("visibility", "hidden");
-                                dehighlight(d.properties)
-                            });
-            //      CAcreateSequenceControls()
-      }
-
-       else if (document.getElementById('pb15').checked) {
-                  addPBELegend();
-                  d3.select("#california-legend-vc").remove();
-                  CAmap.selectAll('.circle').remove();
-                  d3.selectAll('.counties').transition().duration(200)
-                    .style('fill', function(d){return colorScalepb14(d.properties.pbe1516)})
-                    .style('stroke','white');
-                  var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
-                            .on('mouseover', function(d){
-                               tooltip.style("visibility", "visible").html("<l1>"+labelTitles.pbe1516+":   "+"<b>"+d.properties.pbe1516+"%"+"</b><div>"+"County: "+"<b>"+d.properties.NAME+"</b></div></l1>");
-                               highlight(d.properties)
-                            })
-                            .on('mousemove', function(){return tooltip.style("top", (event.pageY-40)+"px").style("left",(event.pageX+40)+"px");})
-                            .on('mouseout', function(d){
-                                tooltip.style("visibility", "hidden");
-                                dehighlight(d.properties)
-                            });
-                //  CAcreateSequenceControls()
-
-      }
-
-      else if(document.getElementById('propsymbs').checked) {
-        d3.select("#california-legend-vc").remove();
-        d3.select("#california-legend-pbe").remove();
-        d3.selectAll('.counties').transition().duration(200)
-          .style({'fill': "#f2f2f1","stroke":"#aab4b5","stroke-width":1})
-
-        var singleCounties=CAmap.selectAll(".counties").data(caliCounties)
-                  .on('mouseover', function(d){return tooltip.style("visibility", "hidden")})
-                  .on('mouseout', function(){return tooltip.style("visibility", "hidden");});
-
-
-        var centroids=CAmap.selectAll(".symbol")
-            .data(californiacenters.features.sort(function(a,b){return b.properties[expressed2]-a.properties[expressed2];}))
-          .enter().append("path")
-            .attr("class", function(d){
-
-                  return "circle "+d.properties.county +d.properties.geo_id;
-            })
-            .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed2]);}))
-            .style({"fill": "orange",
-                    "fill-opacity":0.5,
-                    "stroke":"black"})
-          .on("mouseover", function(d){
-                  tooltip.style("visibility", "visible").html("<l1>"+labelTitles2[expressed2]+":   "+"<b>"+d.properties[expressed2]+" cases"+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
-                  highlightCircles(d.properties)
-          })
-        	.on("mousemove", function(){return tooltip.style("top", (event.pageY-50)+"px").style("left",(event.pageX+50)+"px");})
-        	.on("mouseout", function(d){
-                tooltip.style("visibility", "hidden");
-                dehighlightCircles(d.properties)
-
-              });
-
-          CAcreateSequenceControls()
-
-        }
-    });
-  }
-
-})();
 
 // function setLabel(props){
 //
