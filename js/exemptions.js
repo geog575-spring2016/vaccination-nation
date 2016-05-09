@@ -1,19 +1,19 @@
 (function(){
 
-var DataArray = ["code"];
-var expressed =DataArray[0];
+var attrArray = ["codes"];
+var expressed =attrArray[0];
 var colorClasses = [
 			"#d7191c",
 			"#fdae61",
 			"#ffffb2",
 		];
 
+
 window.onload = setMapExempt();
 
 	function setMapExempt(){
 		var width = 800;
         height = 500;
-        console.log("Reach setMapExempt");
         var mapMainExempt = d3.select("#mapMainExempt")
 	      	.append("svg")
 	      	.attr("class", "mapMainExempt")
@@ -33,29 +33,43 @@ window.onload = setMapExempt();
 	      .await(callback);
 
 	    function callback(error, csvData, us){
-	    	console.log("Reach callback");
-		    var usaStates = topojson.feature(us, us.objects.usaStates).features;
-		    for (var i=0; i<csvData.length; i++){
-		        var csvRegion = csvData[i];
-		        var csvKey = csvRegion.postal;
-		        var jsonStates=us.objects.usStates.geometries;
-		          	for (var a=0; a<jsonStates.length; a++){
-			            if(jsonStates[a].properties.postal==csvKey){
-			                for(key in DataArray){
-				                var attribute=DataArray[key];
-				                var value=parseFloat(csvRegion[attribute]);
-			              	    (jsonStates[a].properties[attribute])=value;
-			                }
-			            }
-		            }
-		    }
-		    console.log("go through for statement in callback");
-		    setEnumerationUnitsExempt(usaStates, mapMainExempt, path);
+
+	    	//console.log("reach callback?");
+	    	var usStates = topojson.feature(us, us.objects.usaStates).features;
+	    	
+	    	var states = mapMainExempt.append("path")
+	    		.datum(usStates)
+	    		.attr("class","states")
+	    		.attr("d", path)
+
+	    	usStates = joinData(usStates, csvData)
+		    setEnumerationUnitsExempt(usStates, mapMainExempt, path);
+		    var colorScale = makeColorScale(csvData);
     	}
 	};//end of setMapExempt
 
-	function setEnumerationUnitsExempt(usaStates, mapMainExempt, path){
-		console.log("Reach setEnumerationUnitsExempt");
+	function joinData (usStates, csvData){
+  	//console.log("reach joinData");
+    for (var i=0; i<csvData.length; i++){
+      var csvRegion = csvData[i];
+      var csvKey = csvRegion.postal;
+        for (var a=0; a<usStates.length; a++){
+          var geojsonProps = usStates[a].properties;
+          var geojsonKey = geojsonProps.postal;
+          
+            if (geojsonKey == csvKey){
+              attrArray.forEach(function(attr){
+                var val = parseFloat(csvRegion[attr]); 
+              });
+            };
+        };
+    };
+
+    return usStates;
+  };
+
+	function setEnumerationUnitsExempt(usStates, mapMainExempt, path, colorScale){
+
 		var states = mapMainExempt.selectAll(".states")
 			.data(usaStates)
 			.enter()
@@ -64,9 +78,33 @@ window.onload = setMapExempt();
 			.attr("class", function(d){
 				return "states " + d.properties.postal;
 			})
-			.style("fill", "white")
-			.style("stroke", "grey");
+			.style("fill", function(d){
+				return choropleth(d.properties, colorScale)
+			});
 	};
+
+	function makeColorScale(csvData){
+		var colorScale=d3.scale.threshold()
+			.domain([1,2,3])
+			.range(colorClasses);
+	};
+
+	function choropleth(props, colorScale){
+		var value = (props[expressed]);
+		console.log(props.codes)
+
+		if (value == 1.00){
+			return "blue";
+			}else if (value == 2.00){
+				return "green";
+			}else if (value == 3.00){
+				return "red"
+		};
+
+	}
+	
+
+
 
 
 
