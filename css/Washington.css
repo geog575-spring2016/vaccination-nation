@@ -57,3 +57,12 @@ option {
   margin-left: 25%;
   margin-right: 25%;
 }
+
+#washington-legend {
+    fill: none;
+    stroke: #888;
+    font-size: 12px;
+    float: left;
+    height: 10px
+    width: 200px;
+}

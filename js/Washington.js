@@ -1,7 +1,5 @@
 /* Washington Map */
 
-
-//need to create a sequence of years
 //need to create radio buttons
 //create a special breaks for all of the data
 //make sure to add in each parameter in order
@@ -75,11 +73,9 @@ function setMap(){
         //add enumeration units to the map
         setEnumerationUnits(Washington, map, path, colorScale);
 
-//        createDropdown(Washington_Complete_Immunizations);
-
         createSequenceControls()
 
-        //addWashingtonLegend()
+        addWashingtonLegend()
     };
 };
 
@@ -322,8 +318,8 @@ function createSequenceControls(){
               changeAttribute(expressed, Washington_Complete_Immunizations)
         })
 }
-//
-//
+
+
 // function addWashingtonLegend(){
 //
 //   var boxmargin = 4,
@@ -357,17 +353,18 @@ function createSequenceControls(){
 //         return a;
 //     }
 //
-//     var height= 400
-//     var width= 400
+//     // var height= 100
+//     // var width= 100
 //
-//     var svg = d3.select("#washington-legend").append("svg")
-//         .attr("width", width)
-//         .attr("height", height)
+//     var svg = d3.select("#washington-legend")
+//         // .append("svg")
+//         // .attr("width", width)
+//         // .attr("height", height)
 //         //.remove();
 //
 //     // make legend
 //     var legend = svg.append("g")
-//         .attr("transform", "translate ("+margin.left+","+margin.top+")")
+//         // .attr("transform", "translate ("+margin.left+","+margin.top+")")
 //         .attr("class", "legend");
 //
 //     legend.selectAll("text")
@@ -379,7 +376,7 @@ function createSequenceControls(){
 //
 //     // make legend box
 //     var lb = legend.append("rect")
-//         .attr("transform", "translate (0,"+titleheight+")")
+//         // .attr("transform", "translate (0,"+titleheight+")")
 //         .attr("class", "#washington-legend")
 //         .attr("width", boxwidth)
 //         .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
