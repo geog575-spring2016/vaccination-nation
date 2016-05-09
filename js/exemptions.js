@@ -1,13 +1,13 @@
 (function(){
 
-var attrArray = ["code"];
+var attrArray = ["codes"];
 var expressed =attrArray[0];
-
-var colorClasses = d3.scale.threshold()
-	.domain([1,2,3])
-	.range(["#d7191c",
+var colorClasses = [
+			"#d7191c",
 			"#fdae61",
-			"#ffffb2",]);
+			"#ffffb2",
+		];
+
 
 window.onload = setMapExempt();
 
@@ -34,10 +34,10 @@ window.onload = setMapExempt();
 
 	    function callback(error, csvData, us){
 
-	    	console.log("reach callback?");
+	    	//console.log("reach callback?");
 	    	var usStates = topojson.feature(us, us.objects.usaStates).features;
 	    	
-	    	var statesEx = mapMainExempt.append("path")
+	    	var states = mapMainExempt.append("path")
 	    		.datum(usStates)
 	    		.attr("class","states")
 	    		.attr("d", path)
@@ -49,7 +49,7 @@ window.onload = setMapExempt();
 	};//end of setMapExempt
 
 	function joinData (usStates, csvData){
-  	console.log("reach joinData");
+  	//console.log("reach joinData");
     for (var i=0; i<csvData.length; i++){
       var csvRegion = csvData[i];
       var csvKey = csvRegion.postal;
@@ -68,8 +68,8 @@ window.onload = setMapExempt();
     return usStates;
   };
 
-	function setEnumerationUnitsExempt(usaStates, mapMainExempt, path){
-		console.log("Reach setEnumerationUnitsExempt");
+	function setEnumerationUnitsExempt(usStates, mapMainExempt, path, colorScale){
+
 		var states = mapMainExempt.selectAll(".states")
 			.data(usaStates)
 			.enter()
@@ -78,8 +78,9 @@ window.onload = setMapExempt();
 			.attr("class", function(d){
 				return "states " + d.properties.postal;
 			})
-			.style("fill", "white")
-			.style("stroke", "grey");
+			.style("fill", function(d){
+				return choropleth(d.properties, colorScale)
+			});
 	};
 
 	function makeColorScale(csvData){
@@ -87,6 +88,21 @@ window.onload = setMapExempt();
 			.domain([1,2,3])
 			.range(colorClasses);
 	};
+
+	function choropleth(props, colorScale){
+		var value = (props[expressed]);
+		console.log(props.codes)
+
+		if (value == 1.00){
+			return "blue";
+			}else if (value == 2.00){
+				return "green";
+			}else if (value == 3.00){
+				return "red"
+		};
+
+	}
+	
 
 
 
