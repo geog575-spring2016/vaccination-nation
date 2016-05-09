@@ -220,22 +220,22 @@
         //           .attr("class",function(d){
         //             return "circle "+properties.disease;
         //           })
-        
+
         //     if("class","Mumps"){
         //         centroids.style('fill','blue')
-        
+
         //     }
         //     else if("class","Pertussis"){
         //         centroids.style('fill','yellow')
         //     }
         //     else if("class","Measles"){
         //         centroids.style('fill','orange')
-        
+
         //     }
-        
+
         //   };
 
-            
+
             // .style({"fill": "orange",
             //       "fill-opacity":0.5,
             //       "stroke":"black"})
@@ -245,11 +245,11 @@
       // });
 
       // console.log(states);
-      
+
       // var desc=states.append("desc")
       //        .text('{"stroke":"white", "stroke-width":"1px"}');
-      
-      
+
+
 
   //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
   function highlight(properties){
