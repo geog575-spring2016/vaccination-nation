@@ -14,6 +14,8 @@ h2{
 }
 h3{
     text-align: center;
+    font-weight: bold;
+
 }
 h4{
 
@@ -34,6 +36,8 @@ h4{
     pointer-events:none;
     top: -75px;
 }
+
+
 
 
 /*----------LEGEND INFORMATION-------------*/
@@ -241,6 +245,13 @@ option {
     /*font-size: 13px;*/
 }
 
+#workscited{
+  font-size: 12px;
+  text-align: left;
+  margin-top: 100px;
+
+}
+
 #panel {
     width: 22%;
     padding: 0px;
@@ -377,6 +388,7 @@ option {
 #california-wrapper {
     width:70%;
     margin: 0 auto;
+    align-self: center;
 }
 
 #california-map {
@@ -397,12 +409,14 @@ option {
     height: 550px;
     float: left;
     margin-bottom: 10px;
+    margin-right: 496.1px
     display: inline-block;
 }
 
 .CAmap {
 /*    display: inline-block;*/
-    float: left;
+    float: left;;
+    margin-right: 1488.3px;
 /*    position: absolute;*/
 }
 
@@ -440,9 +454,14 @@ option {
 /*    height: 630px;*/
     display: block;
     float:left;
+    margin-left:88px;
+    margin-right: 88px;
+    margin-bottom: 50px;
+    /*float:none;*/
     text-align: center;
+
 /*    border-style: solid;*/
-    width: 900px;
+    width: 1200px;
 
 }
 
