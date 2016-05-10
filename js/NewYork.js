@@ -17,7 +17,6 @@
 /*       -.______  \ . /  ______,-  */
 /*               `.     ,'          */
 
-
 //determine which attribute to visualize
 var attribute = "completely-immunized";
     
@@ -133,19 +132,17 @@ function colorCircles(data, map){
 
 //create a color scale for circles
 function getColor(v) {
-//    console.log(v);
-    if (v <= 65){
+    if (v>94.9){
+        return "#01dd80";
+        } else if (v <= 65){
             return "#c81719";
         } else if ((v>65) && (v<=74.9)) {
-//            console.log(v);
             return "#f57c24";
         } else if ((v>75) && (v<85)){
             return "#f6c452";
         } else if ((v>=85) && (v<=94.9)){
             return "#fbfb7b";
-        } else {
-            return "#01dd80";
-        }
+        } 
 }
 
 
@@ -161,7 +158,7 @@ function createFilterControl(map){
         onAdd: function(map){
             //create the control container with my control class name
             var container = L.DomUtil.create("div", "sequence-control-container-ny");
-            
+                        
             //create button elements
             $(container).append('<button type="button" class="btn under65">Under 65%<br>(14 Schools)</button>');
             $(container).append('<button type="button" class="btn b65-75">65% to 74.99%<br>(10 Schools)</button>');
@@ -170,6 +167,9 @@ function createFilterControl(map){
             $(container).append('<button type="button" class="btn over95">95% and over<br>(550 Schools)</button>');
             $(container).append('<button type="button" class="btn all">All<br>(771 Schools)</button>');
            
+//            $(".btn").click(function (){$(this).css('opacity', '0.1')});
+            
+            
             //kill any mouse event listeners on the map
             $(container).on('mousedown dblclick', function(e){
                 L.DomEvent.stopPropagation(e);
@@ -205,7 +205,6 @@ function filterButtons(map){
             
             //set a variable to hold the vaccine coverage rate
             if (layer.feature && layer.feature.properties){
-            console.log(layer.feature.properties[attribute]);
             var vaxAttribute = layer.feature.properties[attribute];
             
                 //if the "all" button is clicked, add ALL layers to the layer group
@@ -237,6 +236,13 @@ function filterButtons(map){
     });
 };
 
+function clickedButtons(){
+    $(".btn").click.css('border-color', 'none');
+    $(".btn").click(function (){$(this).css('border-color', 'black', 'border-radius', '6px')});
+    
+}
+
+
 
 //Import GeoJSON data
 function getData(map){
@@ -248,6 +254,7 @@ function getData(map){
             colorCircles(response, map);
             createFilterControl(map);
             filterButtons(map);
+            clickedButtons();
         }
     });
 };
@@ -258,7 +265,6 @@ $(document).ready(createMap);
 //1. Button clicked visual affordance
 //2. Change color scale
 //3. Metadata
-//4. Z-index
 
 
 

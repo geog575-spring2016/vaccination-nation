@@ -16,8 +16,7 @@ h3{
     text-align: center;
 }
 h4{
-
-
+ 
 }
 .infolabelMain {
     font-family: Lato, sans-serif;
@@ -314,9 +313,7 @@ option {
 	padding: 10px;
 	text-align: center;
 	border: solid gray 1px;
-/*	font-size: 1.2em;*/
-/*  font-family: 'Avenir', sans-serif;*/
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
 /*NYbutton styles*/
