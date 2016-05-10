@@ -149,7 +149,7 @@ h4{
 
 #washington-map{
     height: 400px;
-    border: medium solid #999;
+    /*border: medium solid #999;*/
     margin-bottom: 10px;
     margin-left: 25%;
     margin-right: 25%
@@ -194,6 +194,32 @@ h4{
     margin-top: 5px;
 }
 
+.CIlegendContainer {
+    display: block;
+/*    padding-top: 15px;*/
+    float: left;
+    width: 250px;
+    height: 180px;
+    margin-left: 5px;
+    color: black;
+/*    position:absolute;*/
+}
+
+.washington-legend-title {
+  color: black;
+  font-weight: bold;
+  /*z-index: 10;*/
+  float: right;
+}
+
+.washington-legend-box{
+  color: green;
+  fill: none;
+  stroke: #888;
+  font-size: 10px;
+  z-index: 10;
+  float: right;
+}
 /*
 #washington-text{
   height: 200px;
@@ -271,6 +297,7 @@ option {
 }
 
 #washington-legend {
+    color: black;
     fill: none;
     stroke: #888;
     font-size: 12px;
@@ -372,7 +399,7 @@ option {
     float: left;
 /*    float: left;*/
 /*    position:fixed;*/
-    
+
 }
 
 #californiaLegendControls {
@@ -427,7 +454,7 @@ option {
     text-align: center;
 /*    border-style: solid;*/
     width: 900px;
-    
+
 }
 
 /*.states {*/
@@ -448,6 +475,7 @@ option {
 }
 
 .CAlegend-title {
+    color: black;
     font-weight: bold;
     z-index: 10;
     float: right;
@@ -465,6 +493,7 @@ option {
   z-index: 11;
 }
 
+/*
 #propToolTips{
   color: green;
   position: absolute;
@@ -474,6 +503,7 @@ option {
   padding: 5px
   border: thin solid #999;
 }
+*/
 
 .radio {
     padding-right: 15%;

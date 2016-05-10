@@ -175,7 +175,7 @@ function addVCLegend(){
       lineheight = 30,
       keyheight = 20,
       keywidth = 40,
-      boxwidth = 3.5 * keywidth,
+      boxwidth = 4.5 * keywidth,
       formatPercent = d3.format(".0%");
 
 //  var margin = { "left": 160, "top": 80 };
