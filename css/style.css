@@ -85,7 +85,7 @@ h4{
 	display: none;
 }
 
-#country-panel{
+#exemption-panel{
   height: 90%;
 	position: absolute;
 	width: 20%;
@@ -308,6 +308,7 @@ h4{
     margin-top: -3px;
     margin-bottom: 10px;
     text-align: center;
+    stroke: white;
 }
 
 #mainMap2 {
@@ -378,24 +379,6 @@ h4{
     margin-top: 5px;
 }
 
-/*
-#washington-text{
-  height: 200px;
-	width: 50%;
-	border-width: 1px;
-	border: medium solid #999;
-	text-align: center;
-	padding-top: 0px;
-	padding-bottom: 10px;
-	position: absolute;
-	transform: translate(0px, 420px);
-	font-size: 14px;
-  background-color: white;
-}
-*/
-
-/* Style Sheet */
-
 
 option {
     font-weight: normal;
@@ -442,10 +425,6 @@ option {
     float: right;
 }
 
-/*
-#washington-legend {
-    fill: white;
-}*/
 
 .WashingtonMap {
   stroke: white;

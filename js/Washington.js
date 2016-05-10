@@ -139,7 +139,7 @@ function makeColorScale(data){
     //create color scale generator
     var colorScale = d3.scale.threshold()
         .domain([75,85,95])
-        .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
+        .range(['#d7191c','#fc8d59','#fadb86','#47bcbf']);
 
     return colorScale;
 };
@@ -330,7 +330,7 @@ function addWashingtonLegend(){
 
   //var margin = { "left": 5, "top": 20};
 
-  var legendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+  var legendcolors = ['#d7191c','#fc8d59','#fadb86','#2fd2d6'];
 
   var title = ['Washington Complete Immunizations'],
       titleheight = title.length*lineheight + boxmargin;
@@ -358,6 +358,7 @@ function addWashingtonLegend(){
     var svg = d3.select("#washington-legend").append("svg")
         .attr("class", "CIlegendContainer")
         // .append("svg")
+
         // .attr("width", width)
         // .attr("height", height)
         //.remove();

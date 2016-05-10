@@ -5,11 +5,21 @@
   var DataArray = ["cases1993","cases1994","cases1995","cases1996","cases1997","cases1998","cases1999","cases2000","cases2001",
     "cases2002","cases2003","cases2004","cases2005","cases2006","cases2007","cases2008","cases2009","cases2010","cases2011",
     "cases2012","cases2013"];
-
   var attrArray = ["2009-2010", "2011-2012", "2012-2013", "2013-2014", "2014-2015"];
+  var exemptionattrArray = ["codes"];
 
   var expressed =DataArray[0];
   var expressed2 = attrArray[0];
+  var expressed3 =exemptionattrArray[0];
+
+  var expemptioncolorClasses = [
+  			"#d7191c",
+  			"#fdae61",
+  			"#ffffb2",
+  		];
+
+  var Exemtooltip = d3.select("#mapMainExempt").append("div")
+  		    .attr("class", "Exemtooltip");
 
   var mainTitle =["Pertussis Cases","Mumps Cases","Measles Cases"];
 
@@ -57,7 +67,6 @@
 
     var usStates = topojson.feature(us, us.objects.usStates).features;
 
-
     for (var i=0; i<csvData.length; i++){
         var csvRegion = csvData[i];
         var csvKey = csvRegion.postal;
@@ -72,6 +81,8 @@
             }
           }
         }
+
+
 
     var states = mapMain.append("path")
         .datum(usStates)
@@ -182,7 +193,6 @@
             return "#CCC";
         };
     };
-
 
   function setPropSymbols(usStates, usCenters, mapMain, path){
 
@@ -308,7 +318,6 @@
           "top": y + "px"
       });
      };
-
 
 function coverageMapLegend(){
 
@@ -476,7 +485,6 @@ function exemptionMapLegend(){
        .text(function(d) { return (d[0]+" - "+d[1]+"%")})
  };
 
-
 function Preventable_OutbreaksMapLegend(){
 
   var boxmargin = 4,
@@ -561,6 +569,7 @@ function Preventable_OutbreaksMapLegend(){
 };
 
 
+
 // nav tabs
 $(".nav-item").hover(function(){
 	$(this).toggleClass('nav-hovered')
@@ -576,6 +585,9 @@ function removePropSympols(){
 function showPropSymbols(){
   $(".symbol").show()
 }
+
+
+
 
 $(".nav-item").click(function(){
 	//control active tab css
@@ -598,24 +610,19 @@ $(".nav-item").click(function(){
       }
     }
 
-
-
 	//figure out what to display
 	$(".nav-panel").css({'display': "none"})
 	_thisData = $(this).data('panel')
 	if (_thisData == 'intro'){
 		$("#intro-panel").slideToggle()
-	}else if (_thisData == "wind"){
-		$("#wind-panel").slideToggle()
-	}else if (_thisData == "country"){
-		$("#country-panel").slideToggle()
+	}else if (_thisData == "intro2"){
+		$("#exemption-panel").slideToggle()
+	}else if (_thisData == "intro3"){
+		$("#intro3-panel").slideToggle()
 	}else{
 		return
 	}
 })
-
-
-
 
 
 
