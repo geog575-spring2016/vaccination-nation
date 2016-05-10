@@ -388,7 +388,8 @@ option {
 #california-wrapper {
     width:70%;
     margin: 0 auto;
-    align-self: center;
+    display: block;
+    /*align-self: center;*/
 }
 
 #california-map {
@@ -453,15 +454,18 @@ option {
 #california-text {
 /*    height: 630px;*/
     display: block;
-    float:left;
-    margin-left:88px;
-    margin-right: 88px;
+    /*float:left;*/
+/*are percentages better?*/
+    /*margin-left:15%;
+    margin-right:15%;*/
     margin-bottom: 50px;
+    margin:0 auto;
     /*float:none;*/
     text-align: center;
+    position: relative;;
 
 /*    border-style: solid;*/
-    width: 1200px;
+    width: 80%;
 
 }
 
@@ -531,7 +535,7 @@ option {
   font-family: Lato, sans-serif;
   position:absolute;
   height:55px;
-  width: 350px;
+  width: 340px;
   color: #fff;
   background-color: #000;
   border: solid thin #000;
@@ -550,7 +554,7 @@ option {
 }
 
 
-
+/*
 /*  font-family: Lato, sans-serif;*/
 .labelname {
   /*font-size: 13px;*/
@@ -560,7 +564,7 @@ option {
 
 
 
-.chartBackground{
+/*.chartBackground{
   fill: silver
 }
 
@@ -580,7 +584,7 @@ option {
 }
 
 .axis text {
-/*    font-family: monospace;*/
+/*    font-family: monospace;
     font-weight: bold;
     font-size: .7em;
     fill: black;

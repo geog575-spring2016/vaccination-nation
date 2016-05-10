@@ -32,15 +32,15 @@ var legendLables={
 
 var colorScaleVC=d3.scale.threshold()
     .domain([80,90,95])
-    .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
+    .range(["#d7191c","#fc8d59","#fadb86","#47bcbf"]);
 
 var colorScalepb13=d3.scale.quantile()
     .domain([0,21.26])
-    .range(['#2c7bb6','#abd9e9','#fdae61','#d7191c']);
+    .range(['#fcae91','#fb6a4a','#de2d26','#a50f15']);
 
 var colorScalepb14=d3.scale.quantile()
     .domain([0,21.26])
-    .range(['#2c7bb6','#abd9e9','#fdae61','#d7191c']);
+    .range(['#fcae91','#fb6a4a','#de2d26','#a50f15']);
 
 var width = 1200,
     height = 500,
@@ -196,9 +196,9 @@ function addVCLegend(){
 
 //  var margin = { "left": 160, "top": 80 };
 
-  var legendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+  var legendcolors = ["#d7191c","#fc8d59","#fadb86","#47bcbf"];
 
-  var title = ['Coverage Rates'],
+  var title = ['Vaccine Coverage Rates'],
       titleheight = title.length*lineheight + boxmargin;
 
   var x = d3.scale.quantile()
@@ -300,7 +300,7 @@ function addPBELegend(){
 
 //  var margin = { "left": 160, "top": 80 };
 
-  var legendcolors = ['#2c7bb6','#abd9e9','#fdae61','#d7191c'];
+  var legendcolors = ['#fcae91','#fb6a4a','#de2d26','#a50f15'];
 
   var title = ['Personal Belief Exemptions'],
       titleheight = title.length*lineheight + boxmargin;
@@ -467,7 +467,7 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
 
           .attr("d",path.pointRadius(function(d){return radius(d.properties.measles14);}))
           .style({"fill": "orange",
-                  "fill-opacity":0.5,
+                  "fill-opacity":0.4,
                   "stroke":"black"})
         .on("mouseover", function(d){
                 tooltip.style("visibility", "visible").html("<l1>"+labelTitles2.measles14+":   "+"<b>"+d.properties.measles14+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
@@ -604,7 +604,7 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
             })
             .attr("d",path.pointRadius(function(d){return radius(d.properties.measles13);}))
             .style({"fill": "orange",
-                    "fill-opacity":0.5,
+                    "fill-opacity":0.4,
                     "stroke":"black"})
           .on("mouseover", function(d){
                   tooltip.style("visibility", "visible").html("<l1>"+labelTitles2.measles13+":   "+"<b>"+d.properties.measles13+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
