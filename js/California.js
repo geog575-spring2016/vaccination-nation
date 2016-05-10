@@ -25,11 +25,6 @@ var labelTitles2={
 }
 
 
-
-var legendLables={
-
-}
-
 var colorScaleVC=d3.scale.threshold()
     .domain([80,90,95])
     .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
@@ -217,8 +212,8 @@ function addVCLegend(){
     var legend = svg.append("g")
 //        .attr("transform", "translate ("+margin.left+","+margin.top+")")
         .attr("class", "legend");
-    
-    
+
+
     //     var legendContainer = d3.select("#california-legend-vc")
 //        .append("svg")
 //        .attr("class", "legendContainer");
@@ -314,8 +309,8 @@ function addPBELegend(){
     var svg = d3.select("#california-legend-vc")
         .append("svg")
         .attr("class", "PBElegendContainer");
-    
-        
+
+
         //.attr("width", 138)
         //.attr("height", 140)
         //.remove();
