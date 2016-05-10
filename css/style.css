@@ -279,6 +279,22 @@ option {
     width: 200px;
 }
 
+.WAtoolTip{
+  font-family: Lato, sans-serif;
+  position:absolute;
+  height:55px;
+  width: 350px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #000;
+  padding: 10px 10px;
+  border-radius: 15px;
+  text-align: left;
+  vertical-align: middle;
+  pointer-events:none;
+  top: -155px;
+}
+
 
 /*NEW YORK CSS*/
 
@@ -372,7 +388,7 @@ option {
     float: left;
 /*    float: left;*/
 /*    position:fixed;*/
-    
+
 }
 
 #californiaLegendControls {
@@ -427,7 +443,7 @@ option {
     text-align: center;
 /*    border-style: solid;*/
     width: 900px;
-    
+
 }
 
 /*.states {*/
@@ -518,7 +534,7 @@ option {
 
 /*  font-family: Lato, sans-serif;*/
 .labelname {
-  font-size: 13px;
+  /*font-size: 13px;*/
   font-weight: bold;
   margin-left: 2px;
 }

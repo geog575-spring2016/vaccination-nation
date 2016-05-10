@@ -12,7 +12,8 @@
 var DataArray = ["2004-2005",	"2005-2006", "2006-2007",	"2007-2008",	"2008-2009",	"2009-2010",	"2010-2011",	"2011-2012",	"2012-2013",	"2013-2014",	"2014-2015", "2015-2016"];
 var expressed = DataArray[0];
 var attributeIndex = 0
-
+var WAtooltip = d3.select("#washington-map").append("div")
+    .attr("class", "WAtoolTip");
 //begin script when window loads
 window.onload = setMap();
 var Washington_Complete_Immunizations;
@@ -199,22 +200,18 @@ function Washingtonhighlight(props){
     //change stroke
     var selected = d3.selectAll("." + props.Name)
         .style({
-            "stroke": "black",
-            "stroke-width": "2"
+          "stroke":"#3e3e3e",
+          "stroke-width":"3"
         });
     setLabel(props);
 };
 
 //function to reset the element style on mouseout
 function Washingtondehighlight(props){
-    var selected = d3.selectAll(".Washingtoncounties" + props.Name)
+    var selected = d3.selectAll("." + props.Name)
         .style({
-            "stroke": function(){
-                return getStyle(this, "stroke")
-            },
-            "stroke-width": function(){
-                return getStyle(this, "stroke-width")
-            }
+            "stroke":"white",
+            "stroke-width":"1"
         });
 
     function getStyle(element, styleName){
@@ -266,7 +263,7 @@ function moveLabel(){
 
     //use coordinates of mousemove event to set label coordinates
     var x1 = d3.event.clientX + 10,
-        y1 = d3.event.clientY + 640,
+        y1 = d3.event.clientY + 5,
         x2 = d3.event.clientX - labelWidth - 10,
         y2 = d3.event.clientY - 5;
 
