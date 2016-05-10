@@ -21,8 +21,8 @@ var Washington_Complete_Immunizations;
 //set up choropleth map
 function setMap(){
     //map frame dimensions
-    var width = 500,
-        height = 350;
+    var width = 700,
+        height = 500;
 
     //create new svg container for the map
     var map = d3.select("#washington-map")
@@ -34,9 +34,9 @@ function setMap(){
     //create projection for Washington State
     var projection = d3.geo.albers()
         .rotate([117, 0, 2])
-        .center([-5, 47.25])
+        .center([-5.9, 47.25])
         .parallels([46, 48])
-        .scale(3500)
+        .scale(6500)
         .translate([width / 2, height / 2])
 
     var path = d3.geo.path()
@@ -351,7 +351,7 @@ function addWashingtonLegend(){
     }
 
     var svg = d3.select("#washington-legend").append("svg")
-        .attr("class", "#washington-legend")
+        .attr("class", "washington-legend")
 
     // make legend
     var WAlegend = svg.append("g")

@@ -49,8 +49,7 @@ function createMap(){
     [40.46, -74.46],
     [40.99, -73.5]
     ]);
-    
-    
+
 };
 
 //function to convert markers to circles
@@ -114,9 +113,7 @@ function colorCircles(data, map){
 		}
 	});
 
-	searchControl.on('search_locationfound', function(e) {
-		
-//		e.layer.setStyle({color: '#060706', weight: 3});
+	searchControl.on('search_locationfound', function(e) {	
 		if(e.layer._popup)
 			e.layer.openPopup();
 
@@ -214,9 +211,6 @@ function filterButtons(map){
                 } else if ( ((vaxAttribute>84.9) || (vaxAttribute<75)) && immunizationClass == "75% to 84.99%<br>(46 Schools)") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
-//                } else if ( ((vaxAttribute>=85) || (vaxAttribute<=75)) && immunizationClass == "75% to 85%<br>(46 Schools)") {
-//                    filterHolder.addLayer(layer);
-//                    map.removeLayer(layer);
                 } else if ( ((vaxAttribute>94.9) || (vaxAttribute<85)) && immunizationClass == "85% to 94.99%<br>(151 Schools)") {
                     filterHolder.addLayer(layer);
                     map.removeLayer(layer);
@@ -256,8 +250,6 @@ function getData(map){
 
 $(document).ready(createMap);
 
-//Pseudocode
-//3. Metadata
 
 
 
