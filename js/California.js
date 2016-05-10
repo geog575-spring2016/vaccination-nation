@@ -10,10 +10,10 @@ var expressed2=keyArray2[0];
 var attributeIndex = 0
 
 var labelTitles={
-    coverage1314:['Vaccination Coverage Rate 2013-2014'],
-    pbe1314:['Personal Belief Exemption Rate 2013-2014'],
-    coverage1516:['Vaccination Coverage Rate 2015-2016'],
-    pbe1516:['Personal Belief Exemption Rate 2015-2016'],
+    coverage1314:['Coverage Rate 2013-2014'],
+    pbe1314:['Exemption Rate 2013-2014'],
+    coverage1516:['Coverage Rate 2015-2016'],
+    pbe1516:['Exemption Rate 2015-2016'],
 }
 
 var labelTitles2={
