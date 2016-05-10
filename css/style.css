@@ -426,6 +426,12 @@ option {
     /*font-size: 13px;*/
 }
 
+#workscited{
+  font-size: 12px;
+  text-align: left;
+  margin-top: 100px;
+}
+
 #panel {
     width: 22%;
     padding: 0px;
@@ -543,7 +549,6 @@ option {
     border-color: rgba(128, 128, 128, 0.7);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     opacity: 0.85;
-    
 }
 
 .nybtn-selected {
@@ -649,7 +654,9 @@ option {
     float:left;
     text-align: center;
 /*    border-style: solid;*/
-    width: 900px;
+    width: 80%;
+
+
 
 }
 
