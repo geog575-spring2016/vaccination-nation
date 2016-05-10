@@ -175,12 +175,46 @@ h4{
 
 /*WASHINGTON CSS*/
 
+#washington-wrapper {
+/*    display: inline-block;*/
+    width: 100%;
+    margin: 0 auto;
+}
+
 #washington-map{
-    height: 400px;
+/*    height: 500px;*/
     margin-bottom: 10px;
+    display: inline-block;
+/*    width: 50%;*/
+/*    margin: 0 auto;*/
+    
+/*
     margin-left: 25%;
     margin-right: 25%
+*/
   }
+
+.WashingtonMap {
+  stroke: white;
+  stroke-width: 1px;
+  margin: 0 auto;
+}
+
+#washington-legend {
+    fill: none;
+    stroke: #888;
+    font-size: 12px;
+    display: inline-block;
+/*    float: left;*/
+    height: 200px;
+    width: 300px;
+}
+
+.washington-legend {
+    width: 300px;
+    height: 200px;
+/*    display: block;*/
+}
 
 #washington-text {
     height: 550px;
@@ -188,13 +222,19 @@ h4{
     margin-right: 25%;
     margin-bottom: 20px;
     text-align: center;
+    display: block;
 }
 
 .sequence-buttons {
-    float: right;
+/*    float: left;*/
     width: 250px;
     height: 40px;
+    display: inline-block;
 /*    margin-top: -5px;*/
+}
+
+.glyphicon {
+    color: transparent;
 }
 
 #stepForward {
@@ -275,23 +315,6 @@ option {
     padding-right: 15%;
     display: inline-flex;
     float: right;
-}
-
-
-.WashingtonMap {
-  stroke: white;
-  stroke-width: 1px;
-  margin-left: 25%;
-  margin-right: 25%;
-}
-
-#washington-legend {
-    fill: none;
-    stroke: #888;
-    font-size: 12px;
-    float: left;
-    height: 10px;
-    width: 200px;
 }
 
 .WAtoolTip{
