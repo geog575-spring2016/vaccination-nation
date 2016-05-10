@@ -509,11 +509,25 @@ option {
 }
 
 .leaflet-popup-content p {
+    font-family: Lato, sans-serif;
+    font-size: 1.2em;
     margin: 0.2em 0;
+    color: white;
+    background-color: black;
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: black;
+    border-radius: 15px;
+}
+
+.leaflet-popup-tip {
+    background-color: black;
 }
 
 .sequence-control-container-ny {
-    width: 120px;
+    width: 145px;
+    padding: 5px;
     float: left;
     display: block;
     background-color: rgba(167, 167, 167, 0.5);
@@ -524,22 +538,20 @@ option {
 }
 
 /*NYbutton styles*/
-.btn {
+.nybtn {
     font-family: Lato, sans-serif;
     font-size: 1em;
     width: 120px;
     display: block;
     float: left;
-    margin: 2px 1px;
-    border-radius: 4px;
+    margin: 2px 2px;
+    border-radius: 6px;
     border-color: rgba(128, 128, 128, 0.7);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    background-color: black;
-    opacity: 0.9;
-
+    opacity: 0.85;
 }
 
-.btn-selected {
+.nybtn-selected {
 /*
     border-color: black;
     border-width: medium;
@@ -700,17 +712,6 @@ option {
 }
 
 .CAtoolTip {
-  /*
-  color: black;
-  position: absolute;
-  height: 50px;
-  min-width: 100px;
-  color: #fff;
-  background-color: #000;
-  border: solid thin #fff;
-  padding: 5px 10px;
-  top: -75px;
-  */
   font-family: Lato, sans-serif;
   position:absolute;
   height:55px;
@@ -733,8 +734,6 @@ option {
 }
 
 
-
-/*  font-family: Lato, sans-serif;*/
 .labelname {
   /*font-size: 13px;*/
   font-weight: bold;
