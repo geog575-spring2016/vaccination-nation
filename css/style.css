@@ -14,6 +14,8 @@ h2{
 }
 h3{
     text-align: center;
+    font-weight: bold;
+
 }
 h4{
 
@@ -34,6 +36,8 @@ h4{
     pointer-events:none;
     top: -75px;
 }
+
+
 
 
 /*----------LEGEND INFORMATION-------------*/
@@ -241,6 +245,13 @@ option {
     /*font-size: 13px;*/
 }
 
+#workscited{
+  font-size: 12px;
+  text-align: left;
+  margin-top: 100px;
+
+}
+
 #panel {
     width: 22%;
     padding: 0px;
@@ -277,6 +288,22 @@ option {
     float: left;
     height: 10px;
     width: 200px;
+}
+
+.WAtoolTip{
+  font-family: Lato, sans-serif;
+  position:absolute;
+  height:55px;
+  width: 350px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #000;
+  padding: 10px 10px;
+  border-radius: 15px;
+  text-align: left;
+  vertical-align: middle;
+  pointer-events:none;
+  top: -155px;
 }
 
 
@@ -361,6 +388,7 @@ option {
 #california-wrapper {
     width:70%;
     margin: 0 auto;
+    align-self: center;
 }
 
 #california-map {
@@ -372,7 +400,7 @@ option {
     float: left;
 /*    float: left;*/
 /*    position:fixed;*/
-    
+
 }
 
 #californiaLegendControls {
@@ -381,12 +409,14 @@ option {
     height: 550px;
     float: left;
     margin-bottom: 10px;
+    margin-right: 496.1px
     display: inline-block;
 }
 
 .CAmap {
 /*    display: inline-block;*/
-    float: left;
+    float: left;;
+    margin-right: 1488.3px;
 /*    position: absolute;*/
 }
 
@@ -424,10 +454,15 @@ option {
 /*    height: 630px;*/
     display: block;
     float:left;
+    margin-left:88px;
+    margin-right: 88px;
+    margin-bottom: 50px;
+    /*float:none;*/
     text-align: center;
+
 /*    border-style: solid;*/
-    width: 900px;
-    
+    width: 1200px;
+
 }
 
 /*.states {*/
@@ -518,7 +553,7 @@ option {
 
 /*  font-family: Lato, sans-serif;*/
 .labelname {
-  font-size: 13px;
+  /*font-size: 13px;*/
   font-weight: bold;
   margin-left: 2px;
 }
