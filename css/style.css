@@ -16,8 +16,9 @@ h3{
     text-align: center;
 }
 h4{
- 
+
 }
+
 .infolabelMain {
     font-family: Lato, sans-serif;
     position:absolute;
@@ -36,7 +37,192 @@ h4{
 
 
 /*----------LEGEND INFORMATION-------------*/
-.main-menu{
+
+#nav{
+	background-color: black;
+	height: 100%;
+	margin:0px;
+	min-width: 100px !important;
+	width: 100px;
+	z-index:2932939239293923;
+}
+#nav-list-group{
+	height:10%;
+	top: 80px;
+	position: absolute;
+	min-width: 100px !important;
+	width: 100px;
+	z-index:2932939239293923;
+}
+.nav-item{
+	height: 60px;
+  text-align: center;
+}
+.nav-hovered{
+	background-color: #ccc;
+	cursor: pointer;
+}
+
+#intro-panel{
+	height: 90%;
+	position: absolute;
+	width: 20%;
+	background-color: white;
+	z-index: 10000000;
+	top: 80px;
+	left: 70px;
+	display: none;
+	padding-left: 40px;
+}
+
+.control-panel{
+	height: 90%;
+	width: 300px;
+	background-color: white;
+	position: absolute;
+	z-index:1000000002383823;
+	top: 0px;
+	left: 70px;
+	display: none;
+}
+
+#country-panel{
+  height: 90%;
+	position: absolute;
+	width: 20%;
+	background-color: white;
+	z-index: 10000000;
+	top: 100px;
+	left: 70px;
+	display: none;
+	padding-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+/*.list-group-item{
+	margin:0px;
+
+}*/
+/*
+#nav-list-group{
+	height:100px;
+	top: 0%;
+	position: absolute;
+	min-width: 100px !important;
+	width: 200px;
+	z-index:2932939239293923;
+}
+
+.nav-item{
+	height: 15%;
+}
+
+.nav-hovered{
+	background-color: #ccc;
+	cursor: pointer;
+}*/
+
+/*#nav-item-coverage{
+  height: 90%;
+	position: absolute;
+	width: 60%;
+	background-color: white;
+	z-index: 10000000;
+	top: 0px;
+	left: 70px;
+	display: none;
+	padding: 50px;
+}*/
+
+
+
+/*
+#menu-list{
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.legend-header{
+  text-align: center;
+}
+
+#coverage-li{
+  width: 100px;
+  height: 50px;
+  background-color:  #e1e1e1;
+  text-align: center;
+  padding: 8%;
+}
+
+#coverage-li:hover{
+    color: #333333;
+    background-color: #CCCCCC;
+}
+
+#coverage-legend{
+  width: 140px;
+  height: 150px;
+  background-color:blue;
+  text-align: center;
+  padding-left: 20px
+}
+
+#exemption-li{
+  height: 50px;
+  width: 100px;
+  background-color:  #e1e1e1;
+  text-align: center;
+  padding: 8%;
+}
+
+#exemption-li:hover{
+    color: #333333;
+    background-color: #CCCCCC;
+}
+
+#exemption-legend{
+  width: 140px;
+  height: 150px;
+  background-color:white;
+  text-align: center;
+  background-color: #CCCCCC;
+  padding-left: 20px
+}
+
+#preventable-li{
+  width: 100px;
+  height: 50px;
+  background-color:  #e1e1e1;
+  text-align: center;
+  padding: 8%;
+}
+
+#preventable-li:hover{
+    color: #333333;
+    background-color: #CCCCCC;
+}
+
+#preventable-legend{
+  width: 140px;
+  height: 150px;
+  background-color:yellow;
+  text-align: center;
+  padding-left: 20px
+}
+}*/
+
+
+/*.main-menu{
   position: absolute;
   margin-left: 0% !important;
   color: #969696;
@@ -99,7 +285,7 @@ h4{
 .Props_Preventable_Outbreaks:hover {
       color: #333333;
      background-color: #CCCCCC;
-}
+}*/
 
 /*--------MAIN MAP----------*/
 
@@ -278,6 +464,22 @@ option {
     width: 200px;
 }
 
+.WAtoolTip{
+  font-family: Lato, sans-serif;
+  position:absolute;
+  height:55px;
+  width: 350px;
+  color: #fff;
+  background-color: #000;
+  border: solid thin #000;
+  padding: 10px 10px;
+  border-radius: 15px;
+  text-align: left;
+  vertical-align: middle;
+  pointer-events:none;
+  top: -155px;
+}
+
 
 /*NEW YORK CSS*/
 
@@ -380,7 +582,7 @@ option {
     float: left;
 /*    float: left;*/
 /*    position:fixed;*/
-    
+
 }
 
 #californiaLegendControls {
@@ -435,7 +637,7 @@ option {
     text-align: center;
 /*    border-style: solid;*/
     width: 900px;
-    
+
 }
 
 /*.states {*/
@@ -526,7 +728,7 @@ option {
 
 /*  font-family: Lato, sans-serif;*/
 .labelname {
-  font-size: 13px;
+  /*font-size: 13px;*/
   font-weight: bold;
   margin-left: 2px;
 }

@@ -12,7 +12,8 @@
 var DataArray = ["2004-2005",	"2005-2006", "2006-2007",	"2007-2008",	"2008-2009",	"2009-2010",	"2010-2011",	"2011-2012",	"2012-2013",	"2013-2014",	"2014-2015", "2015-2016"];
 var expressed = DataArray[0];
 var attributeIndex = 0
-
+var WAtooltip = d3.select("#washington-map").append("div")
+    .attr("class", "WAtoolTip");
 //begin script when window loads
 window.onload = setMap();
 var Washington_Complete_Immunizations;
@@ -75,7 +76,7 @@ function setMap(){
 
         createSequenceControls()
 
-        //addWashingtonLegend()
+        addWashingtonLegend()
     };
 };
 
@@ -199,22 +200,18 @@ function Washingtonhighlight(props){
     //change stroke
     var selected = d3.selectAll("." + props.Name)
         .style({
-            "stroke": "black",
-            "stroke-width": "2"
+          "stroke":"#3e3e3e",
+          "stroke-width":"3"
         });
     setLabel(props);
 };
 
 //function to reset the element style on mouseout
 function Washingtondehighlight(props){
-    var selected = d3.selectAll(".Washingtoncounties" + props.Name)
+    var selected = d3.selectAll("." + props.Name)
         .style({
-            "stroke": function(){
-                return getStyle(this, "stroke")
-            },
-            "stroke-width": function(){
-                return getStyle(this, "stroke-width")
-            }
+            "stroke":"white",
+            "stroke-width":"1"
         });
 
     function getStyle(element, styleName){
@@ -266,7 +263,7 @@ function moveLabel(){
 
     //use coordinates of mousemove event to set label coordinates
     var x1 = d3.event.clientX + 10,
-        y1 = d3.event.clientY + 640,
+        y1 = d3.event.clientY + 5,
         x2 = d3.event.clientX - labelWidth - 10,
         y2 = d3.event.clientY - 5;
 
@@ -281,7 +278,6 @@ function moveLabel(){
             "top": y + "px"
         });
 };
-
 
 function createSequenceControls(){
 
@@ -319,99 +315,104 @@ function createSequenceControls(){
 }
 
 
-// function addWashingtonLegend(){
-//
-//   var boxmargin = 4,
-//       lineheight = 30,
-//       keyheight = 20,
-//       keywidth = 40,
-//       boxwidth = 3.5 * keywidth,
-//       formatPercent = d3.format(".0%");
-//
-//   var margin = { "left": 5, "top": 20};
-//
-//   var legendcolors = ['#2c7bb6','#abd9e9','#fdae61','#d7191c'];
-//
-//   var title = ['Washington Complete Immunizations'],
-//       titleheight = title.length*lineheight + boxmargin;
-//
-//   var x = d3.scale.quantile()
-//         .domain([0,1]);
-//
-//     var threshold = d3.scale.threshold()
-//         .domain([80,90,95,100])
-//         .range(legendcolors);
-//     var ranges = threshold.range().length;
-//
-//     // return quantize thresholds for the key
-//     var qrange = function(max, num) {
-//         var a = [];
-//         for (var i=0; i<num; i++) {
-//             a.push(i*max/num);
-//         }
-//         return a;
-//     }
-//
-//     // var height= 100
-//     // var width= 100
-//
-//     var svg = d3.select("#washington-legend")
-//         // .append("svg")
-//         // .attr("width", width)
-//         // .attr("height", height)
-//         //.remove();
-//
-//     // make legend
-//     var legend = svg.append("g")
-//         // .attr("transform", "translate ("+margin.left+","+margin.top+")")
-//         .attr("class", "legend");
-//
-//     legend.selectAll("text")
-//         .data(title)
-//         .enter().append("text")
-//         .attr("class", "#washington-legend")
-//         .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-//         .text(function(d) { return d; })
-//
-//     // make legend box
-//     var lb = legend.append("rect")
-//         // .attr("transform", "translate (0,"+titleheight+")")
-//         .attr("class", "#washington-legend")
-//         .attr("width", boxwidth)
-//         .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
-//
-//     // make quantized key legend items
-//     var li = legend.append("g")
-//         .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
-//         .attr("class", "#washington-legend");
-//
-//     li.selectAll("rect")
-//         .data(threshold.range().map(function(legendcolors) {
-//           var d = threshold.invertExtent(legendcolors);
-//           if (d[0] == null) d[0] = x.domain()[0];
-//           //console.log(d);
-//           //console.log(d[0]+" - "+d[1]+"%");
-//           //if (d[1] == null) d[1] = x.domain()[1];
-//           return d;
-//         }))
-//         .enter().append("rect")
-//         .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
-//         .attr("width", keywidth)
-//         .attr("height", keyheight)
-//         .style("fill", function(d) { return threshold(d[0]); });
-//
-//     li.selectAll("text")
-//     .data(threshold.range().map(function(legendcolors) {
-//       var d = threshold.invertExtent(legendcolors);
-//       if (d[0] == null) d[0] = x.domain()[0];
-//       if (d[1] == null) d[1] = x.domain()[1];
-//       return d;
-//       }))
-//         //.data(qrange(threshold.domain()[1], ranges))
-//         .enter().append("text")
-//         .attr("x", 48)
-//         .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-//         .text(function(d) { return (d[1]+" - "+d[0]+"%")})
-// };
+function addWashingtonLegend(){
+
+  // var colorScale = d3.scale.threshold()
+  //     .domain([75,85,95])
+  //     .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
+
+  var boxmargin = 4,
+      lineheight = 30,
+      keyheight = 20,
+      keywidth = 40,
+      boxwidth = 4.5 * keywidth,
+      formatPercent = d3.format(".0%");
+
+  //var margin = { "left": 5, "top": 20};
+
+  var legendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+
+  var title = ['Washington Complete Immunizations'],
+      titleheight = title.length*lineheight + boxmargin;
+
+  var x = d3.scale.quantile()
+        .domain([0,1]);
+
+    var threshold = d3.scale.threshold()
+        .domain([75,85,95,100])
+        .range(legendcolors);
+    var ranges = threshold.range().length;
+
+    // return quantize thresholds for the key
+    var qrange = function(max, num) {
+        var a = [];
+        for (var i=0; i<num; i++) {
+            a.push(i*max/num);
+        }
+        return a;
+    }
+
+    // var height= 100
+    // var width= 100
+
+    var svg = d3.select("#washington-legend").append("svg")
+        .attr("class", "CIlegendContainer")
+        // .append("svg")
+        // .attr("width", width)
+        // .attr("height", height)
+        //.remove();
+
+    // make legend
+    var WAlegend = svg.append("g")
+        // .attr("transform", "translate ("+margin.left+","+margin.top+")")
+        .attr("class", "WAlegend");
+
+    WAlegend.selectAll("text")
+        .data(title)
+        .enter().append("text")
+        .attr("class", "washington-legend-title")
+        .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+        .text(function(d) { return d; })
+
+    // make legend box
+    var lb = WAlegend.append("rect")
+        .attr("transform", "translate (0,"+titleheight+")")
+        .attr("class", "washington-legend-box")
+        .attr("width", boxwidth)
+        .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
+
+    // make quantized key legend items
+    var li = WAlegend.append("g")
+        .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+        .attr("class", "washington-legend-items");
+
+    li.selectAll("rect")
+        .data(threshold.range().map(function(legendcolors) {
+          var d = threshold.invertExtent(legendcolors);
+          if (d[0] == null) d[0] = x.domain()[0];
+          //console.log(d);
+          //console.log(d[0]+" - "+d[1]+"%");
+          //if (d[1] == null) d[1] = x.domain()[1];
+          return d;
+        }))
+        .enter().append("rect")
+        .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
+        .attr("width", keywidth)
+        .attr("height", keyheight)
+        .style("fill", function(d) { return threshold(d[0]); });
+
+    li.selectAll("text")
+    .data(threshold.range().map(function(legendcolors) {
+      var d = threshold.invertExtent(legendcolors);
+      if (d[0] == null) d[0] = x.domain()[0];
+      if (d[1] == null) d[1] = x.domain()[1];
+      return d;
+      }))
+        //.data(qrange(threshold.domain()[1], ranges))
+      .enter().append("text")
+      .attr("x", 48)
+      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+      .text(function(d) { return (d[0]+" - "+d[1]+"%")})
+};
 
 })();

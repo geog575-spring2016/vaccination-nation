@@ -134,7 +134,7 @@ function colorCircles(data, map){
 //create a color scale for circles
 function getColor(v) {
     if (v>94.9){
-        return "#36bcbf";
+        return "#47bcbf";
         } else if (v < 75){
             return "#d7191c";
         } else if ((v>75) && (v<=84.99)) {
