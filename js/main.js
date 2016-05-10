@@ -347,12 +347,12 @@ function coverageMapLegend(){
    var coverageLegend = svg.append("g")
        .attr("class", "coverageLegend");
 
-   coverageLegend.selectAll("text")
-       .data(title)
-       .enter().append("text")
-       .attr("class", "coverage-legend-title")
-       .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-       .text(function(d) { return d; })
+  //  coverageLegend.selectAll("text")
+  //      .data(title)
+  //      .enter().append("text")
+  //      .attr("class", "coverage-legend-title")
+  //      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+  //      .text(function(d) { return d; })
 
   //  // make legend box
   //  var lb = coverageLegend.append("rect")
@@ -363,7 +363,7 @@ function coverageMapLegend(){
 
    // make quantized key legend items
    var coverageLi = coverageLegend.append("g")
-       .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+      //  .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
        .attr("class", "main-legend-items");
 
    coverageLi.selectAll("rect")
@@ -430,12 +430,12 @@ function exemptionMapLegend(){
      var coverageLegend = svg.append("g")
          .attr("class", "coverageLegend");
 
-     coverageLegend.selectAll("text")
-         .data(title)
-         .enter().append("text")
-         .attr("class", "coverage-legend-title")
-         .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-         .text(function(d) { return d; })
+    //  coverageLegend.selectAll("text")
+    //      .data(title)
+    //      .enter().append("text")
+    //      .attr("class", "coverage-legend-title")
+    //      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+    //      .text(function(d) { return d; })
 
     //  // make legend box
     //  var lb = coverageLegend.append("rect")
@@ -446,7 +446,7 @@ function exemptionMapLegend(){
 
      // make quantized key legend items
      var coverageLi = coverageLegend.append("g")
-         .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+        //  .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
          .attr("class", "main-legend-items");
 
      coverageLi.selectAll("rect")
@@ -514,12 +514,12 @@ function Preventable_OutbreaksMapLegend(){
     var coverageLegend = svg.append("g")
         .attr("class", "coverageLegend");
 
-    coverageLegend.selectAll("text")
-        .data(title)
-        .enter().append("text")
-        .attr("class", "coverage-legend-title")
-        .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-        .text(function(d) { return d; })
+    // coverageLegend.selectAll("text")
+    //     .data(title)
+    //     .enter().append("text")
+    //     .attr("class", "coverage-legend-title")
+    //     .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+    //     .text(function(d) { return d; })
 
     // // make legend box
     // var lb = coverageLegend.append("rect")
@@ -530,7 +530,7 @@ function Preventable_OutbreaksMapLegend(){
 
     // make quantized key legend items
     var coverageLi = coverageLegend.append("g")
-        .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+        // .attr("transform", "translate (,"+(titleheight+boxmargin)+")")
         .attr("class", "main-legend-items");
 
     coverageLi.selectAll("rect")
