@@ -242,6 +242,15 @@ function clickedButtons(){
     
 }
 
+//here's a good design pattern:
+//create a CSS class
+//.selected { border: red }
+//when the button is clicked, add that class
+//and remove it from all others
+//Rich Donohue (rgdonohue@gmail.com)
+//Oh sweet
+//using an if else?
+//And a .this?
 
 
 //Import GeoJSON data
