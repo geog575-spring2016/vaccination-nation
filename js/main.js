@@ -12,6 +12,8 @@
   var expressed2 = attrArray[0];
   var expressed3 =exemptionattrArray[0];
 
+  var mainattributeIndex = 0
+
   var expemptioncolorClasses = [
   			"#d7191c",
   			"#fdae61",
@@ -97,9 +99,10 @@
 
         setEnumerationUnits(usStates, usCenters, mapMain, path);
         setPropSymbols(usStates, usCenters, mapMain, path);
+        propsSequenceControls();
         coverageMapLegend();
         exemptionMapLegend();
-        Preventable_OutbreaksMapLegend()
+        Preventable_OutbreaksMapLegend();
     }
 };
 
@@ -159,9 +162,9 @@
     function makeColorScale(data){
         var colorClasses = [
             "#d7191c",
-            "#fdae61",
-            "#abd9e9",
-            "#2c7bb6",
+            "#fc8d59",
+            "#fadb86",
+            "#47bcbf",
         ];
 
         //create color scale generator
@@ -219,6 +222,69 @@
     var desc = centroids.append("desc")
       .text('{"stroke": "#000", "stroke-width": "0.5px"}');
   };
+
+// function updateCircles(circles, data){
+//     var domainArray = [];
+//     for (var i=0; i<data.length; i++){
+//         var val = parseFloat(data[i][expressed]);
+//         domainArray.push(val);
+//     };
+//         radiusMin = Math.min.apply(Math, domainArray);
+//         radiusMax = Math.max.apply(Math, domainArray);
+//
+//         setRadius = d3.scale.sqrt()
+//             .range([0, 100])
+//             .domain([radiusMin, radiusMax]);
+//     //create a second svg element to hold the bar chart
+//     var circleRadius= circles.attr("r", function(d){
+//         return setRadius(d[expressed]);
+//     });
+// };
+//
+//
+// function changepropsAttribute(attribute, data){
+//     //change the expressed attribute
+//     expressed = attribute;
+//     var circles = d3.selectAll(".circles");
+//     updateCircles(circles, data);
+// }
+
+
+function propsSequenceControls(){
+
+        var mainyearLabel = d3.select("#mainyearLabel")
+          .text(expressed)
+
+          $("#mainstepForward").on("click", function(){
+              mainattributeIndex +=1
+                if(mainattributeIndex > DataArray.length){
+                  mainattributeIndex = 0
+                }
+
+              expressed = DataArray[mainattributeIndex]
+
+              d3.select("#mainyearLabel")
+                .text(expressed)
+
+              updateCircles(expressed, csvData)
+          })
+
+          $("#mainstepBackward").on("click", function(){
+              mainattributeIndex -=1
+
+                if(mainattributeIndex < 0){
+                  mainattributeIndex = DataArray.length-1
+                }
+
+                expressed = DataArray[mainattributeIndex]
+
+                d3.select("#mainyearLabel")
+                  .text(expressed)
+
+                updateCircles(expressed, csvData)
+          })
+}
+
 
 
         //TRYING TO FIGURE OUT HOW TO CHANGE BASED ON PATH, ONLY COLORS CIRCLES BLUE RIGH NOW
@@ -328,7 +394,7 @@ function coverageMapLegend(){
      boxwidth = 4.5 * keywidth,
      formatPercent = d3.format(".0%");
 
- var coverageLegendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+ var coverageLegendcolors = ['#d7191c','#fc8d59','#fadb86','#47bcbf'];
 
  var title = ['United States Complete Immunizations'],
      titleheight = title.length*lineheight + boxmargin;
@@ -420,7 +486,7 @@ function exemptionMapLegend(){
          .domain([0,1]);
 
      var threshold = d3.scale.threshold()
-         .domain([75,85,95,100])
+         .domain(['personal','religious','both',100])
          .range(coverageLegendcolors);
      var ranges = threshold.range().length;
 
@@ -494,7 +560,7 @@ function Preventable_OutbreaksMapLegend(){
       boxwidth = 4.5 * keywidth,
       formatPercent = d3.format(".0%");
 
-  var coverageLegendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+  var coverageLegendcolors = ['#d7191c','#fc8d59','#fadb86','#47bcbf'];
 
   var title = ['Preventable Outbreaks'],
       titleheight = title.length*lineheight + boxmargin;
@@ -567,7 +633,6 @@ function Preventable_OutbreaksMapLegend(){
       .attr("y", function(d, i) { return (i+1)*lineheight-2; })
       .text(function(d) { return (d[0]+" - "+d[1]+"%")})
 };
-
 
 
 // nav tabs
