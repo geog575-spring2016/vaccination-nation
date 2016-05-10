@@ -263,7 +263,7 @@ function moveLabel(){
 
     //use coordinates of mousemove event to set label coordinates
     var x1 = d3.event.clientX + 10,
-        y1 = d3.event.clientY + 5,
+        y1 = d3.event.clientY + 600,
         x2 = d3.event.clientX - labelWidth - 10,
         y2 = d3.event.clientY - 5;
 
@@ -328,9 +328,7 @@ function addWashingtonLegend(){
       boxwidth = 4.5 * keywidth,
       formatPercent = d3.format(".0%");
 
-  //var margin = { "left": 5, "top": 20};
-
-  var legendcolors = ['#d7191c','#fc8d59','#fadb86','#2fd2d6'];
+  var WAlegendcolors = ['#d7191c','#fc8d59','#fadb86','#2fd2d6'];
 
   var title = ['Washington Complete Immunizations'],
       titleheight = title.length*lineheight + boxmargin;
@@ -340,7 +338,7 @@ function addWashingtonLegend(){
 
     var threshold = d3.scale.threshold()
         .domain([75,85,95,100])
-        .range(legendcolors);
+        .range(WAlegendcolors);
     var ranges = threshold.range().length;
 
     // return quantize thresholds for the key
@@ -352,16 +350,8 @@ function addWashingtonLegend(){
         return a;
     }
 
-    // var height= 100
-    // var width= 100
-
     var svg = d3.select("#washington-legend").append("svg")
-        .attr("class", "CIlegendContainer")
-        // .append("svg")
-
-        // .attr("width", width)
-        // .attr("height", height)
-        //.remove();
+        .attr("class", "#washington-legend")
 
     // make legend
     var WAlegend = svg.append("g")
@@ -376,24 +366,21 @@ function addWashingtonLegend(){
         .text(function(d) { return d; })
 
     // make legend box
-    var lb = WAlegend.append("rect")
+    var WAlb = WAlegend.append("rect")
         .attr("transform", "translate (0,"+titleheight+")")
         .attr("class", "washington-legend-box")
         .attr("width", boxwidth)
         .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
 
     // make quantized key legend items
-    var li = WAlegend.append("g")
+    var WAli = WAlegend.append("g")
         .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
         .attr("class", "washington-legend-items");
 
-    li.selectAll("rect")
-        .data(threshold.range().map(function(legendcolors) {
-          var d = threshold.invertExtent(legendcolors);
+    WAli.selectAll("rect")
+        .data(threshold.range().map(function(WAlegendcolors) {
+          var d = threshold.invertExtent(WAlegendcolors);
           if (d[0] == null) d[0] = x.domain()[0];
-          //console.log(d);
-          //console.log(d[0]+" - "+d[1]+"%");
-          //if (d[1] == null) d[1] = x.domain()[1];
           return d;
         }))
         .enter().append("rect")
@@ -402,9 +389,9 @@ function addWashingtonLegend(){
         .attr("height", keyheight)
         .style("fill", function(d) { return threshold(d[0]); });
 
-    li.selectAll("text")
-    .data(threshold.range().map(function(legendcolors) {
-      var d = threshold.invertExtent(legendcolors);
+    WAli.selectAll("text")
+    .data(threshold.range().map(function(WAlegendcolors) {
+      var d = threshold.invertExtent(WAlegendcolors);
       if (d[0] == null) d[0] = x.domain()[0];
       if (d[1] == null) d[1] = x.domain()[1];
       return d;
