@@ -7,9 +7,9 @@ var expemptioncolorClasses = [
 			"#fdae61",
 			"#ffffb2",
 		];
-
-var Exemtooltip = d3.select("#mapMainExempt").append("div")
-		    .attr("class", "Exemtooltip");
+//
+// var Exemtooltip = d3.select("#mapMainExempt").append("div")
+// 		    .attr("class", "Exemtooltip");
 
 
 window.onload = setMapExempt();

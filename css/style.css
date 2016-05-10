@@ -19,6 +19,24 @@ h4{
 
 }
 
+/*path.circle.Measles {
+  stroke: black;
+  fill: white;
+  stroke-width: 3;
+}
+
+.Pertussis {
+  stroke: yellow;
+  fill: white;
+  stroke-width: 3;
+}
+
+.Mumps{
+  stroke: purple;
+  fill: white;
+    stroke-width: 3;
+}*/
+
 .infolabelMain {
     font-family: Lato, sans-serif;
     position:absolute;
