@@ -32,13 +32,13 @@
 		<div id='nav'>
 
 					<ul class='list-group' id='nav-list-group'>
-						<li class='list-group-item nav-item active' id='nav-item-intro' data-panel='intro' data-toggle="tooltip" data-attr='coverage'>
+						<li class='list-group-item nav-item active' id='nav-item-intro' data-panel='intro' data-toggle="tooltip" data-attr='coverage' data-click="false">
 							Coverage
 						</li>
-						<li class='list-group-item nav-item' data-panel='country' data-attr='exemption'>
+						<li class='list-group-item nav-item' data-panel='intro2' data-attr='exemption'>
 							Exemption
 						</li>
-						<li class='list-group-item nav-item' data-panel='wind' data-attr='preventable-outbreaks' data-click="false">
+						<li class='list-group-item nav-item' data-panel='intro3' data-attr='preventable-outbreaks' data-click="false">
 							Preventable Outbreaks
 						</li>
 					</ul>
@@ -46,22 +46,17 @@
 
 				<div id='intro-panel' class='nav-panel'>
 
-					<p>This should be the coverage information</p>
+					<p>Percentage of Complete Immunizations per State</p>
 							<div id='coverage-legend'>
 							</div>
 				</div>
 
 
-				<div id='country-panel' class='nav-panel'>
-					<p>This should be the coverage information</p>
+				<div id='exemption-panel' class='nav-panel'>
+					<p>Types of Exemptions</p>
 							<div id='exemption-legend'>
 							</div>
 				</div>
-
-
-
-
-
 
 
 			<!-- <ul class="list-group" id= "nav-list-group" >
@@ -231,7 +226,7 @@
         <script type="text/javascript" src="js/NewYork.js"></script>
         <script type="text/javascript" src="js/California.js"></script>
 		<script type="text/javascript" src="js/vaccine_coverage.js"></script>
-		<script type="text/javascript" src="js/exemptions.js"></script>
+		<!-- <script type="text/javascript" src="js/exemptions.js"></script> -->
         <script type="text/javascript" src="lib/Leaflet.Sleep.js"></script>
         <script type="text/javascript" src="lib/leaflet.zoomhome.js"></script>
         <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>

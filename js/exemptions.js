@@ -1,8 +1,8 @@
 (function(){
 
-var attrArray = ["codes"];
-var expressed =attrArray[0];
-var colorClasses = [
+var exemptionattrArray = ["codes"];
+var expressed3 =exemptionattrArray[0];
+var expemptioncolorClasses = [
 			"#d7191c",
 			"#fdae61",
 			"#ffffb2",
@@ -35,42 +35,42 @@ window.onload = setMapExempt();
 	      q.defer(d3.json, "data/exemption/usState.topojson")
 	      q.await(callback);
 
-	    function callback(error, csvData, us){
+	    function callback(error, csvData3, exemptus){
 
 	    	//console.log("reach callback?");
-	    	var usStates = topojson.feature(us, us.objects.usaStates).features;
-				for (var i=0; i<csvData.length; i++){
-		      var csvRegion = csvData[i];
-		      var csvKey = csvRegion.postal;
-					var jsonStates=us.objects.usaStates.geometries;
-		        for (var a=0; a<usStates.length; a++){
-								if(jsonStates[a].properties.postal==csvKey){
-									for (var key in attrArray){
-										var attribute=attrArray[key];
-										var value=parseFloat(csvRegion[attribute]);
+	    	var exemptionusStates = topojson.feature(exemptus, exemptus.objects.usaStates).features;
+				for (var i=0; i<csvData3.length; i++){
+		      var exemptcsvRegion = csvData3[i];
+		      var exemptcsvKey = exemptcsvRegion.postal;
+					var jsonStates=exemptus.objects.usaStates.geometries;
+		        for (var a=0; a<exemptionusStates.length; a++){
+								if(jsonStates[a].properties.postal==exemptcsvKey){
+									for (var key in exemptionattrArray){
+										var attribute=exemptionattrArray[key];
+										var value=parseFloat(exemptcsvRegion[attribute]);
 										(jsonStates[a].properties[attribute])=value
 									}
 								}
 							}
 						}
-						setEnumerationUnitsExempt(usStates,mapMainExempt,path )
+						setEnumerationUnitsExempt(exemptionusStates,mapMainExempt,path)
 
 					}
 
 }
 
-function setEnumerationUnitsExempt(usStates, mapMainExempt, path){
+function setEnumerationUnitsExempt(exemptionusStates, mapMainExempt, path){
 
-	var states = mapMainExempt.selectAll(".states")
-		.data(usStates)
+	var exemptstates = mapMainExempt.selectAll(".exemptstates")
+		.data(exemptionusStates)
 		.enter()
 		.append("path")
 		.attr("d", path)
 		.attr("class", function(d){
-			return "states " + d.properties.postal;
+			return "exemptstates " + d.properties.postal;
 		})
 		.style("fill",
-		function(d){	return choropleth(d.properties);
+		function(d){	return exemptchoropleth(d.properties);
 
 		})
 	.style("stroke", "white")
@@ -96,14 +96,14 @@ function setEnumerationUnitsExempt(usStates, mapMainExempt, path){
 }
 
 
-	function makeColorScale(csvData){
-		var colorScale=d3.scale.threshold()
+	function makeexemptColorScale(csvData3){
+		var exemptcolorScale=d3.scale.threshold()
 			.domain([1,2,3])
-			.range(colorClasses);
+			.range(expemptioncolorClasses);
 	};
 
-	function choropleth(props, colorScale){
-		var value = (props[expressed]);
+	function exemptchoropleth(props, exemptcolorScale){
+		var value = (props[expressed3]);
 
 		if (value == 1.00){
 			return '#d7191c';
