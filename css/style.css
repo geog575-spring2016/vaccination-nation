@@ -426,6 +426,12 @@ option {
     /*font-size: 13px;*/
 }
 
+#workscited{
+  font-size: 12px;
+  text-align: left;
+  margin-top: 100px;
+}
+
 #panel {
     width: 22%;
     padding: 0px;
@@ -530,7 +536,7 @@ option {
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     background-color: black;
     opacity: 0.9;
-    
+
 }
 
 .btn-selected {
@@ -636,7 +642,9 @@ option {
     float:left;
     text-align: center;
 /*    border-style: solid;*/
-    width: 900px;
+    width: 80%;
+
+
 
 }
 
