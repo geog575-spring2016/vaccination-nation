@@ -191,17 +191,18 @@
       .enter().append("path")
       .attr("d",path)
       .attr("class",function(d){
-          return "circle "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
+          return "circle symbol "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
       })
       .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
       .style({'fill':'orange',
               'stroke':'black',
-              'fill-opacity':.4})
+              'fill-opacity':.4,
+              'display': 'none'})
       .on("mouseover", function(d){
-      highlight(d.properties);
+        highlight(d.properties);
       })
       .on("mouseout", function(d){
-      dehighlight(d.properties);
+        dehighlight(d.properties);
       })
       .on("mousemove", moveLabel);
 
@@ -567,17 +568,35 @@ $(".nav-item").hover(function(){
 	$(this).toggleClass('nav-hovered')
 })
 
+function removePropSympols(){
+  d3.selectAll(".symbol")
+    .style("display", "none")
+}
+
+function showPropSymbols(){
+  $(".symbol").show()
+}
 
 $(".nav-item").click(function(){
 	//control active tab css
 	$(".nav-item").removeClass("active")
 	$(this).addClass("active")
   var data = $(this).data('attr')
-  alert(data)
+  var click = $(this).data('click')
     if (data == 'coverage'){
-    
+
+    }else if (data === 'preventable-outbreaks'){
+      if (click){
+        removePropSympols()
+        var click = $(this).data('click', false)
+
+      }
+      else{
+          showPropSymbols()
+          var click = $(this).data('click', true)
+
+      }
     }
-    else
 
 
 

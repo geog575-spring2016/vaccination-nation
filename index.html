@@ -8,6 +8,7 @@
 		<!--external stylesheet links-->
         <link rel="stylesheet" href="lib/leaflet/leaflet.css">
         <link rel="stylesheet" href="lib/leaflet-search-master/src/leaflet-search.css">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css"/>
 <!--
 		<link rel="stylesheet" href="css/California.css"/>
@@ -16,7 +17,6 @@
 -->
 		<link rel="stylesheet" href="css/vaccine_coverage.css"/>
 		<link rel="stylesheet" href="css/exemptions.css"/>
-				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="lib/leaflet.zoomhome.css"/>
 
 		<!--[if IE<9]>
@@ -42,7 +42,7 @@
 						<li class='list-group-item nav-item' data-panel='country' data-attr='exemption'>
 							Exemption
 						</li>
-						<li class='list-group-item nav-item' data-panel='wind' data-attr='preventable-outbreaks'>
+						<li class='list-group-item nav-item' data-panel='wind' data-attr='preventable-outbreaks' data-click="false">
 							Preventable Outbreaks
 						</li>
 					</ul>
@@ -60,8 +60,7 @@
 					<p>This should be the coverage information</p>
 							<div id='exemption-legend'>
 							</div>
-
-					</div>
+				</div>
 
 
 
