@@ -14,14 +14,9 @@
 
   var mainattributeIndex = 0
 
-  var expemptioncolorClasses = [
-  			"#d7191c",
-  			"#fdae61",
-  			"#ffffb2",
-  		];
-
-  var Exemtooltip = d3.select("#mapMainExempt").append("div")
-  		    .attr("class", "Exemtooltip");
+  //
+  // var Exemtooltip = d3.select("#mapMainExempt").append("div")
+  // 		    .attr("class", "Exemtooltip");
 
   var mainTitle =["Pertussis Cases","Mumps Cases","Measles Cases"];
 
@@ -29,7 +24,6 @@
       .domain([0, 7195])
       .range([0,150]);
 
-  var stateName = ["Alaska","Alabama"];
 
   //begins script when window loads
   window.onload = setMap();
@@ -58,17 +52,16 @@
 
     var q = d3_queue.queue();
       q.defer(d3.csv, "data/vaccine_coverage/vaccine_coverage.csv")
+      q.defer(d3.csv, "data/exemption/exemptions.csv") //loads attributes from csv
       q.defer(d3.json, "data/main-outbreaks/usStates.topojson")
       q.defer(d3.csv, "data/main-outbreaks/main-outbreaks-data-noNYC.csv") //loads attributes from csv
       q.defer(d3.json, "data/main-outbreaks/outbreaks-us.topojson")
        //loads choropleth spatial data
       .await(callback);
 
-  function callback(error, csvData2, us, csvData, usCenters){
-
+  function callback(error, csvData2, csvData3, us, csvData, usCenters){
 
     var usStates = topojson.feature(us, us.objects.usStates).features;
-
     for (var i=0; i<csvData.length; i++){
         var csvRegion = csvData[i];
         var csvKey = csvRegion.postal;
@@ -81,10 +74,23 @@
                 (jsonStates[a].properties[attribute])=value;
               }
             }
+
           }
         }
-
-
+      for (var i=0; i<csvData3.length; i++){
+	      var csvRegion = csvData3[i];
+	      var csvKey = csvRegion.postal;
+				var jsonStates=us.objects.usStates.geometries;
+	        for (var a=0; a<jsonStates.length; a++){
+							if(jsonStates[a].properties.postal==csvKey){
+								for (var key in exemptionattrArray){
+									var attribute=exemptionattrArray[key];
+									var value=parseFloat(csvRegion[attribute]);
+									(jsonStates[a].properties[attribute])=value
+								}
+							}
+						}
+					}
 
     var states = mapMain.append("path")
         .datum(usStates)
@@ -107,7 +113,7 @@
 };
 
 
- function joinData(usStates, csvData2){
+function joinData(usStates, csvData2){
    for (var i=0; i<csvData2.length; i++){
        var csvState = csvData2[i]; //the current region
        var csvKey = csvState.State; //the CSV primary key
@@ -130,7 +136,7 @@
        };
      };
      return usStates;
- }
+}
 
   function setEnumerationUnits(usStates, usCenters, mapMain, path){
     var states = mapMain.selectAll(".states")
@@ -197,17 +203,18 @@
         };
     };
 
-  function setPropSymbols(usStates, usCenters, mapMain, path){
 
-    var centroids=mapMain.selectAll(".symbol")
+function setPropSymbols(usStates, usCenters, mapMain, path){
+
+    var circles=mapMain.selectAll(".circle")
       .data(usCenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
       .enter().append("path")
       .attr("d",path)
       .attr("class",function(d){
-          return "circle symbol "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
+          return "circle circle "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
       })
       .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
-      .style({'fill':'orange',
+      .style({'fill':'white',
               'stroke':'black',
               'fill-opacity':.4,
               'display': 'none'})
@@ -219,35 +226,36 @@
       })
       .on("mousemove", moveLabel);
 
-    var desc = centroids.append("desc")
+    var desc = circles.append("desc")
       .text('{"stroke": "#000", "stroke-width": "0.5px"}');
   };
 
-// function updateCircles(circles, data){
-//     var domainArray = [];
-//     for (var i=0; i<data.length; i++){
-//         var val = parseFloat(data[i][expressed]);
-//         domainArray.push(val);
-//     };
-//         radiusMin = Math.min.apply(Math, domainArray);
-//         radiusMax = Math.max.apply(Math, domainArray);
-//
-//         setRadius = d3.scale.sqrt()
-//             .range([0, 100])
-//             .domain([radiusMin, radiusMax]);
-//     //create a second svg element to hold the bar chart
-//     var circleRadius= circles.attr("r", function(d){
-//         return setRadius(d[expressed]);
-//     });
-// };
-//
-//
-// function changepropsAttribute(attribute, data){
-//     //change the expressed attribute
-//     expressed = attribute;
-//     var circles = d3.selectAll(".circles");
-//     updateCircles(circles, data);
-// }
+function changeAttribute(attribute, data){
+      //change the expressed attribute
+      expressed = attribute;
+      var circles = d3.selectAll(".circles");
+      updateCircles(circles, data);
+}
+
+function updateCircles(circles, data){
+      var domainArray = [];
+      for (var i=0; i<data.length; i++){
+          var val = parseFloat(data[i][expressed]);
+          domainArray.push(val);
+      };
+          radiusMin = Math.min.apply(Math, domainArray);
+          radiusMax = Math.max.apply(Math, domainArray);
+
+          setRadius = d3.scale.sqrt()
+              .range([0, 100])
+              .domain([radiusMin, radiusMax]);
+      //create a second svg element to hold the bar chart
+      var circleRadius= circles.attr("r", function(d){
+          return setRadius(d[expressed]);
+      });
+};
+
+
 
 
 function propsSequenceControls(){
@@ -291,8 +299,8 @@ function propsSequenceControls(){
 
           // function(d){return assignColor(d.properties)})
 
-        // function assignColor(centroids,mapMain){
-        //     var centroids=mapMain.selectAll(".symbol")
+        // function assignColor(circles,mapMain){
+        //     var circles=mapMain.selectAll(".symbol")
         //         .data(usCenters.features.sort(function(a,b){return properties[expressed]-properties[expressed];}))
         //         .enter().append("path")
         //           .attr("d",path)
@@ -301,14 +309,14 @@ function propsSequenceControls(){
         //           })
 
         //     if("class","Mumps"){
-        //         centroids.style('fill','blue')
+        //         circles.style('fill','blue')
 
         //     }
         //     else if("class","Pertussis"){
-        //         centroids.style('fill','yellow')
+        //         circles.style('fill','yellow')
         //     }
         //     else if("class","Measles"){
-        //         centroids.style('fill','orange')
+        //         circles.style('fill','orange')
 
         //     }
 
@@ -643,15 +651,13 @@ $(".nav-item").hover(function(){
 })
 
 function removePropSympols(){
-  d3.selectAll(".symbol")
+  d3.selectAll(".circle")
     .style("display", "none")
 }
 
 function showPropSymbols(){
-  $(".symbol").show()
+  $(".circle").show()
 }
-
-
 
 
 $(".nav-item").click(function(){
