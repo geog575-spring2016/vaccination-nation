@@ -413,6 +413,10 @@ option {
   font-size: 12px;
   text-align: left;
   margin-top: 100px;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  float: left;
+
 }
 
 #panel {
@@ -568,6 +572,7 @@ option {
 #california-wrapper {
     width:70%;
     margin: 0 auto;
+    padding: inherit;
 }
 
 #california-map {
@@ -613,7 +618,7 @@ option {
     float: left;
     width: 250px;
     height: 180px;
-    margin-left: 5px;
+    margin-left: 15px;
 /*    position:absolute;*/
 }
 
@@ -623,17 +628,19 @@ option {
     float: left;
     width: 250px;
     height: 180px;
-    margin-left: 5px;
+    margin-left: 15px;
 /*    position:absolute;*/
 }
 
 #california-text {
 /*    height: 630px;*/
-    display: block;
+    display:block;
     float:left;
-    text-align: center;
+    text-align:left;
 /*    border-style: solid;*/
-    width: 80%;
+    /*width: 80%;*/
+    margin-left: 15%;
+    margin-right: 15%;
 
 
 
@@ -671,10 +678,10 @@ option {
 }
 
 .CAmap{
-  z-index: 11;
+  /*z-index: 11;*/
 }
 
-#propToolTips{
+/*#propToolTips{
   color: green;
   position: absolute;
   z-index: 10;
@@ -682,7 +689,7 @@ option {
   background-color: blue;
   padding: 5px
   border: thin solid #999;
-}
+}*/
 
 .radio {
     padding-right: 15%;
@@ -694,7 +701,7 @@ option {
   font-family: Lato, sans-serif;
   position:absolute;
   height:55px;
-  width: 350px;
+  width: 273px;
   color: #fff;
   background-color: #000;
   border: solid thin #000;
@@ -704,6 +711,7 @@ option {
   vertical-align: middle;
   pointer-events:none;
   top: -155px;
+  z-index: 2
 }
 
 #options{
