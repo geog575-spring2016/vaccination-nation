@@ -1,5 +1,5 @@
 /* Vaccination in New York City Private Schools */
-/* by Adam Mandelman                          */
+/* Javascript by Adam Mandelman                 */
 /*      (                      )    */
 /*      |\    _,--------._    / |   */
 /*      | `.,'            `. /  |   */
@@ -35,7 +35,7 @@ function createMap(){
     
 //load and display a tile layer on the map
     var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>. Data: <a href="https://health.data.ny.gov/Health/School-Immunization-Survey-Beginning-2012-13-Schoo/5pme-xbs5">NY State Dept. of Health</a>. Map by Adam Mandelman, 2016.',
     subdomains: 'abcd',
     minZoom: 10,
     maxZoom: 17,
@@ -158,11 +158,11 @@ function createFilterControl(map){
             var container = L.DomUtil.create("div", "sequence-control-container-ny");
                         
             //create button elements
-            $(container).append('<button type="button" class="btn under75">Under 75%<br>(24 Schools)</button>');
-            $(container).append('<button type="button" class="btn b75-85">75% to 84.99%<br>(46 Schools)</button>');
-            $(container).append('<button type="button" class="btn b85-95">85% to 94.99%<br>(151 Schools)</button>');
-            $(container).append('<button type="button" class="btn over95">95% and over<br>(550 Schools)</button>');
-            $(container).append('<button type="button" class="btn all">All<br>(771 Schools)</button>');            
+            $(container).append('<button type="button" class="nybtn under75">Under 75%<br>(24 Schools)</button>');
+            $(container).append('<button type="button" class="nybtn b75-85">75% to 84.99%<br>(46 Schools)</button>');
+            $(container).append('<button type="button" class="nybtn b85-95">85% to 94.99%<br>(151 Schools)</button>');
+            $(container).append('<button type="button" class="nybtn over95">95% and over<br>(550 Schools)</button>');
+            $(container).append('<button type="button" class="nybtn all">All<br>(771 Schools)</button>');            
             
             //kill any mouse event listeners on the map
             $(container).on('mousedown dblclick', function(e){
@@ -185,7 +185,7 @@ function filterButtons(map){
     var filterHolder = L.layerGroup();
             
     //listen for button clicks
-    $('.btn').click(function(layer){
+    $('.nybtn').click(function(layer){
         //set an immunization class variable to equal whatever button is clicked
         var immunizationClass = $(this).html();        
     
@@ -232,9 +232,9 @@ function filterButtons(map){
 
 //function to give "button clicked" visual affordance
 function clickedButtons(){
-    $(".btn").click(function (){
-        $(".btn.btn-selected").removeClass("btn-selected"),
-        $(this).addClass("btn-selected")
+    $(".nybtn").click(function (){
+        $(".nybtn.nybtn-selected").removeClass("nybtn-selected"),
+        $(this).addClass("nybtn-selected")
     });
 }
 
