@@ -560,6 +560,43 @@ function Preventable_OutbreaksMapLegend(){
 };
 
 
+// nav tabs
+$(".nav-item").hover(function(){
+	$(this).toggleClass('nav-hovered')
+}, function(){
+	$(this).toggleClass('nav-hovered')
+})
+
+
+$(".nav-item").click(function(){
+	//control active tab css
+	$(".nav-item").removeClass("active")
+	$(this).addClass("active")
+  var data = $(this).data('attr')
+  alert(data)
+    if (data == 'coverage'){
+    
+    }
+    else
+
+
+
+	//figure out what to display
+	$(".nav-panel").css({'display': "none"})
+	_thisData = $(this).data('panel')
+	if (_thisData == 'intro'){
+		$("#intro-panel").slideToggle()
+	}else if (_thisData == "wind"){
+		$("#wind-panel").slideToggle()
+	}else if (_thisData == "country"){
+		$("#country-panel").slideToggle()
+	}else{
+		return
+	}
+})
+
+
+
 
 
 

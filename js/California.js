@@ -217,8 +217,8 @@ function addVCLegend(){
     var legend = svg.append("g")
 //        .attr("transform", "translate ("+margin.left+","+margin.top+")")
         .attr("class", "legend");
-    
-    
+
+
     //     var legendContainer = d3.select("#california-legend-vc")
 //        .append("svg")
 //        .attr("class", "legendContainer");
@@ -314,8 +314,8 @@ function addPBELegend(){
     var svg = d3.select("#california-legend-vc")
         .append("svg")
         .attr("class", "PBElegendContainer");
-    
-        
+
+
         //.attr("width", 138)
         //.attr("height", 140)
         //.remove();
@@ -432,7 +432,7 @@ function dehighlight(props){
 
 function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
 
-  d3.selectAll('.radio').on('change', function(){
+  d3.selectAll('.radio-btn').on('change', function(){
 
        if (document.getElementById('none').checked) {
 
