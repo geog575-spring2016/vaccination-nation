@@ -19,17 +19,6 @@
 
   var stateName = ["Alaska","Alabama"];
 
-  var arrayCoverage = [ "0-75",
-                      "75-85",
-                        "85-95",
-                       "95-100"];
-
-  var colorArrayCoverage = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
-
-  function initialize(){
-    createMenu(arrayCoverage, colorArrayCoverage);
-  };
-
   //begins script when window loads
   window.onload = setMap();
 
@@ -97,6 +86,9 @@
 
         setEnumerationUnits(usStates, usCenters, mapMain, path);
         setPropSymbols(usStates, usCenters, mapMain, path);
+        coverageMapLegend();
+        exemptionMapLegend();
+        Preventable_OutbreaksMapLegend()
     }
 };
 
@@ -199,17 +191,18 @@
       .enter().append("path")
       .attr("d",path)
       .attr("class",function(d){
-          return "circle "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
+          return "circle symbol "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
       })
       .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
       .style({'fill':'orange',
               'stroke':'black',
-              'fill-opacity':.4})
+              'fill-opacity':.4,
+              'display': 'none'})
       .on("mouseover", function(d){
-      highlight(d.properties);
+        highlight(d.properties);
       })
       .on("mouseout", function(d){
-      dehighlight(d.properties);
+        dehighlight(d.properties);
       })
       .on("mousemove", moveLabel);
 
@@ -314,86 +307,316 @@
           "left": x + "px",
           "top": y + "px"
       });
-  };
-  function createMenu(arrayX, arrayY, title, infotext, infolink){
-      var yArray = [40, 85, 130, 175, 220, 265];
-      var oldItems = d3.selectAll(".menuBox").remove();
-      var oldItems2 = d3.selectAll(".menuInfoBox").remove();
-
-      //creates menuBoxes
-      menuBox = d3.select(".menu-inset")
-              .append("svg")
-              .attr("width", menuWidth)
-              .attr("height", menuHeight)
-              .attr("class", "menuBox");
-
-              //creates Menu Title
-      var menuTitle = menuBox.append("text")
-          .attr("x", 10)
-          .attr("y", 30)
-          .attr("class","title")
-          .text(title)
-          .style("font-size", '14px');
-
-          //draws and shades boxes for menu
-          for (b = 0; b < arrayX.length; b++){
-             var menuItems = menuBox.selectAll(".items")
-                  .data(arrayX)
-                  .enter()
-                  .append("rect")
-                  .attr("class", "items")
-                  .attr("width", 35)
-                  .attr("height", 35)
-                  .attr("x", 15);
-
-              menuItems.data(yArray)
-                  .attr("y", function(d, i){
-                      return d;
-                  });
-
-              menuItems.data(arrayY)
-                  .attr("fill", function(d, i){
-                      return arrayY[i];
-                  });
-          };
-          //creates menulabels
-          var menuLabels = menuBox.selectAll(".menuLabels")
-              .data(arrayX)
-              .enter()
-              .append("text")
-              .attr("class", "menuLabels")
-              .attr("x", 60)
-              .text(function(d, i){
-                  for (var c = 0; c < arrayX.length; c++){
-                      return arrayX[i]
-                  }
-              })
-              .style({'font-size': '14px', 'font-family': 'Open Sans, sans-serif'});
-
-              menuLabels.data(yArray)
-                  .attr("y", function(d, i){
-                      return d + 30;
-                  });
-
-           //creates menuBoxes
-          menuInfoBox = d3.select(".menu-info")
-              .append("div")
-              .attr("width", menuInfoWidth)
-              .attr("height", menuInfoHeight)
-              .attr("class", "menuInfoBox textBox")
-              .html(infotext + infolink);
-  };
-
-  function colorScale(data){
-    if (expressed ==="vaccine_coverage") {
-      colorClasses = colorArrayCoverage;
-                      arrayCoverage;
+     };
 
 
+function coverageMapLegend(){
 
+ var boxmargin = 4,
+     lineheight = 30,
+     keyheight = 20,
+     keywidth = 40,
+     boxwidth = 4.5 * keywidth,
+     formatPercent = d3.format(".0%");
+
+ var coverageLegendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+
+ var title = ['United States Complete Immunizations'],
+     titleheight = title.length*lineheight + boxmargin;
+
+ var x = d3.scale.quantile()
+       .domain([0,1]);
+
+   var threshold = d3.scale.threshold()
+       .domain([75,85,95,100])
+       .range(coverageLegendcolors);
+   var ranges = threshold.range().length;
+
+   // return quantize thresholds for the key
+   var qrange = function(max, num) {
+       var a = [];
+       for (var i=0; i<num; i++) {
+           a.push(i*max/num);
+       }
+       return a;
+   }
+
+   var svg = d3.select("#coverage-legend").append("svg")
+       .attr("div", "#coverage-legend")
+
+   // make legend
+   var coverageLegend = svg.append("g")
+       .attr("class", "coverageLegend");
+
+  //  coverageLegend.selectAll("text")
+  //      .data(title)
+  //      .enter().append("text")
+  //      .attr("class", "coverage-legend-title")
+  //      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+  //      .text(function(d) { return d; })
+
+  //  // make legend box
+  //  var lb = coverageLegend.append("rect")
+  //      .attr("transform", "translate (0,"+titleheight+")")
+  //      .attr("class", "main-legend-box")
+  //      .attr("width", boxwidth)
+  //      .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
+
+   // make quantized key legend items
+   var coverageLi = coverageLegend.append("g")
+      //  .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+       .attr("class", "main-legend-items");
+
+   coverageLi.selectAll("rect")
+       .data(threshold.range().map(function(coverageLegendcolors) {
+         var d = threshold.invertExtent(coverageLegendcolors);
+         if (d[0] == null) d[0] = x.domain()[0];
+         return d;
+       }))
+       .enter().append("rect")
+       .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
+       .attr("width", keywidth)
+       .attr("height", keyheight)
+       .style("fill", function(d) { return threshold(d[0]); });
+
+   coverageLi.selectAll("text")
+   .data(threshold.range().map(function(coverageLegendcolors) {
+     var d = threshold.invertExtent(coverageLegendcolors);
+     if (d[0] == null) d[0] = x.domain()[0];
+     if (d[1] == null) d[1] = x.domain()[1];
+     return d;
+     }))
+       //.data(qrange(threshold.domain()[1], ranges))
+     .enter().append("text")
+     .attr("x", 48)
+     .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+     .text(function(d) { return (d[0]+" - "+d[1]+"%")})
+};
+
+function exemptionMapLegend(){
+
+   var boxmargin = 4,
+       lineheight = 30,
+       keyheight = 20,
+       keywidth = 40,
+       boxwidth = 4.5 * keywidth,
+       formatPercent = d3.format(".0%");
+
+   var coverageLegendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+
+   var title = ['State Exemptions'],
+       titleheight = title.length*lineheight + boxmargin;
+
+   var x = d3.scale.quantile()
+         .domain([0,1]);
+
+     var threshold = d3.scale.threshold()
+         .domain([75,85,95,100])
+         .range(coverageLegendcolors);
+     var ranges = threshold.range().length;
+
+     // return quantize thresholds for the key
+     var qrange = function(max, num) {
+         var a = [];
+         for (var i=0; i<num; i++) {
+             a.push(i*max/num);
+         }
+         return a;
+     }
+
+     var svg = d3.select("#exemption-legend").append("svg")
+         .attr("div", "#exemption-legend")
+
+     // make legend
+     var coverageLegend = svg.append("g")
+         .attr("class", "coverageLegend");
+
+    //  coverageLegend.selectAll("text")
+    //      .data(title)
+    //      .enter().append("text")
+    //      .attr("class", "coverage-legend-title")
+    //      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+    //      .text(function(d) { return d; })
+
+    //  // make legend box
+    //  var lb = coverageLegend.append("rect")
+    //      .attr("transform", "translate (0,"+titleheight+")")
+    //      .attr("class", "main-legend-box")
+    //      .attr("width", boxwidth)
+    //      .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
+
+     // make quantized key legend items
+     var coverageLi = coverageLegend.append("g")
+        //  .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
+         .attr("class", "main-legend-items");
+
+     coverageLi.selectAll("rect")
+         .data(threshold.range().map(function(coverageLegendcolors) {
+           var d = threshold.invertExtent(coverageLegendcolors);
+           if (d[0] == null) d[0] = x.domain()[0];
+           return d;
+         }))
+         .enter().append("rect")
+         .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
+         .attr("width", keywidth)
+         .attr("height", keyheight)
+         .style("fill", function(d) { return threshold(d[0]); });
+
+     coverageLi.selectAll("text")
+     .data(threshold.range().map(function(coverageLegendcolors) {
+       var d = threshold.invertExtent(coverageLegendcolors);
+       if (d[0] == null) d[0] = x.domain()[0];
+       if (d[1] == null) d[1] = x.domain()[1];
+       return d;
+       }))
+         //.data(qrange(threshold.domain()[1], ranges))
+       .enter().append("text")
+       .attr("x", 48)
+       .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+       .text(function(d) { return (d[0]+" - "+d[1]+"%")})
+ };
+
+
+function Preventable_OutbreaksMapLegend(){
+
+  var boxmargin = 4,
+      lineheight = 30,
+      keyheight = 20,
+      keywidth = 40,
+      boxwidth = 4.5 * keywidth,
+      formatPercent = d3.format(".0%");
+
+  var coverageLegendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
+
+  var title = ['Preventable Outbreaks'],
+      titleheight = title.length*lineheight + boxmargin;
+
+  var x = d3.scale.quantile()
+        .domain([0,1]);
+
+    var threshold = d3.scale.threshold()
+        .domain([75,85,95,100])
+        .range(coverageLegendcolors);
+    var ranges = threshold.range().length;
+
+    // return quantize thresholds for the key
+    var qrange = function(max, num) {
+        var a = [];
+        for (var i=0; i<num; i++) {
+            a.push(i*max/num);
+        }
+        return a;
     }
-  }
+
+    var svg = d3.select("#preventable-legend").append("svg")
+        .attr("div", "#preventable-legend")
+
+    // make legend
+    var coverageLegend = svg.append("g")
+        .attr("class", "coverageLegend");
+
+    // coverageLegend.selectAll("text")
+    //     .data(title)
+    //     .enter().append("text")
+    //     .attr("class", "coverage-legend-title")
+    //     .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+    //     .text(function(d) { return d; })
+
+    // // make legend box
+    // var lb = coverageLegend.append("rect")
+    //     .attr("transform", "translate (0,"+titleheight+")")
+    //     .attr("class", "main-legend-box")
+    //     .attr("width", boxwidth)
+    //     .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
+
+    // make quantized key legend items
+    var coverageLi = coverageLegend.append("g")
+        // .attr("transform", "translate (,"+(titleheight+boxmargin)+")")
+        .attr("class", "main-legend-items");
+
+    coverageLi.selectAll("rect")
+        .data(threshold.range().map(function(coverageLegendcolors) {
+          var d = threshold.invertExtent(coverageLegendcolors);
+          if (d[0] == null) d[0] = x.domain()[0];
+          return d;
+        }))
+        .enter().append("rect")
+        .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
+        .attr("width", keywidth)
+        .attr("height", keyheight)
+        .style("fill", function(d) { return threshold(d[0]); });
+
+    coverageLi.selectAll("text")
+    .data(threshold.range().map(function(coverageLegendcolors) {
+      var d = threshold.invertExtent(coverageLegendcolors);
+      if (d[0] == null) d[0] = x.domain()[0];
+      if (d[1] == null) d[1] = x.domain()[1];
+      return d;
+      }))
+        //.data(qrange(threshold.domain()[1], ranges))
+      .enter().append("text")
+      .attr("x", 48)
+      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
+      .text(function(d) { return (d[0]+" - "+d[1]+"%")})
+};
+
+
+// nav tabs
+$(".nav-item").hover(function(){
+	$(this).toggleClass('nav-hovered')
+}, function(){
+	$(this).toggleClass('nav-hovered')
+})
+
+function removePropSympols(){
+  d3.selectAll(".symbol")
+    .style("display", "none")
+}
+
+function showPropSymbols(){
+  $(".symbol").show()
+}
+
+$(".nav-item").click(function(){
+	//control active tab css
+	$(".nav-item").removeClass("active")
+	$(this).addClass("active")
+  var data = $(this).data('attr')
+  var click = $(this).data('click')
+    if (data == 'coverage'){
+
+    }else if (data === 'preventable-outbreaks'){
+      if (click){
+        removePropSympols()
+        var click = $(this).data('click', false)
+
+      }
+      else{
+          showPropSymbols()
+          var click = $(this).data('click', true)
+
+      }
+    }
 
 
 
-  })();
+	//figure out what to display
+	$(".nav-panel").css({'display': "none"})
+	_thisData = $(this).data('panel')
+	if (_thisData == 'intro'){
+		$("#intro-panel").slideToggle()
+	}else if (_thisData == "wind"){
+		$("#wind-panel").slideToggle()
+	}else if (_thisData == "country"){
+		$("#country-panel").slideToggle()
+	}else{
+		return
+	}
+})
+
+
+
+
+
+
+   })();

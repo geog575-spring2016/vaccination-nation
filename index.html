@@ -8,6 +8,7 @@
 		<!--external stylesheet links-->
         <link rel="stylesheet" href="lib/leaflet/leaflet.css">
         <link rel="stylesheet" href="lib/leaflet-search-master/src/leaflet-search.css">
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css"/>
 <!--
 		<link rel="stylesheet" href="css/California.css"/>
@@ -16,7 +17,6 @@
 -->
 		<link rel="stylesheet" href="css/vaccine_coverage.css"/>
 		<link rel="stylesheet" href="css/exemptions.css"/>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="lib/leaflet.zoomhome.css"/>
 
 		<!--[if IE<9]>
@@ -33,25 +33,69 @@
 
 <!--          MAIN MAP LEGEND -->
 
-				<div class="main-menu">
-					<div class="menu-inset" style="width:100px;height:218px;">
-					<div class="menu-options">
-							<div class="Preventable_Outbreaks" style="width:125px;height:53px;">
-									Disease Preventable Outbreaks</div>
-							<div class="Vaccination_Coverage" style="width:125px;height:53px;">
-									Vaccination Coverage </div>
-					</div>
-					<div class="menu-info">	</div>
-					</div>
+		<div id='nav'>
+
+					<ul class='list-group' id='nav-list-group'>
+						<li class='list-group-item nav-item active' id='nav-item-intro' data-panel='intro' data-toggle="tooltip" data-attr='coverage'>
+							Coverage
+						</li>
+						<li class='list-group-item nav-item' data-panel='country' data-attr='exemption'>
+							Exemption
+						</li>
+						<li class='list-group-item nav-item' data-panel='wind' data-attr='preventable-outbreaks' data-click="false">
+							Preventable Outbreaks
+						</li>
+					</ul>
 				</div>
-				<div class="overlay-menu">
-							<div class="Props_Preventable_Outbreaks" style="width:125px;height:60px;">
-								Preventable Outbreaks</div>
+
+				<div id='intro-panel' class='nav-panel'>
+
+					<p>This should be the coverage information</p>
+							<div id='coverage-legend'>
+							</div>
+				</div>
+
+
+				<div id='country-panel' class='nav-panel'>
+					<p>This should be the coverage information</p>
+							<div id='exemption-legend'>
+							</div>
 				</div>
 
 
 
-       <!-- MAIN MAP -->
+
+
+
+
+			<!-- <ul class="list-group" id= "nav-list-group" >
+				<li class = "list-group-item nav item" id='nav-item-coverage' title="Coverage">
+						<div id='coverage-legend'>
+						</div>
+				<li id= "exemption-li" > Exemptions</li>
+						<div id="exemption-legend">
+						</div>
+				</li>
+				<li id="preventable-li" > Preventable Outbreaks</li>
+						<div id="preventable-legend">
+						</div>
+			</ul> -->
+
+			<!-- <ul class="list-group" id= "nav-list-group" >
+				<li class = "list-group-item nav item"
+				id='coverage-li' >Coverage
+						<div id='coverage-legend'>
+						</div>
+				<li id= "exemption-li" > Exemptions</li>
+						<div id="exemption-legend">
+						</div>
+				</li>
+				<li id="preventable-li" > Preventable Outbreaks</li>
+						<div id="preventable-legend">
+						</div>
+			</ul> -->
+
+<!-- MAIN MAP -->
         <div id="mainMap"></div>
         <div id="mapMainExempt"></div>
         <div id="mainMap-text">
@@ -97,27 +141,27 @@
             <div id = "californiaLegendControls">
                 <div id = "californiaButtons">
                     <label>Measles Outbreaks
-                            <br><input type="Radio" name="map" id='propsymbs13' class ='radio' value="msls" />
+                            <br><input type="Radio" name="map" id='propsymbs13' class ='radio-btn' value="msls" />
                             2013
-                            <br><input type="Radio" name="map" id='propsymbs14' class ='radio' value="msls" />
+                            <br><input type="Radio" name="map" id='propsymbs14' class ='radio-btn' value="msls" />
                             2014
                     </label>
                     <br>
                     <label>Personal Belief Exemptions
-                            <br><input type="Radio" name="map" id='pb13'  class ='radio' value="pb13" />
+                            <br><input type="Radio" name="map" id='pb13'  class ='radio-btn' value="pb13" />
                             2013-2014
-                            <br><input type="Radio" name="map" id='pb15'  class ='radio' value="pb15" />
+                            <br><input type="Radio" name="map" id='pb15'  class ='radio-btn' value="pb15" />
                             2015-2016
                     </label>
                     <br>
                     <label>Vaccine Coverage Rates
-                        <br><input type="Radio" name="map" id='vc13'  class ='radio' value="vc13" />
+                        <br><input type="Radio" name="map" id='vc13'  class ='radio-btn' value="vc13" />
                             2013-2014
-                        <br><input type="Radio" name="map" id='vc15'  class ='radio' value="vc15" />
+                        <br><input type="Radio" name="map" id='vc15'  class ='radio-btn' value="vc15" />
                             2015-2016
                     </label>
                     <br>
-                    <label><input type="Radio" name="map" id='none' class ='radio' value="none"  checked="checked" />
+                    <label><input type="Radio" name="map" id='none' class ='radio-btn' value="none"  checked="checked" />
                     </label>None
                 </div>
                 <div id="california-legend-vc"></div>
@@ -172,6 +216,7 @@
 		<script type="text/javascript" src="js/exemptions.js"></script>
         <script type="text/javascript" src="lib/Leaflet.Sleep.js"></script>
         <script type="text/javascript" src="lib/leaflet.zoomhome.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 	</body>
 </html>
