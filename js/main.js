@@ -8,7 +8,7 @@
   var expressed =DataArray[0];
 
   var attrArray = ["2009-2010", "2011-2012", "2012-2013", "2013-2014", "2014-2015"];
-  var expressed2 = attrArray[0];
+  var expressed2 = attrArray[4];
 
   var exemptionattrArray = ["codes"];
   var expressed3 =exemptionattrArray[0];
