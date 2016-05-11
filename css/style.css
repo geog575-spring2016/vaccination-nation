@@ -561,10 +561,11 @@ option {
     display:block;
     float:left;
     text-align:left;
+    text-align: justify;
 /*    border-style: solid;*/
     /*width: 80%;*/
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 20%;
+    margin-right: 20%;
 
 
 
@@ -625,7 +626,7 @@ option {
   font-family: Lato, sans-serif;
   position:absolute;
   height:55px;
-  width: 273px;
+  width: 282px;
   color: #fff;
   background-color: #000;
   border: solid thin #000;
