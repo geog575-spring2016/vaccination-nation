@@ -69,8 +69,9 @@ function setmap(){
         .attr("height",height);
 
     var  projection = d3.geo.mercator()
-			.scale(1120 * 2)
-			.center([-119.5, 37])
+			// .scale(1122 * 2)
+      .scale(1250*2)
+			.center([-119.5, 37.2])
 			.translate([width/2, height/2]);
 
     var path=d3.geo.path()
@@ -169,7 +170,7 @@ function setEnumerationUnits(caliCounties, californiacenters, CAmap, path){
        })
 
        .attr("d",path.pointRadius(function(d){return radius(d.properties.measles14);}))
-       .style({"fill": "orange",
+       .style({"fill": "#fc8d59",
                "fill-opacity":0.5,
                "stroke":"black"})
      .on("mouseover", function(d){
@@ -466,8 +467,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
           })
 
           .attr("d",path.pointRadius(function(d){return radius(d.properties.measles14);}))
-          .style({"fill": "orange",
-                  "fill-opacity":0.4,
+          .style({"fill": "#fc8d59",
+                  "fill-opacity":0.5,
                   "stroke":"black"})
         .on("mouseover", function(d){
                 tooltip.style("visibility", "visible").html("<l1>"+labelTitles2.measles14+":   "+"<b>"+d.properties.measles14+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
@@ -603,8 +604,8 @@ function selectLayer(caliCounties, californiacenters, dataMeasles, CAmap, path){
                   return "circle13 "+d.properties.county+ d.properties.geo_id;
             })
             .attr("d",path.pointRadius(function(d){return radius(d.properties.measles13);}))
-            .style({"fill": "orange",
-                    "fill-opacity":0.4,
+            .style({"fill": "#fc8d59",
+                    "fill-opacity":0.5,
                     "stroke":"black"})
           .on("mouseover", function(d){
                   tooltip.style("visibility", "visible").html("<l1>"+labelTitles2.measles13+":   "+"<b>"+d.properties.measles13+"</b><div>"+"County: "+"<b>"+d.properties.county+"</b></div></l1>");
