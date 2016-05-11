@@ -19,6 +19,7 @@ font-size: 1.8em;
 }
 
 h3{
+  /*text-align: center;*/
 }
 h4{
 font-size: 1.2em;
@@ -283,7 +284,6 @@ padding-right: 50px;
     width: 250px;
     height: 40px;
     display: inline-block;
-/*    margin-top: -5px;*/
 }
 
 .glyphicon {
@@ -365,6 +365,7 @@ option {
 
 
 .button {
+
     padding-right: 15%;
     display: inline-flex;
     float: right;
