@@ -221,41 +221,28 @@ padding-left: 60px;
   width: 100%;
   display: block;
   text-align: justify;
-    
+
 }
 
 #mainText{
-    display: inline-block;
+    /*display: inline-block;*/
     float: left;
 }
 
 #exemptionmap{
-<<<<<<< HEAD
-/*  height: 200px;*/
   margin-left: 10%;
   margin-right: 10%;
-  padding-bottom: 400px;
-  float:right;
-=======
   width: 50%;
-  margin-left: 10%;
-  margin-right: 10%;
->>>>>>> master
   text-align: center;
-
 }
 
 /*WASHINGTON CSS*/
 
 #washington-wrapper {
     display: inline-block;
-    width: 100%;
-<<<<<<< HEAD
     margin: 0 auto;
     display: block;
-=======
-    margin: 100px;;
->>>>>>> master
+    width: 75%;
 }
 
 #washington-map{
