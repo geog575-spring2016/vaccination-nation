@@ -207,8 +207,12 @@ p {
   }
 
 #mainMap-text{
+<<<<<<< HEAD
 /*  height: 200px;*/
 /*
+=======
+  height: 500px;
+>>>>>>> master
   margin-left: 10%;
   margin-right: 10%;
 */
@@ -226,23 +230,32 @@ padding-left: 60px;
 }
 
 #exemptionmap{
+<<<<<<< HEAD
 /*  height: 200px;*/
   margin-left: 10%;
   margin-right: 10%;
   padding-bottom: 400px;
   float:right;
+=======
+  width: 50%;
+  margin-left: 10%;
+  margin-right: 10%;
+>>>>>>> master
   text-align: center;
-  display: inline-block;
-}
 
+}
 
 /*WASHINGTON CSS*/
 
 #washington-wrapper {
-/*    display: inline-block;*/
+    display: inline-block;
     width: 100%;
+<<<<<<< HEAD
     margin: 0 auto;
     display: block;
+=======
+    margin: 100px;;
+>>>>>>> master
 }
 
 #washington-map{

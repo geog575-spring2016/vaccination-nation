@@ -1,6 +1,6 @@
 //$('#mainMap').insertBefore('#new-york-map');
-
-(function(){
+//
+// (function(){
 
   var DataArray = ["cases1993","cases1994","cases1995","cases1996","cases1997","cases1998","cases1999","cases2000","cases2001",
     "cases2002","cases2003","cases2004","cases2005","cases2006","cases2007","cases2008","cases2009","cases2010","cases2011",
@@ -43,7 +43,7 @@
       .translate([width / 2, height / 2]);
 
     //draws the spatial data as a path of stings of 'd' attributes
-    var path = d3.geo.path()
+    path = d3.geo.path()
       .projection(projection);
 
     var q = d3_queue.queue();
@@ -171,7 +171,6 @@ function choropleth(props, colorScale){
     };
 };
 
-
 //funciton that just defines the radius
 //function that changes the year
     //this calls the radius function
@@ -198,41 +197,59 @@ function setPropSymbols(usStates, usCenters, mapMain, path){
       .on("mouseout", function(d){
         dehighlight(d.properties);
       })
-      .on("mousemove", moveLabel);
+      .on("mousemove", moveLabel)
+      .on("click", function(d){
+        console.log(d)
+        console.log(this)
+      })
 
     var desc = circle.append("desc")
       .text('{"stroke": "#000", "stroke-width": "0.5px"}');
 };
 
-function changeAttribute(attribute, data){
-    //change the expressed attribute
-    expressed = attribute;
-    var circles = d3.selectAll(".circles");
-    updateSymb(circles, data);
-};
+function updateRadius(expressed){
 
-function updateSymb(data) {
-      // create array to store all values for
-      var circledomainArray = [];
+    // d3.selectAll(".circle")
+    //     .attr("r", function(d){
+    //       props=d.properties
+    //       var value=props[expressed]
+    //       return value
+    //     })
+    d3.selectAll(".circle")
+    .attr("d",path.pointRadius(function(d){
+        return radius(d.properties[expressed]);}
+        ))
+}
 
-      for (var i=0; i<data.length; i++){
-        var val = parseFloat(data[i][expressed]);
-        circledomainArray.push(val);
-    };
-
-          var radiusMin = Math.min.apply(Math, circledomainArray);
-          var radiusMax = Math.max.apply(Math, circledomainArray);
-
-      var radius = d3.scale.sqrt()
-          .domain([0, 7195])
-          .range([0,150]);
-
-      //create a second svg element to hold the bar chart
-      var circleRadius= circles.attr("r", function(d){
-              return setRadius(d[expressed]);
-          });
-  };
-
+// function changeAttribute(attribute, data){
+//     //change the expressed attribute
+//     expressed = attribute;
+//     var circles = d3.selectAll(".circles");
+//     updateSymb(circles, data);
+// };
+//
+// function updateSymb(data) {
+//       // create array to store all values for
+//       var circledomainArray = [];
+//
+//       for (var i=0; i<data.length; i++){
+//         var val = parseFloat(data[i][expressed]);
+//         circledomainArray.push(val);
+//     };
+//
+//           var radiusMin = Math.min.apply(Math, circledomainArray);
+//           var radiusMax = Math.max.apply(Math, circledomainArray);
+//
+//       var radius = d3.scale.sqrt()
+//           .domain([0, 7195])
+//           .range([0,150]);
+//
+//       //create a second svg element to hold the bar chart
+//       var circleRadius= circles.attr("r", function(d){
+//               return setRadius(d[expressed]);
+//           });
+//   };
+//
 
 function propsSequenceControls(){
         var mainyearLabel = d3.select("#mainyearLabel")
@@ -249,7 +266,7 @@ function propsSequenceControls(){
               d3.select("#mainyearLabel")
                 .text(expressed)
 
-              updateSymb()
+              updateRadius(expressed)
           })
 
           $("#mainstepBackward").on("click", function(){
@@ -264,7 +281,7 @@ function propsSequenceControls(){
                 d3.select("#mainyearLabel")
                   .text(expressed)
 
-                updateSymb()
+                updateRadius(expressed)
           })
 }
 
@@ -334,6 +351,8 @@ function propsSequenceControls(){
   };
 
   function setLabelMain(properties){
+    console.log("Expressed is: " + expressed)
+    console.log(properties)
     var labelAttributeMain = "<b>"+ "Cases: "+ properties[expressed]+ "<br>" + properties.state;
     var infolabelMain = d3.select("body")
       .append("div")
@@ -347,25 +366,25 @@ function propsSequenceControls(){
       .html("Virus: " + properties.disease);
   };
 
-  function moveLabel(){
-    var labelWidthMain = d3.select(".infolabelMain")
-      .node()
-      .getBoundingClientRect()
-      .width;
-    var x1 = d3.event.clientX + 10,
-        y1 = d3.event.clientY + 10,
-        x2 = d3.event.clientX - labelWidthMain - 10,
-        y2 = d3.event.clientY +25;
+function moveLabel(){
+  var labelWidthMain = d3.select(".infolabelMain")
+    .node()
+    .getBoundingClientRect()
+    .width;
+  var x1 = d3.event.clientX + 10,
+      y1 = d3.event.clientY + 10,
+      x2 = d3.event.clientX - labelWidthMain - 10,
+      y2 = d3.event.clientY +25;
 
-    var x = d3.event.clientX > window.innerWidth - labelWidthMain - 5 ? x2 : x1;
-    var y = d3.event.clientY < 5 ? y2 : y1;
+  var x = d3.event.clientX > window.innerWidth - labelWidthMain - 5 ? x2 : x1;
+  var y = d3.event.clientY < 5 ? y2 : y1;
 
-    d3.select(".infolabelMain")
-      .style({
-          "left": x + "px",
-          "top": y + "px"
-      });
-     };
+  d3.select(".infolabelMain")
+    .style({
+        "left": x + "px",
+        "top": y + "px"
+    });
+   };
 
 function coverageMapLegend(){
 
@@ -664,6 +683,6 @@ $(".nav-item").click(function(){
 	}
 })
 
-
-
-   })();
+   //
+   //
+  //  })();
