@@ -125,7 +125,7 @@ function joinData(usStates, csvData2){
      .append("path")
      .attr("d",path)
      .attr("class", function(d){
-       return "states " + d.properties.name_1;
+       return "states "+d.properties.postal;
      })
      .attr("d", path)
      .style("fill", function(d){
@@ -246,14 +246,14 @@ function propsSequenceControls(){
   function highlight(properties){
     var selected = d3.selectAll("." + properties.postal+properties.disease)
       .style({
-        "stroke": "black",
-        "stroke-width": "2"
+        "stroke": "#3e3e3e",
+        "stroke-width": "3"
     });
     setLabelMain(properties);
   };
 
   function highlightSecond(properties){
-    var selected = d3.selectAll("." + properties.name_1)
+    var selected = d3.selectAll("." + properties.postal)
       .style({
         "stroke": "black",
         "stroke-width": "2"
@@ -262,7 +262,7 @@ function propsSequenceControls(){
   };
 
   function dehighlightSecond(properties){
-    var selected = d3.selectAll("." + properties.name_1)
+    var selected = d3.selectAll("." + properties.postal)
       .style({
        "stroke": "white",
        "stroke-width": "1"
