@@ -183,7 +183,7 @@ h4{
   }
 
 #mainMap-text{
-  height: 200px;
+  height: 500px;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 10px;
@@ -191,21 +191,19 @@ h4{
 }
 
 #exemptionmap{
-  height: 200px;
+  width: 50%;
   margin-left: 10%;
   margin-right: 10%;
-  padding-bottom: 400px;
   text-align: center;
-  display: inline-block;
-}
 
+}
 
 /*WASHINGTON CSS*/
 
 #washington-wrapper {
-/*    display: inline-block;*/
+    display: inline-block;
     width: 100%;
-    margin: 0 auto;
+    margin: 100px;;
 }
 
 #washington-map{
