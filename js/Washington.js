@@ -262,8 +262,8 @@ function moveLabel(){
         .width;
 
     //use coordinates of mousemove event to set label coordinates
-    var x1 = d3.event.clientX + 10,
-        y1 = d3.event.clientY + 900,
+    var x1 = d3.event.clientX + 15,
+        y1 = d3.event.clientY + 1400,
         x2 = d3.event.clientX - labelWidth - 10,
         y2 = d3.event.clientY - 5;
 
