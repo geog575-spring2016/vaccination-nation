@@ -213,16 +213,8 @@ p {
   }
 
 #mainMap-text{
-<<<<<<< HEAD
-/*  height: 200px;*/
-/*
-=======
-  height: 500px;
->>>>>>> master
-  margin-left: 10%;
-  margin-right: 10%;
-*/
-padding-left: 60px;
+padding-left: 50px;
+padding-right: 50px;
   margin-bottom: 10px;
   width: 100%;
   display: block;
@@ -281,7 +273,6 @@ padding-left: 60px;
 /*    height: 550px;*/
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 20px;
     text-align: justify;
     display: block;
 }
@@ -412,6 +403,8 @@ option {
     min-width: 100%;
     height: 550px;
     display: inline-block;
+    padding-left: 50px;
+    padding-right: 50px;
     margin: 0 auto;
     margin-bottom: 10px;
 }
