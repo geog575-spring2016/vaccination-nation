@@ -147,6 +147,16 @@ function joinData(usStates, csvData2){
       .attr("class", function(d){
         return "states " + d.properties.postal;
       })
+      .on("mouseover", function(d){
+         highlightSecond(d.properties);
+        })
+        .on("mouseout", function(d){
+          dehighlightSecond(d.properties);
+        })
+        .on("mousemove", moveLabelSecond);
+
+    var desc = states.append("desc")
+      .text('{"stroke": "#000", "stroke-width": "0.5px"}');
    };
 
    function setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale){
@@ -161,7 +171,8 @@ function joinData(usStates, csvData2){
        .attr("d", path)
        .style("fill", function(d){
            return choropleth(d.properties, colorScale);
-       })
+       });
+       
     };
 
     //function to create color scale generator
@@ -348,6 +359,16 @@ function propsSequenceControls(){
     setLabelMain(properties);
   };
 
+   function highlightSecond(properties){
+    console.log("reach highlightSecond");
+    var selected = d3.selectAll("." + properties.postal)
+      .style({
+        "stroke": "black",
+        "stroke-width": "2"
+    });
+    setLabelSecond(properties);
+  };
+
   function dehighlight(properties){
     var selected = d3.selectAll("." + properties.postal+properties.disease)
       .style({
@@ -355,6 +376,16 @@ function propsSequenceControls(){
        "stroke-width": "1"
       });
     d3.select(".infolabelMain")
+      .remove();
+  };
+
+  function dehighlightSecond(properties){
+    var selected = d3.selectAll("." + properties.postal)
+      .style({
+       "stroke": "black",
+       "stroke-width": "1"
+      });
+    d3.select(".infolabelSecond")
       .remove();
   };
 
@@ -373,6 +404,20 @@ function propsSequenceControls(){
       .html("Virus: " + properties.disease);
   };
 
+  function setLabelSecond(properties){
+    var labelAttributeSecond = "<b>"+ "Year: "+ properties[expressed2]+ "<br>";
+    var infolabelSecond = d3.select("body")
+      .append("div")
+      .attr({
+        "class": "infolabelSecond",
+        "id":  properties.disease+ "_label"
+      })
+      .html(labelAttributeSecond);
+    var propNameSecond = infolabelSecond.append("div")
+      .attr("class", "labelnameSecond")
+      .html("Year: " + properties.state);
+  };
+
   function moveLabel(){
     var labelWidthMain = d3.select(".infolabelMain")
       .node()
@@ -387,6 +432,27 @@ function propsSequenceControls(){
     var y = d3.event.clientY < 5 ? y2 : y1;
 
     d3.select(".infolabelMain")
+      .style({
+          "left": x + "px",
+          "top": y + "px"
+      });
+     };
+
+
+  function moveLabelSecond(){
+    var labelWidthMain = d3.select(".infolabelSecond")
+      .node()
+      .getBoundingClientRect()
+      .width;
+    var x1 = d3.event.clientX + 10,
+        y1 = d3.event.clientY + 10,
+        x2 = d3.event.clientX - labelWidthMain - 10,
+        y2 = d3.event.clientY +25;
+
+    var x = d3.event.clientX > window.innerWidth - labelWidthMain - 5 ? x2 : x1;
+    var y = d3.event.clientY < 5 ? y2 : y1;
+
+    d3.select(".infolabelSecond")
       .style({
           "left": x + "px",
           "top": y + "px"

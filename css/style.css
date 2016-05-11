@@ -40,8 +40,24 @@ h4{
 .infolabelMain {
     font-family: Lato, sans-serif;
     position:absolute;
-    height:60px;
-    width: 120px;
+    height:80px;
+    width: 130px;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #000;
+    padding: 10px 10px;
+    border-radius: 15px;
+    text-align: left;
+    vertical-align: middle;
+    pointer-events:none;
+    top: -75px;
+}
+
+.infolabelSecond {
+    font-family: Lato, sans-serif;
+    position:absolute;
+    height:80px;
+    width: 130px;
     color: #fff;
     background-color: #000;
     border: solid thin #000;
