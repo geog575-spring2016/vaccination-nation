@@ -44,21 +44,11 @@
 }
 
 .CAtoolTip {
-  /*
-  color: black;
-  position: absolute;
-  height: 50px;
-  min-width: 100px;
-  color: #fff;
-  background-color: #000;
-  border: solid thin #fff;
-  padding: 5px 10px;
-  top: -75px;
-  */
+
   font-family: Lato, sans-serif;
   position:absolute;
   height:55px;
-  width: 350px;
+  width: 370px;
   color: #fff;
   background-color: #000;
   border: solid thin #000;
