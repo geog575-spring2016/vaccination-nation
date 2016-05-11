@@ -382,7 +382,7 @@ function propsSequenceControls(){
   function dehighlightSecond(properties){
     var selected = d3.selectAll("." + properties.name_1)
       .style({
-       "stroke": "black",
+       "stroke": "white",
        "stroke-width": "1"
       });
     d3.select(".infolabelSecond")
