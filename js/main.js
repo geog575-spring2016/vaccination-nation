@@ -87,6 +87,7 @@ function callback(error, csvData2, csvData3, us, csvData, usCenters){
         //setCircles(usStates, usCenters, mapMain, path);
         setPropSymbols(usStates, usCenters, mapMain, path);
         propsSequenceControls();
+        removeSequence()
         coverageMapLegend();
         exemptionMapLegend();
         Preventable_OutbreaksMapLegend();
@@ -167,10 +168,6 @@ function choropleth(props, colorScale){
     };
 };
 
-//funciton that just defines the radius
-//function that changes the year
-    //this calls the radius function
-//call that function into the sequence
 function setPropSymbols(usStates, usCenters, mapMain, path){
 
     var circle=mapMain.selectAll(".circle")
@@ -424,75 +421,6 @@ function coverageMapLegend(){
      .text(function(d) { return (d[0]+" - "+d[1]+"%")})
 };
 
-function exemptionMapLegend(){
-
-   var boxmargin = 4,
-       lineheight = 30,
-       keyheight = 20,
-       keywidth = 40,
-       boxwidth = 4.5 * keywidth,
-       formatPercent = d3.format(".0%");
-
-   var coverageLegendcolors = ['#d7191c','#fdae61','#abd9e9','#2c7bb6'];
-
-   var title = ['State Exemptions'],
-       titleheight = title.length*lineheight + boxmargin;
-
-   var x = d3.scale.quantile()
-         .domain([0,1]);
-
-     var threshold = d3.scale.threshold()
-         .domain(['personal','religious','both',100])
-         .range(coverageLegendcolors);
-     var ranges = threshold.range().length;
-
-     // return quantize thresholds for the key
-     var qrange = function(max, num) {
-         var a = [];
-         for (var i=0; i<num; i++) {
-             a.push(i*max/num);
-         }
-         return a;
-     }
-
-     var svg = d3.select("#exemption-legend").append("svg")
-         .attr("div", "#exemption-legend")
-
-     // make legend
-     var coverageLegend = svg.append("g")
-         .attr("class", "coverageLegend");
-
-     // make quantized key legend items
-     var coverageLi = coverageLegend.append("g")
-        //  .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
-         .attr("class", "main-legend-items");
-
-     coverageLi.selectAll("rect")
-         .data(threshold.range().map(function(coverageLegendcolors) {
-           var d = threshold.invertExtent(coverageLegendcolors);
-           if (d[0] == null) d[0] = x.domain()[0];
-           return d;
-         }))
-         .enter().append("rect")
-         .attr("y", function(d, i) { return i*lineheight+lineheight-keyheight; })
-         .attr("width", keywidth)
-         .attr("height", keyheight)
-         .style("fill", function(d) { return threshold(d[0]); });
-
-     coverageLi.selectAll("text")
-     .data(threshold.range().map(function(coverageLegendcolors) {
-       var d = threshold.invertExtent(coverageLegendcolors);
-       if (d[0] == null) d[0] = x.domain()[0];
-       if (d[1] == null) d[1] = x.domain()[1];
-       return d;
-       }))
-         //.data(qrange(threshold.domain()[1], ranges))
-       .enter().append("text")
-       .attr("x", 48)
-       .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-       .text(function(d) { return (d[0]+" - "+d[1]+"%")})
- };
-
 function Preventable_OutbreaksMapLegend(){
 
   var boxmargin = 4,
@@ -577,6 +505,20 @@ function showPropSymbols(){
   $(".circle").show()
 }
 
+function removeSequence(){
+  d3.select("#mainyearLabel")
+    .style("display", "none")
+  d3.select("#mainstepForward")
+    .style("display", "none")
+  d3.select("#mainstepBackward")
+    .style("display", "none")
+}
+
+function showSequence(){
+  $("#mainyearLabel").show()
+  $("#mainstepForward").show()
+  $("#mainstepBackward").show()
+}
 
 $(".nav-item").click(function(){
 	//control active tab css
@@ -589,10 +531,12 @@ $(".nav-item").click(function(){
     }else if (data === 'preventable-outbreaks'){
       if (click){
         removePropSympols()
+        removeSequence()
         var click = $(this).data('click', false)
       }
       else{
           showPropSymbols()
+          showSequence()
           var click = $(this).data('click', true)
       }
     }
