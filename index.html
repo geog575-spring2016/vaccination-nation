@@ -24,11 +24,11 @@
 
 <!--        HEADER		-->
         <div id="header">
-			<h1><center>VacciNation</center></h1>
-			</div>
+			<h1>The Immunity Mutiny</h1>
+            <h2 id="subheader">The struggle over childhood vaccination and the emergence of a new public health crisis</h2>
+        </div>
 
 <!--          MAIN MAP LEGEND -->
-
 		<div id='nav'>
 
 					<ul class='list-group' id='nav-list-group'>
@@ -39,42 +39,47 @@
 							Preventable Outbreaks
 						</li>
 					</ul>
-				</div>
-				<div id='intro-panel' class='nav-panel'>
-					<p>Percentage of Complete Immunizations per State</p>
-							<div id='coverage-legend'>
-							</div>
-				</div>
+        </div>
+        <div id='intro-panel' class='nav-panel'>
+            <p>Childhood Immunization Coverage by State</p>
+            <div id='coverage-legend'>
+            </div>
+        </div>
+    </div>
+    <div class="main-sequence-buttons">
+            <div class="button">
+                    <button type="button" id="mainstepBackward">
+                    </button>
+                    <div id="mainyearLabel"></div>
+                    <button type="button" id="mainstepForward">
+                    </button>
+            </div>
+    </div>
+<!--
 				<div id='exemption-panel' class='nav-panel'>
 					<p>Types of Exemptions</p>
 							<div id='exemption-legend'>
 							</div>
 				</div>
+-->
 
 <!-- MAIN MAP -->
         <div id="mainMap"></div>
-        <div id="mapMainExempt"></div>
-				<div id="main-sequence"></div>
-							<div class="sequence-buttons">
-							<div class="button">
-									<button type="button" id="mainstepBackward">
-									</button>
-									<div id="mainyearLabel"></div>
-									<button type="button" id="mainstepForward">
-									</button>
-							</div>
-							</div>
 
         <div id="mainMap-text">
-            <h3>Overview & Main Map Narrative</h3>
-					<img src="img/vaccinelaws.png" id="exemptionmap">
+            <h3>Herd Immunity in Jeopardy</h3>
+            
+            <p><img id="exemptGraphic" src="img/vaccinelaws.png" width="600" align="right"> Vaccines are most effective at preventing outbreaks of especially contagious diseases like measles and whooping cough (pertussis) when immunization rates are at or above 95%. This principle of <a href = "http://www.pbs.org/wgbh/nova/body/herd-immunity.html">“herd immunity”</a> also helps shield the most vulnerable individuals in a community: newborns, the very elderly, and others who are unable to be vaccinated for medical reasons.</p>
 
+<p>Recent decades, however, have seen many parents opting their children out of vaccines for personal and religious beliefs. For an increasing number of families and communities in the United States, vaccination has been transformed from sound public health policy into a civil liberties issue, with a rising chorus of anti-vaccination activists stirring popular doubt about the efficacy and safety of immunization. In several communities across the nation—particularly religious and alternative communities—childhood vaccination rates have begun to fall sharply below 95%, and vaccine-preventable diseases like measles and whooping cough are on the rise.</p>
+
+<p>Measles, declared eradicated from the United States in 2000, has reappeared in troubling numbers across America, with a particularly notable 2014 outbreak in Disneyland resulting in over 600 cases. Whooping cough infection rates, meanwhile, have rocketed to levels not seen since the 1950s, with almost 50,000 cases developing nationally in 2012.</p>
+<div id="exemptionmap"> </div>
 
         </div>
 
 <!--        WASHINGTON-->
         <div id="washington-wrapper">
-            <h3>Declining Vaccinations in Washington State</h3>
             <div id="washington-map"></div>
 <!--            <div class="WashingtonMap"></div>-->
                     <!--       	SEQUENCE BUTTONS-->
@@ -97,9 +102,37 @@
 <!--                                <div id="washington-legend"></div>-->
         </div>
         <div id="washington-text">
-						<br>Washington has one of the worst immunization histories in the United States. It accepts medical, religious, and personal/philosophical exemptions and has consistently been one of the top 10 states to report the most vaccine exemptions for children enrolled in kindergarten. Due to the culture, more parents are choosing to opt out of state immunization requirements. From 2015-2016, only 85% of children entering kindergarten in Washington were completely immunized. This is up from 2008-2009 where only 78.5% of children entering kindergarten were immunized, but it is still lower than 89.45% in 2003-2004.  </br>
- 						<br>While the percent of children completely vaccinated might be lower than it was in the past, it certainly has improved since its low point from 2008-2009. This is because lawmakers have pushed for more funding and stricter bills that makes opting out of vaccinations more difficult. In 2010, Washington formed the Washington Vaccine Association. This nonprofit organization was formed by the state legislature and helps purchase vaccines and distribute them to providers for no charge. In 2011, Washington adopted a law that requires parents to obtain a licensed healthcare provider’s signature if they wish to exempt their children. Within the first year the legislation had already decreased exemption rates from 6.0% to 4.5%. </br>
-						<br> 	While these are methods are helping improve vaccinations in Washington, the counties are still well below the average of recommend vaccinations. In May of 2015, Washington reintroduced a Bill that would eliminate personal belief and philosophical exemptions. However, this Bill is currently pending and is waiting for a vote. </br>
+            <h3>Declining Vaccinations in Washington State</h3>
+					<p>Washington is one of many states that lags behind both
+its own and national goals for vaccination coverage. The state accepts both
+religious and personal or philosophical immunization exemptions and has
+consistently been one of the top 10 states to report the most vaccine
+exemptions for children enrolled in kindergarten. While declining immunization
+rates in some parts of the country are associated with strongly held religious
+beliefs, Washington’s<a
+href="http://www.huffingtonpost.com/2015/03/06/vaccines-exemption-measles_n_6812092.html">deep-rooted
+counterculture of healthy living and alternative healing</a>
+is also responsible for increasing numbers of parents opting out from state
+immunization requirements. From 2015-2016, only 85% of children entering
+kindergarten in Washington were completely immunized.</p>
+
+<p>While fewer children in Washington may be receiving
+vaccinations than in past years, immunization rates are improving from a low
+point in 2008-2009. <a
+href="http://www.nytimes.com/2012/09/20/health/washington-state-makes-it-harder-to-forgo-immunizations.html?_r=0">Lawmakers
+have pushed for more funding and stricter bills that makes opting out of
+vaccinations more difficult</a>. In 2010, the state legislature
+created the <a
+               href="http://www.wavaccine.org/">Washington Vaccine Association</a>.
+This nonprofit organization helps purchase vaccines and distribute them to
+providers for no charge. In 2011, Washington adopted a law that requires
+parents to obtain a licensed healthcare provider’s signature if they wish to
+exempt their children. Within one year of passage, exemption rates decreased
+from 6.0% to 4.5%. Nonetheless, several counties have immunization rates that
+are still well below 95%. In February 2015, the state legislature introduced a
+bill that would eliminate personal belief and philosophical exemptions. As of
+this writing, however,<a
+href="http://apps.leg.wa.gov/billinfo/summary.aspx?bill=2009">the bill is still stuck in committee</a>.</p>
         </div>
 
 <!--        NEW YORK-->

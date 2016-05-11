@@ -9,14 +9,23 @@ body {
 h1{
 
 }
-h2{
 
+h2{
+font-size: 1.8em;
 }
+
+#subheader {
+    margin-top: -5px;
+}
+
 h3{
-    text-align: center;
 }
 h4{
 
+}
+
+p {
+    font-size: 1.3em;
 }
 
 /*path.circle.Measles {
@@ -65,15 +74,16 @@ h4{
 }
 #nav-list-group{
 	height:10%;
-	top: 80px;
+	margin-top: 20px;
+    margin-left: 15px;
 	position: absolute;
 	min-width: 100px !important;
 	width: 100px;
 	z-index:2932939239293923;
 }
 .nav-item{
-	height: 60px;
-  text-align: center;
+    height: 60px;
+    text-align: center;
 }
 .nav-hovered{
 	background-color: #ccc;
@@ -85,8 +95,8 @@ h4{
 	position: absolute;
 	width: 20%;
 	z-index: 10000000;
-	top: 80px;
-	left: 70px;
+	top: 130px;
+	left: 85px;
 	display: none;
 	padding-left: 40px;
 }
@@ -113,17 +123,25 @@ h4{
 	padding-left: 40px;
 }
 
+#main-sequence-buttons {
+    margin-top: 190px;
+    margin-left: -30px;
+    width: 250px;
+    height: 40px;
+    position: absolute;
+}
+
 
 /*--------MAIN MAP----------*/
 
 
 #header{
-    height: 80px;
+    height: 110px;
     padding-top: 2px;
     padding-bottom: 4px;
-    border-color: #999;
-    background-color: #d1d6d8;
+    background-color: rgb(231, 197, 197);
     width: 100%;
+    text-align: center;
 }
 
 
@@ -149,6 +167,7 @@ h4{
     text-align: center;
 }
 
+/*
 #main-sequence {
     fill: none;
     stroke: #888;
@@ -156,6 +175,11 @@ h4{
     float: left;
     height: 10px;
     width: 200px;
+}
+*/
+
+#exemptGraphic {
+    margin-top: -60px;
 }
 
 #mainstepForward {
@@ -183,17 +207,40 @@ h4{
   }
 
 #mainMap-text{
+<<<<<<< HEAD
+/*  height: 200px;*/
+/*
+=======
   height: 500px;
+>>>>>>> master
   margin-left: 10%;
   margin-right: 10%;
+*/
+padding-left: 60px;
   margin-bottom: 10px;
-  text-align: center;
+  width: 100%;
+  display: block;
+  text-align: justify;
+    
+}
+
+#mainText{
+    display: inline-block;
+    float: left;
 }
 
 #exemptionmap{
+<<<<<<< HEAD
+/*  height: 200px;*/
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 400px;
+  float:right;
+=======
   width: 50%;
   margin-left: 10%;
   margin-right: 10%;
+>>>>>>> master
   text-align: center;
 
 }
@@ -203,7 +250,12 @@ h4{
 #washington-wrapper {
     display: inline-block;
     width: 100%;
+<<<<<<< HEAD
+    margin: 0 auto;
+    display: block;
+=======
     margin: 100px;;
+>>>>>>> master
 }
 
 #washington-map{
@@ -246,7 +298,7 @@ h4{
     margin-left: 25%;
     margin-right: 25%;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: justify;
     display: block;
 }
 
