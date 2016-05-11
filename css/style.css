@@ -182,16 +182,6 @@ p {
     text-align: center;
 }
 
-/*
-#main-sequence {
-    fill: none;
-    stroke: #888;
-    font-size: 12px;
-    float: left;
-    height: 10px;
-    width: 200px;
-}
-*/
 
 #exemptGraphic {
     margin-top: -60px;
@@ -261,16 +251,8 @@ padding-left: 60px;
 }
 
 #washington-map{
-/*    height: 500px;*/
     margin-bottom: 10px;
     display: inline-block;
-/*    width: 50%;*/
-/*    margin: 0 auto;*/
-
-/*
-    margin-left: 25%;
-    margin-right: 25%
-*/
   }
 
 .WashingtonMap {
@@ -284,7 +266,6 @@ padding-left: 60px;
     stroke: #888;
     font-size: 12px;
     display: inline-block;
-/*    float: left;*/
     height: 200px;
     width: 300px;
 }

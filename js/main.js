@@ -2,13 +2,13 @@
 
 (function(){
 
-  var DataArray = ["cases1993","cases1994","cases1995","cases1996","cases1997","cases1998","cases1999","cases2000","cases2001",
-    "cases2002","cases2003","cases2004","cases2005","cases2006","cases2007","cases2008","cases2009","cases2010","cases2011",
-    "cases2012","cases2013"];
+  var DataArray = ["1993","1994","1995","1996","1997","1998","1999","2000","2001",
+    "2002","2003","2004","2005","2006","2007","2008","2009","2010","2011",
+    "2012","2013"];
   var expressed =DataArray[0];
 
   var attrArray = ["2009-2010", "2011-2012", "2012-2013", "2013-2014", "2014-2015"];
-  var expressed2 = attrArray[0];
+  var expressed2 = attrArray[4];
 
   var exemptionattrArray = ["codes"];
   var expressed3 =exemptionattrArray[0];

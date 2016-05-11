@@ -326,11 +326,11 @@ function addWashingtonLegend(){
 
   var WAlegendcolors = ['#d7191c','#fc8d59','#fadb86','#2fd2d6'];
 
-  var title = ['Washington Complete Immunizations'],
+  var title = ['Kindergarten Students Complete for All Immunizations'],
       titleheight = title.length*lineheight + boxmargin;
 
   var x = d3.scale.quantile()
-        .domain([0,1]);
+        .domain([25,100]);
 
     var threshold = d3.scale.threshold()
         .domain([75,85,95,100])
