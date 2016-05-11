@@ -346,7 +346,7 @@ option {
 #workscited{
   font-size: 12px;
   text-align: left;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-left: 5%;
   margin-bottom: 5%;
   float: left;
@@ -403,7 +403,6 @@ option {
 
 #new-york-text {
     min-width: 100%;
-    height: 550px;
     display: inline-block;
     padding-left: 50px;
     padding-right: 50px;
