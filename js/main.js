@@ -146,17 +146,8 @@ function joinData(usStates, csvData2){
       .attr("d",path)
       .attr("class", function(d){
         return "states " + d.properties.postal;
-      })
-      .on("mouseover", function(d){
-         highlightSecond(d.properties);
-        })
-        .on("mouseout", function(d){
-          dehighlightSecond(d.properties);
-        })
-        .on("mousemove", moveLabelSecond);
-
-    var desc = states.append("desc")
-      .text('{"stroke": "#000", "stroke-width": "0.5px"}');
+      });
+      
    };
 
    function setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale){
@@ -171,7 +162,17 @@ function joinData(usStates, csvData2){
        .attr("d", path)
        .style("fill", function(d){
            return choropleth(d.properties, colorScale);
-       });
+       })
+       .on("mouseover", function(d){
+         highlightSecond(d.properties);
+        })
+        .on("mouseout", function(d){
+          dehighlightSecond(d.properties);
+        })
+        .on("mousemove", moveLabelSecond);
+
+    var desc = states.append("desc")
+      .text('{"stroke": "#000", "stroke-width": "0.5px"}');
        
     };
 
@@ -360,7 +361,6 @@ function propsSequenceControls(){
   };
 
    function highlightSecond(properties){
-    console.log("reach highlightSecond");
     var selected = d3.selectAll("." + properties.postal)
       .style({
         "stroke": "black",
@@ -405,7 +405,12 @@ function propsSequenceControls(){
   };
 
   function setLabelSecond(properties){
-    var labelAttributeSecond = "<b>"+ "Year: "+ properties[expressed2]+ "<br>";
+    var labelAttributeSecond = "<b>"+ "Coverage: "+ properties[expressed2]+ "%"+"<br>"+ properties.State;
+      if(properties[expressed2] === 999){
+        labelAttributeSecond = "<b>"+ "Coverage: " + "No Data";
+      }else{
+        labelAttributeSecond = "<b>"+ "Coverage: "+ properties[expressed2]+ "%"+"<br>"+ properties.State;
+      }
     var infolabelSecond = d3.select("body")
       .append("div")
       .attr({
