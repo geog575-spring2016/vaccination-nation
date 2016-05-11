@@ -19,8 +19,10 @@ font-size: 1.8em;
 }
 
 h3{
+  /*text-align: center;*/
 }
 h4{
+font-size: 1.2em;
 
 }
 
@@ -108,7 +110,7 @@ p {
 #intro-panel{
 	height: 90%;
 	position: absolute;
-	width: 20%;
+	width: 170px;
 	z-index: 10000000;
 	top: 130px;
 	left: 85px;
@@ -223,16 +225,8 @@ p {
   }
 
 #mainMap-text{
-<<<<<<< HEAD
-/*  height: 200px;*/
-/*
-=======
-  height: 500px;
->>>>>>> master
-  margin-left: 10%;
-  margin-right: 10%;
-*/
-padding-left: 60px;
+padding-left: 50px;
+padding-right: 50px;
   margin-bottom: 10px;
   width: 100%;
   display: block;
@@ -273,6 +267,7 @@ padding-left: 60px;
 }
 
 #washington-legend {
+
     fill: none;
     stroke: #888;
     font-size: 12px;
@@ -288,10 +283,9 @@ padding-left: 60px;
 }
 
 #washington-text {
-    height: 550px;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 20px;
+/*    height: 550px;*/
+    padding-left: 50px;
+    padding-right: 50px;
     text-align: justify;
     display: block;
 }
@@ -301,7 +295,6 @@ padding-left: 60px;
     width: 250px;
     height: 40px;
     display: inline-block;
-/*    margin-top: -5px;*/
 }
 
 .glyphicon {
@@ -364,7 +357,7 @@ option {
 #workscited{
   font-size: 12px;
   text-align: left;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-left: 5%;
   margin-bottom: 5%;
   float: left;
@@ -383,6 +376,7 @@ option {
 
 
 .button {
+
     padding-right: 15%;
     display: inline-flex;
     float: right;
@@ -408,7 +402,7 @@ option {
 /*NEW YORK CSS*/
 
 #new-york-map {
-    height: 550px;
+    height: 615px;
     width: 75%;
     margin: 0 auto;
     border-color: #999;
@@ -420,8 +414,9 @@ option {
 
 #new-york-text {
     min-width: 100%;
-    height: 550px;
     display: inline-block;
+    padding-left: 50px;
+    padding-right: 50px;
     margin: 0 auto;
     margin-bottom: 10px;
 }
@@ -448,7 +443,7 @@ option {
     padding: 5px;
     float: left;
     display: block;
-    background-color: rgba(167, 167, 167, 0.5);
+    background-color: rgba(167, 167, 167, 0.6);
 	padding: 10px;
 	text-align: center;
 	border: solid gray 1px;
@@ -476,7 +471,7 @@ option {
 */
     border-color: #565656;
     border-width: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
     opacity: 1;
 }
 
@@ -571,15 +566,16 @@ option {
 /*    height: 630px;*/
     display:block;
     float:left;
-    text-align:left;
+    /*text-align:left;*/
     text-align: justify;
 /*    border-style: solid;*/
     /*width: 80%;*/
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 3%;
+    margin-right:5%;
+}
 
-
-
+#California-title {
+  text-align: center;
 }
 
 /*.states {*/

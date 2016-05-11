@@ -206,19 +206,22 @@ function updateRadius(expressed){
 }
 
 function propsSequenceControls(){
+        var year = expressed.split("es")[1];
+    
         var mainyearLabel = d3.select("#mainyearLabel")
-          .text(expressed)
+          .text(year)
 
           $("#mainstepForward").on("click", function(){
               mainattributeIndex += 1
                 if(mainattributeIndex > DataArray.length){
                   mainattributeIndex = 0
                 }
-
+              
               expressed = DataArray[mainattributeIndex]
+              year = expressed.split("es")[1];
 
               d3.select("#mainyearLabel")
-                .text(expressed)
+                .text(year)
 
               updateRadius(expressed)
           })
@@ -231,9 +234,10 @@ function propsSequenceControls(){
                 }
 
                 expressed = DataArray[mainattributeIndex]
+                year = expressed.split("es")[1];
 
                 d3.select("#mainyearLabel")
-                  .text(expressed)
+                  .text(year)
 
                 updateRadius(expressed)
           })
