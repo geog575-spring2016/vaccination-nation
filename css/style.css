@@ -118,6 +118,17 @@ p {
 	padding-left: 40px;
 }
 
+#intro3-panel{
+	height: 90%;
+	position: absolute;
+	width: 20%;
+	z-index: 10000000;
+	top: 325px;
+	left: 30px;
+	display: none;
+	padding-left: 40px;
+}
+
 .control-panel{
 	height: 90%;
 	width: 300px;
