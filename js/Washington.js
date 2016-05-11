@@ -206,6 +206,7 @@ function Washingtonhighlight(props){
     setLabel(props);
 };
 
+
 //function to reset the element style on mouseout
 function Washingtondehighlight(props){
     var selected = d3.selectAll("." + props.Name)

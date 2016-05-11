@@ -361,7 +361,7 @@ function propsSequenceControls(){
   };
 
    function highlightSecond(properties){
-    var selected = d3.selectAll("." + properties.postal)
+    var selected = d3.selectAll("." + properties.name_1)
       .style({
         "stroke": "black",
         "stroke-width": "2"
@@ -380,7 +380,7 @@ function propsSequenceControls(){
   };
 
   function dehighlightSecond(properties){
-    var selected = d3.selectAll("." + properties.postal)
+    var selected = d3.selectAll("." + properties.name_1)
       .style({
        "stroke": "black",
        "stroke-width": "1"
@@ -405,22 +405,22 @@ function propsSequenceControls(){
   };
 
   function setLabelSecond(properties){
-    var labelAttributeSecond = "<b>"+ "Coverage: "+ properties[expressed2]+ "%"+"<br>"+ properties.State;
+    var labelAttributeSecond = "<b>"+ "Coverage: "+ properties[expressed2]+ "%"+"<br>";
       if(properties[expressed2] === 999){
-        labelAttributeSecond = "<b>"+ "Coverage: " + "No Data";
+        labelAttributeSecond = "<b>"+ "Coverage: " + "No Data" + "<br>";
       }else{
-        labelAttributeSecond = "<b>"+ "Coverage: "+ properties[expressed2]+ "%"+"<br>"+ properties.State;
+        labelAttributeSecond = "<b>"+ "Coverage: "+ properties[expressed2]+ "%"+"<br>";
       }
     var infolabelSecond = d3.select("body")
       .append("div")
       .attr({
         "class": "infolabelSecond",
-        "id":  properties.disease+ "_label"
+        "id":  properties.name_1+ "_label"
       })
       .html(labelAttributeSecond);
     var propNameSecond = infolabelSecond.append("div")
       .attr("class", "labelnameSecond")
-      .html("Year: " + properties.state);
+      .html("State: " + properties.name_1);
   };
 
   function moveLabel(){
