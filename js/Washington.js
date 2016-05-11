@@ -22,7 +22,7 @@ var Washington_Complete_Immunizations;
 function setMap(){
     //map frame dimensions
     var width = 700,
-        height = 500;
+        height = 450;
 
     //create new svg container for the map
     var map = d3.select("#washington-map")

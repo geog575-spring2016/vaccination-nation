@@ -213,9 +213,8 @@ p {
   }
 
 #mainMap-text{
-
-  padding-left: 60px;
-  margin-left:2px;
+padding-left: 50px;
+padding-right: 50px;
   margin-bottom: 10px;
   width: 100%;
   display: block;
@@ -275,7 +274,6 @@ p {
 /*    height: 550px;*/
     padding-left: 50px;
     padding-right: 50px;
-    padding-bottom: 20px;
     text-align: justify;
     display: block;
 }
@@ -406,6 +404,8 @@ option {
     min-width: 100%;
     height: 550px;
     display: inline-block;
+    padding-left: 50px;
+    padding-right: 50px;
     margin: 0 auto;
     margin-bottom: 10px;
 }
