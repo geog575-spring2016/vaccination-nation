@@ -21,6 +21,7 @@ font-size: 1.8em;
 h3{
 }
 h4{
+font-size: 1.2em;
 
 }
 
@@ -212,8 +213,16 @@ p {
   }
 
 #mainMap-text{
-  padding-left: 50px;
-  padding-right: 50px;
+<<<<<<< HEAD
+/*  height: 200px;*/
+/*
+=======
+  height: 500px;
+>>>>>>> master
+  margin-left: 10%;
+  margin-right: 10%;
+*/
+padding-left: 60px;
   margin-bottom: 10px;
   width: 100%;
   display: block;
@@ -240,7 +249,6 @@ p {
     margin: 0 auto;
     display: block;
     width: 75%;
-    padding-top: 20px;
 }
 
 #washington-map{
@@ -273,11 +281,6 @@ p {
 /*    height: 550px;*/
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 20px;
-/*
-    margin-left: 25%;
-    margin-right: 25%;
-*/
     padding-bottom: 20px;
     text-align: justify;
     display: block;
@@ -395,7 +398,7 @@ option {
 /*NEW YORK CSS*/
 
 #new-york-map {
-    height: 550px;
+    height: 615px;
     width: 75%;
     margin: 0 auto;
     border-color: #999;
@@ -435,7 +438,7 @@ option {
     padding: 5px;
     float: left;
     display: block;
-    background-color: rgba(167, 167, 167, 0.5);
+    background-color: rgba(167, 167, 167, 0.6);
 	padding: 10px;
 	text-align: center;
 	border: solid gray 1px;
@@ -463,7 +466,7 @@ option {
 */
     border-color: #565656;
     border-width: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
     opacity: 1;
 }
 

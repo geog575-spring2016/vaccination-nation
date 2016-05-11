@@ -155,6 +155,7 @@ function createFilterControl(map){
             var container = L.DomUtil.create("div", "sequence-control-container-ny");
                         
             //create button elements
+            $(container).append("<h4>Vaccination Coverage in NYC Private Schools, 2014-2015</h4>");
             $(container).append('<button type="button" class="nybtn under75">Under 75%<br>(24 Schools)</button>');
             $(container).append('<button type="button" class="nybtn b75-85">75% to 84.99%<br>(46 Schools)</button>');
             $(container).append('<button type="button" class="nybtn b85-95">85% to 94.99%<br>(151 Schools)</button>');
