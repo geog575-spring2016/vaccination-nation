@@ -1,6 +1,6 @@
 //$('#mainMap').insertBefore('#new-york-map');
-//
-// (function(){
+
+(function(){
 
   var DataArray = ["cases1993","cases1994","cases1995","cases1996","cases1997","cases1998","cases1999","cases2000","cases2001",
     "cases2002","cases2003","cases2004","cases2005","cases2006","cases2007","cases2008","cases2009","cases2010","cases2011",
@@ -151,20 +151,6 @@ function makeColorScale(data){
             .domain([85,90,95])
             .range(['#d7191c','#fc8d59','#fadb86','#47bcbf']);
 
-        // //create color scale generator
-        // var colorScale = d3.scale.quantile()
-        //     .range(['#d7191c','#fc8d59','#fadb86','#47bcbf']);
-
-        // //build array of all values of the expressed attribute
-        // var domainArray = [];
-        // for (var i=0; i<data.length; i++){
-        //     var val = parseFloat(data[i][expressed2]);
-        //     domainArray.push(val);
-        // };
-        //
-        // //assign array of expressed values as scale domain
-        // colorScale.domain(domainArray);
-
         return colorScale;
 
 };
@@ -208,10 +194,7 @@ function setPropSymbols(usStates, usCenters, mapMain, path){
         dehighlight(d.properties);
       })
       .on("mousemove", moveLabel)
-      .on("click", function(d){
-        console.log(d)
-        console.log(this)
-      })
+
 
     var desc = circle.append("desc")
       .text('{"stroke": "#000", "stroke-width": "0.5px"}');
@@ -219,47 +202,11 @@ function setPropSymbols(usStates, usCenters, mapMain, path){
 
 function updateRadius(expressed){
 
-    // d3.selectAll(".circle")
-    //     .attr("r", function(d){
-    //       props=d.properties
-    //       var value=props[expressed]
-    //       return value
-    //     })
     d3.selectAll(".circle")
     .attr("d",path.pointRadius(function(d){
         return radius(d.properties[expressed]);}
         ))
 }
-
-// function changeAttribute(attribute, data){
-//     //change the expressed attribute
-//     expressed = attribute;
-//     var circles = d3.selectAll(".circles");
-//     updateSymb(circles, data);
-// };
-//
-// function updateSymb(data) {
-//       // create array to store all values for
-//       var circledomainArray = [];
-//
-//       for (var i=0; i<data.length; i++){
-//         var val = parseFloat(data[i][expressed]);
-//         circledomainArray.push(val);
-//     };
-//
-//           var radiusMin = Math.min.apply(Math, circledomainArray);
-//           var radiusMax = Math.max.apply(Math, circledomainArray);
-//
-//       var radius = d3.scale.sqrt()
-//           .domain([0, 7195])
-//           .range([0,150]);
-//
-//       //create a second svg element to hold the bar chart
-//       var circleRadius= circles.attr("r", function(d){
-//               return setRadius(d[expressed]);
-//           });
-//   };
-//
 
 function propsSequenceControls(){
         var mainyearLabel = d3.select("#mainyearLabel")
@@ -294,51 +241,6 @@ function propsSequenceControls(){
                 updateRadius(expressed)
           })
 }
-
-
-
-        //TRYING TO FIGURE OUT HOW TO CHANGE BASED ON PATH, ONLY COLORS CIRCLES BLUE RIGH NOW
-
-          // function(d){return assignColor(d.properties)})
-
-        // function assignColor(circles,mapMain){
-        //     var circles=mapMain.selectAll(".symbol")
-        //         .data(usCenters.features.sort(function(a,b){return properties[expressed]-properties[expressed];}))
-        //         .enter().append("path")
-        //           .attr("d",path)
-        //           .attr("class",function(d){
-        //             return "circle "+properties.disease;
-        //           })
-
-        //     if("class","Mumps"){
-        //         circles.style('fill','blue')
-
-        //     }
-        //     else if("class","Pertussis"){
-        //         circles.style('fill','yellow')
-        //     }
-        //     else if("class","Measles"){
-        //         circles.style('fill','orange')
-
-        //     }
-
-        //   };
-
-
-            // .style({"fill": "orange",
-            //       "fill-opacity":0.5,
-            //       "stroke":"black"})
-
-      //   function(d){
-      //   return choropleth(d.properties, colorScale);
-      // });
-
-      // console.log(states);
-
-      // var desc=states.append("desc")
-      //        .text('{"stroke":"white", "stroke-width":"1px"}');
-
-
 
   //TRYING TO GET SYMBOLS TO HIGHLIGHT AND DEHIGHLIGHT FOR IDENTIFICATION
   function highlight(properties){
@@ -400,8 +302,6 @@ function propsSequenceControls(){
   };
 
   function setLabelMain(properties){
-    console.log("Expressed is: " + expressed)
-    console.log(properties)
     var labelAttributeMain = "<b>"+ "Cases: "+ properties[expressed]+ "<br>" + properties.state;
     var infolabelMain = d3.select("body")
       .append("div")
@@ -493,20 +393,6 @@ function coverageMapLegend(){
    var coverageLegend = svg.append("g")
        .attr("class", "coverageLegend");
 
-  //  coverageLegend.selectAll("text")
-  //      .data(title)
-  //      .enter().append("text")
-  //      .attr("class", "coverage-legend-title")
-  //      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-  //      .text(function(d) { return d; })
-
-  //  // make legend box
-  //  var lb = coverageLegend.append("rect")
-  //      .attr("transform", "translate (0,"+titleheight+")")
-  //      .attr("class", "main-legend-box")
-  //      .attr("width", boxwidth)
-  //      .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
-
    // make quantized key legend items
    var coverageLi = coverageLegend.append("g")
       //  .attr("transform", "translate (8,"+(titleheight+boxmargin)+")")
@@ -575,20 +461,6 @@ function exemptionMapLegend(){
      // make legend
      var coverageLegend = svg.append("g")
          .attr("class", "coverageLegend");
-
-    //  coverageLegend.selectAll("text")
-    //      .data(title)
-    //      .enter().append("text")
-    //      .attr("class", "coverage-legend-title")
-    //      .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-    //      .text(function(d) { return d; })
-
-    //  // make legend box
-    //  var lb = coverageLegend.append("rect")
-    //      .attr("transform", "translate (0,"+titleheight+")")
-    //      .attr("class", "main-legend-box")
-    //      .attr("width", boxwidth)
-    //      .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
 
      // make quantized key legend items
      var coverageLi = coverageLegend.append("g")
@@ -659,23 +531,8 @@ function Preventable_OutbreaksMapLegend(){
     var coverageLegend = svg.append("g")
         .attr("class", "coverageLegend");
 
-    // coverageLegend.selectAll("text")
-    //     .data(title)
-    //     .enter().append("text")
-    //     .attr("class", "coverage-legend-title")
-    //     .attr("y", function(d, i) { return (i+1)*lineheight-2; })
-    //     .text(function(d) { return d; })
-
-    // // make legend box
-    // var lb = coverageLegend.append("rect")
-    //     .attr("transform", "translate (0,"+titleheight+")")
-    //     .attr("class", "main-legend-box")
-    //     .attr("width", boxwidth)
-    //     .attr("height", ranges*lineheight+2*boxmargin+lineheight-keyheight);
-
     // make quantized key legend items
     var coverageLi = coverageLegend.append("g")
-        // .attr("transform", "translate (,"+(titleheight+boxmargin)+")")
         .attr("class", "main-legend-items");
 
     coverageLi.selectAll("rect")
@@ -741,7 +598,7 @@ $(".nav-item").click(function(){
     }
 
 	//figure out what to display
-	$(".nav-panel").css({'display': "none"})
+	$(".nav-panel")
 	_thisData = $(this).data('panel')
 	if (_thisData == 'intro'){
 		$("#intro-panel").slideToggle()
@@ -752,6 +609,4 @@ $(".nav-item").click(function(){
 	}
 })
 
-   //
-   //
-  //  })();
+   })();

@@ -263,7 +263,7 @@ function moveLabel(){
 
     //use coordinates of mousemove event to set label coordinates
     var x1 = d3.event.clientX + 10,
-        y1 = d3.event.clientY + 600,
+        y1 = d3.event.clientY + 900,
         x2 = d3.event.clientX - labelWidth - 10,
         y2 = d3.event.clientY - 5;
 
@@ -316,10 +316,6 @@ function createSequenceControls(){
 
 
 function addWashingtonLegend(){
-
-  // var colorScale = d3.scale.threshold()
-  //     .domain([75,85,95])
-  //     .range(['#d7191c','#fdae61','#abd9e9','#2c7bb6']);
 
   var boxmargin = 4,
       lineheight = 30,
