@@ -5,25 +5,21 @@
   var DataArray = ["cases1993","cases1994","cases1995","cases1996","cases1997","cases1998","cases1999","cases2000","cases2001",
     "cases2002","cases2003","cases2004","cases2005","cases2006","cases2007","cases2008","cases2009","cases2010","cases2011",
     "cases2012","cases2013"];
-  var attrArray = ["2009-2010", "2011-2012", "2012-2013", "2013-2014", "2014-2015"];
-  var exemptionattrArray = ["codes"];
-
   var expressed =DataArray[0];
+
+  var attrArray = ["2009-2010", "2011-2012", "2012-2013", "2013-2014", "2014-2015"];
   var expressed2 = attrArray[0];
+
+  var exemptionattrArray = ["codes"];
   var expressed3 =exemptionattrArray[0];
 
   var mainattributeIndex = 0
-
-  //
-  // var Exemtooltip = d3.select("#mapMainExempt").append("div")
-  // 		    .attr("class", "Exemtooltip");
 
   var mainTitle =["Pertussis Cases","Mumps Cases","Measles Cases"];
 
   var radius = d3.scale.sqrt()
       .domain([0, 7195])
       .range([0,150]);
-
 
   //begins script when window loads
   window.onload = setMap();
@@ -59,7 +55,7 @@
        //loads choropleth spatial data
       .await(callback);
 
-  function callback(error, csvData2, csvData3, us, csvData, usCenters){
+function callback(error, csvData2, csvData3, us, csvData, usCenters){
 
     var usStates = topojson.feature(us, us.objects.usStates).features;
     for (var i=0; i<csvData.length; i++){
@@ -77,20 +73,6 @@
 
           }
         }
-      for (var i=0; i<csvData3.length; i++){
-	      var csvRegion = csvData3[i];
-	      var csvKey = csvRegion.postal;
-				var jsonStates=us.objects.usStates.geometries;
-	        for (var a=0; a<jsonStates.length; a++){
-							if(jsonStates[a].properties.postal==csvKey){
-								for (var key in exemptionattrArray){
-									var attribute=exemptionattrArray[key];
-									var value=parseFloat(csvRegion[attribute]);
-									(jsonStates[a].properties[attribute])=value
-								}
-							}
-						}
-					}
 
     var states = mapMain.append("path")
         .datum(usStates)
@@ -102,8 +84,7 @@
         var colorScale = makeColorScale(csvData2);
 
         setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale);
-
-        setEnumerationUnits(usStates, usCenters, mapMain, path);
+        //setCircles(usStates, usCenters, mapMain, path);
         setPropSymbols(usStates, usCenters, mapMain, path);
         propsSequenceControls();
         coverageMapLegend();
@@ -111,7 +92,6 @@
         Preventable_OutbreaksMapLegend();
     }
 };
-
 
 function joinData(usStates, csvData2){
    for (var i=0; i<csvData2.length; i++){
@@ -138,82 +118,76 @@ function joinData(usStates, csvData2){
      return usStates;
 }
 
-  function setEnumerationUnits(usStates, usCenters, mapMain, path){
-    var states = mapMain.selectAll(".states")
-      .data(usStates)
-      .enter()
-      .append("path")
-      .attr("d",path)
-      .attr("class", function(d){
-        return "states " + d.properties.postal;
-      })
-   };
+ function setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale){
+   var states = mapMain.selectAll(".states")
+     .data(usStates)
+     .enter()
+     .append("path")
+     .attr("d",path)
+     .attr("class", function(d){
+       return "states " + d.properties.name_1;
+     })
+     .attr("d", path)
+     .style("fill", function(d){
+         return choropleth(d.properties, colorScale);
+     })
+  };
 
-   function setChoroplethEnumerationUnits(usStates, mapMain, path, colorScale){
-     var states = mapMain.selectAll(".states")
-       .data(usStates)
-       .enter()
-       .append("path")
-       .attr("d",path)
-       .attr("class", function(d){
-         return "states " + d.properties.name_1;
-       })
-       .attr("d", path)
-       .style("fill", function(d){
-           return choropleth(d.properties, colorScale);
-       })
-    };
-
-    //function to create color scale generator
-    function makeColorScale(data){
-        var colorClasses = [
-            "#d7191c",
-            "#fc8d59",
-            "#fadb86",
-            "#47bcbf",
-        ];
+//function to create color scale generator
+function makeColorScale(data){
 
         //create color scale generator
-        var colorScale = d3.scale.quantile()
-            .range(colorClasses);
+        var colorScale = d3.scale.threshold()
+            .domain([85,90,95])
+            .range(['#d7191c','#fc8d59','#fadb86','#47bcbf']);
 
-        //build array of all values of the expressed attribute
-        var domainArray = [];
-        for (var i=0; i<data.length; i++){
-            var val = parseFloat(data[i][expressed2]);
-            domainArray.push(val);
-        };
+        // //create color scale generator
+        // var colorScale = d3.scale.quantile()
+        //     .range(['#d7191c','#fc8d59','#fadb86','#47bcbf']);
 
-        //assign array of expressed values as scale domain
-        colorScale.domain(domainArray);
+        // //build array of all values of the expressed attribute
+        // var domainArray = [];
+        // for (var i=0; i<data.length; i++){
+        //     var val = parseFloat(data[i][expressed2]);
+        //     domainArray.push(val);
+        // };
+        //
+        // //assign array of expressed values as scale domain
+        // colorScale.domain(domainArray);
 
         return colorScale;
 
+};
+
+//function to test for data value and return color
+function choropleth(props, colorScale){
+    //make sure attribute value is a number
+    var val = parseFloat(props[expressed2]);
+    //if attribute value exists, assign a color; otherwise assign gray
+    if (val && val != 999){
+        return colorScale(val);
+    } else {
+        return "#CCC";
     };
-
-    //function to test for data value and return color
-    function choropleth(props, colorScale){
-        //make sure attribute value is a number
-        var val = parseFloat(props[expressed2]);
-        //if attribute value exists, assign a color; otherwise assign gray
-        if (val && val != 999){
-            return colorScale(val);
-        } else {
-            return "#CCC";
-        };
-    };
+};
 
 
+//funciton that just defines the radius
+//function that changes the year
+    //this calls the radius function
+//call that function into the sequence
 function setPropSymbols(usStates, usCenters, mapMain, path){
 
-    var circles=mapMain.selectAll(".circle")
+    var circle=mapMain.selectAll(".circle")
       .data(usCenters.features.sort(function(a,b){return b.properties[expressed]-a.properties[expressed];}))
       .enter().append("path")
       .attr("d",path)
       .attr("class",function(d){
-          return "circle circle "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
+          return "circle "+d.properties.disease + " " + d.properties.postal+d.properties.disease;
       })
-      .attr("d",path.pointRadius(function(d){return radius(d.properties[expressed]);}))
+      .attr("d",path.pointRadius(function(d){
+          return radius(d.properties[expressed]);}
+          ))
       .style({'fill':'white',
               'stroke':'black',
               'fill-opacity':.4,
@@ -226,45 +200,46 @@ function setPropSymbols(usStates, usCenters, mapMain, path){
       })
       .on("mousemove", moveLabel);
 
-    var desc = circles.append("desc")
+    var desc = circle.append("desc")
       .text('{"stroke": "#000", "stroke-width": "0.5px"}');
-  };
-
-function changeAttribute(attribute, data){
-      //change the expressed attribute
-      expressed = attribute;
-      var circles = d3.selectAll(".circles");
-      updateCircles(circles, data);
-}
-
-function updateCircles(circles, data){
-      var domainArray = [];
-      for (var i=0; i<data.length; i++){
-          var val = parseFloat(data[i][expressed]);
-          domainArray.push(val);
-      };
-          radiusMin = Math.min.apply(Math, domainArray);
-          radiusMax = Math.max.apply(Math, domainArray);
-
-          setRadius = d3.scale.sqrt()
-              .range([0, 100])
-              .domain([radiusMin, radiusMax]);
-      //create a second svg element to hold the bar chart
-      var circleRadius= circles.attr("r", function(d){
-          return setRadius(d[expressed]);
-      });
 };
 
+function changeAttribute(attribute, data){
+    //change the expressed attribute
+    expressed = attribute;
+    var circles = d3.selectAll(".circles");
+    updateSymb(circles, data);
+};
 
+function updateSymb(data) {
+      // create array to store all values for
+      var circledomainArray = [];
+
+      for (var i=0; i<data.length; i++){
+        var val = parseFloat(data[i][expressed]);
+        circledomainArray.push(val);
+    };
+
+          var radiusMin = Math.min.apply(Math, circledomainArray);
+          var radiusMax = Math.max.apply(Math, circledomainArray);
+
+      var radius = d3.scale.sqrt()
+          .domain([0, 7195])
+          .range([0,150]);
+
+      //create a second svg element to hold the bar chart
+      var circleRadius= circles.attr("r", function(d){
+              return setRadius(d[expressed]);
+          });
+  };
 
 
 function propsSequenceControls(){
-
         var mainyearLabel = d3.select("#mainyearLabel")
           .text(expressed)
 
           $("#mainstepForward").on("click", function(){
-              mainattributeIndex +=1
+              mainattributeIndex += 1
                 if(mainattributeIndex > DataArray.length){
                   mainattributeIndex = 0
                 }
@@ -274,7 +249,7 @@ function propsSequenceControls(){
               d3.select("#mainyearLabel")
                 .text(expressed)
 
-              updateCircles(expressed, csvData)
+              updateSymb()
           })
 
           $("#mainstepBackward").on("click", function(){
@@ -289,7 +264,7 @@ function propsSequenceControls(){
                 d3.select("#mainyearLabel")
                   .text(expressed)
 
-                updateCircles(expressed, csvData)
+                updateSymb()
           })
 }
 
@@ -358,7 +333,6 @@ function propsSequenceControls(){
       .remove();
   };
 
-
   function setLabelMain(properties){
     var labelAttributeMain = "<b>"+ "Cases: "+ properties[expressed]+ "<br>" + properties.state;
     var infolabelMain = d3.select("body")
@@ -408,10 +382,10 @@ function coverageMapLegend(){
      titleheight = title.length*lineheight + boxmargin;
 
  var x = d3.scale.quantile()
-       .domain([0,1]);
+       .domain([80,100]);
 
    var threshold = d3.scale.threshold()
-       .domain([75,85,95,100])
+       .domain([85,90,95,100])
        .range(coverageLegendcolors);
    var ranges = threshold.range().length;
 
@@ -654,7 +628,6 @@ function removePropSympols(){
   d3.selectAll(".circle")
     .style("display", "none")
 }
-
 function showPropSymbols(){
   $(".circle").show()
 }
@@ -672,12 +645,10 @@ $(".nav-item").click(function(){
       if (click){
         removePropSympols()
         var click = $(this).data('click', false)
-
       }
       else{
           showPropSymbols()
           var click = $(this).data('click', true)
-
       }
     }
 
@@ -686,8 +657,6 @@ $(".nav-item").click(function(){
 	_thisData = $(this).data('panel')
 	if (_thisData == 'intro'){
 		$("#intro-panel").slideToggle()
-	}else if (_thisData == "intro2"){
-		$("#exemption-panel").slideToggle()
 	}else if (_thisData == "intro3"){
 		$("#intro3-panel").slideToggle()
 	}else{
