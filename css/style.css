@@ -123,8 +123,8 @@ p {
 	position: absolute;
 	width: 20%;
 	z-index: 10000000;
-	top: 325px;
-	left: 30px;
+	top: 375px;
+	left: 0px;
 	display: none;
 	padding-left: 40px;
 }
