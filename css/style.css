@@ -109,7 +109,7 @@ p {
 #intro-panel{
 	height: 90%;
 	position: absolute;
-	width: 20%;
+	width: 170px;
 	z-index: 10000000;
 	top: 130px;
 	left: 85px;
@@ -255,6 +255,7 @@ padding-right: 50px;
 }
 
 #washington-legend {
+
     fill: none;
     stroke: #888;
     font-size: 12px;
