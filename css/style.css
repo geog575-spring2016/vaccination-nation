@@ -212,16 +212,8 @@ p {
   }
 
 #mainMap-text{
-<<<<<<< HEAD
-/*  height: 200px;*/
-/*
-=======
-  height: 500px;
->>>>>>> master
-  margin-left: 10%;
-  margin-right: 10%;
-*/
-padding-left: 60px;
+  padding-left: 50px;
+  padding-right: 50px;
   margin-bottom: 10px;
   width: 100%;
   display: block;
@@ -248,6 +240,7 @@ padding-left: 60px;
     margin: 0 auto;
     display: block;
     width: 75%;
+    padding-top: 20px;
 }
 
 #washington-map{
@@ -277,10 +270,15 @@ padding-left: 60px;
 }
 
 #washington-text {
-    height: 550px;
+/*    height: 550px;*/
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+/*
     margin-left: 25%;
     margin-right: 25%;
-    margin-bottom: 20px;
+*/
+    padding-bottom: 20px;
     text-align: justify;
     display: block;
 }
